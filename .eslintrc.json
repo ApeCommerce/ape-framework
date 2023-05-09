@@ -1,0 +1,63 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base"
+  ],
+  "plugins": [
+    "import",
+    "jest"
+  ],
+  "rules": {
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": null,
+        "custom": {
+          "regex": "^([A-Z][0-9a-z]*_?)*[A-Z][0-9a-z]*$",
+          "match": true
+        }
+      }
+    ],
+    "@typescript-eslint/no-empty-function": [
+      "off"
+    ],
+    "class-methods-use-this": [
+      "off"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignorePattern": "^import"
+      }
+    ],
+    "no-await-in-loop": [
+      "off"
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "no-restricted-syntax": [
+      "off"
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ImportDeclaration": "never"
+      }
+    ]
+  }
+}
