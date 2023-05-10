@@ -6,7 +6,7 @@
     "src"
   ],
   "testMatch": [
-    "**/*.test.ts"
+    "**/*.spec.ts"
   ],
   "collectCoverage": false,
   "coverageDirectory": "coverage",
