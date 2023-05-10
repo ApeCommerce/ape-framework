@@ -1,6 +1,6 @@
-import config from 'framework/jwt/config';
+import config from 'jwt/config';
 import jwt from 'jsonwebtoken';
-import log from 'framework/log';
+import log from 'log';
 
 export interface Auth {
   id: string,

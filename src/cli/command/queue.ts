@@ -1,6 +1,6 @@
-import { exit, parseString, writeLn, Command } from 'framework/cli';
-import { formatList, formatTable, formatText } from 'framework/cli/format';
-import mq from 'framework/mq';
+import { exit, parseString, writeLn, Command } from 'cli';
+import { formatList, formatTable, formatText } from 'cli/format';
+import mq from 'mq';
 
 const help = formatText([
   'Usage:',

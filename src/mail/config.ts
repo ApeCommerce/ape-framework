@@ -1,6 +1,6 @@
-import BypassMail from 'framework/mail/module/bypass';
-import env from 'framework/env';
-import SmtpMail from 'framework/mail/module/smtp';
+import BypassMail from 'mail/module/bypass';
+import env from 'env';
+import SmtpMail from 'mail/module/smtp';
 
 enum Module {
   bypass = 'bypass',

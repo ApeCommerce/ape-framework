@@ -1,4 +1,4 @@
-import env from 'framework/env';
+import env from 'env';
 import pino, { LoggerOptions } from 'pino';
 import pretty from 'pino-pretty';
 

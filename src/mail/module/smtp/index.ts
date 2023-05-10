@@ -1,5 +1,5 @@
-import { Mail, MailModule } from 'framework/mail/module';
-import config from 'framework/mail/module/smtp/config';
+import { Mail, MailModule } from 'mail/module';
+import config from 'mail/module/smtp/config';
 import nodemailer, { Transporter } from 'nodemailer';
 
 export default class SmtpMail extends MailModule {

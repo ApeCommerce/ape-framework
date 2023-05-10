@@ -1,4 +1,4 @@
-import config from 'framework/db/config';
+import config from 'db/config';
 import knex, { Knex } from 'knex';
 
 export interface Database extends Knex { }

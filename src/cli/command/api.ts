@@ -1,6 +1,6 @@
-import { exit, parseString, writeLn, Command } from 'framework/cli';
-import { formatTable, formatText } from 'framework/cli/format';
-import api from 'framework/api';
+import { exit, parseString, writeLn, Command } from 'cli';
+import { formatTable, formatText } from 'cli/format';
+import api from 'api';
 
 const help = formatText([
   'Usage:',

@@ -1,4 +1,4 @@
-import env from 'framework/env';
+import env from 'env';
 
 if (!env.mqRedisHost) { throw new Error('MQ: redis host not provided'); }
 

@@ -1,6 +1,6 @@
-import BypassMq from 'framework/mq/module/bypass';
-import env from 'framework/env';
-import RedisMq from 'framework/mq/module/redis';
+import BypassMq from 'mq/module/bypass';
+import env from 'env';
+import RedisMq from 'mq/module/redis';
 
 enum Module {
   bypass = 'bypass',

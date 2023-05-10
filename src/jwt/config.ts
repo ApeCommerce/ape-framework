@@ -1,4 +1,4 @@
-import env from 'framework/env';
+import env from 'env';
 
 if (!env.jwtIssuer) { throw new Error('JWT: issuer not provided'); }
 if (!env.jwtSecret) { throw new Error('JWT: secret not provided'); }

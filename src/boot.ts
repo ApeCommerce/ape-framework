@@ -1,10 +1,10 @@
-import { Command } from 'framework/cli';
-import { loadModule } from 'framework/utils';
-import { Migration } from 'framework/db/migration';
-import { Queue } from 'framework/mq/module';
-import { Route } from 'framework/api';
-import { Translation } from 'framework/i18n';
-import config from 'framework/config';
+import { Command } from 'cli';
+import { loadModule } from 'utils';
+import { Migration } from 'db/migration';
+import { Queue } from 'mq/module';
+import { Route } from 'api';
+import { Translation } from 'i18n';
+import config from 'config';
 
 export interface Boot {
   bundlePaths: string[],

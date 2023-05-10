@@ -1,13 +1,13 @@
-import { basePath, timestamp } from 'framework/utils';
+import { basePath, timestamp } from 'utils';
 import { Endpoint } from 'common/framework/endpoint';
-import { getBundles } from 'framework/boot';
-import config from 'framework/api/config';
+import { getBundles } from 'boot';
+import config from 'api/config';
 import cors from '@fastify/cors';
 import fastify, { FastifyError, FastifyInstance, FastifyPluginCallback, FastifyReply, FastifyRequest } from 'fastify';
-import jwt, { Auth } from 'framework/jwt';
-import log from 'framework/log';
+import jwt, { Auth } from 'jwt';
+import log from 'log';
 import responseValidation from '@fastify/response-validation';
-import schema from 'framework/api/schema';
+import schema from 'api/schema';
 import swagger from '@fastify/swagger';
 
 export interface Server extends FastifyInstance { }

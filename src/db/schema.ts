@@ -1,4 +1,4 @@
-import { ColumnBuilder, Database } from 'framework/db';
+import { ColumnBuilder, Database } from 'db';
 
 interface Table {
   db: Database,

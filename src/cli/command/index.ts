@@ -1,6 +1,6 @@
-import api from 'framework/cli/command/api';
-import migration from 'framework/cli/command/migration';
-import queue from 'framework/cli/command/queue';
+import api from 'cli/command/api';
+import migration from 'cli/command/migration';
+import queue from 'cli/command/queue';
 
 export default [
   api,

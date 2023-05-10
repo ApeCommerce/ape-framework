@@ -1,4 +1,4 @@
-import { parseJsonFile } from 'framework/utils';
+import { parseJsonFile } from 'utils';
 
 const json = parseJsonFile('ape.config.json');
 

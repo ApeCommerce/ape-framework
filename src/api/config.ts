@@ -2,8 +2,8 @@ import { FastifyCorsOptions as CorsOptions } from '@fastify/cors';
 import { FastifyListenOptions as ListenOptions, FastifyServerOptions as ServerOptions } from 'fastify';
 import { Options as ResponseValidationOptions } from '@fastify/response-validation';
 import { SwaggerOptions } from '@fastify/swagger';
-import config from 'framework/config';
-import env, { parseBytes, parseMilliseconds } from 'framework/env';
+import config from 'config';
+import env, { parseBytes, parseMilliseconds } from 'env';
 
 const name = config.apiName;
 const version = config.apiVersion;

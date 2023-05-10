@@ -1,5 +1,5 @@
-import { getBundles } from 'framework/boot';
-import config from 'framework/i18n/config';
+import { getBundles } from 'boot';
+import config from 'i18n/config';
 import i18next, { i18n as I18n, Resource } from 'i18next';
 
 export interface Translation {

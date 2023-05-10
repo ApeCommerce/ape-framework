@@ -1,4 +1,4 @@
-import { getBundles } from 'framework/boot';
+import { getBundles } from 'boot';
 
 export interface Queue {
   queueId: string,

@@ -1,6 +1,6 @@
-import { formatList, formatTable, formatText } from 'framework/cli/format';
-import { getBundles } from 'framework/boot';
-import frameworkCommands from 'framework/cli/command';
+import { formatList, formatTable, formatText } from 'cli/format';
+import { getBundles } from 'boot';
+import frameworkCommands from 'cli/command';
 import parse from 'yargs-parser';
 
 export interface Command {

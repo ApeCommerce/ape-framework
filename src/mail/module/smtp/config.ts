@@ -1,4 +1,4 @@
-import env from 'framework/env';
+import env from 'env';
 
 if (!env.mailSmtpHost) { throw new Error('Mail: smtp host not provided'); }
 if (!env.mailSmtpEmail) { throw new Error('Mail: smtp email not provided'); }

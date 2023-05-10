@@ -1,6 +1,6 @@
-import { getBundle, getBundles, Bundle } from 'framework/boot';
-import { migrationConfig } from 'framework/db/config';
-import db, { Database } from 'framework/db';
+import { getBundle, getBundles, Bundle } from 'boot';
+import { migrationConfig } from 'db/config';
+import db, { Database } from 'db';
 
 export interface Migration {
   migrationId: string,

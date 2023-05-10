@@ -1,4 +1,4 @@
-import env from 'framework/env';
+import env from 'env';
 
 enum Module {
   mariadb = 'mariadb',

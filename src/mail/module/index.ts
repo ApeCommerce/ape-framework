@@ -1,6 +1,6 @@
-import { timestamp } from 'framework/utils';
-import config from 'framework/mail/config';
-import log from 'framework/log';
+import { timestamp } from 'utils';
+import config from 'mail/config';
+import log from 'log';
 import Mailgen, { ContentBody } from 'mailgen';
 
 export interface Email {

@@ -1,4 +1,4 @@
-import { Job, MqModule } from 'framework/mq/module';
+import { Job, MqModule } from 'mq/module';
 
 export default class BypassMq extends MqModule {
   createSender() {
