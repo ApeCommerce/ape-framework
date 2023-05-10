@@ -1,4 +1,4 @@
-import { bodyMethods, querystringMethods, Endpoint } from 'common/framework/endpoint';
+import { bodyMethods, querystringMethods, Endpoint } from '@apecommerce/ape-common/dist/endpoint';
 import { Bundle } from 'boot';
 
 interface RouteSchema {
