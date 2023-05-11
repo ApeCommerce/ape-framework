@@ -4,6 +4,16 @@
 /yarn.lock
 
 # build
-/one
-/two
-/three
+/api
+/boot
+/cli
+/config
+/db
+/env
+/i18n
+/jwt
+/log
+/mail
+/mq
+/pwd
+/utils
