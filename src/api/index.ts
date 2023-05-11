@@ -1,5 +1,5 @@
 import { basePath, timestamp } from 'utils';
-import { Endpoint } from '@apecommerce/ape-common/dist/endpoint';
+import { Endpoint } from '@apecommerce/ape-common/endpoint';
 import { getBundles } from 'boot';
 import config from 'api/config';
 import cors from '@fastify/cors';

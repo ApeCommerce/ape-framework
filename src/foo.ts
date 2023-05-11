@@ -1,4 +1,4 @@
-import { Endpoint } from '@apecommerce/ape-common/dist/endpoint';
+import { Endpoint } from '@apecommerce/ape-common/endpoint';
 
 const endpoint: Endpoint = {
   method: 'PATCH',
