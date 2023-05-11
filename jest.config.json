@@ -13,8 +13,5 @@
   "coverageReporters": [
     "lcov",
     "text"
-  ],
-  "coveragePathIgnorePatterns": [
-    "config.ts"
   ]
 }

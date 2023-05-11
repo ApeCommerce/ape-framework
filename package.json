@@ -1,14 +1,27 @@
 {
-  "name": "ape-framework",
-  "private": true,
+  "name": "@apecommerce/ape-framework",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Matthieu Symoens",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ApeCommerce/ape-framework.git"
+  },
+  "keywords": [
+    "ape",
+    "commerce",
+    "ecommerce"
+  ],
   "scripts": {
-    "dev": "rm -rf dist && tsc --project tsconfig.build.json -w",
+    "dev": "tsc --project tsconfig.build.json -w",
     "lint": "eslint src --fix",
     "lint:ci": "eslint src",
-    "test": "rm -rf test.log && jest --verbose",
-    "test:coverage": "rm -rf test.log coverage && jest --verbose --coverage",
-    "test:ci": "jest",
-    "build": "rm -rf dist && tsc --project tsconfig.build.json"
+    "test": "jest --verbose --passWithNoTests",
+    "test:coverage": "jest --verbose --coverage --passWithNoTests",
+    "test:ci": "jest --passWithNoTests",
+    "build": "tsc --project tsconfig.build.json"
   },
   "engines": {
     "node": "^16.20"
