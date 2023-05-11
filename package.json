@@ -1,7 +1,7 @@
 {
   "name": "@apecommerce/ape-framework",
   "version": "0.0.1",
-  "description": "Node.js API framework.",
+  "description": "Ape Commerce's API framework.",
   "license": "MIT",
   "author": "Matthieu Symoens",
   "main": "index.js",
@@ -10,13 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/ApeCommerce/ape-framework.git"
   },
-  "keywords": [
-    "ape",
-    "commerce",
-    "ecommerce",
-    "framework",
-    "opensource"
-  ],
   "scripts": {
     "dev": "tsc --project tsconfig.build.json -w",
     "lint": "eslint . --ext ts --fix",
