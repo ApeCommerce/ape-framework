@@ -18,7 +18,7 @@
     "test:coverage": "jest --verbose --coverage --passWithNoTests",
     "test:ci": "jest --passWithNoTests",
     "build": "tsc --project tsconfig.build.json",
-    "cleanup": "rm -rf */*.js */*.d.ts"
+    "cleanup": "rm -rf *.js */*.js *.d.ts */*.d.ts"
   },
   "engines": {
     "node": "^16.20"
