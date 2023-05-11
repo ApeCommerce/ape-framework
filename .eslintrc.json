@@ -20,5 +20,34 @@
     "**/*.d.ts",
     "**/*.js"
   ],
-  "rules": {}
+  "rules": {
+    "class-methods-use-this": [
+      "off"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignorePattern": "^import"
+      }
+    ],
+    "no-await-in-loop": [
+      "off"
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "no-restricted-syntax": [
+      "off"
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ImportDeclaration": "never"
+      }
+    ]
+  }
 }
