@@ -19,8 +19,8 @@
   ],
   "scripts": {
     "dev": "tsc --project tsconfig.build.json -w",
-    "lint": "eslint src --fix",
-    "lint:ci": "eslint src",
+    "lint": "eslint . --ext ts --fix",
+    "lint:ci": "eslint . --ext ts",
     "test": "jest --verbose --passWithNoTests",
     "test:coverage": "jest --verbose --coverage --passWithNoTests",
     "test:ci": "jest --passWithNoTests",
