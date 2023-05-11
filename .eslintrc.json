@@ -16,5 +16,9 @@
     "import",
     "jest"
   ],
+  "ignorePatterns": [
+    "**/*.d.ts",
+    "**/*.js"
+  ],
   "rules": {}
 }
