@@ -21,6 +21,9 @@
     "**/*.js"
   ],
   "rules": {
+    "@typescript-eslint/no-empty-function": [
+      "off"
+    ],
     "class-methods-use-this": [
       "off"
     ],
