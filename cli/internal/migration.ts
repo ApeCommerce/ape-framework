@@ -1,9 +1,9 @@
 import { Command } from '../command';
 import { exit, formatTable, formatText, writeLn } from '../utils';
 import { getBundle } from '../../boot';
+import { listMigrations, rollbackMigrations, runMigrations, BundleMigration } from '../../db/migration';
 import { parseBoolean, parseString } from '../../utils';
 import db from '../../db';
-import migration, { BundleMigration } from '../../db/migration';
 
 const help = formatText([
   'Usage:',
@@ -27,7 +27,7 @@ const formatMigrations = (migrations: BundleMigration[]) => formatTable(
 );
 
 const list = async (bundleId?: string, pending?: boolean) => {
-  const migrations = await migration.listMigrations(bundleId, pending);
+  const migrations = await listMigrations(bundleId, pending);
   if (migrations.length) {
     writeLn(formatText([
       'Migrations:',
@@ -39,7 +39,7 @@ const list = async (bundleId?: string, pending?: boolean) => {
 };
 
 const run = async (bundleId?: string, one?: boolean) => {
-  const migrations = await migration.runMigrations(bundleId, one);
+  const migrations = await runMigrations(bundleId, one);
   if (migrations.length) {
     writeLn(formatText([
       'Run migrations:',
@@ -51,7 +51,7 @@ const run = async (bundleId?: string, one?: boolean) => {
 };
 
 const rollback = async (bundleId?: string, one?: boolean) => {
-  const migrations = await migration.rollbackMigrations(bundleId, one);
+  const migrations = await rollbackMigrations(bundleId, one);
   if (migrations.length) {
     writeLn(formatText([
       'Rolled back migrations:',

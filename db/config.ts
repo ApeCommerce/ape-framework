@@ -1,6 +1,6 @@
-import env from 'env';
+import config from '../config';
 
-enum Module {
+enum ModuleId {
   mariadb = 'mariadb',
   memory = 'memory',
   mysql = 'mysql',
@@ -8,29 +8,32 @@ enum Module {
   sqlite = 'sqlite',
 }
 
-const module = Object.values(Module).find((m) => m === (env.dbModule || Module.sqlite));
-if (!module) { throw new Error(`DB: invalid module "${env.dbModule}"`); }
+const moduleId = Object.values(ModuleId).find((id) => id === config.dbModule);
+if (!moduleId) { throw new Error(`DB: invalid module id "${config.dbModule}"`); }
 
-if (module === Module.mariadb) {
-  if (!env.dbMariadbHost) { throw new Error('DB: mariadb host not provided'); }
-  if (!env.dbMariadbDatabase) { throw new Error('DB: mariadb database not provided'); }
-} else if (module === Module.mysql) {
-  if (!env.dbMysqlHost) { throw new Error('DB: mysql host not provided'); }
-  if (!env.dbMysqlDatabase) { throw new Error('DB: mysql database not provided'); }
-} else if (module === Module.postgres) {
-  if (!env.dbPostgresHost) { throw new Error('DB: postgres host not provided'); }
-  if (!env.dbPostgresDatabase) { throw new Error('DB: postgres database not provided'); }
+if (moduleId === ModuleId.mariadb) {
+  if (!config.dbMariadbHost) { throw new Error('DB: mariadb host not provided'); }
+  if (!config.dbMariadbPort) { throw new Error('DB: mariadb port not provided'); }
+  if (!config.dbMariadbDatabase) { throw new Error('DB: mariadb database not provided'); }
+} else if (moduleId === ModuleId.mysql) {
+  if (!config.dbMysqlHost) { throw new Error('DB: mysql host not provided'); }
+  if (!config.dbMysqlPort) { throw new Error('DB: mysql port not provided'); }
+  if (!config.dbMysqlDatabase) { throw new Error('DB: mysql database not provided'); }
+} else if (moduleId === ModuleId.postgres) {
+  if (!config.dbPostgresHost) { throw new Error('DB: postgres host not provided'); }
+  if (!config.dbPostgresPort) { throw new Error('DB: postgres port not provided'); }
+  if (!config.dbPostgresDatabase) { throw new Error('DB: postgres database not provided'); }
 }
 
-const config: { [module in Module]: any } = {
+const moduleConfig: { [moduleId in ModuleId]: any } = {
   mariadb: {
     client: 'mysql2',
     connection: {
-      host: env.dbMariadbHost,
-      port: env.dbMariadbPort || 3306,
-      user: env.dbMariadbUser,
-      password: env.dbMariadbPassword,
-      database: env.dbMariadbDatabase,
+      host: config.dbMariadbHost,
+      port: config.dbMariadbPort,
+      user: config.dbMariadbUser,
+      password: config.dbMariadbPassword,
+      database: config.dbMariadbDatabase,
     },
   },
   memory: {
@@ -43,27 +46,27 @@ const config: { [module in Module]: any } = {
   mysql: {
     client: 'mysql2',
     connection: {
-      host: env.dbMysqlHost,
-      port: env.dbMysqlPort || 3306,
-      user: env.dbMysqlUser,
-      password: env.dbMysqlPassword,
-      database: env.dbMysqlDatabase,
+      host: config.dbMysqlHost,
+      port: config.dbMysqlPort,
+      user: config.dbMysqlUser,
+      password: config.dbMysqlPassword,
+      database: config.dbMysqlDatabase,
     },
   },
   postgres: {
     client: 'pg',
     connection: {
-      host: env.dbPostgresHost,
-      port: env.dbPostgresPort || 5432,
-      user: env.dbPostgresUser,
-      password: env.dbPostgresPassword,
-      database: env.dbPostgresDatabase,
+      host: config.dbPostgresHost,
+      port: config.dbPostgresPort,
+      user: config.dbPostgresUser,
+      password: config.dbPostgresPassword,
+      database: config.dbPostgresDatabase,
     },
   },
   sqlite: {
     client: 'sqlite3',
     connection: {
-      filename: env.dbSqliteFile || 'db.sqlite',
+      filename: config.dbSqliteFile,
     },
     useNullAsDefault: true,
   },
@@ -73,4 +76,4 @@ export const migrationConfig = {
   tablePrefix: '_migration',
 };
 
-export default config[module];
+export default moduleConfig[moduleId];

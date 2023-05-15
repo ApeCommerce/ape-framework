@@ -1,12 +1,7 @@
-import { getBundle, getBundles, Bundle } from 'boot';
-import { migrationConfig } from 'db/config';
-import db, { Database } from 'db';
-
-export interface Migration {
-  migrationId: string,
-  up: (db: Database) => Promise<void>,
-  down: (db: Database) => Promise<void>,
-}
+import { Bundle } from '../boot/bundle';
+import { getBundle, getBundles } from '../boot';
+import { migrationConfig } from './config';
+import db, { Migration } from '.';
 
 export interface BundleMigration {
   bundleId: string,
@@ -101,10 +96,4 @@ export const rollbackMigrations = async (bundleId?: string, one?: boolean) => {
     }));
   }
   return bundleMigrations;
-};
-
-export default {
-  listMigrations,
-  runMigrations,
-  rollbackMigrations,
 };

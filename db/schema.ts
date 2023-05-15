@@ -1,4 +1,7 @@
-import { ColumnBuilder, Database } from 'db';
+import { Knex } from 'knex';
+import { Database } from '.';
+
+interface ColumnBuilder extends Knex.ColumnBuilder { }
 
 interface Table {
   db: Database,
@@ -21,7 +24,7 @@ type OnDelete = 'cascade' | 'restrict';
 
 const longNameRegex = /[A-Z][a-z]{4,}|[a-z]{5,}/g;
 
-const shortName = (...name: string[]) => name.map(
+export const shortName = (...name: string[]) => name.map(
   (string) => string.replace(longNameRegex, (match) => match.substring(0, 4)),
 ).join('_');
 
@@ -91,10 +94,3 @@ export const column = (
   referencedTable?: string,
   onDelete?: OnDelete,
 ): Column => ({ name, dataType, nullConstraint, index, referencedTable, onDelete });
-
-export default {
-  createTable,
-  dropTable,
-  table,
-  column,
-};
