@@ -23,7 +23,7 @@ const config: Configuration = {
 
   pwdHashCost: parseNumber(json.pwdHashCost || env.pwdHashCost),
 
-  i18nFallbackLanguage: parseString(json.i18nFallbackLanguage || env.i18nFallbackLanguage),
+  i18nFallbackLanguage: parseString(json.i18nFallbackLanguage || env.i18nFallbackLanguage || 'en'),
 
   logLevel: parseString(json.logLevel || env.logLevel),
   logDestination: parseString(json.logDestination || env.logDestination),
