@@ -1,28 +1,11 @@
-import { formatList, formatTable, formatText } from 'cli/format';
-import { getBundles } from 'boot';
-import frameworkCommands from 'cli/command';
 import parse from 'yargs-parser';
-
-export interface Command {
-  arg: string,
-  handler: (
-    args: (any)[],
-    options: { [argName: string]: any },
-  ) => Promise<void>,
-}
-
-export const parseBoolean = (input: any) => input === true;
-export const parseNumber = (input: any) => Number(input) || 0;
-export const parseString = (input: any) => String(input || '');
-
-export const write = (s: string) => process.stdout.write(s);
-export const writeLn = (s: string) => process.stdout.write(`${s}\n`);
-
-export const exit = (code?: number) => process.exit(code);
+import { exit, formatList, formatTable, formatText, writeLn } from './utils';
+import { getBundles } from '../boot';
+import { parseString } from '../utils';
+import internalCommands from './internal';
 
 const exec = async () => {
-  const commands = frameworkCommands
-    .concat((await getBundles()).flatMap((bundle) => bundle.commands));
+  const commands = internalCommands.concat((await getBundles()).flatMap((bundle) => bundle.commands));
 
   const help = formatText([
     'Usage:',

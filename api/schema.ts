@@ -1,5 +1,5 @@
 import { bodyMethods, querystringMethods, Endpoint } from '@apecommerce/ape-common/endpoint';
-import { Bundle } from 'boot';
+import { Bundle } from '../boot/bundle';
 
 interface RouteSchema {
   tags: string[],

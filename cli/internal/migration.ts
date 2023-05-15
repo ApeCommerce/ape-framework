@@ -1,8 +1,9 @@
-import { exit, parseBoolean, parseString, writeLn, Command } from 'cli';
-import { formatTable, formatText } from 'cli/format';
-import { getBundle } from 'boot';
-import db from 'db';
-import migration, { BundleMigration } from 'db/migration';
+import { Command } from '../command';
+import { exit, formatTable, formatText, writeLn } from '../utils';
+import { getBundle } from '../../boot';
+import { parseBoolean, parseString } from '../../utils';
+import db from '../../db';
+import migration, { BundleMigration } from '../../db/migration';
 
 const help = formatText([
   'Usage:',

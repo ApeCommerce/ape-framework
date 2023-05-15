@@ -2,22 +2,27 @@ import { FastifyCorsOptions as CorsOptions } from '@fastify/cors';
 import { FastifyListenOptions as ListenOptions, FastifyServerOptions as ServerOptions } from 'fastify';
 import { Options as ResponseValidationOptions } from '@fastify/response-validation';
 import { SwaggerOptions } from '@fastify/swagger';
-import config from 'config';
-import env, { parseBytes, parseMilliseconds } from 'env';
+import config from '../config';
 
-const name = config.apiName;
-const version = config.apiVersion;
+if (!config.apiName) { throw new Error('API: name not provided'); }
+if (!config.apiVersion) { throw new Error('API: version not provided'); }
+if (!config.apiHost) { throw new Error('API: host not provided'); }
+if (!config.apiPort) { throw new Error('API: port not provided'); }
+if (!config.apiConnectionTimeout) { throw new Error('API: connection timeout not provided'); }
+if (!config.apiRequestTimeout) { throw new Error('API: request timeout not provided'); }
+if (!config.apiKeepAliveTimeout) { throw new Error('API: keep alive timeout not provided'); }
+if (!config.apiBodyLimit) { throw new Error('API: body limit not provided'); }
 
 const listenOptions: ListenOptions = {
-  host: env.apiHost || '0.0.0.0',
-  port: env.apiRandomPort ? undefined : env.apiPort || 3000,
+  host: config.apiHost,
+  port: config.apiRandomPort ? undefined : config.apiPort,
 };
 
 const serverOptions: ServerOptions = {
-  connectionTimeout: env.apiConnectionTimeout || parseMilliseconds('10s'),
-  requestTimeout: env.apiRequestTimeout || parseMilliseconds('10s'),
-  keepAliveTimeout: env.apiKeepAliveTimeout || parseMilliseconds('10s'),
-  bodyLimit: env.apiBodyLimit || parseBytes('2kb'),
+  connectionTimeout: config.apiConnectionTimeout,
+  requestTimeout: config.apiRequestTimeout,
+  keepAliveTimeout: config.apiKeepAliveTimeout,
+  bodyLimit: config.apiBodyLimit,
 };
 
 const corsOptions: CorsOptions = {};
@@ -25,19 +30,19 @@ const corsOptions: CorsOptions = {};
 const swaggerOptions: SwaggerOptions = {
   openapi: {
     info: {
-      title: `${name} API Documentation`,
-      version,
+      title: `${config.apiName} API Documentation`,
+      version: config.apiVersion,
     },
   },
 };
 
 const responseValidationOptions: ResponseValidationOptions = {
-  responseValidation: env.apiResponseValidation,
+  responseValidation: config.apiResponseValidation,
 };
 
 export default {
-  name,
-  version,
+  name: config.apiName,
+  version: config.apiVersion,
   listenOptions,
   serverOptions,
   corsOptions,

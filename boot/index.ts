@@ -1,23 +1,9 @@
-import { Command } from '../cli';
+import { Bundle } from './bundle';
 import { loadModule } from '../utils';
-import { Migration } from '../db/migration';
-import { Queue } from '../mq/module';
-import { Route } from '../api';
-import { Translation } from '../i18n/translation';
 import config from './config';
 
 export interface Boot {
   bundleModules: string[],
-}
-
-export interface Bundle {
-  bundleId: string,
-  name: string,
-  routes: Route[],
-  migrations: Migration[],
-  queues: Queue[],
-  commands: Command[],
-  translations: Translation[],
 }
 
 let bundles: Bundle[];
@@ -29,10 +15,4 @@ const loadBundles = async () => {
 
 export const getBundles = async () => bundles || loadBundles();
 
-export const getBundle = async (bundleId: string) => (await getBundles())
-  .find((b) => b.bundleId === bundleId);
-
-export default {
-  getBundle,
-  getBundles,
-};
+export const getBundle = async (bundleId: string) => (await getBundles()).find((b) => b.bundleId === bundleId);

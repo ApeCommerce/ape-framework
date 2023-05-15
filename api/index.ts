@@ -1,23 +1,17 @@
-import { basePath, timestamp } from 'utils';
-import { Endpoint } from '@apecommerce/ape-common/endpoint';
-import { getBundles } from 'boot';
-import config from 'api/config';
 import cors from '@fastify/cors';
-import fastify, { FastifyError, FastifyInstance, FastifyPluginCallback, FastifyReply, FastifyRequest } from 'fastify';
-import jwt, { Auth } from 'jwt';
-import log from 'log';
+import fastify, { FastifyError, FastifyInstance } from 'fastify';
 import responseValidation from '@fastify/response-validation';
-import schema from 'api/schema';
 import swagger from '@fastify/swagger';
+import { basePath, timestamp } from '../utils';
+import { Handler, Reply, Request } from './handler';
+import config from './config';
+import jwt from '../jwt';
+import log from '../log';
+import router, { getRequiredRoles } from './router';
 
 export interface Server extends FastifyInstance { }
-export interface Plugin extends FastifyPluginCallback { }
-export interface Route { endpoint: Endpoint, handler: Handler }
-export interface Request extends FastifyRequest { auth?: Auth }
-export interface Reply extends FastifyReply { }
 export interface Error extends FastifyError { }
 
-export type Handler = (request: Request, reply: Reply) => Promise<void>;
 export type ErrorHandler = (error: Error, request: Request, reply: Reply) => Promise<void>;
 
 export const authorizationTokenType = 'authorization';
@@ -25,11 +19,8 @@ export const authorizationTokenType = 'authorization';
 const authorizationRegex = /^Bearer [0-9A-Za-z]+\.[0-9A-Za-z]+\.[0-9A-Za-z-_]+$/;
 const bearerPrefixLength = 'Bearer '.length;
 
-const routeAuth: { path: string, roles: string[] }[] = [];
-const routeRoles = (path: string) => routeAuth.find((route) => route.path === path)?.roles;
-
 const onRequest: Handler = async (request, reply) => {
-  const roles = routeRoles(basePath(request.routerPath));
+  const roles = getRequiredRoles(basePath(request.routerPath));
   if (roles) {
     let authorized = false;
     if (request.headers.authorization && request.headers.authorization.match(authorizationRegex)) {
@@ -70,36 +61,6 @@ const errorHandler: ErrorHandler = async (error, request, reply) => {
     log.debug(error);
   } else {
     log.error(error);
-  }
-};
-
-const router: Plugin = async (server, options, done) => {
-  (await getBundles()).forEach((bundle) => {
-    bundle.routes.forEach((route) => {
-      if (route.endpoint.requiredRoles) {
-        routeAuth.push({
-          path: route.endpoint.path,
-          roles: route.endpoint.requiredRoles,
-        });
-      }
-      server.route({
-        url: route.endpoint.path,
-        method: route.endpoint.method,
-        schema: schema(bundle, route.endpoint),
-        handler: route.handler,
-      });
-    });
-  });
-  done();
-};
-
-export const sendReply = (reply: Reply, value: unknown = true) => {
-  if (value === true) {
-    reply.send();
-  } else if (value === false) {
-    reply.status(403).send();
-  } else {
-    reply.send(value);
   }
 };
 
