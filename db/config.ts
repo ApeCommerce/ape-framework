@@ -9,20 +9,20 @@ enum ModuleId {
 }
 
 const moduleId = Object.values(ModuleId).find((id) => id === config.dbModule);
-if (!moduleId) { throw new Error(`DB: invalid module id "${config.dbModule}"`); }
+if (!moduleId) { throw new Error(`Database: invalid module id "${config.dbModule}"`); }
 
 if (moduleId === ModuleId.mariadb) {
-  if (!config.dbMariadbHost) { throw new Error('DB: mariadb host not provided'); }
-  if (!config.dbMariadbPort) { throw new Error('DB: mariadb port not provided'); }
-  if (!config.dbMariadbDatabase) { throw new Error('DB: mariadb database not provided'); }
+  if (!config.dbMariadbHost) { throw new Error('Database: mariadb host not provided'); }
+  if (!config.dbMariadbPort) { throw new Error('Database: mariadb port not provided'); }
+  if (!config.dbMariadbDatabase) { throw new Error('Database: mariadb database not provided'); }
 } else if (moduleId === ModuleId.mysql) {
-  if (!config.dbMysqlHost) { throw new Error('DB: mysql host not provided'); }
-  if (!config.dbMysqlPort) { throw new Error('DB: mysql port not provided'); }
-  if (!config.dbMysqlDatabase) { throw new Error('DB: mysql database not provided'); }
+  if (!config.dbMysqlHost) { throw new Error('Database: mysql host not provided'); }
+  if (!config.dbMysqlPort) { throw new Error('Database: mysql port not provided'); }
+  if (!config.dbMysqlDatabase) { throw new Error('Database: mysql database not provided'); }
 } else if (moduleId === ModuleId.postgres) {
-  if (!config.dbPostgresHost) { throw new Error('DB: postgres host not provided'); }
-  if (!config.dbPostgresPort) { throw new Error('DB: postgres port not provided'); }
-  if (!config.dbPostgresDatabase) { throw new Error('DB: postgres database not provided'); }
+  if (!config.dbPostgresHost) { throw new Error('Database: postgres host not provided'); }
+  if (!config.dbPostgresPort) { throw new Error('Database: postgres port not provided'); }
+  if (!config.dbPostgresDatabase) { throw new Error('Database: postgres database not provided'); }
 }
 
 const moduleConfig: { [moduleId in ModuleId]: any } = {
