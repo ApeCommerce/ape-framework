@@ -1,13 +1,13 @@
-import { Command } from 'cli';
-import { loadModule } from 'utils';
-import { Migration } from 'db/migration';
-import { Queue } from 'mq/module';
-import { Route } from 'api';
-import { Translation } from 'i18n';
-import config from 'config';
+import { Command } from '../cli';
+import { loadModule } from '../utils';
+import { Migration } from '../db/migration';
+import { Queue } from '../mq/module';
+import { Route } from '../api';
+import { Translation } from '../i18n';
+import config from '../config';
 
 export interface Boot {
-  bundlePaths: string[],
+  bundleModules: string[],
 }
 
 export interface Bundle {
@@ -22,16 +22,18 @@ export interface Bundle {
 
 let bundles: Bundle[];
 
-export const getBundles = async () => {
-  if (bundles) { return bundles; }
+export const loadBundles = async () => {
   const boot = await loadModule<Boot>(config.bootModule);
-  bundles = await Promise.all(boot.bundlePaths.map(loadModule<Bundle>));
-  return bundles;
+  return Promise.all(boot.bundleModules.map(loadModule<Bundle>));
 };
 
-export const getBundle = async (bundleId: string) => (await getBundles()).find((b) => b.bundleId === bundleId);
+export const getBundles = async () => bundles || loadBundles();
+
+export const getBundle = async (bundleId: string) => (await getBundles())
+  .find((b) => b.bundleId === bundleId);
 
 export default {
   getBundle,
   getBundles,
+  loadBundles,
 };
