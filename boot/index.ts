@@ -3,8 +3,8 @@ import { loadModule } from '../utils';
 import { Migration } from '../db/migration';
 import { Queue } from '../mq/module';
 import { Route } from '../api';
-import { Translation } from '../i18n';
-import config from '../config';
+import { Translation } from '../i18n/translation';
+import config from './config';
 
 export interface Boot {
   bundleModules: string[],
@@ -22,7 +22,7 @@ export interface Bundle {
 
 let bundles: Bundle[];
 
-export const loadBundles = async () => {
+const loadBundles = async () => {
   const boot = await loadModule<Boot>(config.bootModule);
   return Promise.all(boot.bundleModules.map(loadModule<Bundle>));
 };
@@ -35,5 +35,4 @@ export const getBundle = async (bundleId: string) => (await getBundles())
 export default {
   getBundle,
   getBundles,
-  loadBundles,
 };
