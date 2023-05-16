@@ -7,10 +7,10 @@ export enum ModuleId {
   smtp = 'smtp',
 }
 
-const module = Object.values(ModuleId).find((m) => m === config.mailModule);
-if (!module) { throw new Error(`Mail: invalid module "${config.mailModule}"`); }
+const id = Object.values(ModuleId).find((moduleId) => moduleId === config.mailModule);
+if (!id) { throw new Error(`Mail: invalid module "${config.mailModule}"`); }
 
-export const moduleId = module;
+export const moduleId = id;
 
 const classes: { [moduleId in ModuleId]: typeof BypassMail | typeof SmtpMail } = {
   bypass: BypassMail,

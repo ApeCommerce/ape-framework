@@ -1,7 +1,7 @@
 import { Command } from '../command';
 import { exit, formatTable, formatText, writeLn } from '../utils';
 import { getBundle } from '../../boot';
-import { listMigrations, rollbackMigrations, runMigrations, BundleMigration } from '../../db/migration';
+import { listMigrations, rollbackMigrations, runMigrations, BundleMigration } from '../../db/schema';
 import { parseBoolean, parseString } from '../../utils';
 import db from '../../db';
 

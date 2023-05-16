@@ -1,16 +1,17 @@
-import env from 'env';
+import config from '../../../config';
 
-if (!env.mqRedisHost) { throw new Error('MQ: redis host not provided'); }
+if (!config.mqRedisHost) { throw new Error('MQ: redis host not provided'); }
+if (!config.mqRedisPort) { throw new Error('MQ: redis port not provided'); }
 
 const commonOptions = {
   connection: {
-    host: env.mqRedisHost,
-    port: env.mqRedisPort || 6379,
-    username: env.mqRedisUser || undefined,
-    password: env.mqRedisPassword || undefined,
+    host: config.mqRedisHost,
+    port: config.mqRedisPort,
+    username: config.mqRedisUser || undefined,
+    password: config.mqRedisPassword || undefined,
     enableOfflineQueue: false,
   },
-  prefix: env.mqRedisPrefix,
+  prefix: config.mqRedisPrefix,
 };
 
 const queueOptions = {

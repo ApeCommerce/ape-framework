@@ -1,4 +1,4 @@
-import parse from 'yargs-parser';
+import parseArgs from 'yargs-parser';
 import { exit, formatList, formatTable, formatText, writeLn } from './utils';
 import { getBundles } from '../boot';
 import { parseString } from '../utils';
@@ -18,9 +18,8 @@ const exec = async () => {
     formatList(commands.map((command) => command.arg).sort()),
   ]);
 
-  const input = parse(process.argv.slice(2));
-  const args = input._;
-  const options: { [name: string]: any } = input;
+  const options: { [name: string]: any } = parseArgs(process.argv.slice(2));
+  const args: any[] = options._;
   delete options._;
 
   const arg = parseString(args.shift());

@@ -1,10 +1,10 @@
-import { FastifyReply, FastifyRequest } from 'fastify';
+import { FastifyError as Error, FastifyReply as Reply, FastifyRequest } from 'fastify';
 import { Auth } from '../jwt';
 
-export interface Request extends FastifyRequest { auth?: Auth }
-export interface Reply extends FastifyReply { }
-
 export type Handler = (request: Request, reply: Reply) => Promise<void>;
+export type ErrorHandler = (error: Error, request: Request, reply: Reply) => Promise<void>;
+
+export interface Request extends FastifyRequest { auth?: Auth }
 
 export const sendReply = (reply: Reply, value: unknown = true) => {
   if (value === true) {

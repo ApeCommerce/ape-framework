@@ -1,5 +1,7 @@
-import env from 'env';
+import config from '../config';
+
+if (!config.pwdHashCost) { throw new Error('PWD: hash cost not provided'); }
 
 export default {
-  hashCost: env.pwdHashCost || 10,
+  hashCost: config.pwdHashCost,
 };

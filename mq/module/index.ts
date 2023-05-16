@@ -1,14 +1,5 @@
-import { getBundles } from 'boot';
-
-export interface Queue {
-  queueId: string,
-  jobs: Job[],
-}
-
-export interface Job {
-  jobId: string,
-  process: (data: any, progress: Progress) => Promise<void>,
-}
+import { getBundles } from '../../boot';
+import { Job, Queue } from '../queue';
 
 export interface Sender {
   send: <Data>(job: Job, data: Data) => Promise<void>,
@@ -19,8 +10,6 @@ export interface Worker {
   start: () => void,
   close: () => Promise<void>,
 }
-
-export type Progress = (current: number, total: number) => void;
 
 export abstract class MqModule {
   async getQueues() {

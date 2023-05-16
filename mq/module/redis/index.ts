@@ -1,7 +1,8 @@
 import { Job as BullJob, Queue as BullQueue, Worker as BullWorker } from 'bullmq';
-import { Job, MqModule, Progress, Queue } from 'mq/module';
-import config from 'mq/module/redis/config';
-import log from 'log';
+import { Job, Progress, Queue } from '../../queue';
+import { MqModule } from '..';
+import config from './config';
+import log from '../../../log';
 
 const formatJob = (queue: Queue, job?: BullJob) => (queue.queueId + (job ? ` #${job.id} ${job.name}` : ''));
 
@@ -12,7 +13,7 @@ export default class RedisMq extends MqModule {
 
     return {
       send: async <Data>(job: Job, data: Data) => { await bullQueue.add(job.jobId, data); },
-      close: () => bullQueue.close(),
+      close: bullQueue.close,
     };
   }
 
@@ -35,8 +36,8 @@ export default class RedisMq extends MqModule {
     });
 
     return {
-      start: async () => { await bullWorker.run(); },
-      close: async () => bullWorker.close(),
+      start: bullWorker.run,
+      close: bullWorker.close,
     };
   }
 }

@@ -1,3 +1,3 @@
-import MqModuleClass from 'mq/config';
+import { MqModuleClass } from './module/config';
 
 export default new MqModuleClass();

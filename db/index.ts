@@ -1,14 +1,5 @@
-import knex, { Knex } from 'knex';
+import knex from 'knex';
 import config from './config';
-
-export interface Database extends Knex { }
-export interface Transaction extends Knex.Transaction { }
-
-export interface Migration {
-  migrationId: string,
-  up: (db: Database) => Promise<void>,
-  down: (db: Database) => Promise<void>,
-}
 
 const boolColumnRegex = /^is[A-Z]/;
 
@@ -29,9 +20,7 @@ const postProcessResponse = (result: any) => {
   return result;
 };
 
-const db: Database = knex({
+export default knex({
   ...config,
   postProcessResponse,
 });
-
-export default db;

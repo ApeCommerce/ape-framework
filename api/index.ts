@@ -1,18 +1,13 @@
 import cors from '@fastify/cors';
-import fastify, { FastifyError, FastifyInstance } from 'fastify';
+import fastify, { FastifyInstance as Server } from 'fastify';
 import responseValidation from '@fastify/response-validation';
 import swagger from '@fastify/swagger';
 import { basePath, timestamp } from '../utils';
-import { Handler, Reply, Request } from './handler';
+import { ErrorHandler, Handler } from './handler';
 import config from './config';
 import jwt from '../jwt';
 import log from '../log';
 import router, { getRequiredRoles } from './router';
-
-export interface Server extends FastifyInstance { }
-export interface Error extends FastifyError { }
-
-export type ErrorHandler = (error: Error, request: Request, reply: Reply) => Promise<void>;
 
 export const authorizationTokenType = 'authorization';
 

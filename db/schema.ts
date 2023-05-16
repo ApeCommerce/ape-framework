@@ -1,102 +1,106 @@
-import { Knex } from 'knex';
-import { Database } from '.';
+import { Bundle } from '../boot/bundle';
+import { getBundle, getBundles } from '../boot';
+import { Migration } from './migration';
+import { migrationConfig } from './config';
+import db from '.';
 
-export interface Table {
-  db: Database,
-  name: string,
+export interface BundleMigration {
+  bundleId: string,
+  migrationId: string,
+  pending?: boolean,
 }
 
-export interface Column {
-  name: string,
-  dataType: DataType,
-  nullConstraint: NullConstraint,
-  index?: Index,
-  referencedTable?: string,
-  onDelete?: OnDelete,
+class MigrationSource {
+  private bundle: Bundle;
+
+  constructor(bundle: Bundle) {
+    this.bundle = bundle;
+  }
+
+  getMigrations() {
+    return Promise.resolve(this.bundle.migrations);
+  }
+
+  getMigrationName(migration: Migration) {
+    return migration.migrationId;
+  }
+
+  getMigration(migration: Migration) {
+    return Promise.resolve(migration);
+  }
 }
 
-export type DataType = 'boolean' | 'decimal' | 'integer' | 'string';
-export type NullConstraint = 'notNull' | 'null';
-export type Index = 'index' | 'noIndex' | 'primary' | 'unique';
-export type OnDelete = 'cascade' | 'restrict';
+const config = (bundle: Bundle) => ({
+  migrationSource: new MigrationSource(bundle),
+  tableName: `${migrationConfig.tablePrefix}_${bundle.bundleId}`,
+});
 
-const longNameRegex = /[A-Z][a-z]{4,}|[a-z]{5,}/g;
+const filterBundles = async (bundleId?: string, reverse?: boolean, one?: boolean) => {
+  const bundles: Bundle[] = [];
+  if (bundleId) {
+    const bundle = await getBundle(bundleId);
+    if (bundle) { bundles.push(bundle); }
+  } else {
+    bundles.push(...await getBundles());
+  }
+  const result = bundles.filter((b) => b.migrations.length > 0);
+  if (reverse) { result.reverse(); }
+  return result.slice(0, one ? 1 : undefined);
+};
 
-export const shortName = (...name: string[]) => name.map(
-  (string) => string.replace(longNameRegex, (match) => match.substring(0, 4)),
-).join('_');
-
-export const createTable = (table: Table, ...columns: Column[]) => table.db.schema
-  .createTable(table.name, (tableBuilder) => {
-    const primaryKey: string[] = [];
-    columns.forEach((column) => {
-      let columnBuilder: Knex.ColumnBuilder;
-      switch (column.dataType) {
-        case 'boolean':
-          columnBuilder = tableBuilder.boolean(column.name);
-          break;
-        case 'decimal':
-          columnBuilder = tableBuilder.decimal(column.name, 32, 16);
-          break;
-        case 'integer':
-          columnBuilder = tableBuilder.integer(column.name);
-          break;
-        default:
-          columnBuilder = tableBuilder.string(column.name);
-      }
-      switch (column.nullConstraint) {
-        case 'null':
-          columnBuilder.nullable();
-          break;
-        default:
-          columnBuilder.notNullable();
-      }
-      switch (column.index) {
-        case 'index':
-          columnBuilder.index(shortName('IDX', table.name, column.name));
-          break;
-        case 'primary':
-          if (primaryKey.length > 0) {
-            columnBuilder.index(shortName('IDX', table.name, column.name));
-          }
-          primaryKey.push(column.name);
-          break;
-        case 'unique':
-          columnBuilder.unique({ indexName: shortName('UNQ', table.name, column.name) });
-          break;
-        default:
-      }
-      if (column.referencedTable) {
-        columnBuilder
-          .references(column.name)
-          .inTable(column.referencedTable)
-          .withKeyName(shortName('FK', table.name, column.referencedTable, column.name))
-          .onUpdate('CASCADE')
-          .onDelete(column.onDelete ? column.onDelete.toUpperCase() : 'RESTRICT');
-      }
-    });
-    if (primaryKey.length > 0) {
-      tableBuilder.primary(primaryKey);
+export const listMigrations = async (bundleId?: string, pendingOnly?: boolean) => {
+  const bundleMigrations: BundleMigration[] = [];
+  for (const bundle of await filterBundles(bundleId)) {
+    const result = await db.migrate.list(config(bundle));
+    const done: { name: string }[] = result[0];
+    const pending: Migration[] = result[1];
+    if (!pendingOnly) {
+      done.forEach((migration) => bundleMigrations.push({
+        bundleId: bundle.bundleId,
+        migrationId: migration.name,
+      }));
     }
-  });
+    pending.forEach((migration) => bundleMigrations.push({
+      bundleId: bundle.bundleId,
+      migrationId: migration.migrationId,
+      pending: true,
+    }));
+  }
+  return bundleMigrations;
+};
 
-export const dropTable = (table: Table) => table.db.schema.dropTable(table.name);
+export const runMigrations = async (bundleId?: string, one?: boolean) => {
+  const bundleMigrations: BundleMigration[] = [];
+  for (const bundle of await filterBundles(bundleId, false, one)) {
+    const result = one
+      ? await db.migrate.up(config(bundle))
+      : await db.migrate.latest(config(bundle));
+    const done: string[] = result[1];
+    done.forEach((migration) => bundleMigrations.push({
+      bundleId: bundle.bundleId,
+      migrationId: migration,
+    }));
+  }
+  return bundleMigrations;
+};
 
-export const table = (db: Database, name: string): Table => ({ db, name });
-
-export const column = (
-  name: string,
-  dataType: DataType,
-  nullConstraint: NullConstraint,
-  index?: Index,
-  referencedTable?: string,
-  onDelete?: OnDelete,
-): Column => ({ name, dataType, nullConstraint, index, referencedTable, onDelete });
+export const rollbackMigrations = async (bundleId?: string, one?: boolean) => {
+  const bundleMigrations: BundleMigration[] = [];
+  for (const bundle of await filterBundles(bundleId, true, one)) {
+    const result = one
+      ? await db.migrate.down(config(bundle))
+      : await db.migrate.rollback(config(bundle));
+    const done: string[] = result[1];
+    done.forEach((migration) => bundleMigrations.push({
+      bundleId: bundle.bundleId,
+      migrationId: migration,
+    }));
+  }
+  return bundleMigrations;
+};
 
 export default {
-  shortName,
-  createTable,
-  dropTable,
-  table,
-  column,
+  listMigrations,
+  runMigrations,
+  rollbackMigrations,
 };

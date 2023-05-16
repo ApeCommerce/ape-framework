@@ -1,4 +1,4 @@
-import pino, { LoggerOptions } from 'pino';
+import pino, { LoggerOptions as Options } from 'pino';
 import pretty from 'pino-pretty';
 import config from '../config';
 
@@ -23,7 +23,7 @@ if (!level) { throw new Error(`Log: invalid level "${config.logLevel}"`); }
 const destination = Object.values(Destination).find((d) => d === config.logDestination);
 if (!destination) { throw new Error(`Log: invalid destination "${config.logDestination}"`); }
 
-const options: LoggerOptions = { level };
+const options: Options = { level };
 
 let stream;
 if (destination === Destination.file) {
