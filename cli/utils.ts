@@ -25,3 +25,12 @@ export const formatTable = (table: Table) => {
     ).join('  '),
   ).join('\n');
 };
+
+export default {
+  write,
+  writeLn,
+  exit,
+  formatText,
+  formatList,
+  formatTable,
+};

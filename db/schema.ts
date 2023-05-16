@@ -1,14 +1,12 @@
 import { Knex } from 'knex';
 import { Database } from '.';
 
-interface ColumnBuilder extends Knex.ColumnBuilder { }
-
-interface Table {
+export interface Table {
   db: Database,
   name: string,
 }
 
-interface Column {
+export interface Column {
   name: string,
   dataType: DataType,
   nullConstraint: NullConstraint,
@@ -17,10 +15,10 @@ interface Column {
   onDelete?: OnDelete,
 }
 
-type DataType = 'boolean' | 'decimal' | 'integer' | 'string';
-type NullConstraint = 'notNull' | 'null';
-type Index = 'index' | 'noIndex' | 'primary' | 'unique';
-type OnDelete = 'cascade' | 'restrict';
+export type DataType = 'boolean' | 'decimal' | 'integer' | 'string';
+export type NullConstraint = 'notNull' | 'null';
+export type Index = 'index' | 'noIndex' | 'primary' | 'unique';
+export type OnDelete = 'cascade' | 'restrict';
 
 const longNameRegex = /[A-Z][a-z]{4,}|[a-z]{5,}/g;
 
@@ -32,7 +30,7 @@ export const createTable = (table: Table, ...columns: Column[]) => table.db.sche
   .createTable(table.name, (tableBuilder) => {
     const primaryKey: string[] = [];
     columns.forEach((column) => {
-      let columnBuilder: ColumnBuilder;
+      let columnBuilder: Knex.ColumnBuilder;
       switch (column.dataType) {
         case 'boolean':
           columnBuilder = tableBuilder.boolean(column.name);
@@ -94,3 +92,11 @@ export const column = (
   referencedTable?: string,
   onDelete?: OnDelete,
 ): Column => ({ name, dataType, nullConstraint, index, referencedTable, onDelete });
+
+export default {
+  shortName,
+  createTable,
+  dropTable,
+  table,
+  column,
+};

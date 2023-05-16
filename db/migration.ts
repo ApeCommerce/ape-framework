@@ -97,3 +97,9 @@ export const rollbackMigrations = async (bundleId?: string, one?: boolean) => {
   }
   return bundleMigrations;
 };
+
+export default {
+  listMigrations,
+  runMigrations,
+  rollbackMigrations,
+};

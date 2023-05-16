@@ -16,3 +16,8 @@ const loadBundles = async () => {
 export const getBundles = async () => bundles || loadBundles();
 
 export const getBundle = async (bundleId: string) => (await getBundles()).find((b) => b.bundleId === bundleId);
+
+export default {
+  getBundles,
+  getBundle,
+};
