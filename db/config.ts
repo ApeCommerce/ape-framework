@@ -1,6 +1,6 @@
 import config from '../config';
 
-enum ModuleId {
+export enum ModuleId {
   mariadb = 'mariadb',
   memory = 'memory',
   mysql = 'mysql',
@@ -8,8 +8,10 @@ enum ModuleId {
   sqlite = 'sqlite',
 }
 
-const moduleId = Object.values(ModuleId).find((id) => id === config.dbModule);
-if (!moduleId) { throw new Error(`Database: invalid module id "${config.dbModule}"`); }
+const module = Object.values(ModuleId).find((id) => id === config.dbModule);
+if (!module) { throw new Error(`Database: invalid module "${config.dbModule}"`); }
+
+export const moduleId = module;
 
 if (moduleId === ModuleId.mariadb) {
   if (!config.dbMariadbHost) { throw new Error('Database: mariadb host not provided'); }
