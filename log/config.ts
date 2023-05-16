@@ -1,6 +1,6 @@
-import env from 'env';
 import pino, { LoggerOptions } from 'pino';
 import pretty from 'pino-pretty';
+import config from '../config';
 
 enum Level {
   debug = 'debug',
@@ -17,19 +17,19 @@ enum Destination {
   stdout = 'stdout',
 }
 
-const level = Object.values(Level).find((l) => l === (env.logLevel || Level.info));
-if (!level) { throw new Error(`Log: invalid level "${env.logLevel}"`); }
+const level = Object.values(Level).find((l) => l === config.logLevel);
+if (!level) { throw new Error(`Log: invalid level "${config.logLevel}"`); }
 
-const destination = Object.values(Destination).find((d) => d === (env.logDestination || Destination.stdout));
-if (!destination) { throw new Error(`Log: invalid destination "${env.logDestination}"`); }
+const destination = Object.values(Destination).find((d) => d === config.logDestination);
+if (!destination) { throw new Error(`Log: invalid destination "${config.logDestination}"`); }
 
 const options: LoggerOptions = { level };
 
 let stream;
 if (destination === Destination.file) {
-  stream = pino.destination(env.logFile || 'log.txt');
+  stream = pino.destination(config.logFile);
 } else {
-  stream = (env.logPretty ? pretty() : process.stdout);
+  stream = config.logPretty ? pretty() : process.stdout;
 }
 
 export default {

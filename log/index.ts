@@ -1,4 +1,4 @@
-import config from 'log/config';
 import pino from 'pino';
+import config from './config';
 
 export default pino(config.options, config.stream);

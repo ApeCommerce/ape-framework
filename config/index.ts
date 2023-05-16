@@ -21,14 +21,14 @@ const config: Configuration = {
   jwtIssuer: parseString(json.jwtIssuer || env.jwtIssuer),
   jwtSecret: parseString(json.jwtSecret || env.jwtSecret),
 
-  pwdHashCost: parseNumber(json.pwdHashCost || env.pwdHashCost),
+  pwdHashCost: parseNumber(json.pwdHashCost || env.pwdHashCost || 10),
 
   i18nFallbackLanguage: parseString(json.i18nFallbackLanguage || env.i18nFallbackLanguage || 'en'),
 
-  logLevel: parseString(json.logLevel || env.logLevel),
-  logDestination: parseString(json.logDestination || env.logDestination),
+  logLevel: parseString(json.logLevel || env.logLevel || 'info'),
+  logDestination: parseString(json.logDestination || env.logDestination || 'stdout'),
   logPretty: parseBoolean(json.logPretty || env.logPretty),
-  logFile: parseString(json.logFile || env.logFile),
+  logFile: parseString(json.logFile || env.logFile || 'log.txt'),
 
   dbModule: parseString(json.dbModule || env.dbModule || 'sqlite'),
   dbMariadbHost: parseString(json.dbMariadbHost || env.dbMariadbHost || 'mariadb'),
