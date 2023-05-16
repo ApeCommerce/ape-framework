@@ -1,3 +1,4 @@
+import { Knex } from 'knex';
 import config from '../config';
 
 export enum ModuleId {
@@ -27,7 +28,7 @@ if (moduleId === ModuleId.mariadb) {
   if (!config.dbPostgresDatabase) { throw new Error('Database: postgres database not provided'); }
 }
 
-const moduleConfig: { [moduleId in ModuleId]: any } = {
+const moduleConfig: { [moduleId in ModuleId]: Knex.Config } = {
   mariadb: {
     client: 'mysql2',
     connection: {

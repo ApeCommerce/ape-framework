@@ -1,7 +1,7 @@
-import { timestamp } from 'utils';
-import config from 'mail/config';
-import log from 'log';
 import Mailgen, { ContentBody } from 'mailgen';
+import { timestamp } from '../../utils';
+import config from '../config';
+import log from '../../log';
 
 export interface Email {
   fromName: string,
@@ -30,7 +30,7 @@ export interface Mail {
   subject: string,
   html: string,
   text: string,
-  sendingTs: number,
+  sendTs: number,
 }
 
 export interface Address {
@@ -84,7 +84,7 @@ export abstract class MailModule {
       subject: email.subject,
       html: mailgen.generate({ body }),
       text: mailgen.generatePlaintext({ body }),
-      sendingTs: timestamp(),
+      sendTs: timestamp(),
     });
 
     log.debug(`Mail: sent mail to ${to.join(', ')}`);
