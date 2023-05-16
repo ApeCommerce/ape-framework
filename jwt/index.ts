@@ -1,11 +1,6 @@
-import config from 'jwt/config';
 import jwt from 'jsonwebtoken';
-import log from 'log';
-
-export interface Auth {
-  id: string,
-  roles: string[],
-}
+import config from './config';
+import log from '../log';
 
 interface Payload {
   iss: string,
@@ -15,7 +10,12 @@ interface Payload {
   auth: Auth,
 }
 
-const createToken = (auth: Auth, type: string, expiration: number, timestamp: number) => {
+export interface Auth {
+  id: string,
+  roles: string[],
+}
+
+export const createToken = (auth: Auth, type: string, expiration: number, timestamp: number) => {
   const payload: Payload = {
     iss: config.issuer,
     iat: timestamp,
@@ -26,7 +26,7 @@ const createToken = (auth: Auth, type: string, expiration: number, timestamp: nu
   return jwt.sign(payload, config.secret);
 };
 
-const verifyToken = (token: string, type: string, timestamp: number) => {
+export const verifyToken = (token: string, type: string, timestamp: number) => {
   try {
     const payload = jwt.verify(token, config.secret, {
       clockTimestamp: timestamp,
@@ -39,7 +39,7 @@ const verifyToken = (token: string, type: string, timestamp: number) => {
   }
 };
 
-const hasRoles = (auth: Auth, roles: string[]) => roles.every((role) => auth.roles.includes(role));
+export const hasRoles = (auth: Auth, roles: string[]) => roles.every((role) => auth.roles.includes(role));
 
 export default {
   createToken,

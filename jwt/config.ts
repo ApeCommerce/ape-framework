@@ -1,9 +1,9 @@
-import env from 'env';
+import config from '../config';
 
-if (!env.jwtIssuer) { throw new Error('JWT: issuer not provided'); }
-if (!env.jwtSecret) { throw new Error('JWT: secret not provided'); }
+if (!config.jwtIssuer) { throw new Error('JWT: issuer not provided'); }
+if (!config.jwtSecret) { throw new Error('JWT: secret not provided'); }
 
 export default {
-  issuer: env.jwtIssuer,
-  secret: env.jwtSecret,
+  issuer: config.jwtIssuer,
+  secret: config.jwtSecret,
 };
