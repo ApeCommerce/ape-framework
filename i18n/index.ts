@@ -19,7 +19,7 @@ const init = async () => {
   await i18next.init({
     ns: await getNamespaces(),
     resources: await getResources(),
-    fallbackLng: config.fallbackLanguage,
+    fallbackLng: config.fallbackLanguageId,
   });
   return i18next;
 };
