@@ -1,18 +1,21 @@
 {
   "name": "@apecommerce/ape-framework",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ape Commerce's API framework.",
   "author": "Matthieu Symoens",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ApeCommerce/ape-framework.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "types": "index.d.ts",
+  "bin": {
+    "ape": "./cli"
+  },
   "scripts": {
     "dev": "tsc --project tsconfig.build.json -w",
     "lint": "eslint . --fix",
