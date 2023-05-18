@@ -1,6 +1,6 @@
 {
   "name": "@apecommerce/ape-framework",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Ape Commerce's API framework.",
   "author": "Matthieu Symoens",
   "license": "MIT",

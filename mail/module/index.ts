@@ -1,42 +1,8 @@
 import Mailgen, { ContentBody } from 'mailgen';
+import { Email, Mail } from '../email';
 import { timestamp } from '../../utils';
 import config from '../config';
 import log from '../../log';
-
-export interface Email {
-  fromName: string,
-  replyTo: Address,
-  subject: string,
-  header: string,
-  headerLink: string,
-  title: string,
-  intro: string[],
-  action?: {
-    instructions: string,
-    description: string,
-    text: string,
-    link: string,
-  },
-  outro?: string[],
-  copyright?: string,
-  color?: string,
-  textDirection?: 'ltr' | 'rtl',
-}
-
-export interface Mail {
-  to: string[],
-  fromName: string,
-  replyTo: Address,
-  subject: string,
-  html: string,
-  text: string,
-  sendTs: number,
-}
-
-export interface Address {
-  name: string,
-  email: string,
-}
 
 export abstract class MailModule {
   protected lastMail?: Mail;
@@ -96,3 +62,5 @@ export abstract class MailModule {
 
   abstract close(): Promise<void>;
 }
+
+export default MailModule;
