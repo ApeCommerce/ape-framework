@@ -10,7 +10,8 @@ let bundles: Bundle[];
 
 const loadBundles = async () => {
   const boot = await loadModule<Boot>(config.bootModule);
-  return Promise.all(boot.bundleModules.map(loadModule<Bundle>));
+  bundles = await Promise.all(boot.bundleModules.map(loadModule<Bundle>));
+  return bundles;
 };
 
 export const getBundles = async () => bundles || loadBundles();

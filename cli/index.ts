@@ -31,4 +31,4 @@ const exec = async () => {
   command.handler(args, options);
 };
 
-exec();
+export default exec;

@@ -1,10 +1,11 @@
 import Mailgen, { ContentBody } from 'mailgen';
-import { Email, Mail } from '../email';
+import { Email } from '../email';
+import { Mail } from '../mail';
 import { timestamp } from '../../utils';
 import config from '../config';
 import log from '../../log';
 
-export abstract class MailModule {
+export default abstract class MailModule {
   protected lastMail?: Mail;
 
   protected async sendMail(mail: Mail) {
@@ -62,5 +63,3 @@ export abstract class MailModule {
 
   abstract close(): Promise<void>;
 }
-
-export default MailModule;

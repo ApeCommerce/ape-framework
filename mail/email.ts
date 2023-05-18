@@ -1,3 +1,5 @@
+import { Address } from './mail';
+
 export interface Email {
   fromName: string,
   replyTo: Address,
@@ -16,19 +18,4 @@ export interface Email {
   copyright?: string,
   color?: string,
   textDirection?: 'ltr' | 'rtl',
-}
-
-export interface Address {
-  name: string,
-  email: string,
-}
-
-export interface Mail {
-  to: string[],
-  fromName: string,
-  replyTo: Address,
-  subject: string,
-  html: string,
-  text: string,
-  sendTs: number,
 }

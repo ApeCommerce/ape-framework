@@ -15,3 +15,18 @@ export const parseString = (a: any) => String(a || '');
 export const timestamp = () => Math.floor(Date.now() / 1000);
 export const uuid = crypto.randomUUID;
 export const wait = (ms: number) => new Promise((res) => { setTimeout(() => res(true), ms); });
+
+export default {
+  basePath,
+  loadModule,
+  parseBoolean,
+  parseBytes,
+  parseJsonFile,
+  parseMilliseconds,
+  parseNumber,
+  parseSeconds,
+  parseString,
+  timestamp,
+  uuid,
+  wait,
+};

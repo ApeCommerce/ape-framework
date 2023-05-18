@@ -11,7 +11,7 @@ export interface Worker {
   close: () => Promise<void>,
 }
 
-export abstract class MqModule {
+export default abstract class MqModule {
   async getQueues() {
     return (await getBundles()).flatMap((bundle) => bundle.queues);
   }

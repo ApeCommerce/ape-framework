@@ -1,5 +1,5 @@
 import cors from '@fastify/cors';
-import fastify, { FastifyInstance as Server } from 'fastify';
+import fastify from 'fastify';
 import responseValidation from '@fastify/response-validation';
 import swagger from '@fastify/swagger';
 import { basePath, timestamp } from '../utils';
@@ -59,41 +59,35 @@ const errorHandler: ErrorHandler = async (error, request, reply) => {
   }
 };
 
-class Api {
-  private server: Server;
+const server = fastify(config.serverOptions)
+  .addHook('onRequest', onRequest)
+  .addHook('onResponse', onResponse)
+  .addHook('onTimeout', onTimeout)
+  .setNotFoundHandler(notFoundHandler)
+  .setErrorHandler(errorHandler)
+  .register(cors, config.corsOptions)
+  .register(swagger, config.swaggerOptions)
+  .register(responseValidation, config.responseValidationOptions)
+  .register(router);
 
-  private url?: string;
+let url: string;
 
-  constructor() {
-    this.server = fastify(config.serverOptions)
-      .addHook('onRequest', onRequest)
-      .addHook('onResponse', onResponse)
-      .addHook('onTimeout', onTimeout)
-      .setNotFoundHandler(notFoundHandler)
-      .setErrorHandler(errorHandler)
-      .register(cors, config.corsOptions)
-      .register(swagger, config.swaggerOptions)
-      .register(responseValidation, config.responseValidationOptions)
-      .register(router);
-  }
+export const getUrl = () => url;
+export const doc = () => server.swagger();
 
-  getUrl() {
-    return this.url;
-  }
+export const start = async () => {
+  url = await server.listen(config.listenOptions);
+  log.info(`API: started v${config.version} @${url}`);
+};
 
-  doc() {
-    return this.server.swagger();
-  }
+export const close = async () => {
+  await server.close();
+  log.info('API: closed');
+};
 
-  async start() {
-    this.url = await this.server.listen(config.listenOptions);
-    log.info(`API: started v${config.version} ${this.url}`);
-  }
-
-  async close() {
-    await this.server.close();
-    log.info('API: closed');
-  }
-}
-
-export default new Api();
+export default {
+  getUrl,
+  doc,
+  start,
+  close,
+};
