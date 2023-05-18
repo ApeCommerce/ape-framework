@@ -1,5 +1,6 @@
 import nodemailer, { Transporter } from 'nodemailer';
-import { Mail, MailModule } from '..';
+import { Mail } from '../../email';
+import { MailModule } from '..';
 import config from './config';
 
 export default class SmtpMail extends MailModule {
