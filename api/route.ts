@@ -1,4 +1,4 @@
-import { Endpoint } from '@apecommerce/ape-common/endpoint';
+import { Endpoint } from '../common';
 import { Handler } from './handler';
 
 export interface Route { endpoint: Endpoint, handler: Handler }
