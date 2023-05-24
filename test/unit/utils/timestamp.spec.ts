@@ -8,11 +8,14 @@ describe('Getting a timestamp', () => {
   });
 });
 
-describe('Getting multiple timestamps', () => {
+describe('Getting a timestamp multiple times', () => {
   test('Returns increasing values', async () => {
     const ts1 = timestamp();
     await wait(parseMilliseconds('1s'));
     const ts2 = timestamp();
+    await wait(parseMilliseconds('1s'));
+    const ts3 = timestamp();
     expect(ts2).toBeGreaterThan(ts1);
+    expect(ts3).toBeGreaterThan(ts2);
   });
 });

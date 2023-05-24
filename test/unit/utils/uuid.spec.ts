@@ -7,7 +7,7 @@ describe('Getting a UUID', () => {
   });
 });
 
-describe('Getting multiple UUIDs', () => {
+describe('Getting a UUID multiple times', () => {
   test('Returns different values', async () => {
     const id1 = uuid();
     const id2 = uuid();

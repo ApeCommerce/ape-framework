@@ -1,6 +1,6 @@
 import { basePath } from 'utils';
 
-describe('Getting a base path using default separator', () => {
+describe('Getting a base path', () => {
   test('Returns expected value', async () => {
     expect(basePath(undefined)).toBe('');
     expect(basePath('')).toBe('');

@@ -1,7 +1,7 @@
 import { Foo } from 'test/fixture/json/foo';
 import { loadJsonFile } from 'utils';
 
-describe('Loading an existing JSON file', () => {
+describe('Loading a JSON file', () => {
   test('Returns expected data', async () => {
     const json = loadJsonFile<Foo>('test/fixture/json/foo.json');
     expect(json).toStrictEqual({
