@@ -1,5 +1,7 @@
 import { Knex as Database } from 'knex';
-import config from '../config';
+import { getConfig } from '../config';
+
+const config = getConfig();
 
 export enum ModuleId {
   mariadb = 'mariadb',

@@ -1,6 +1,8 @@
+import { getConfig } from '../../config';
 import BypassMq from './bypass';
-import config from '../../config';
 import RedisMq from './redis';
+
+const config = getConfig();
 
 enum ModuleId {
   bypass = 'bypass',

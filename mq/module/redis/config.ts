@@ -1,4 +1,6 @@
-import config from '../../../config';
+import { getConfig } from '../../../config';
+
+const config = getConfig();
 
 if (!config.mqRedisHost) throw new Error('MQ: redis host not provided');
 if (!config.mqRedisPort) throw new Error('MQ: redis port not provided');

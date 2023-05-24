@@ -1,6 +1,8 @@
 import pino, { LoggerOptions as Options } from 'pino';
 import pretty from 'pino-pretty';
-import config from '../config';
+import { getConfig } from '../config';
+
+const config = getConfig();
 
 enum Level {
   debug = 'debug',

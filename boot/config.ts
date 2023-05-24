@@ -1,4 +1,6 @@
-import config from '../config';
+import { getConfig } from '../config';
+
+const config = getConfig();
 
 if (!config.bootModule) throw new Error('Boot: boot module not provided');
 

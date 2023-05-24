@@ -1,6 +1,8 @@
+import { getConfig } from '../../config';
 import BypassMail from './bypass';
-import config from '../../config';
 import SmtpMail from './smtp';
+
+const config = getConfig();
 
 enum ModuleId {
   bypass = 'bypass',

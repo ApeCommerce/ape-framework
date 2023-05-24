@@ -2,7 +2,9 @@ import { FastifyCorsOptions as CorsOptions } from '@fastify/cors';
 import { FastifyListenOptions as ListenOptions, FastifyServerOptions as ServerOptions } from 'fastify';
 import { Options as ResponseValidationOptions } from '@fastify/response-validation';
 import { SwaggerOptions } from '@fastify/swagger';
-import config from '../config';
+import { getConfig } from '../config';
+
+const config = getConfig();
 
 if (!config.apiName) throw new Error('API: name not provided');
 if (!config.apiVersion) throw new Error('API: version not provided');

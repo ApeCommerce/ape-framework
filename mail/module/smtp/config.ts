@@ -1,5 +1,7 @@
 import SMTPPool from 'nodemailer/lib/smtp-pool';
-import config from '../../../config';
+import { getConfig } from '../../../config';
+
+const config = getConfig();
 
 if (!config.mailSmtpHost) throw new Error('Mail: smtp host not provided');
 if (!config.mailSmtpPort) throw new Error('Mail: smtp port not provided');

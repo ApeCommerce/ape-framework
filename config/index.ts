@@ -10,7 +10,7 @@ if (fs.existsSync(configFile)) {
   json = loadJsonFile<any>(configFile);
 }
 
-const config: Configuration = {
+const loadConfig = (): Configuration => ({
   bootModule: parseString(json.bootModule || env.bootModule || 'boot'),
 
   apiName: parseString(json.apiName || env.apiName || 'New Ape Project'),
@@ -74,6 +74,20 @@ const config: Configuration = {
   mailSmtpUser: parseString(json.mailSmtpUser || env.mailSmtpUser),
   mailSmtpPassword: parseString(json.mailSmtpPassword || env.mailSmtpPassword),
   mailSmtpEmail: parseString(json.mailSmtpEmail || env.mailSmtpEmail),
+});
+
+let configuration: Configuration = loadConfig();
+
+export const getConfig = () => configuration;
+
+export const initConfig = (override?: Partial<Configuration>) => {
+  configuration = {
+    ...loadConfig(),
+    ...override,
+  };
 };
 
-export default config;
+export default {
+  getConfig,
+  initConfig,
+};
