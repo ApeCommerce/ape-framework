@@ -1,6 +1,6 @@
 {
   "name": "@apecommerce/ape-framework",
-  "version": "0.0.5",
+  "version": "0.0.0",
   "description": "Ape Commerce's API framework.",
   "author": "Matthieu Symoens",
   "license": "MIT",
@@ -20,9 +20,9 @@
     "dev": "tsc --project tsconfig.build.json -w",
     "lint": "eslint . --fix",
     "lint:ci": "eslint .",
-    "test": "jest --verbose --passWithNoTests",
-    "test:coverage": "jest --verbose --coverage --passWithNoTests",
-    "test:ci": "jest --passWithNoTests",
+    "test": "jest --verbose",
+    "test:coverage": "jest --verbose --coverage",
+    "test:ci": "jest",
     "build": "tsc --project tsconfig.build.json"
   },
   "engines": {
