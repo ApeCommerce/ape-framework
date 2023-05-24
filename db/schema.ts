@@ -39,12 +39,12 @@ const filterBundles = async (bundleId?: string, reverse?: boolean, one?: boolean
   const bundles: Bundle[] = [];
   if (bundleId) {
     const bundle = await getBundle(bundleId);
-    if (bundle) { bundles.push(bundle); }
+    if (bundle) bundles.push(bundle);
   } else {
     bundles.push(...await getBundles());
   }
   const result = bundles.filter((b) => b.migrations.length > 0);
-  if (reverse) { result.reverse(); }
+  if (reverse) result.reverse();
   return result.slice(0, one ? 1 : undefined);
 };
 

@@ -8,7 +8,7 @@ enum ModuleId {
 }
 
 const moduleId = Object.values(ModuleId).find((id) => id === config.mqModule);
-if (!moduleId) { throw new Error(`MQ: invalid module "${config.mqModule}"`); }
+if (!moduleId) throw new Error(`MQ: invalid module "${config.mqModule}"`);
 
 const classes: { [moduleId in ModuleId]: typeof BypassMq | typeof RedisMq } = {
   bypass: BypassMq,

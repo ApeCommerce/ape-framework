@@ -18,10 +18,10 @@ enum Destination {
 }
 
 const level = Object.values(Level).find((l) => l === config.logLevel);
-if (!level) { throw new Error(`Log: invalid level "${config.logLevel}"`); }
+if (!level) throw new Error(`Log: invalid level "${config.logLevel}"`);
 
 const destination = Object.values(Destination).find((d) => d === config.logDestination);
-if (!destination) { throw new Error(`Log: invalid destination "${config.logDestination}"`); }
+if (!destination) throw new Error(`Log: invalid destination "${config.logDestination}"`);
 
 const options: Options = { level };
 

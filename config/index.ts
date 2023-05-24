@@ -1,8 +1,14 @@
+import fs from 'fs';
 import { Configuration } from './configuration';
 import { loadJsonFile, parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
 import env from './env';
 
-const json = loadJsonFile<any>('ape.config.json');
+const configFile = 'ape.config.json';
+
+let json: any = {};
+if (fs.existsSync(configFile)) {
+  json = loadJsonFile<any>(configFile);
+}
 
 const config: Configuration = {
   bootModule: parseString(json.bootModule || env.bootModule || 'boot'),

@@ -1,7 +1,7 @@
 import config from '../../../config';
 
-if (!config.mqRedisHost) { throw new Error('MQ: redis host not provided'); }
-if (!config.mqRedisPort) { throw new Error('MQ: redis port not provided'); }
+if (!config.mqRedisHost) throw new Error('MQ: redis host not provided');
+if (!config.mqRedisPort) throw new Error('MQ: redis port not provided');
 
 const commonOptions = {
   connection: {

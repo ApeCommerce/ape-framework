@@ -8,7 +8,7 @@ const getResources = async () => {
   const resources: Resources = {};
   (await getBundles()).forEach((bundle) => {
     bundle.translations.forEach((translation) => {
-      if (!resources[translation.languageId]) { resources[translation.languageId] = {}; }
+      if (!resources[translation.languageId]) resources[translation.languageId] = {};
       resources[translation.languageId][bundle.bundleId] = translation.dictionary;
     });
   });

@@ -24,10 +24,10 @@ const list = async () => {
 };
 
 const process = async (queueId: string) => {
-  if (!queueId) { throw new Error('Queue: queue id not provided'); }
+  if (!queueId) throw new Error('Queue: queue id not provided');
 
   const queue = await mq.getQueue(queueId);
-  if (!queue) { throw new Error(`Queue: invalid queue id "${queueId}"`); }
+  if (!queue) throw new Error(`Queue: invalid queue id "${queueId}"`);
 
   mq.createWorker(queue).start();
 };
@@ -36,7 +36,7 @@ const command: Command = {
   arg: 'queue',
   handler: async (args) => {
     const action = parseString(args[0]);
-    if (!action || action === 'help') { writeLn(help); exit(); }
+    if (!action || action === 'help') writeLn(help); exit();
 
     const queueId = parseString(args[1]);
 
