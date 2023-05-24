@@ -1,3 +1,13 @@
 {
-    "foo": "bar"
+    "boo": true,
+    "num": 3,
+    "str": "foo",
+    "obj": {
+        "foo": "bar"
+    },
+    "arr": [
+        "one",
+        "two"
+    ],
+    "nul": null
 }

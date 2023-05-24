@@ -1,8 +1,8 @@
 import { Configuration } from './configuration';
-import { parseBoolean, parseBytes, parseJsonFile, parseMilliseconds, parseNumber, parseString } from '../utils';
+import { loadJsonFile, parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
 import env from './env';
 
-const json = parseJsonFile('ape.config.json');
+const json = loadJsonFile<any>('ape.config.json');
 
 const config: Configuration = {
   bootModule: parseString(json.bootModule || env.bootModule || 'boot'),

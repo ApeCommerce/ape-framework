@@ -1,3 +1,8 @@
 export interface Foo {
-  foo: string,
+  boo: boolean,
+  num: number,
+  str: string,
+  obj: any,
+  arr: string[],
+  nul: null,
 }

@@ -1,9 +1,9 @@
 import { wait } from 'utils';
 
-describe('Waiting', () => {
-  test('Delays execution by required duration', async () => {
+describe('Waiting a duration', () => {
+  test('Delays code execution by that duration', async () => {
     const ms = Date.now();
-    await wait(100);
-    expect(Date.now() - ms).toBeGreaterThanOrEqual(100);
+    await wait(30);
+    expect(Date.now() - ms).toBeGreaterThanOrEqual(30);
   });
 });
