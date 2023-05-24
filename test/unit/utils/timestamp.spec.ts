@@ -15,7 +15,7 @@ describe('Getting a timestamp multiple times', () => {
     const ts2 = timestamp();
     await wait(parseMilliseconds('1s'));
     const ts3 = timestamp();
-    expect(ts2).toBeGreaterThan(ts1);
-    expect(ts3).toBeGreaterThan(ts2);
+    expect(ts1).toBeLessThan(ts2);
+    expect(ts2).toBeLessThan(ts3);
   });
 });
