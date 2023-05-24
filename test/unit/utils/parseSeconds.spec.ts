@@ -20,14 +20,16 @@ describe('Parsing seconds', () => {
     expect(parseSeconds('1.5')).toBe(1);
     expect(parseSeconds('-3')).toBe(-3);
 
+    expect(parseSeconds('0ms')).toBe(0);
     expect(parseSeconds('3000ms')).toBe(3);
-    expect(parseSeconds('3000milliseconds')).toBe(3);
-
-    expect(parseSeconds('3000 ms')).toBe(3);
-    expect(parseSeconds('3000 milliseconds')).toBe(3);
-
     expect(parseSeconds('1500ms')).toBe(1);
     expect(parseSeconds('-3000ms')).toBe(-3);
+
+    expect(parseSeconds('3000 ms')).toBe(3);
+
+    expect(parseSeconds('3000mss')).toBe(3);
+    expect(parseSeconds('3000millisecond')).toBe(3);
+    expect(parseSeconds('3000milliseconds')).toBe(3);
 
     expect(parseSeconds('3s')).toBe(3);
     expect(parseSeconds('3sec')).toBe(3);

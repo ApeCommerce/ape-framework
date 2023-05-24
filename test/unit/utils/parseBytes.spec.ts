@@ -20,14 +20,14 @@ describe('Parsing bytes', () => {
     expect(parseBytes('1.5')).toBe(1);
     expect(parseBytes('-3')).toBe(-3);
 
+    expect(parseBytes('0b')).toBe(0);
     expect(parseBytes('3b')).toBe(3);
-    expect(parseBytes('3B')).toBe(3);
-
-    expect(parseBytes('3 b')).toBe(3);
-    expect(parseBytes('3 B')).toBe(3);
-
     expect(parseBytes('1.5b')).toBe(1);
     expect(parseBytes('-3b')).toBe(-3);
+
+    expect(parseBytes('3B')).toBe(3);
+    expect(parseBytes('3 b')).toBe(3);
+    expect(parseBytes('3 B')).toBe(3);
 
     expect(parseBytes('3kb')).toBe(3072);
     expect(parseBytes('3mb')).toBe(3145728);

@@ -7,6 +7,8 @@ describe('Parsing a boolean', () => {
     expect(parseBoolean(0)).toBe(false);
     expect(parseBoolean(3)).toBe(false);
     expect(parseBoolean('')).toBe(false);
+    expect(parseBoolean('0')).toBe(false);
+    expect(parseBoolean('3')).toBe(false);
     expect(parseBoolean('foo')).toBe(false);
     expect(parseBoolean({ foo: 'bar' })).toBe(false);
     expect(parseBoolean(() => 'foo')).toBe(false);
