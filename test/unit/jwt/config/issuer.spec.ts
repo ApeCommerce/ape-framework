@@ -2,14 +2,15 @@ import { initConfig } from 'config';
 import { loadModule } from 'utils';
 
 initConfig({
-  pwdHashCost: 0,
+  jwtIssuer: '',
+  jwtSecret: 'secret',
 });
 
-describe('Loading the config with missing hash cost', () => {
+describe('Loading the config with missing issuer', () => {
   test('Fails', async () => {
     expect.assertions(1);
     try {
-      await loadModule('pwd/config');
+      await loadModule('jwt/config');
     } catch (error) {
       expect(error).toBeTruthy();
     }

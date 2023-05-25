@@ -1,3 +1,4 @@
+import 'test/config/unit';
 import { hashPassword, verifyPassword } from 'pwd';
 
 describe('Hashing a password', () => {

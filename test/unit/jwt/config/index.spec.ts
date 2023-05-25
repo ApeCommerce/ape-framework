@@ -3,9 +3,10 @@ import { loadModule } from 'utils';
 
 describe('Loading the config', () => {
   test('Returns expected value', async () => {
-    const config = await loadModule('pwd/config');
+    const config = await loadModule('jwt/config');
     expect(config).toStrictEqual({
-      hashCost: 3,
+      issuer: 'foo',
+      secret: 'secret',
     });
   });
 });

@@ -12,7 +12,7 @@ describe('Loading a missing module', () => {
   test('Fails', async () => {
     expect.assertions(1);
     try {
-      await loadModule<any>('test/fixture/module/xxx');
+      await loadModule('test/fixture/module/xxx');
     } catch (error) {
       expect(error).toBeTruthy();
     }
