@@ -5,7 +5,7 @@ initConfig({
   pwdHashCost: 0,
 });
 
-describe('Loading the config lacking a required property', () => {
+describe('Loading a config lacking a hash cost', () => {
   test('Fails', async () => {
     expect.assertions(1);
     try {
