@@ -1,8 +1,9 @@
 {
   "preset": "ts-jest",
   "testEnvironment": "node",
-  "modulePaths": [
-    "<rootDir>"
+  "moduleDirectories": [
+    "<rootDir>",
+    "node_modules"
   ],
   "testMatch": [
     "**/*.spec.ts"
