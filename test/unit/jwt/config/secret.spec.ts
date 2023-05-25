@@ -7,7 +7,7 @@ initConfig({
 });
 
 describe('Loading the config with missing secret', () => {
-  test('Fails', async () => {
+  test('Throws an error', async () => {
     expect.assertions(1);
     try {
       await loadModule('jwt/config');

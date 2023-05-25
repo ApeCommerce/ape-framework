@@ -19,10 +19,18 @@ describe('Hashing a password multiple times', () => {
   });
 });
 
-describe('Verifying a password', () => {
-  test('Returns expected value', async () => {
+describe('Verifying a matching password', () => {
+  test('Succeeds', async () => {
     const hash = await hashPassword('password');
     expect(await verifyPassword('password', hash)).toBe(true);
     expect(await verifyPassword('xxx', hash)).toBe(false);
   });
 });
+
+// describe('Verifying a matching password', () => {
+//   test('Succeeds', async () => {
+//     const hash = await hashPassword('password');
+//     expect(await verifyPassword('password', hash)).toBe(true);
+//     expect(await verifyPassword('xxx', hash)).toBe(false);
+//   });
+// });

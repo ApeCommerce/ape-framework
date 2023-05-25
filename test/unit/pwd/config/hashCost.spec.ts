@@ -6,7 +6,7 @@ initConfig({
 });
 
 describe('Loading the config with missing hash cost', () => {
-  test('Fails', async () => {
+  test('Throws an error', async () => {
     expect.assertions(1);
     try {
       await loadModule('pwd/config');

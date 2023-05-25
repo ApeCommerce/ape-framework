@@ -2,7 +2,7 @@ import { Foo } from 'test/fixture/json/foo';
 import { loadJsonFile } from 'utils';
 
 describe('Loading a JSON file', () => {
-  test('Returns expected data', async () => {
+  test('Returns expected value', async () => {
     const json = loadJsonFile<Foo>('test/fixture/json/foo.json');
     expect(json).toStrictEqual({
       boo: true,
@@ -16,7 +16,7 @@ describe('Loading a JSON file', () => {
 });
 
 describe('Loading a missing JSON file', () => {
-  test('Fails', async () => {
+  test('Throws an error', async () => {
     expect(() => {
       loadJsonFile('test/fixture/json/xxx.json');
     }).toThrow();
