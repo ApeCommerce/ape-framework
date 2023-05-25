@@ -1,6 +1,6 @@
 import 'test/config/unit';
 import { createToken, hasRoles, verifyToken, Auth } from 'jwt';
-import { timestamp } from 'utils';
+import { parseMilliseconds, timestamp, wait } from 'utils';
 
 describe('Creating a token', () => {
   test('Returns a valid value', async () => {
@@ -12,7 +12,9 @@ describe('Creating a token', () => {
 describe('Creating a token multiple times', () => {
   test('Returns different values', async () => {
     const token1 = createToken({ id: 'foo', roles: ['one', 'two'] }, 'auth', 3, timestamp());
+    await wait(parseMilliseconds('1s'));
     const token2 = createToken({ id: 'foo', roles: ['one', 'two'] }, 'auth', 3, timestamp());
+    await wait(parseMilliseconds('1s'));
     const token3 = createToken({ id: 'foo', roles: ['one', 'two'] }, 'auth', 3, timestamp());
     expect(token1).not.toEqual(token2);
     expect(token2).not.toEqual(token3);

@@ -18,7 +18,7 @@ describe('Loading a JSON file', () => {
 describe('Loading a missing JSON file', () => {
   test('Fails', async () => {
     expect(() => {
-      loadJsonFile<any>('test/fixture/json/xxx.json');
+      loadJsonFile('test/fixture/json/xxx.json');
     }).toThrow();
   });
 });
