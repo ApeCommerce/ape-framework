@@ -1,4 +1,4 @@
-import 'test/config/unit';
+import 'test/unit/config';
 import { loadModule } from 'utils';
 
 describe('Loading the config', () => {
