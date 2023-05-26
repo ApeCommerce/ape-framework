@@ -1,7 +1,7 @@
 import 'test/unit/config';
 import { initConfig } from 'config';
 import { loadModule } from 'utils';
-import { Stream } from 'stream';
+import { Socket } from 'net';
 
 initConfig({
   logDestination: 'stdout',
@@ -11,6 +11,6 @@ initConfig({
 describe('Loading the config with stdout destination', () => {
   test('Returns expected stream', async () => {
     const config = await loadModule<any>('log/config');
-    expect(config.stream).toBeInstanceOf(Stream);
+    expect(config.stream).toBeInstanceOf(Socket);
   });
 });

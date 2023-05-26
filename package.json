@@ -49,6 +49,7 @@
     "pg": "^8.10",
     "pino": "^8.11",
     "pino-pretty": "^10.0",
+    "sonic-boom": "^3.3",
     "sqlite3": "^5.1",
     "yargs-parser": "^21.1"
   },
