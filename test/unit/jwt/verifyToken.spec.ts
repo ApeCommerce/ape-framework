@@ -8,29 +8,28 @@ const expiration = parseSeconds('1s');
 
 describe('Verifying a valid token', () => {
   test('Returns expected value', async () => {
-    const token = createToken(auth, type, expiration, timestamp());
-    const info = verifyToken(token, type, timestamp());
-    expect(info).toStrictEqual(auth);
+    const token = await createToken(auth, type, timestamp(), expiration);
+    expect(await verifyToken(token, type, timestamp())).toStrictEqual(auth);
   });
 });
 
 describe('Verifying an invalid token', () => {
   test('Fails', async () => {
-    expect(verifyToken('xxx', type, timestamp())).toBe(undefined);
+    expect(await verifyToken('xxx', type, timestamp())).toBe(undefined);
   });
 });
 
 describe('Verifying an expired token', () => {
   test('Fails', async () => {
-    const token = createToken(auth, type, expiration, timestamp());
+    const token = await createToken(auth, type, timestamp(), expiration);
     await wait(parseMilliseconds('1s'));
-    expect(verifyToken(token, type, timestamp())).toBe(undefined);
+    expect(await verifyToken(token, type, timestamp())).toBe(undefined);
   });
 });
 
 describe('Verifying a token that mismatches type', () => {
   test('Fails', async () => {
-    const token = createToken(auth, type, expiration, timestamp());
-    expect(verifyToken(token, 'xxx', timestamp())).toBe(undefined);
+    const token = await createToken(auth, type, timestamp(), expiration);
+    expect(await verifyToken(token, 'xxx', timestamp())).toBe(undefined);
   });
 });

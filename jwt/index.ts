@@ -1,11 +1,8 @@
-import jwt from 'jsonwebtoken';
+import { jwtVerify, JWTPayload, ProtectedHeaderParameters as Header, SignJWT } from 'jose';
 import config from './config';
 import log from '../log';
 
-interface Payload {
-  iss: string,
-  iat: number,
-  exp: number,
+interface Payload extends JWTPayload {
   type: string,
   auth: Auth,
 }
@@ -15,23 +12,28 @@ export interface Auth {
   roles: string[],
 }
 
-export const createToken = (auth: Auth, type: string, expiration: number, timestamp: number) => {
+const secret = new TextEncoder().encode(config.secret);
+
+export const createToken = async (auth: Auth, type: string, timestamp: number, expiration: number) => {
   const payload: Payload = {
-    iss: config.issuer,
-    iat: timestamp,
-    exp: timestamp + expiration,
     type,
     auth,
   };
-  return jwt.sign(payload, config.secret);
+  return new SignJWT(payload)
+    .setProtectedHeader({ typ: 'JWT', alg: 'HS256' })
+    .setIssuer(config.issuer)
+    .setIssuedAt(timestamp)
+    .setExpirationTime(timestamp + expiration)
+    .sign(secret);
 };
 
-export const verifyToken = (token: string, type: string, timestamp: number) => {
+export const verifyToken = async (token: string, type: string, timestamp: number) => {
   try {
-    const payload = jwt.verify(token, config.secret, {
-      clockTimestamp: timestamp,
+    const { payload } = (await jwtVerify(token, secret, {
+      algorithms: ['HS256'],
       issuer: config.issuer,
-    }) as Payload;
+      currentDate: new Date(timestamp * 1000),
+    })) as { payload: Payload, protectedHeader: Header };
     return payload.type === type ? payload.auth : undefined;
   } catch (error) {
     log.debug(error);
