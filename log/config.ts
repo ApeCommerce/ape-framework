@@ -1,6 +1,7 @@
 import pino, { LoggerOptions as Options } from 'pino';
 import pretty from 'pino-pretty';
 import { getConfig } from '../config';
+import from 'sonic-boom';
 
 const config = getConfig();
 
@@ -29,9 +30,12 @@ const options: Options = { level };
 
 let stream;
 if (destination === Destination.file) {
+  if (!config.logFile) throw new Error('Log: log file not provided');
   stream = pino.destination(config.logFile);
+  console.log('stream', typeof stream, stream);
 } else {
   stream = config.logPretty ? pretty() : process.stdout;
+  console.log('stream', typeof stream, stream);
 }
 
 export default {
