@@ -2,8 +2,7 @@ import { initConfig } from 'config';
 import { loadModule } from 'utils';
 
 initConfig({
-  logDestination: 'file',
-  logFile: 'log.txt',
+  logDestination: 'stdout',
   logLevel: 'xxx',
 });
 

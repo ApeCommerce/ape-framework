@@ -4,7 +4,7 @@ import { loadModule } from 'utils';
 initConfig({
   logDestination: 'file',
   logFile: '',
-  logLevel: 'error',
+  logLevel: 'silent',
 });
 
 describe('Loading the config with missing file while destination is file', () => {

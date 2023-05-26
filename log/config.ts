@@ -1,9 +1,6 @@
 import pino, { LoggerOptions as Options } from 'pino';
 import pretty from 'pino-pretty';
 import { getConfig } from '../config';
-import from 'sonic-boom';
-
-const config = getConfig();
 
 enum Level {
   debug = 'debug',
@@ -20,6 +17,8 @@ enum Destination {
   stdout = 'stdout',
 }
 
+const config = getConfig();
+
 const level = Object.values(Level).find((l) => l === config.logLevel);
 if (!level) throw new Error(`Log: invalid level "${config.logLevel}"`);
 
@@ -32,10 +31,8 @@ let stream;
 if (destination === Destination.file) {
   if (!config.logFile) throw new Error('Log: log file not provided');
   stream = pino.destination(config.logFile);
-  console.log('stream', typeof stream, stream);
 } else {
   stream = config.logPretty ? pretty() : process.stdout;
-  console.log('stream', typeof stream, stream);
 }
 
 export default {
