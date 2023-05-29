@@ -1,6 +1,7 @@
 import { initConfig } from 'config';
 
 initConfig({
+  i18nFallbackLanguage: 'en',
   jwtIssuer: 'foo',
   jwtSecret: 'secret',
   logDestination: 'stdout',

@@ -9,6 +9,9 @@
     "**/*.spec.ts"
   ],
   "collectCoverage": false,
+  "collectCoverageFrom": [
+    "**/*.ts"
+  ],
   "coverageDirectory": "coverage",
   "coverageReporters": [
     "lcov",

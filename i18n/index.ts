@@ -15,15 +15,21 @@ const getResources = async () => {
   return resources;
 };
 
-const init = async () => {
+let i18n: I18n;
+
+export const initI18n = async () => {
   await i18next.init({
     ns: await getNamespaces(),
     resources: await getResources(),
-    fallbackLng: config.fallbackLanguageId,
+    fallbackLng: config.fallbackLanguage,
   });
-  return i18next;
+  i18n = i18next;
+  return i18n;
 };
 
-let i18n: I18n;
+export const getI18n = async () => i18n || initI18n();
 
-export default async () => i18n || init();
+export default {
+  getI18n,
+  initI18n,
+};
