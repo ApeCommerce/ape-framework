@@ -8,7 +8,7 @@ describe('Loading a JSON file', () => {
       boo: true,
       num: 3,
       str: 'foo',
-      obj: { foo: 'bar' },
+      obj: { bar: 'bar' },
       arr: ['one', 'two'],
       nul: null,
     });

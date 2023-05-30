@@ -3,7 +3,7 @@
   "num": 3,
   "str": "foo",
   "obj": {
-    "foo": "bar"
+    "bar": "bar"
   },
   "arr": [
     "one",
