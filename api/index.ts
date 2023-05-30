@@ -19,7 +19,7 @@ const onRequest: Handler = async (request, reply) => {
   if (roles) {
     let authorized = false;
     if (request.headers.authorization && request.headers.authorization.match(authorizationRegex)) {
-      const auth = jwt.verifyToken(
+      const auth = await jwt.verifyToken(
         request.headers.authorization.substring(bearerPrefixLength),
         authorizationTokenType,
         timestamp(),

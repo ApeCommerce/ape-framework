@@ -1,6 +1,7 @@
 import { initConfig } from 'config';
 
 initConfig({
+  bootModule: 'test/fixture/boot',
   i18nFallbackLanguage: 'en',
   jwtIssuer: 'foo',
   jwtSecret: 'secret',
