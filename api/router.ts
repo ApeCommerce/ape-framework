@@ -8,7 +8,7 @@ export const getRequiredRoles = (path: string) => protectedRoutes.find((route) =
 
 const router: Plugin = async (server, options, done) => {
   (await getBundles()).forEach((bundle) => {
-    bundle.routes.forEach((route) => {
+    (bundle.routes || []).forEach((route) => {
       if (route.endpoint.requiredRoles) {
         protectedRoutes.push({
           path: route.endpoint.path,

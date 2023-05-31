@@ -7,7 +7,7 @@ const getNamespaces = async () => (await getBundles()).map((bundle) => bundle.bu
 const getResources = async () => {
   const resources: Resources = {};
   (await getBundles()).forEach((bundle) => {
-    bundle.translations.forEach((translation) => {
+    (bundle.translations || []).forEach((translation) => {
       if (!resources[translation.languageId]) resources[translation.languageId] = {};
       resources[translation.languageId][bundle.bundleId] = translation.dictionary;
     });

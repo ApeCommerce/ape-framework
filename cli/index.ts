@@ -5,7 +5,7 @@ import { parseString } from '../utils';
 import internalCommands from './internal';
 
 const exec = async () => {
-  const commands = internalCommands.concat((await getBundles()).flatMap((bundle) => bundle.commands));
+  const commands = internalCommands.concat((await getBundles()).flatMap((bundle) => bundle.commands || []));
 
   const help = formatText([
     'Usage:',

@@ -13,7 +13,7 @@ export interface Worker {
 
 export default abstract class MqModule {
   async getQueues() {
-    return (await getBundles()).flatMap((bundle) => bundle.queues);
+    return (await getBundles()).flatMap((bundle) => bundle.queues || []);
   }
 
   async getQueue(queueId: string) {
