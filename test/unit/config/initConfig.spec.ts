@@ -1,4 +1,3 @@
-import 'test/unit/config';
 import { initConfig } from 'config';
 
 describe('Initializing the config multiple times', () => {

@@ -1,9 +1,10 @@
 import fs from 'fs';
 import { Configuration } from './configuration';
 import { loadJsonFile, parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
+import defaults from './default';
 import env from './env';
 
-const loadFile = (path: string) => {
+export const loadFile = (path: string) => {
   let json: any = {};
   if (fs.existsSync(path)) {
     json = loadJsonFile<any>(path);
@@ -11,84 +12,95 @@ const loadFile = (path: string) => {
   return json;
 };
 
-const loadConfig = (
-  override?: Partial<Configuration>,
-  file: string = 'ape.config.json',
-): Configuration => {
+export const loadProperty = (
+  name: string,
+  overrideConfig: any,
+  fileConfig: any,
+  envConfig: any,
+  defaultConfig: any,
+) => [
+  overrideConfig[name],
+  fileConfig[name],
+  envConfig[name],
+  defaultConfig[name],
+].find((property) => property !== undefined);
+
+const loadConfig = (override: Partial<Configuration>, file: string): Configuration => {
   const json = loadFile(file);
 
   return {
-    bootModule: parseString(json.bootModule || env.bootModule || 'boot'),
+    bootModule: parseString(loadProperty('bootModule', override, json, env, defaults)),
 
-    apiName: parseString(json.apiName || env.apiName || 'New Ape Project'),
-    apiVersion: parseString(json.apiVersion || env.apiVersion || '0.0.0'),
-    apiHost: parseString(json.apiHost || env.apiHost || '0.0.0.0'),
-    apiPort: parseNumber(json.apiPort || env.apiPort || 3000),
-    apiRandomPort: parseBoolean(json.apiRandomPort || env.apiRandomPort),
-    apiConnectionTimeout: parseMilliseconds(json.apiConnectionTimeout || env.apiConnectionTimeout || '10s'),
-    apiRequestTimeout: parseMilliseconds(json.apiRequestTimeout || env.apiRequestTimeout || '10s'),
-    apiKeepAliveTimeout: parseMilliseconds(json.apiKeepAliveTimeout || env.apiKeepAliveTimeout || '10s'),
-    apiBodyLimit: parseBytes(json.apiBodyLimit || env.apiBodyLimit || '2kb'),
-    apiResponseValidation: parseBoolean(json.apiResponseValidation || env.apiResponseValidation),
+    apiName: parseString(loadProperty('apiName', override, json, env, defaults)),
+    apiVersion: parseString(loadProperty('apiVersion', override, json, env, defaults)),
+    apiHost: parseString(loadProperty('apiHost', override, json, env, defaults)),
+    apiPort: parseNumber(loadProperty('apiPort', override, json, env, defaults)),
+    apiRandomPort: parseBoolean(loadProperty('apiRandomPort', override, json, env, defaults)),
+    apiConnectionTimeout: parseMilliseconds(loadProperty('apiConnectionTimeout', override, json, env, defaults)),
+    apiRequestTimeout: parseMilliseconds(loadProperty('apiRequestTimeout', override, json, env, defaults)),
+    apiKeepAliveTimeout: parseMilliseconds(loadProperty('apiKeepAliveTimeout', override, json, env, defaults)),
+    apiBodyLimit: parseBytes(loadProperty('apiBodyLimit', override, json, env, defaults)),
+    apiResponseValidation: parseBoolean(loadProperty('apiResponseValidation', override, json, env, defaults)),
 
-    jwtIssuer: parseString(json.jwtIssuer || env.jwtIssuer),
-    jwtSecret: parseString(json.jwtSecret || env.jwtSecret),
+    jwtIssuer: parseString(loadProperty('jwtIssuer', override, json, env, defaults)),
+    jwtSecret: parseString(loadProperty('jwtSecret', override, json, env, defaults)),
 
-    pwdHashCost: parseNumber(json.pwdHashCost || env.pwdHashCost || 10),
+    pwdHashCost: parseNumber(loadProperty('pwdHashCost', override, json, env, defaults)),
 
-    i18nFallbackLanguage: parseString(json.i18nFallbackLanguage || env.i18nFallbackLanguage || 'en'),
+    i18nFallbackLanguage: parseString(loadProperty('i18nFallbackLanguage', override, json, env, defaults)),
 
-    logLevel: parseString(json.logLevel || env.logLevel || 'info'),
-    logDestination: parseString(json.logDestination || env.logDestination || 'stdout'),
-    logPretty: parseBoolean(json.logPretty || env.logPretty),
-    logFile: parseString(json.logFile || env.logFile || 'log.txt'),
+    logLevel: parseString(loadProperty('logLevel', override, json, env, defaults)),
+    logDestination: parseString(loadProperty('logDestination', override, json, env, defaults)),
+    logPretty: parseBoolean(loadProperty('logPretty', override, json, env, defaults)),
+    logFile: parseString(loadProperty('logFile', override, json, env, defaults)),
 
-    dbModule: parseString(json.dbModule || env.dbModule || 'sqlite'),
-    dbMariadbHost: parseString(json.dbMariadbHost || env.dbMariadbHost),
-    dbMariadbPort: parseNumber(json.dbMariadbPort || env.dbMariadbPort || 3306),
-    dbMariadbUser: parseString(json.dbMariadbUser || env.dbMariadbUser),
-    dbMariadbPassword: parseString(json.dbMariadbPassword || env.dbMariadbPassword),
-    dbMariadbDatabase: parseString(json.dbMariadbDatabase || env.dbMariadbDatabase),
-    dbMysqlHost: parseString(json.dbMysqlHost || env.dbMysqlHost),
-    dbMysqlPort: parseNumber(json.dbMysqlPort || env.dbMysqlPort || 3306),
-    dbMysqlUser: parseString(json.dbMysqlUser || env.dbMysqlUser),
-    dbMysqlPassword: parseString(json.dbMysqlPassword || env.dbMysqlPassword),
-    dbMysqlDatabase: parseString(json.dbMysqlDatabase || env.dbMysqlDatabase),
-    dbPostgresHost: parseString(json.dbPostgresHost || env.dbPostgresHost),
-    dbPostgresPort: parseNumber(json.dbPostgresPort || env.dbPostgresPort || 5432),
-    dbPostgresUser: parseString(json.dbPostgresUser || env.dbPostgresUser),
-    dbPostgresPassword: parseString(json.dbPostgresPassword || env.dbPostgresPassword),
-    dbPostgresDatabase: parseString(json.dbPostgresDatabase || env.dbPostgresDatabase),
-    dbSqliteFile: parseString(json.dbSqliteFile || env.dbSqliteFile || 'db.sqlite'),
+    dbModule: parseString(loadProperty('dbModule', override, json, env, defaults)),
+    dbMariadbHost: parseString(loadProperty('dbMariadbHost', override, json, env, defaults)),
+    dbMariadbPort: parseNumber(loadProperty('dbMariadbPort', override, json, env, defaults)),
+    dbMariadbUser: parseString(loadProperty('dbMariadbUser', override, json, env, defaults)),
+    dbMariadbPassword: parseString(loadProperty('dbMariadbPassword', override, json, env, defaults)),
+    dbMariadbDatabase: parseString(loadProperty('dbMariadbDatabase', override, json, env, defaults)),
+    dbMysqlHost: parseString(loadProperty('dbMysqlHost', override, json, env, defaults)),
+    dbMysqlPort: parseNumber(loadProperty('dbMysqlPort', override, json, env, defaults)),
+    dbMysqlUser: parseString(loadProperty('dbMysqlUser', override, json, env, defaults)),
+    dbMysqlPassword: parseString(loadProperty('dbMysqlPassword', override, json, env, defaults)),
+    dbMysqlDatabase: parseString(loadProperty('dbMysqlDatabase', override, json, env, defaults)),
+    dbPostgresHost: parseString(loadProperty('dbPostgresHost', override, json, env, defaults)),
+    dbPostgresPort: parseNumber(loadProperty('dbPostgresPort', override, json, env, defaults)),
+    dbPostgresUser: parseString(loadProperty('dbPostgresUser', override, json, env, defaults)),
+    dbPostgresPassword: parseString(loadProperty('dbPostgresPassword', override, json, env, defaults)),
+    dbPostgresDatabase: parseString(loadProperty('dbPostgresDatabase', override, json, env, defaults)),
+    dbSqliteFile: parseString(loadProperty('dbSqliteFile', override, json, env, defaults)),
 
-    cacheModule: parseString(json.cacheModule || env.cacheModule || 'bypass'),
-    cacheRedisHost: parseString(json.cacheRedisHost || env.cacheRedisHost),
-    cacheRedisPort: parseNumber(json.cacheRedisPort || env.cacheRedisPort || 6379),
-    cacheRedisUser: parseString(json.cacheRedisUser || env.cacheRedisUser),
-    cacheRedisPassword: parseString(json.cacheRedisPassword || env.cacheRedisPassword),
-    cacheRedisPrefix: parseString(json.cacheRedisPrefix || env.cacheRedisPrefix || 'cache'),
+    cacheModule: parseString(loadProperty('cacheModule', override, json, env, defaults)),
+    cacheRedisHost: parseString(loadProperty('cacheRedisHost', override, json, env, defaults)),
+    cacheRedisPort: parseNumber(loadProperty('cacheRedisPort', override, json, env, defaults)),
+    cacheRedisUser: parseString(loadProperty('cacheRedisUser', override, json, env, defaults)),
+    cacheRedisPassword: parseString(loadProperty('cacheRedisPassword', override, json, env, defaults)),
+    cacheRedisPrefix: parseString(loadProperty('cacheRedisPrefix', override, json, env, defaults)),
 
-    mqModule: parseString(json.mqModule || env.mqModule || 'bypass'),
-    mqRedisHost: parseString(json.mqRedisHost || env.mqRedisHost),
-    mqRedisPort: parseNumber(json.mqRedisPort || env.mqRedisPort || 6379),
-    mqRedisUser: parseString(json.mqRedisUser || env.mqRedisUser),
-    mqRedisPassword: parseString(json.mqRedisPassword || env.mqRedisPassword),
-    mqRedisPrefix: parseString(json.mqRedisPrefix || env.mqRedisPrefix || 'mq'),
+    mqModule: parseString(loadProperty('mqModule', override, json, env, defaults)),
+    mqRedisHost: parseString(loadProperty('mqRedisHost', override, json, env, defaults)),
+    mqRedisPort: parseNumber(loadProperty('mqRedisPort', override, json, env, defaults)),
+    mqRedisUser: parseString(loadProperty('mqRedisUser', override, json, env, defaults)),
+    mqRedisPassword: parseString(loadProperty('mqRedisPassword', override, json, env, defaults)),
+    mqRedisPrefix: parseString(loadProperty('mqRedisPrefix', override, json, env, defaults)),
 
-    mailModule: parseString(json.mailModule || env.mailModule || 'bypass'),
-    mailSmtpHost: parseString(json.mailSmtpHost || env.mailSmtpHost),
-    mailSmtpPort: parseNumber(json.mailSmtpPort || env.mailSmtpPort || 587),
-    mailSmtpUser: parseString(json.mailSmtpUser || env.mailSmtpUser),
-    mailSmtpPassword: parseString(json.mailSmtpPassword || env.mailSmtpPassword),
-    mailSmtpEmail: parseString(json.mailSmtpEmail || env.mailSmtpEmail),
-
-    ...override,
+    mailModule: parseString(loadProperty('mailModule', override, json, env, defaults)),
+    mailSmtpHost: parseString(loadProperty('mailSmtpHost', override, json, env, defaults)),
+    mailSmtpPort: parseNumber(loadProperty('mailSmtpPort', override, json, env, defaults)),
+    mailSmtpUser: parseString(loadProperty('mailSmtpUser', override, json, env, defaults)),
+    mailSmtpPassword: parseString(loadProperty('mailSmtpPassword', override, json, env, defaults)),
+    mailSmtpEmail: parseString(loadProperty('mailSmtpEmail', override, json, env, defaults)),
   };
 };
 
 let configuration: Configuration;
 
-export const initConfig = (override?: Partial<Configuration>, file?: string) => {
+export const initConfig = (
+  override: Partial<Configuration> = {},
+  file: string = 'ape.config.json',
+) => {
   configuration = loadConfig(override, file);
   return configuration;
 };
@@ -98,4 +110,6 @@ export const getConfig = () => configuration || initConfig();
 export default {
   getConfig,
   initConfig,
+  loadFile,
+  loadProperty,
 };

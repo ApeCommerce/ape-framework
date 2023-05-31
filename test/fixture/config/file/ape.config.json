@@ -1,0 +1,65 @@
+{
+  "bootModule": "fileBoot",
+
+  "apiName": "FILE Ape Project",
+  "apiVersion": "0.0.2",
+  "apiHost": "0.0.0.2",
+  "apiPort": 2000,
+  "apiRandomPort": false,
+  "apiConnectionTimeout": "2ms",
+  "apiRequestTimeout": "2ms",
+  "apiKeepAliveTimeout": "2ms",
+  "apiBodyLimit": "2b",
+  "apiResponseValidation": false,
+
+  "jwtIssuer": "fileIssuer",
+  "jwtSecret": "fileSecret",
+
+  "pwdHashCost": 2,
+
+  "i18nFallbackLanguage": "fr-CA",
+
+  "logLevel": "error",
+  "logDestination": "stdout",
+  "logPretty": false,
+  "logFile": "fileLog.txt",
+
+  "dbModule": "mysql",
+  "dbMariadbHost": "fileMariadb",
+  "dbMariadbPort": 2000,
+  "dbMariadbUser": "fileUser",
+  "dbMariadbPassword": "filePassword",
+  "dbMariadbDatabase": "fileDatabase",
+  "dbMysqlHost": "fileMysql",
+  "dbMysqlPort": 2000,
+  "dbMysqlUser": "fileUser",
+  "dbMysqlPassword": "filePassword",
+  "dbMysqlDatabase": "fileDatabase",
+  "dbPostgresHost": "filePostgres",
+  "dbPostgresPort": 2000,
+  "dbPostgresUser": "fileUser",
+  "dbPostgresPassword": "filePassword",
+  "dbPostgresDatabase": "fileDatabase",
+  "dbSqliteFile": "fileDb.sqlite",
+
+  "cacheModule": "bypass",
+  "cacheRedisHost": "fileRedis",
+  "cacheRedisPort": 2000,
+  "cacheRedisUser": "fileUser",
+  "cacheRedisPassword": "filePassword",
+  "cacheRedisPrefix": "filePrefix",
+
+  "mqModule": "bypass",
+  "mqRedisHost": "fileRedis",
+  "mqRedisPort": 2000,
+  "mqRedisUser": "fileUser",
+  "mqRedisPassword": "filePassword",
+  "mqRedisPrefix": "filePrefix",
+
+  "mailModule": "bypass",
+  "mailSmtpHost": "fileSmtp",
+  "mailSmtpPort": 2000,
+  "mailSmtpUser": "fileUser",
+  "mailSmtpPassword": "filePassword",
+  "mailSmtpEmail": "fileUser@example.com"
+}

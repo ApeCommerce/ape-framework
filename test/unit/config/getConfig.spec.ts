@@ -1,4 +1,3 @@
-import 'test/unit/config';
 import { getConfig } from 'config';
 
 describe('Getting the config multiple times', () => {
