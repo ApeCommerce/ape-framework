@@ -2,8 +2,8 @@ import { getConfig } from '../config';
 
 const config = getConfig();
 
-if (!config.bootModule) throw new Error('Boot: boot module not provided');
+if (!config.bootModule) throw new Error('Boot: module not provided');
 
 export default {
-  bootModule: config.bootModule,
+  module: config.bootModule,
 };

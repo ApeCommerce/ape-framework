@@ -9,7 +9,7 @@ export interface Boot {
 let bundles: Bundle[];
 
 export const loadBundles = async () => {
-  const boot = await loadModule<Boot>(config.bootModule);
+  const boot = await loadModule<Boot>(config.module);
   bundles = await Promise.all(boot.bundleModules.map(loadModule<Bundle>));
   return bundles;
 };
