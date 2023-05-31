@@ -1,7 +1,7 @@
 import 'test/fixture/config/env';
 import { getConfig, initConfig } from 'config';
 
-initConfig({}, 'test/fixture/config/file/ape.config.json');
+initConfig({}, 'test/fixture/config/ape.config.json');
 
 describe('Getting the config from file', () => {
   test('Returns expected value', async () => {
@@ -11,7 +11,7 @@ describe('Getting the config from file', () => {
       apiName: 'FILE Ape Project',
       apiVersion: '0.0.2',
       apiHost: '0.0.0.2',
-      apiPort: 2000,
+      apiPort: 1002,
       apiRandomPort: false,
       apiConnectionTimeout: 2,
       apiRequestTimeout: 2,
@@ -33,17 +33,17 @@ describe('Getting the config from file', () => {
 
       dbModule: 'mysql',
       dbMariadbHost: 'fileMariadb',
-      dbMariadbPort: 2000,
+      dbMariadbPort: 1002,
       dbMariadbUser: 'fileUser',
       dbMariadbPassword: 'filePassword',
       dbMariadbDatabase: 'fileDatabase',
       dbMysqlHost: 'fileMysql',
-      dbMysqlPort: 2000,
+      dbMysqlPort: 1002,
       dbMysqlUser: 'fileUser',
       dbMysqlPassword: 'filePassword',
       dbMysqlDatabase: 'fileDatabase',
       dbPostgresHost: 'filePostgres',
-      dbPostgresPort: 2000,
+      dbPostgresPort: 1002,
       dbPostgresUser: 'fileUser',
       dbPostgresPassword: 'filePassword',
       dbPostgresDatabase: 'fileDatabase',
@@ -51,21 +51,21 @@ describe('Getting the config from file', () => {
 
       cacheModule: 'bypass',
       cacheRedisHost: 'fileRedis',
-      cacheRedisPort: 2000,
+      cacheRedisPort: 1002,
       cacheRedisUser: 'fileUser',
       cacheRedisPassword: 'filePassword',
       cacheRedisPrefix: 'filePrefix',
 
       mqModule: 'bypass',
       mqRedisHost: 'fileRedis',
-      mqRedisPort: 2000,
+      mqRedisPort: 1002,
       mqRedisUser: 'fileUser',
       mqRedisPassword: 'filePassword',
       mqRedisPrefix: 'filePrefix',
 
       mailModule: 'bypass',
       mailSmtpHost: 'fileSmtp',
-      mailSmtpPort: 2000,
+      mailSmtpPort: 1002,
       mailSmtpUser: 'fileUser',
       mailSmtpPassword: 'filePassword',
       mailSmtpEmail: 'fileUser@example.com',
