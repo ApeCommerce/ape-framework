@@ -2,14 +2,14 @@ import { jwtVerify, JWTPayload, ProtectedHeaderParameters as Header, SignJWT } f
 import config from './config';
 import log from '../log';
 
-interface Payload extends JWTPayload {
-  type: string,
-  auth: Auth,
-}
-
 export interface Auth {
   id: string,
   roles: string[],
+}
+
+interface Payload extends JWTPayload {
+  type: string,
+  auth: Auth,
 }
 
 const secret = new TextEncoder().encode(config.secret);

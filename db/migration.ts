@@ -1,7 +1,7 @@
-import { Knex as Database } from 'knex';
+import { Knex } from 'knex';
 
 export interface Migration {
   migrationId: string,
-  up: (db: Database) => Promise<void>,
-  down: (db: Database) => Promise<void>,
+  up: (db: Knex) => Promise<void>,
+  down: (db: Knex) => Promise<void>,
 }

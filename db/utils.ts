@@ -1,7 +1,7 @@
-import { Knex as Database } from 'knex';
+import { Knex } from 'knex';
 
 export interface Table {
-  db: Database,
+  db: Knex,
   name: string,
 }
 
@@ -29,7 +29,7 @@ export const createTable = (table: Table, ...columns: Column[]) => table.db.sche
   .createTable(table.name, (tableBuilder) => {
     const primaryKey: string[] = [];
     columns.forEach((column) => {
-      let columnBuilder: Database.ColumnBuilder;
+      let columnBuilder: Knex.ColumnBuilder;
       switch (column.dataType) {
         case 'boolean':
           columnBuilder = tableBuilder.boolean(column.name);
@@ -81,7 +81,7 @@ export const createTable = (table: Table, ...columns: Column[]) => table.db.sche
 
 export const dropTable = (table: Table) => table.db.schema.dropTable(table.name);
 
-export const table = (db: Database, name: string): Table => ({ db, name });
+export const table = (db: Knex, name: string): Table => ({ db, name });
 
 export const column = (
   name: string,

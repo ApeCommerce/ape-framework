@@ -30,6 +30,6 @@ export const initI18n = async () => {
 export const getI18n = async () => i18n || initI18n();
 
 export default {
-  getI18n,
   initI18n,
+  getI18n,
 };

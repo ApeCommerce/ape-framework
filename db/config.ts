@@ -1,4 +1,4 @@
-import { Knex as Database } from 'knex';
+import { Knex } from 'knex';
 import { getConfig } from '../config';
 
 const config = getConfig();
@@ -30,7 +30,7 @@ if (moduleId === ModuleId.mariadb) {
   if (!config.dbPostgresDatabase) throw new Error('DB: postgres database not provided');
 }
 
-const moduleConfig: { [moduleId in ModuleId]: Database.Config } = {
+const moduleConfig: { [moduleId in ModuleId]: Knex.Config } = {
   mariadb: {
     client: 'mysql2',
     connection: {
