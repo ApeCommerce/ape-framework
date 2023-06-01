@@ -2,8 +2,8 @@ import { initConfig } from 'config';
 import { loadModule } from 'utils';
 
 initConfig({
+  logLevel: 'oops',
   logDestination: 'stdout',
-  logLevel: 'xxx',
 });
 
 describe('Loading the config with invalid level', () => {

@@ -1,9 +1,9 @@
 import { Knex } from 'knex';
-import { getConfig } from '../config';
+import { getConfig } from '../../config';
 
 const config = getConfig();
 
-export enum ModuleId {
+export enum Module {
   mariadb = 'mariadb',
   memory = 'memory',
   mysql = 'mysql',
@@ -11,26 +11,24 @@ export enum ModuleId {
   sqlite = 'sqlite',
 }
 
-const id = Object.values(ModuleId).find((moduleId) => moduleId === config.dbModule);
-if (!id) throw new Error(`Database: invalid module "${config.dbModule}"`);
+export const module = Object.values(Module).find((m) => m === config.dbModule);
+if (!module) throw new Error(`Database: invalid module "${config.dbModule}"`);
 
-export const moduleId = id;
-
-if (moduleId === ModuleId.mariadb) {
+if (module === Module.mariadb) {
   if (!config.dbMariadbHost) throw new Error('DB: mariadb host not provided');
   if (!config.dbMariadbPort) throw new Error('DB: mariadb port not provided');
   if (!config.dbMariadbDatabase) throw new Error('DB: mariadb database not provided');
-} else if (moduleId === ModuleId.mysql) {
+} else if (module === Module.mysql) {
   if (!config.dbMysqlHost) throw new Error('DB: mysql host not provided');
   if (!config.dbMysqlPort) throw new Error('DB: mysql port not provided');
   if (!config.dbMysqlDatabase) throw new Error('DB: mysql database not provided');
-} else if (moduleId === ModuleId.postgres) {
+} else if (module === Module.postgres) {
   if (!config.dbPostgresHost) throw new Error('DB: postgres host not provided');
   if (!config.dbPostgresPort) throw new Error('DB: postgres port not provided');
   if (!config.dbPostgresDatabase) throw new Error('DB: postgres database not provided');
 }
 
-const moduleConfig: { [moduleId in ModuleId]: Knex.Config } = {
+const moduleConfig: { [module in Module]: Knex.Config } = {
   mariadb: {
     client: 'mysql2',
     connection: {
@@ -77,8 +75,4 @@ const moduleConfig: { [moduleId in ModuleId]: Knex.Config } = {
   },
 };
 
-export const migrationConfig = {
-  tablePrefix: '_migration',
-};
-
-export default moduleConfig[moduleId];
+export default moduleConfig[module];

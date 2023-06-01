@@ -15,7 +15,7 @@ describe('Verifying a valid token', () => {
 
 describe('Verifying an invalid token', () => {
   test('Fails', async () => {
-    expect(await verifyToken('xxx', type, timestamp())).toBe(undefined);
+    expect(await verifyToken('oops', type, timestamp())).toBe(undefined);
   });
 });
 
@@ -30,6 +30,6 @@ describe('Verifying an expired token', () => {
 describe('Verifying a token that mismatches type', () => {
   test('Fails', async () => {
     const token = await createToken(auth, type, timestamp(), expiration);
-    expect(await verifyToken(token, 'xxx', timestamp())).toBe(undefined);
+    expect(await verifyToken(token, 'oops', timestamp())).toBe(undefined);
   });
 });

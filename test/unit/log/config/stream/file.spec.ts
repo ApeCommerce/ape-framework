@@ -4,9 +4,9 @@ import { loadModule } from 'utils';
 import { SonicBoom } from 'sonic-boom';
 
 initConfig({
+  logLevel: 'silent',
   logDestination: 'file',
   logFile: 'log.txt',
-  logLevel: 'silent',
 });
 
 describe('Loading the config with file destination', () => {

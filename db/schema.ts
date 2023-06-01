@@ -1,7 +1,7 @@
 import { Bundle } from '../boot/bundle';
 import { getBundle, getBundles } from '../boot';
 import { Migration } from './migration';
-import { migrationConfig } from './config';
+import config from './config/migration';
 import db from '.';
 
 export interface BundleMigration {
@@ -30,9 +30,9 @@ class MigrationSource {
   }
 }
 
-const config = (bundle: Bundle) => ({
+const bundleConfig = (bundle: Bundle) => ({
   migrationSource: new MigrationSource(bundle),
-  tableName: `${migrationConfig.tablePrefix}_${bundle.bundleId}`,
+  tableName: `${config.tablePrefix}_${bundle.bundleId}`,
 });
 
 const filterBundles = async (bundleId?: string, reverse?: boolean, one?: boolean) => {
@@ -51,7 +51,7 @@ const filterBundles = async (bundleId?: string, reverse?: boolean, one?: boolean
 export const listMigrations = async (bundleId?: string, pendingOnly?: boolean) => {
   const bundleMigrations: BundleMigration[] = [];
   for (const bundle of await filterBundles(bundleId)) {
-    const result = await db.migrate.list(config(bundle));
+    const result = await db.migrate.list(bundleConfig(bundle));
     const done: { name: string }[] = result[0];
     const pending: Migration[] = result[1];
     if (!pendingOnly) {
@@ -73,8 +73,8 @@ export const runMigrations = async (bundleId?: string, one?: boolean) => {
   const bundleMigrations: BundleMigration[] = [];
   for (const bundle of await filterBundles(bundleId, false, one)) {
     const result = one
-      ? await db.migrate.up(config(bundle))
-      : await db.migrate.latest(config(bundle));
+      ? await db.migrate.up(bundleConfig(bundle))
+      : await db.migrate.latest(bundleConfig(bundle));
     const done: string[] = result[1];
     done.forEach((migration) => bundleMigrations.push({
       bundleId: bundle.bundleId,
@@ -88,8 +88,8 @@ export const rollbackMigrations = async (bundleId?: string, one?: boolean) => {
   const bundleMigrations: BundleMigration[] = [];
   for (const bundle of await filterBundles(bundleId, true, one)) {
     const result = one
-      ? await db.migrate.down(config(bundle))
-      : await db.migrate.rollback(config(bundle));
+      ? await db.migrate.down(bundleConfig(bundle))
+      : await db.migrate.rollback(bundleConfig(bundle));
     const done: string[] = result[1];
     done.forEach((migration) => bundleMigrations.push({
       bundleId: bundle.bundleId,

@@ -4,10 +4,10 @@ import { loadModule } from 'utils';
 import { SonicBoom } from 'sonic-boom';
 
 initConfig({
-  logDestination: 'file',
-  logFile: 'log.txt',
   logLevel: 'silent',
+  logDestination: 'file',
   logPretty: true,
+  logFile: 'log.txt',
 });
 
 describe('Loading the config with pretty enabled while destination is file', () => {

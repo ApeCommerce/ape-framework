@@ -4,8 +4,8 @@ import { loadModule } from 'utils';
 import { Transform } from 'stream';
 
 initConfig({
-  logDestination: 'stdout',
   logLevel: 'silent',
+  logDestination: 'stdout',
   logPretty: true,
 });
 

@@ -11,6 +11,6 @@ describe('Verifying a matching password', () => {
 describe('Verifying a mismatching password', () => {
   test('Fails', async () => {
     const hash = await hashPassword('password');
-    expect(await verifyPassword('xxx', hash)).toBe(false);
+    expect(await verifyPassword('oops', hash)).toBe(false);
   });
 });

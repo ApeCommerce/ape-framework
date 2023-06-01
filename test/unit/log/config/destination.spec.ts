@@ -2,8 +2,8 @@ import { initConfig } from 'config';
 import { loadModule } from 'utils';
 
 initConfig({
-  logDestination: 'xxx',
   logLevel: 'silent',
+  logDestination: 'oops',
 });
 
 describe('Loading the config with invalid destination', () => {

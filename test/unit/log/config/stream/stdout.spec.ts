@@ -4,8 +4,8 @@ import { loadModule } from 'utils';
 import { Socket } from 'net';
 
 initConfig({
-  logDestination: 'stdout',
   logLevel: 'silent',
+  logDestination: 'stdout',
 });
 
 describe('Loading the config with stdout destination', () => {

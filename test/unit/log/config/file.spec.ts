@@ -2,9 +2,9 @@ import { initConfig } from 'config';
 import { loadModule } from 'utils';
 
 initConfig({
+  logLevel: 'silent',
   logDestination: 'file',
   logFile: '',
-  logLevel: 'silent',
 });
 
 describe('Loading the config with missing file while destination is file', () => {

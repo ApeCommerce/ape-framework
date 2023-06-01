@@ -2,7 +2,7 @@ import { initConfig } from 'config';
 import { loadModule } from 'utils';
 
 initConfig({
-  jwtIssuer: 'foo',
+  jwtIssuer: 'issuer',
   jwtSecret: '',
 });
 
