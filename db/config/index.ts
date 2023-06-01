@@ -1,4 +1,5 @@
 import { Knex } from 'knex';
+import fs from 'fs';
 import { getConfig } from '../../config';
 
 const config = getConfig();
@@ -37,6 +38,12 @@ const moduleConfig: { [module in Module]: Knex.Config } = {
       user: config.dbMariadbUser,
       password: config.dbMariadbPassword,
       database: config.dbMariadbDatabase,
+      ssl: config.dbMariadbSsl ? {
+        ca: config.dbMariadbSslCa ? fs.readFileSync(config.dbMariadbSslCa).toString() : undefined,
+        cert: config.dbMariadbSslCert ? fs.readFileSync(config.dbMariadbSslCert).toString() : undefined,
+        key: config.dbMariadbSslKey ? fs.readFileSync(config.dbMariadbSslKey).toString() : undefined,
+        rejectUnauthorized: config.dbMariadbSslRejectUnauthorized,
+      } : undefined,
     },
   },
   memory: {
@@ -54,6 +61,12 @@ const moduleConfig: { [module in Module]: Knex.Config } = {
       user: config.dbMysqlUser,
       password: config.dbMysqlPassword,
       database: config.dbMysqlDatabase,
+      ssl: config.dbMysqlSsl ? {
+        ca: config.dbMysqlSslCa ? fs.readFileSync(config.dbMysqlSslCa).toString() : undefined,
+        cert: config.dbMysqlSslCert ? fs.readFileSync(config.dbMysqlSslCert).toString() : undefined,
+        key: config.dbMysqlSslKey ? fs.readFileSync(config.dbMysqlSslKey).toString() : undefined,
+        rejectUnauthorized: config.dbMysqlSslRejectUnauthorized,
+      } : undefined,
     },
   },
   postgres: {
@@ -64,6 +77,12 @@ const moduleConfig: { [module in Module]: Knex.Config } = {
       user: config.dbPostgresUser,
       password: config.dbPostgresPassword,
       database: config.dbPostgresDatabase,
+      ssl: config.dbPostgresSsl ? {
+        ca: config.dbPostgresSslCa ? fs.readFileSync(config.dbPostgresSslCa).toString() : undefined,
+        cert: config.dbPostgresSslCert ? fs.readFileSync(config.dbPostgresSslCert).toString() : undefined,
+        key: config.dbPostgresSslKey ? fs.readFileSync(config.dbPostgresSslKey).toString() : undefined,
+        rejectUnauthorized: config.dbPostgresSslRejectUnauthorized,
+      } : undefined,
     },
   },
   sqlite: {
