@@ -26,7 +26,7 @@ initConfig({
   logPretty: false,
   logFile: '',
 
-  dbModule: 'sqlite',
+  dbModule: 'memory',
   dbMariadbHost: '',
   dbMariadbPort: 0,
   dbMariadbUser: '',
