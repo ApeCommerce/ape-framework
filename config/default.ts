@@ -20,8 +20,11 @@ export default {
 
   dbModule: 'sqlite',
   dbMariadbPort: 3306,
+  dbMariadbSslVerify: true,
   dbMysqlPort: 3306,
+  dbMysqlSslVerify: true,
   dbPostgresPort: 5432,
+  dbPostgresSslVerify: true,
   dbSqliteFile: 'db.sqlite',
 
   cacheModule: 'bypass',

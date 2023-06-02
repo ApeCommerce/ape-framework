@@ -5,7 +5,11 @@ describe('Loading the config', () => {
   test('Returns expected value', async () => {
     const config = await loadModule('db/config');
     expect(config).toStrictEqual({
-      foo: 'bar',
+      client: 'sqlite3',
+      connection: {
+        filename: ':memory:',
+      },
+      useNullAsDefault: true,
     });
   });
 });
