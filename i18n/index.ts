@@ -1,4 +1,4 @@
-import i18next, { i18n as I18n, Resource as Resources } from 'i18next';
+import i18next, { i18n as I18next, Resource as Resources } from 'i18next';
 import { getBundles } from '../boot';
 import config from './config';
 
@@ -15,7 +15,7 @@ const getResources = async () => {
   return resources;
 };
 
-let i18n: I18n;
+let i18n: I18next;
 
 export const initI18n = async () => {
   await i18next.init({

@@ -1,7 +1,7 @@
 import 'test/unit/config';
 import { initI18n } from 'i18n';
 
-describe('Initializing the module multiple times', () => {
+describe('Initializing the instance multiple times', () => {
   test('Returns the same instance', async () => {
     const i18n1 = await initI18n();
     const i18n2 = await initI18n();
