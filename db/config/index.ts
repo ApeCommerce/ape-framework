@@ -1,5 +1,5 @@
-import { Knex } from 'knex';
 import fs from 'fs';
+import { Knex } from 'knex';
 import { getConfig } from '../../config';
 
 const config = getConfig();
@@ -13,7 +13,7 @@ export enum Module {
 }
 
 export const module = Object.values(Module).find((m) => m === config.dbModule);
-if (!module) throw new Error(`Database: invalid module "${config.dbModule}"`);
+if (!module) throw new Error(`DB: invalid module "${config.dbModule}"`);
 
 if (module === Module.mariadb) {
   if (!config.dbMariadbHost) throw new Error('DB: mariadb host not provided');
@@ -35,15 +35,17 @@ const moduleConfig: { [module in Module]: Knex.Config } = {
     connection: {
       host: config.dbMariadbHost,
       port: config.dbMariadbPort,
-      user: config.dbMariadbUser,
-      password: config.dbMariadbPassword,
+      ...(config.dbMariadbUser ? { user: config.dbMariadbUser } : {}),
+      ...(config.dbMariadbPassword ? { password: config.dbMariadbPassword } : {}),
       database: config.dbMariadbDatabase,
-      ssl: config.dbMariadbSsl ? {
-        ca: config.dbMariadbSslCa ? fs.readFileSync(config.dbMariadbSslCa).toString() : undefined,
-        cert: config.dbMariadbSslCert ? fs.readFileSync(config.dbMariadbSslCert).toString() : undefined,
-        key: config.dbMariadbSslKey ? fs.readFileSync(config.dbMariadbSslKey).toString() : undefined,
-        rejectUnauthorized: config.dbMariadbSslVerify,
-      } : undefined,
+      ...(config.dbMariadbSsl ? {
+        ssl: {
+          ...(config.dbMariadbSslCa ? { ca: fs.readFileSync(config.dbMariadbSslCa).toString() } : {}),
+          ...(config.dbMariadbSslCert ? { cert: fs.readFileSync(config.dbMariadbSslCert).toString() } : {}),
+          ...(config.dbMariadbSslKey ? { key: fs.readFileSync(config.dbMariadbSslKey).toString() } : {}),
+          rejectUnauthorized: config.dbMariadbSslVerify,
+        },
+      } : {}),
     },
   },
   memory: {
@@ -58,15 +60,17 @@ const moduleConfig: { [module in Module]: Knex.Config } = {
     connection: {
       host: config.dbMysqlHost,
       port: config.dbMysqlPort,
-      user: config.dbMysqlUser,
-      password: config.dbMysqlPassword,
+      ...(config.dbMysqlUser ? { user: config.dbMysqlUser } : {}),
+      ...(config.dbMysqlPassword ? { password: config.dbMysqlPassword } : {}),
       database: config.dbMysqlDatabase,
-      ssl: config.dbMysqlSsl ? {
-        ca: config.dbMysqlSslCa ? fs.readFileSync(config.dbMysqlSslCa).toString() : undefined,
-        cert: config.dbMysqlSslCert ? fs.readFileSync(config.dbMysqlSslCert).toString() : undefined,
-        key: config.dbMysqlSslKey ? fs.readFileSync(config.dbMysqlSslKey).toString() : undefined,
-        rejectUnauthorized: config.dbMysqlSslVerify,
-      } : undefined,
+      ...(config.dbMysqlSsl ? {
+        ssl: {
+          ...(config.dbMysqlSslCa ? { ca: fs.readFileSync(config.dbMysqlSslCa).toString() } : {}),
+          ...(config.dbMysqlSslCert ? { cert: fs.readFileSync(config.dbMysqlSslCert).toString() } : {}),
+          ...(config.dbMysqlSslKey ? { key: fs.readFileSync(config.dbMysqlSslKey).toString() } : {}),
+          rejectUnauthorized: config.dbMysqlSslVerify,
+        },
+      } : {}),
     },
   },
   postgres: {
@@ -74,15 +78,17 @@ const moduleConfig: { [module in Module]: Knex.Config } = {
     connection: {
       host: config.dbPostgresHost,
       port: config.dbPostgresPort,
-      user: config.dbPostgresUser,
-      password: config.dbPostgresPassword,
+      ...(config.dbPostgresUser ? { user: config.dbPostgresUser } : {}),
+      ...(config.dbPostgresPassword ? { password: config.dbPostgresPassword } : {}),
       database: config.dbPostgresDatabase,
-      ssl: config.dbPostgresSsl ? {
-        ca: config.dbPostgresSslCa ? fs.readFileSync(config.dbPostgresSslCa).toString() : undefined,
-        cert: config.dbPostgresSslCert ? fs.readFileSync(config.dbPostgresSslCert).toString() : undefined,
-        key: config.dbPostgresSslKey ? fs.readFileSync(config.dbPostgresSslKey).toString() : undefined,
-        rejectUnauthorized: config.dbPostgresSslVerify,
-      } : undefined,
+      ...(config.dbPostgresSsl ? {
+        ssl: {
+          ...(config.dbPostgresSslCa ? { ca: fs.readFileSync(config.dbPostgresSslCa).toString() } : {}),
+          ...(config.dbPostgresSslCert ? { cert: fs.readFileSync(config.dbPostgresSslCert).toString() } : {}),
+          ...(config.dbPostgresSslKey ? { key: fs.readFileSync(config.dbPostgresSslKey).toString() } : {}),
+          rejectUnauthorized: config.dbPostgresSslVerify,
+        },
+      } : {}),
     },
   },
   sqlite: {

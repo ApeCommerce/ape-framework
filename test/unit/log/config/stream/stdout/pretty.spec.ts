@@ -1,18 +1,17 @@
 import 'test/unit/config';
 import { initConfig } from 'config';
 import { loadModule } from 'utils';
-import { SonicBoom } from 'sonic-boom';
+import { Transform } from 'stream';
 
 initConfig({
   logLevel: 'silent',
-  logDestination: 'file',
+  logDestination: 'stdout',
   logPretty: true,
-  logFile: 'log.txt',
 });
 
-describe('Loading the config with pretty enabled while destination is file', () => {
+describe('Loading the config with stdout destination and pretty enabled', () => {
   test('Returns expected stream', async () => {
     const config = await loadModule<any>('log/config');
-    expect(config.stream).toBeInstanceOf(SonicBoom);
+    expect(config.stream).toBeInstanceOf(Transform);
   });
 });
