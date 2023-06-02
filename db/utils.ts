@@ -55,7 +55,7 @@ export const createTable = (table: Table, ...columns: Column[]) => table.db.sche
           columnBuilder.index(shortName('IDX', table.name, column.name));
           break;
         case 'primary':
-          if (primaryKey.length > 0) {
+          if (primaryKey.length) {
             columnBuilder.index(shortName('IDX', table.name, column.name));
           }
           primaryKey.push(column.name);
@@ -74,7 +74,7 @@ export const createTable = (table: Table, ...columns: Column[]) => table.db.sche
           .onDelete(column.onDelete ? column.onDelete.toUpperCase() : 'RESTRICT');
       }
     });
-    if (primaryKey.length > 0) {
+    if (primaryKey.length) {
       tableBuilder.primary(primaryKey);
     }
   });

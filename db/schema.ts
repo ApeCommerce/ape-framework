@@ -43,7 +43,7 @@ const filterBundles = async (bundleId?: string, reverse?: boolean, one?: boolean
   } else {
     bundles.push(...await getBundles());
   }
-  const result = bundles.filter((b) => (b.migrations || []).length > 0);
+  const result = bundles.filter((b) => (b.migrations || []).length);
   if (reverse) result.reverse();
   return result.slice(0, one ? 1 : undefined);
 };
