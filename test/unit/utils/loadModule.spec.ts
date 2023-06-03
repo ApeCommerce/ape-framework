@@ -10,11 +10,11 @@ describe('Loading a module', () => {
 
 describe('Loading a missing module', () => {
   test('Throws an error', async () => {
-    expect.assertions(1);
+    expect.hasAssertions();
     try {
       await loadModule('test/fixture/module/oops');
     } catch (error) {
-      expect(error).toBeTruthy();
+      expect(error).toBeDefined();
     }
   });
 });

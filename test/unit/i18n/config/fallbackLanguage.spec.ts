@@ -7,11 +7,11 @@ initConfig({
 
 describe('Loading the config with missing fallback language', () => {
   test('Throws an error', async () => {
-    expect.assertions(1);
+    expect.hasAssertions();
     try {
       await loadModule('i18n/config');
     } catch (error) {
-      expect(error).toBeTruthy();
+      expect(error).toBeDefined();
     }
   });
 });

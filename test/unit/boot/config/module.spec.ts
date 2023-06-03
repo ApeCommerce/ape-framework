@@ -7,11 +7,11 @@ initConfig({
 
 describe('Loading the config with missing module', () => {
   test('Throws an error', async () => {
-    expect.assertions(1);
+    expect.hasAssertions();
     try {
       await loadModule('boot/config');
     } catch (error) {
-      expect(error).toBeTruthy();
+      expect(error).toBeDefined();
     }
   });
 });

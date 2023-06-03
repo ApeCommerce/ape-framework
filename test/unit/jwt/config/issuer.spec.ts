@@ -8,11 +8,11 @@ initConfig({
 
 describe('Loading the config with missing issuer', () => {
   test('Throws an error', async () => {
-    expect.assertions(1);
+    expect.hasAssertions();
     try {
       await loadModule('jwt/config');
     } catch (error) {
-      expect(error).toBeTruthy();
+      expect(error).toBeDefined();
     }
   });
 });

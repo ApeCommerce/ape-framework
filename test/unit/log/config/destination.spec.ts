@@ -8,11 +8,11 @@ initConfig({
 
 describe('Loading the config with invalid destination', () => {
   test('Throws an error', async () => {
-    expect.assertions(1);
+    expect.hasAssertions();
     try {
       await loadModule('log/config');
     } catch (error) {
-      expect(error).toBeTruthy();
+      expect(error).toBeDefined();
     }
   });
 });
