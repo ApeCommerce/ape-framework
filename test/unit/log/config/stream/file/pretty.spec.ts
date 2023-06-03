@@ -1,4 +1,3 @@
-import 'test/unit/config';
 import { initConfig } from 'config';
 import { loadModule } from 'utils';
 import { SonicBoom } from 'sonic-boom';

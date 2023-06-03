@@ -1,5 +1,10 @@
-import 'test/unit/config';
+import { initConfig } from 'config';
 import { loadModule } from 'utils';
+
+initConfig({
+  logLevel: 'silent',
+  logDestination: 'stdout',
+});
 
 describe('Loading the config', () => {
   test('Returns expected options', async () => {

@@ -1,5 +1,9 @@
-import 'test/unit/config';
+import { initConfig } from 'config';
 import { loadModule } from 'utils';
+
+initConfig({
+  i18nFallbackLanguage: 'en',
+});
 
 describe('Loading the config', () => {
   test('Returns expected value', async () => {
