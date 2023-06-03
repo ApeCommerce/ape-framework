@@ -7,7 +7,8 @@ describe('Parsing bytes', () => {
     expect(parseBytes(true)).toBe(0);
     expect(parseBytes('')).toBe(0);
     expect(parseBytes('foo')).toBe(0);
-    expect(parseBytes({ foo: 'bar' })).toBe(0);
+    expect(parseBytes({ foo: 'foo' })).toBe(0);
+    expect(parseBytes(['one', 'two'])).toBe(0);
     expect(parseBytes(() => 'foo')).toBe(0);
 
     expect(parseBytes(0)).toBe(0);

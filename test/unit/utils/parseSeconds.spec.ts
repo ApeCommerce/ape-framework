@@ -7,7 +7,8 @@ describe('Parsing seconds', () => {
     expect(parseSeconds(true)).toBe(0);
     expect(parseSeconds('')).toBe(0);
     expect(parseSeconds('foo')).toBe(0);
-    expect(parseSeconds({ foo: 'bar' })).toBe(0);
+    expect(parseSeconds({ foo: 'foo' })).toBe(0);
+    expect(parseSeconds(['one', 'two'])).toBe(0);
     expect(parseSeconds(() => 'foo')).toBe(0);
 
     expect(parseSeconds(0)).toBe(0);

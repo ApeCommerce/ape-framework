@@ -7,7 +7,8 @@ describe('Parsing a number', () => {
     expect(parseNumber(true)).toBe(0);
     expect(parseNumber('')).toBe(0);
     expect(parseNumber('foo')).toBe(0);
-    expect(parseNumber({ foo: 'bar' })).toBe(0);
+    expect(parseNumber({ foo: 'foo' })).toBe(0);
+    expect(parseNumber(['one', 'two'])).toBe(0);
     expect(parseNumber(() => 'foo')).toBe(0);
 
     expect(parseNumber(0)).toBe(0);

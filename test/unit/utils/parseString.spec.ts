@@ -5,7 +5,8 @@ describe('Parsing a string', () => {
     expect(parseString(undefined)).toBe('');
     expect(parseString(false)).toBe('');
     expect(parseString(true)).toBe('');
-    expect(parseString({ foo: 'bar' })).toBe('');
+    expect(parseString({ foo: 'foo' })).toBe('');
+    expect(parseString(['one', 'two'])).toBe('');
     expect(parseString(() => 'foo')).toBe('');
 
     expect(parseString('')).toBe('');
