@@ -9,7 +9,6 @@ export const writeLn = (s: string) => process.stdout.write(`${s}\n`);
 
 export const formatText = (text: Text) => text.join('\n');
 export const formatList = (list: List) => list.map((item) => `  ${item}`).join('\n');
-
 export const formatTable = (table: Table) => {
   const colLen: number[] = [];
   table.forEach((row) => {

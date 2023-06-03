@@ -29,7 +29,7 @@ const options: Options = { level };
 
 let stream;
 if (destination === Destination.file) {
-  if (!config.logFile) throw new Error('Log: log file not provided');
+  if (!config.logFile) throw new Error('Log: file not provided');
   stream = pino.destination(config.logFile);
 } else {
   stream = config.logPretty ? pretty() : process.stdout;
