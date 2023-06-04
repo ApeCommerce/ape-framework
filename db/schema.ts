@@ -18,7 +18,7 @@ class MigrationSource {
   }
 
   getMigrations() {
-    return Promise.resolve(this.bundle.migrations || []);
+    return Promise.resolve(this.bundle.migrations as Migration[]);
   }
 
   getMigrationName(migration: Migration) {
