@@ -1,7 +1,7 @@
 import { Command } from '../command';
 import { exit, formatTable, formatText, writeLn } from '../utils';
 import { getBundle } from '../../boot';
-import { listMigrations, rollbackMigrations, runMigrations, BundleMigration } from '../../db/schema';
+import { listMigrations, rollbackMigrations, runMigrations, MigrationList } from '../../db/schema';
 import { parseBoolean, parseString } from '../../utils';
 import db from '../../db';
 
@@ -22,7 +22,7 @@ const help = formatText([
   ]),
 ]);
 
-const formatMigrations = (migrations: BundleMigration[]) => formatTable(
+const formatMigrations = (migrations: MigrationList) => formatTable(
   migrations.map((m) => [m.bundleId, m.migrationId, m.pending ? 'pending' : '']),
 );
 

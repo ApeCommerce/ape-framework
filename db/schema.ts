@@ -4,11 +4,11 @@ import { Migration } from './migration';
 import config from './config/migration';
 import db from '.';
 
-export interface BundleMigration {
+export type MigrationList = {
   bundleId: string,
   migrationId: string,
   pending?: boolean,
-}
+}[];
 
 class MigrationSource {
   private bundle: Bundle;
@@ -49,54 +49,55 @@ const filterBundles = async (bundleId?: string, reverse?: boolean, one?: boolean
 };
 
 export const listMigrations = async (bundleId?: string, pendingOnly?: boolean) => {
-  const bundleMigrations: BundleMigration[] = [];
+  const migrationList: MigrationList = [];
   for (const bundle of await filterBundles(bundleId)) {
     const result = await db.migrate.list(bundleConfig(bundle));
     const done: { name: string }[] = result[0];
     const pending: Migration[] = result[1];
     if (!pendingOnly) {
-      done.forEach((migration) => bundleMigrations.push({
+      done.forEach((migration) => migrationList.push({
         bundleId: bundle.bundleId,
         migrationId: migration.name,
+        pending: false,
       }));
     }
-    pending.forEach((migration) => bundleMigrations.push({
+    pending.forEach((migration) => migrationList.push({
       bundleId: bundle.bundleId,
       migrationId: migration.migrationId,
       pending: true,
     }));
   }
-  return bundleMigrations;
+  return migrationList;
 };
 
 export const runMigrations = async (bundleId?: string, one?: boolean) => {
-  const bundleMigrations: BundleMigration[] = [];
+  const migrationList: MigrationList = [];
   for (const bundle of await filterBundles(bundleId, false, one)) {
     const result = one
       ? await db.migrate.up(bundleConfig(bundle))
       : await db.migrate.latest(bundleConfig(bundle));
     const done: string[] = result[1];
-    done.forEach((migration) => bundleMigrations.push({
+    done.forEach((migration) => migrationList.push({
       bundleId: bundle.bundleId,
       migrationId: migration,
     }));
   }
-  return bundleMigrations;
+  return migrationList;
 };
 
 export const rollbackMigrations = async (bundleId?: string, one?: boolean) => {
-  const bundleMigrations: BundleMigration[] = [];
+  const migrationList: MigrationList = [];
   for (const bundle of await filterBundles(bundleId, true, one)) {
     const result = one
       ? await db.migrate.down(bundleConfig(bundle))
       : await db.migrate.rollback(bundleConfig(bundle));
     const done: string[] = result[1];
-    done.forEach((migration) => bundleMigrations.push({
+    done.forEach((migration) => migrationList.push({
       bundleId: bundle.bundleId,
       migrationId: migration,
     }));
   }
-  return bundleMigrations;
+  return migrationList;
 };
 
 export default {
