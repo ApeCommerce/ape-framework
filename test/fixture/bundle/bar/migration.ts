@@ -5,8 +5,7 @@ const migrations: Migration[] = [
     migrationId: 'one',
     up: async (db) => {
       await db.schema.createTable('BarOne', (table) => {
-        table.integer('hip');
-        table.string('hop');
+        table.integer('id').primary();
       });
     },
     down: async (db) => {
@@ -17,8 +16,7 @@ const migrations: Migration[] = [
     migrationId: 'two',
     up: async (db) => {
       await db.schema.createTable('BarTwo', (table) => {
-        table.integer('hip');
-        table.string('hop');
+        table.integer('id').primary();
       });
     },
     down: async (db) => {

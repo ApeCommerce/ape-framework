@@ -8,8 +8,8 @@ afterAll(async () => {
 
 describe('Running bundle migrations', () => {
   test('Returns expected result', async () => {
-    const list = await runMigrations('foo');
-    expect(list).toStrictEqual([
+    const list1 = await runMigrations('foo');
+    expect(list1).toStrictEqual([
       {
         bundleId: 'foo',
         migrationId: 'one',
@@ -23,7 +23,9 @@ describe('Running bundle migrations', () => {
         migrationId: 'three',
       },
     ]);
-    expect(await listMigrations()).toStrictEqual([
+
+    const list2 = await listMigrations();
+    expect(list2).toStrictEqual([
       {
         bundleId: 'foo',
         migrationId: 'one',

@@ -9,14 +9,16 @@ afterAll(async () => {
 describe('Rolling back one migration', () => {
   test('Returns expected result', async () => {
     await runMigrations();
-    const list = await rollbackMigrations(undefined, true);
-    expect(list).toStrictEqual([
+    const list1 = await rollbackMigrations(undefined, true);
+    expect(list1).toStrictEqual([
       {
         bundleId: 'bar',
         migrationId: 'two',
       },
     ]);
-    expect(await listMigrations()).toStrictEqual([
+
+    const list2 = await listMigrations();
+    expect(list2).toStrictEqual([
       {
         bundleId: 'foo',
         migrationId: 'one',
