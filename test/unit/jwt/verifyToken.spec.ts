@@ -1,15 +1,14 @@
 import 'test/unit/config';
-import { createToken, verifyToken, Auth } from 'jwt';
+import { createToken, verifyToken, User } from 'jwt';
 import { parseMilliseconds, parseSeconds, timestamp, wait } from 'utils';
 
-const auth: Auth = { id: 'foo', roles: ['one', 'two'] };
+const user: User = { id: 'foo', roles: ['one', 'two'] };
 const type = 'authorization';
-const expiration = parseSeconds('1s');
 
 describe('Verifying a valid token', () => {
   test('Returns expected value', async () => {
-    const token = await createToken(auth, type, timestamp(), expiration);
-    expect(await verifyToken(token, type, timestamp())).toStrictEqual(auth);
+    const token = await createToken(user, type, timestamp(), parseSeconds('1s'));
+    expect(await verifyToken(token, type, timestamp())).toStrictEqual(user);
   });
 });
 
@@ -21,7 +20,7 @@ describe('Verifying an invalid token', () => {
 
 describe('Verifying an expired token', () => {
   test('Fails', async () => {
-    const token = await createToken(auth, type, timestamp(), expiration);
+    const token = await createToken(user, type, timestamp(), parseSeconds('1s'));
     await wait(parseMilliseconds('1s'));
     expect(await verifyToken(token, type, timestamp())).toBe(undefined);
   });
@@ -29,7 +28,7 @@ describe('Verifying an expired token', () => {
 
 describe('Verifying a token that mismatches type', () => {
   test('Fails', async () => {
-    const token = await createToken(auth, type, timestamp(), expiration);
+    const token = await createToken(user, type, timestamp(), parseSeconds('1s'));
     expect(await verifyToken(token, 'oops', timestamp())).toBe(undefined);
   });
 });

@@ -1,7 +1,7 @@
 import 'test/unit/config';
 import { loadBundles } from 'boot';
 
-describe('Loading the bundles multiple times', () => {
+describe('Loading bundles multiple times', () => {
   test('Returns a different instance', async () => {
     const bundles1 = await loadBundles();
     const bundles2 = await loadBundles();

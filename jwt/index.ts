@@ -2,23 +2,20 @@ import { jwtVerify, JWTPayload, ProtectedHeaderParameters as Header, SignJWT } f
 import config from './config';
 import log from '../log';
 
-export interface Auth {
+export interface User {
   id: string,
   roles: string[],
 }
 
 interface Payload extends JWTPayload {
   type: string,
-  auth: Auth,
+  user: User,
 }
 
 const secret = new TextEncoder().encode(config.secret);
 
-export const createToken = async (auth: Auth, type: string, timestamp: number, expiration: number) => {
-  const payload: Payload = {
-    type,
-    auth,
-  };
+export const createToken = async (user: User, type: string, timestamp: number, expiration: number) => {
+  const payload: Payload = { type, user };
   return new SignJWT(payload)
     .setProtectedHeader({ typ: 'JWT', alg: 'HS256' })
     .setIssuer(config.issuer)
@@ -41,7 +38,7 @@ export const verifyToken = async (token: string, type: string, timestamp: number
   }
 };
 
-export const hasRoles = (auth: Auth, roles: string[]) => roles.every((role) => auth.roles.includes(role));
+export const hasRoles = (user: User, roles: string[]) => roles.every((role) => user.roles.includes(role));
 
 export default {
   createToken,
