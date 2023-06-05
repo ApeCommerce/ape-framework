@@ -31,7 +31,7 @@ export const verifyToken = async (token: string, type: string, timestamp: number
       issuer: config.issuer,
       currentDate: new Date(timestamp * 1000),
     })) as { payload: Payload, protectedHeader: Header };
-    return payload.type === type ? payload.auth : undefined;
+    return payload.type === type ? payload.user : undefined;
   } catch (error) {
     log.debug(error);
     return undefined;
