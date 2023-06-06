@@ -26,7 +26,7 @@
     "build": "tsc --project tsconfig.build.json"
   },
   "engines": {
-    "node": "^16.20"
+    "node": "^16"
   },
   "dependencies": {
     "@fastify/cors": "^8.2",

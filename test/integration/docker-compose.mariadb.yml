@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   node:
-    image: node:16.20
+    image: node:16
     user: node
     working_dir: /home/node/ape-framework
     command: yarn test test/integration/db
