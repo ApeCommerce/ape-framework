@@ -10,7 +10,7 @@ export const parseString = (a: any) => {
   return a === 0 ? '0' : String(a || '');
 };
 
-export const basePath = (p?: string, s = '/') => parseString(p).split(s).filter((x) => x.length)[0] || '';
+export const basePath = (p?: string, s = '/') => parseString(p).split(s).filter((x) => x)[0] || '';
 export const loadJsonFile = <T>(path: string) => JSON.parse(fs.readFileSync(path).toString()) as T;
 export const loadModule = async <T>(path: string) => (await import(path)).default as T;
 export const parseBytes = (a: any) => bytes(parseString(a)) || 0;
