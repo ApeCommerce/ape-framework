@@ -1,8 +1,7 @@
 {
-  "name": "@apecommerce/ape-framework",
+  "name": "@apeframework/server",
   "version": "0.0.0",
-  "description": "Ape Commerce's API framework.",
-  "author": "Matthieu Symoens",
+  "description": "__DESCRIPTION__",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -26,7 +25,7 @@
     "build": "tsc --project tsconfig.build.json"
   },
   "engines": {
-    "node": "^16"
+    "node": "16"
   },
   "dependencies": {
     "@fastify/cors": "^8.2",
