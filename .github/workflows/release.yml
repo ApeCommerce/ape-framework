@@ -1,4 +1,4 @@
-name: Release NPM package
+name: Release NPM packages
 
 run-name: Release ${{ github.ref_name }}
 
@@ -33,19 +33,26 @@ jobs:
       - name: Lint code
         run: yarn lint:ci
 
-      - name: Run tests
-        run: yarn test:ci
+      - name: Run unit tests
+        run: yarn test:ci test/unit
 
-      - name: Build package
-        run: yarn build
+      - name: Do things
+        run: |
+          echo $GITHUB_WORKSPACE
+          echo pwd
+          ls
 
-      - name: Set package version
-        run: sed -i "s|0.0.0|${{ steps.tag.outputs.version }}|" package.json
-
-      - name: Publish to NPM
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |-
-          npm publish
-            --access=public
-            --tag=dev
+      # - name: Publish packages to NPM
+      #   run: |
+      #     yarn build:server
+      #     yarn build:common
+      #     ./package.sh server
+      #     ./package.sh common
+      #     sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/server/package.json
+      #     sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/common/package.json
+      #     sed -i "s|__description__|${{ github.event.repository.description }}|" dist/server/package.json
+      #     sed -i "s|__description__|${{ github.event.repository.description }}|" dist/common/package.json
+      #     cd dist/server
+      #     npm publish --tag=dev
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
