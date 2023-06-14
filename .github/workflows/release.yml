@@ -21,46 +21,42 @@ jobs:
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "is_dev=$is_dev" >> $GITHUB_OUTPUT
 
-      # - name: Checkout
-      #   uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 16
-      #     registry-url: https://registry.npmjs.org
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
 
-      # - name: Install dependencies
-      #   run: yarn
+      - name: Install dependencies
+        run: yarn
 
-      # - name: Lint code
-      #   run: yarn lint:ci
+      - name: Lint code
+        run: yarn lint:ci
 
-      # - name: Run unit tests
-      #   run: yarn test:ci test/unit
+      - name: Run unit tests
+        run: yarn test:ci test/unit
 
-      - name: Do things
+      - name: Publish server package to NPM
         run: |
-          echo foo ${{ steps.tag.outputs.is_dev == 'false' && 'dev' || 'latest' }}
+          yarn build:server
+          ./package.sh server
+          sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/server/package.json
+          sed -i "s|__description__|${{ github.event.repository.description }}|" dist/server/package.json
+          cd $GITHUB_WORKSPACE/dist/server
+          npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # - name: Publish server package to NPM
-      #   run: |
-      #     yarn build:server
-      #     ./package.sh server
-      #     sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/server/package.json
-      #     sed -i "s|__description__|${{ github.event.repository.description }}|" dist/server/package.json
-      #     cd $GITHUB_WORKSPACE/dist/server
-      #     npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # - name: Publish common package to NPM
-      #   run: |
-      #     yarn build:common
-      #     ./package.sh common
-      #     sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/common/package.json
-      #     sed -i "s|__description__|${{ github.event.repository.description }}|" dist/common/package.json
-      #     cd $GITHUB_WORKSPACE/dist/common
-      #     npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish common package to NPM
+        run: |
+          yarn build:common
+          ./package.sh common
+          sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/common/package.json
+          sed -i "s|__description__|${{ github.event.repository.description }}|" dist/common/package.json
+          cd $GITHUB_WORKSPACE/dist/common
+          npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
