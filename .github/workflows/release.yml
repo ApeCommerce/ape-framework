@@ -39,7 +39,7 @@ jobs:
       - name: Do things
         run: |
           echo $GITHUB_WORKSPACE
-          echo pwd
+          pwd
           ls
 
       # - name: Publish packages to NPM
