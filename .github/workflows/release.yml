@@ -41,7 +41,7 @@ jobs:
 
       - name: Do things
         run: |
-          echo foo ${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
+          echo foo ${{ steps.tag.outputs.is_dev == 'false' && 'dev' || 'latest' }}
 
       # - name: Publish server package to NPM
       #   run: |
