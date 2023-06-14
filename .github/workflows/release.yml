@@ -15,11 +15,14 @@ jobs:
       - name: Get tag
         id: tag
         run: |
-          echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-          echo "version=${tag:1}" >> $GITHUB_OUTPUT
+          tag=${{ github.ref_name }}
+          version=${tag:1}
+          is_dev=${{ startsWith($tag, 'v0.0.0-dev.') }}
+          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "is_dev=$is_dev" >> $GITHUB_OUTPUT
 
-      - name: Checkout
-        uses: actions/checkout@v3
+      # - name: Checkout
+      #   uses: actions/checkout@v3
 
       # - name: Setup Node.js
       #   uses: actions/setup-node@v3
@@ -38,21 +41,26 @@ jobs:
 
       - name: Do things
         run: |
-          echo $GITHUB_WORKSPACE
-          pwd
-          ls
+          echo foo ${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
 
-      # - name: Publish packages to NPM
+      # - name: Publish server package to NPM
       #   run: |
       #     yarn build:server
-      #     yarn build:common
       #     ./package.sh server
-      #     ./package.sh common
       #     sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/server/package.json
-      #     sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/common/package.json
       #     sed -i "s|__description__|${{ github.event.repository.description }}|" dist/server/package.json
+      #     cd $GITHUB_WORKSPACE/dist/server
+      #     npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # - name: Publish common package to NPM
+      #   run: |
+      #     yarn build:common
+      #     ./package.sh common
+      #     sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/common/package.json
       #     sed -i "s|__description__|${{ github.event.repository.description }}|" dist/common/package.json
-      #     cd dist/server
-      #     npm publish --tag=dev
+      #     cd $GITHUB_WORKSPACE/dist/common
+      #     npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
