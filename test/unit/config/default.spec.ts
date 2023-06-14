@@ -59,7 +59,7 @@ describe('Getting the config from defaults', () => {
       dbPostgresSslCert: '',
       dbPostgresSslKey: '',
       dbPostgresSslVerify: true,
-      dbSqliteFile: 'db.sqlite',
+      dbSqliteFile: 'ape.db',
 
       cacheModule: 'bypass',
       cacheRedisHost: '',
