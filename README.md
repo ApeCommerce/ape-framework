@@ -23,7 +23,7 @@ Common package:
 yarn add @ape-framework/common
 ```
 
-The `common` package is a subset of the `server` package with no dependency. It contains useful interfaces and modules for use within client applications or shared libraries.
+The `common` package is a subset of the `server` package with no dependency. It contains useful interfaces and modules for a client application or shared library to interact with the server.
 
 ## Hello Ape!
 
