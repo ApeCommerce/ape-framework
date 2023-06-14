@@ -17,7 +17,7 @@ jobs:
         run: |
           tag=${{ github.ref_name }}
           version=${tag:1}
-          is_dev=${{ startsWith($tag, 'v0.0.0-dev.') }}
+          is_dev=${{ startsWith(github.ref_name, 'v0.0.0-dev.') }}
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "is_dev=$is_dev" >> $GITHUB_OUTPUT
 
