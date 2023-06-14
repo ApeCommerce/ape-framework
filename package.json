@@ -1,0 +1,64 @@
+{
+  "name": "ape-framework",
+  "private": true,
+  "bin": {
+    "ape-cli": "cli"
+  },
+  "scripts": {
+    "dev": "tsc --project tsconfig.build.json -w",
+    "lint": "eslint . --fix",
+    "lint:ci": "eslint .",
+    "test": "jest --verbose",
+    "test:coverage": "jest --verbose --coverage",
+    "test:ci": "jest",
+    "build:server": "tsc --project tsconfig.build.server.json",
+    "build:common": "tsc --project tsconfig.build.common.json"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.2",
+    "@fastify/response-validation": "^2.3",
+    "@fastify/swagger": "^8.3",
+    "bcrypt": "^5.1",
+    "bullmq": "^3.13",
+    "bytes": "^3.1",
+    "dotenv": "^16.0",
+    "fastify": "^4.15",
+    "i18next": "^22.4",
+    "ioredis": "^5.3",
+    "jose": "^4.14",
+    "knex": "^2.4",
+    "mailgen": "^2.0",
+    "mysql2": "^3.2",
+    "node-object-hash": "^2.3",
+    "nodemailer": "^6.9",
+    "parse-duration": "^1.0",
+    "pg": "^8.10",
+    "pino": "^8.11",
+    "pino-pretty": "^10.0",
+    "sonic-boom": "^3.3",
+    "sqlite3": "^5.1",
+    "yargs-parser": "^21.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0",
+    "@types/bytes": "^3.1",
+    "@types/jest": "^29.5",
+    "@types/node": "^18.15",
+    "@types/nodemailer": "^6.4",
+    "@types/yargs-parser": "^21.0",
+    "@typescript-eslint/eslint-plugin": "^5.57",
+    "@typescript-eslint/parser": "^5.57",
+    "eslint": "^8.37",
+    "eslint-config-airbnb-base": "^15.0",
+    "eslint-config-airbnb-typescript": "^17.0",
+    "eslint-plugin-import": "^2.27",
+    "eslint-plugin-jest": "^27.2",
+    "jest": "^29.5",
+    "ts-jest": "^29.0",
+    "ts-node": "^10.9",
+    "typescript": "^5.0"
+  }
+}
