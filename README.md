@@ -11,23 +11,25 @@ GitHub repository: [ApeCommerce/ape-framework](https://github.com/ApeCommerce/ap
 
 ## Installation
 
-Server package:
+Server side:
 
 ```
 yarn add @ape-framework/server
 ```
 
-Common package:
+Client side or within a shared library:
 
 ```
 yarn add @ape-framework/common
 ```
 
-The `common` package is a subset of the `server` package with no dependency. It contains useful interfaces and modules for a client application or shared library to interact with the server.
+The `common` package is a subset of the `server` package and has no dependency. It contains interfaces for a client application to interact with the server.
 
 ## Hello Ape!
 
-Create a `hello` bundle:
+Let's create an API serving a `/hello` endpoint.
+
+Define a `hello` bundle:
 
 ```ts
 // bundle/hello.ts
@@ -68,4 +70,10 @@ Start the API:
 
 ```
 yarn ape-cli api start
+```
+
+Request the endpoint:
+
+```
+curl http://localhost:3000/hello
 ```

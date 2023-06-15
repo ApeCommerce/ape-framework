@@ -1,4 +1,4 @@
-name: Unrelease NPM package
+name: Unrelease NPM packages
 
 run-name: Unrelease ${{ inputs.tag }}
 
@@ -17,8 +17,10 @@ jobs:
       - name: Get tag
         id: tag
         run: |
-          echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
-          echo "version=${tag:1}" >> $GITHUB_OUTPUT
+          tag=${{ inputs.tag }}
+          version=${tag:1}
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -32,7 +34,9 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org
 
-      - name: Unpublish from NPM
-        run: npm unpublish @apecommerce/ape-common@${{ steps.tag.outputs.version }}
+      - name: Unpublish packages from NPM
+        run: |
+          npm unpublish @apecommerce/ape-server@${{ steps.tag.outputs.version }}
+          npm unpublish @apecommerce/ape-common@${{ steps.tag.outputs.version }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
