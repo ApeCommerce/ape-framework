@@ -36,7 +36,7 @@ jobs:
 
       - name: Unpublish packages from NPM
         run: |
-          npm unpublish @apecommerce/ape-server@${{ steps.tag.outputs.version }}
-          npm unpublish @apecommerce/ape-common@${{ steps.tag.outputs.version }}
+          npm unpublish @ape-framework/server@${{ steps.tag.outputs.version }}
+          npm unpublish @ape-framework/common@${{ steps.tag.outputs.version }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
