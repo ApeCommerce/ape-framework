@@ -23,7 +23,7 @@ Client side or within a shared library:
 yarn add @ape-framework/common
 ```
 
-The `common` package is a subset of the `server` package and has no dependency. It contains interfaces for a client application to interact with the server.
+The `common` package contains interfaces for a client application to interact with the server. It is a subset of the `server` package and has no dependency.
 
 ## Hello Ape!
 
