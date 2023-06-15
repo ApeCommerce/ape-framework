@@ -11,7 +11,9 @@ const pkg = {
   name: `@ape-framework/${name}`,
   version: '__version__',
   license: 'MIT',
+  author: 'Matthieu Symoens',
   description: '__description__',
+  keywords: ['ape', 'api', 'framework', 'node', 'typescript'],
   repository: {
     type: 'git',
     url: 'git+https://github.com/ApeCommerce/ape-framework.git',
