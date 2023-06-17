@@ -2,17 +2,14 @@ import cors from '@fastify/cors';
 import fastify from 'fastify';
 import responseValidation from '@fastify/response-validation';
 import swagger from '@fastify/swagger';
+import { Api } from './api';
+import { authorizationRegex, authorizationTokenType, bearerPrefixLength } from './auth';
 import { basePath, timestamp } from '../utils';
 import { ErrorHandler, Handler } from './handler';
 import config from './config';
 import jwt from '../jwt';
 import log from '../log';
 import router, { getRequiredRoles } from './router';
-
-export const authorizationTokenType = 'authorization';
-
-const authorizationRegex = /^Bearer [0-9A-Za-z]+\.[0-9A-Za-z]+\.[0-9A-Za-z-_]+$/;
-const bearerPrefixLength = 'Bearer '.length;
 
 const onRequest: Handler = async (request, reply) => {
   const roles = getRequiredRoles(basePath(request.routerPath));
@@ -85,9 +82,11 @@ export const close = async () => {
   log.info('API: closed');
 };
 
-export default {
+const api: Api = {
   getUrl,
   doc,
   start,
   close,
 };
+
+export default api;

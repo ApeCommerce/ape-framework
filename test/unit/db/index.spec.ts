@@ -1,6 +1,6 @@
 import 'test/unit/config';
-import { Knex } from 'knex';
 import { loadModule } from 'utils';
+import Knex from 'db/knex';
 
 describe('Loading the module', () => {
   test('Returns an instance of Knex', async () => {

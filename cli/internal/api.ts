@@ -1,7 +1,7 @@
+import { Api } from '../../api/api';
 import { Command } from '../command';
 import { exit, formatTable, formatText, writeLn } from '../utils';
-import { parseString } from '../../utils';
-import api from '../../api';
+import { loadModule, parseString } from '../../utils';
 
 const help = formatText([
   'Usage:',
@@ -19,6 +19,7 @@ const command: Command = {
 
     switch (action) {
       case 'start':
+        const api: Api = await loadModule('../../api');
         api.start();
         break;
       default:

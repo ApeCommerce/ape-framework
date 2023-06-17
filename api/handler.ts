@@ -1,5 +1,5 @@
 import { FastifyError as Error, FastifyReply as Reply, FastifyRequest } from 'fastify';
-import { User } from '../jwt';
+import { User } from '../jwt/user';
 
 export type Handler = (request: Request, reply: Reply) => Promise<void>;
 export type ErrorHandler = (error: Error, request: Request, reply: Reply) => Promise<void>;

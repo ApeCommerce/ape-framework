@@ -1,11 +1,7 @@
 import { jwtVerify, JWTPayload, ProtectedHeaderParameters as Header, SignJWT } from 'jose';
+import { User } from './user';
 import config from './config';
 import log from '../log';
-
-export interface User {
-  id: string,
-  roles: string[],
-}
 
 interface Payload extends JWTPayload {
   type: string,

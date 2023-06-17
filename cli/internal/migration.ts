@@ -1,9 +1,10 @@
 import { Command } from '../command';
 import { exit, formatTable, formatText, writeLn } from '../utils';
 import { getBundle } from '../../boot';
-import { listMigrations, rollbackMigrations, runMigrations, MigrationList } from '../../db/schema';
-import { parseBoolean, parseString } from '../../utils';
-import db from '../../db';
+import { loadModule, parseBoolean, parseString } from '../../utils';
+import { MigrationList } from '../../db/schema/migrationList';
+import { Schema } from '../../db/schema/schema';
+import Knex from '../../db/knex';
 
 const help = formatText([
   'Usage:',
@@ -27,7 +28,8 @@ const formatMigrations = (migrations: MigrationList) => formatTable(
 );
 
 const list = async (bundleId?: string, pending?: boolean) => {
-  const migrations = await listMigrations(bundleId, pending);
+  const schema = await loadModule<Schema>('../../db/schema');
+  const migrations = await schema.listMigrations(bundleId, pending);
   if (migrations.length) {
     writeLn(formatText([
       'Migrations:',
@@ -39,7 +41,8 @@ const list = async (bundleId?: string, pending?: boolean) => {
 };
 
 const run = async (bundleId?: string, one?: boolean) => {
-  const migrations = await runMigrations(bundleId, one);
+  const schema = await loadModule<Schema>('../../db/schema');
+  const migrations = await schema.runMigrations(bundleId, one);
   if (migrations.length) {
     writeLn(formatText([
       'Run migrations:',
@@ -51,7 +54,8 @@ const run = async (bundleId?: string, one?: boolean) => {
 };
 
 const rollback = async (bundleId?: string, one?: boolean) => {
-  const migrations = await rollbackMigrations(bundleId, one);
+  const schema = await loadModule<Schema>('../../db/schema');
+  const migrations = await schema.rollbackMigrations(bundleId, one);
   if (migrations.length) {
     writeLn(formatText([
       'Rolled back migrations:',
@@ -60,6 +64,11 @@ const rollback = async (bundleId?: string, one?: boolean) => {
   } else {
     writeLn('Nothing to do.');
   }
+};
+
+const destroy = async () => {
+  const db = await loadModule<Knex>('../../db');
+  return db.destroy();
 };
 
 const command: Command = {
@@ -77,18 +86,19 @@ const command: Command = {
     switch (action) {
       case 'list':
         await list(bundleId, pending);
+        await destroy();
         break;
       case 'run':
         await run(bundleId, one);
+        await destroy();
         break;
       case 'rollback':
         await rollback(bundleId, one);
+        await destroy();
         break;
       default:
         throw new Error(`Migration: invalid action "${action}"`);
     }
-
-    db.destroy();
   },
 };
 

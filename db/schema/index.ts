@@ -1,34 +1,11 @@
-import { Bundle } from '../boot/bundle';
-import { getBundle, getBundles } from '../boot';
+import { Bundle } from '../../boot/bundle';
+import { getBundle, getBundles } from '../../boot';
 import { Migration } from './migration';
-import config from './config/migration';
-import db from '.';
-
-export type MigrationList = {
-  bundleId: string,
-  migrationId: string,
-  pending?: boolean,
-}[];
-
-class MigrationSource {
-  private bundle: Bundle;
-
-  constructor(bundle: Bundle) {
-    this.bundle = bundle;
-  }
-
-  getMigrations() {
-    return Promise.resolve(this.bundle.migrations as Migration[]);
-  }
-
-  getMigrationName(migration: Migration) {
-    return migration.migrationId;
-  }
-
-  getMigration(migration: Migration) {
-    return Promise.resolve(migration);
-  }
-}
+import { MigrationList } from './migrationList';
+import { MigrationSource } from './migrationSource';
+import { Schema } from './schema';
+import config from './config';
+import db from '..';
 
 const bundleConfig = (bundle: Bundle) => ({
   migrationSource: new MigrationSource(bundle),
@@ -100,8 +77,10 @@ export const rollbackMigrations = async (bundleId?: string, one?: boolean) => {
   return migrationList;
 };
 
-export default {
+const schema: Schema = {
   listMigrations,
   runMigrations,
   rollbackMigrations,
 };
+
+export default schema;

@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { Knex } from 'knex';
-import { getConfig } from '../../config';
+import { getConfig } from '../config';
+import Knex from './knex';
 
 const config = getConfig();
 
