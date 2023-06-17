@@ -2,7 +2,7 @@
   "name": "ape-framework",
   "private": true,
   "bin": {
-    "ape-cli": "cli"
+    "ape-cli": "bin"
   },
   "scripts": {
     "dev:server": "tsc --project tsconfig.build.server.json -w",
