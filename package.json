@@ -5,7 +5,8 @@
     "ape-cli": "cli"
   },
   "scripts": {
-    "dev": "tsc --project tsconfig.build.json -w",
+    "dev:server": "tsc --project tsconfig.build.server.json -w",
+    "dev:common": "tsc --project tsconfig.build.common.json -w",
     "lint": "eslint . --fix",
     "lint:ci": "eslint .",
     "test": "jest --verbose",

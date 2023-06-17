@@ -4,6 +4,6 @@
     "outDir": "dist/server",
   },
   "exclude": [
-    "**/*.spec.ts"
+    "test/**/*"
   ]
 }
