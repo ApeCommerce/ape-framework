@@ -1,14 +1,12 @@
-import fs from 'fs';
+import fs from 'fs-extra';
 import { Configuration } from './configuration';
-import { loadJsonFile, parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
+import { parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
 import defaults from './default';
 import env from './env';
 
 export const loadFile = (path: string) => {
   let json: any = {};
-  if (fs.existsSync(path)) {
-    json = loadJsonFile<any>(path);
-  }
+  if (fs.existsSync(path)) json = fs.readJsonSync(path);
   return json;
 };
 

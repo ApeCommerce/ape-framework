@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs-extra';
 import { getConfig } from '../config';
 import Knex from './knex';
 
