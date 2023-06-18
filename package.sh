@@ -1,11 +1,11 @@
 #! /usr/bin/env node
-const fs = require('fs');
+const fs = require('fs-extra');
 
 const name = process.argv.slice(2).shift();
 
 if (!['server', 'common'].includes(name)) throw new Error(`Bad package name "${name}"`);
 
-const devPackage = JSON.parse(fs.readFileSync('package.json').toString());
+const devPackage = fs.readJsonSync('package.json').toString();
 
 const pkg = {
   name: `@ape-framework/${name}`,
@@ -29,14 +29,12 @@ const pkg = {
   devDependencies: devPackage.devDependencies,
 };
 
-fs.writeFileSync(`dist/${name}/package.json`, JSON.stringify(pkg, null, 2));
+fs.writeJsonSync(`dist/${name}/package.json`, pkg, { spaces: 2 });
 
-fs.copyFileSync('README.md', `dist/${name}/README.md`);
-fs.copyFileSync('LICENSE', `dist/${name}/LICENSE`);
+fs.copySync('README.md', `dist/${name}/README.md`);
+fs.copySync('LICENSE', `dist/${name}/LICENSE`);
 
 if (name === 'server') {
-  const binDir = `dist/${name}/bin`;
-  if (!fs.existsSync(binDir)) fs.mkdirSync(binDir);
-  fs.copyFileSync('bin/ape-cli.js', `dist/${name}/bin/ape-cli.js`);
-  fs.copyFileSync('bin/ape-cli-ts.js', `dist/${name}/bin/ape-cli-ts.js`);
+  fs.copySync('bin/ape-cli.js', `dist/${name}/bin/ape-cli.js`);
+  fs.copySync('bin/ape-cli-ts.js', `dist/${name}/bin/ape-cli-ts.js`);
 }
