@@ -6,7 +6,7 @@ export type ErrorHandler = (error: Error, request: Request, reply: Reply) => Pro
 
 export interface Request extends FastifyRequest { user?: User }
 
-export const sendReply = (reply: Reply, value: unknown = true) => {
+export const send = (reply: Reply, value: unknown = true) => {
   if (value === true) {
     reply.send();
   } else if (value === false) {

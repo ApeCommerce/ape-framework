@@ -14,13 +14,13 @@ GitHub repository: [ApeCommerce/ape-framework](https://github.com/ApeCommerce/ap
 Server side:
 
 ```
-yarn add @ape-framework/server
+npm install @ape-framework/server
 ```
 
 Client side or within a shared library:
 
 ```
-yarn add @ape-framework/common
+npm install @ape-framework/common
 ```
 
 The `common` package contains interfaces for a client application to interact with the server. It is a subset of the `server` package and has no dependency.
@@ -29,23 +29,23 @@ The `common` package contains interfaces for a client application to interact wi
 
 Let's create an API serving a `/hello` endpoint.
 
-Define a `hello` bundle:
+Create a `welcome` bundle:
 
 ```ts
-// bundle/hello.ts
+// bundle/welcome.ts
 import { Bundle } from '@ape-framework/server/boot/bundle';
-import sendResponse from '@ape-framework/server/api/handler';
+import { send } from '@ape-framework/server/api/handler';
 
 const bundle: Bundle = {
-  bundleId: 'hello',
-  name: 'The hello bundle',
+  bundleId: 'welcome',
+  name: 'The welcome bundle',
   routes: [
     {
       endpoint: {
         method: 'GET',
         path: '/hello',
       },
-      handler: () => sendResponse('Hello Ape!'),
+      handler: async (request, reply) => send(reply, 'Hello Ape!'),
     },
   ],
 };
@@ -56,23 +56,23 @@ export default bundle;
 Define the boot module:
 
 ```ts
-// boot.ts
+// boot/index.ts
 import { Boot } from '@ape-framework/server/boot';
 
 const boot: Boot = {
-  bundleModules: ['bundle/hello'],
+  bundleModules: ['bundle/welcome'],
 };
 
 export default boot;
 ```
 
-Start the API:
+Start the API server:
 
 ```
-yarn ape-cli api start
+npx ape-cli-ts api start
 ```
 
-Request the endpoint:
+Request the `/hello` endpoint:
 
 ```
 curl http://localhost:3000/hello

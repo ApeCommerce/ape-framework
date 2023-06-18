@@ -13,7 +13,7 @@ const pkg = {
   license: 'MIT',
   author: 'Matthieu Symoens',
   description: '__description__',
-  keywords: ['ape', 'api', 'framework', 'node', 'typescript'],
+  keywords: ['ape', 'api', 'commerce', 'ecommerce', 'framework', 'node', 'typescript'],
   repository: {
     type: 'git',
     url: 'git+https://github.com/ApeCommerce/ape-framework.git',
@@ -33,3 +33,10 @@ fs.writeFileSync(`dist/${name}/package.json`, JSON.stringify(pkg, null, 2));
 
 fs.copyFileSync('README.md', `dist/${name}/README.md`);
 fs.copyFileSync('LICENSE', `dist/${name}/LICENSE`);
+
+if (name === 'server') {
+  const binDir = `dist/${name}/bin`;
+  if (!fs.existsSync(binDir)) fs.mkdirSync(binDir);
+  fs.copyFileSync('bin/ape-cli.js', `dist/${name}/bin/ape-cli.js`);
+  fs.copyFileSync('bin/ape-cli-ts.js', `dist/${name}/bin/ape-cli-ts.js`);
+}
