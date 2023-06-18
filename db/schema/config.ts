@@ -1,3 +1,3 @@
 export default {
-  tablePrefix: '_migration',
+  tablePrefix: '_schema',
 };

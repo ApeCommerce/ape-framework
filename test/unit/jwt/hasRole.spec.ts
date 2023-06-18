@@ -1,5 +1,6 @@
 import 'test/unit/config';
-import { hasRoles, User } from 'jwt';
+import { hasRoles } from 'jwt';
+import { User } from 'jwt/user';
 
 const user: User = { id: 'foo', roles: ['one', 'two'] };
 

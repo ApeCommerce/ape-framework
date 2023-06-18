@@ -1,10 +1,10 @@
 import { loadModule } from 'utils';
 
-describe('Loading the migration config', () => {
+describe('Loading the schema config', () => {
   test('Returns expected value', async () => {
-    const config = await loadModule('db/config/migration');
+    const config = await loadModule('db/schema/config');
     expect(config).toStrictEqual({
-      tablePrefix: '_migration',
+      tablePrefix: '_schema',
     });
   });
 });

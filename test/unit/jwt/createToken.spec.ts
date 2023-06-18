@@ -1,6 +1,7 @@
 import 'test/unit/config';
-import { createToken, User } from 'jwt';
+import { createToken } from 'jwt';
 import { parseMilliseconds, parseSeconds, timestamp, wait } from 'utils';
+import { User } from 'jwt/user';
 
 const user: User = { id: 'foo', roles: ['one', 'two'] };
 const type = 'authorization';

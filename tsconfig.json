@@ -3,9 +3,9 @@
     "target": "ES5",
     "rootDir": ".",
     "baseUrl": ".",
+    "noEmit": true,
     "strict": true,
-    "esModuleInterop": true,
-    "declaration": true
+    "esModuleInterop": true
   },
   "include": [
     "**/*.ts"
