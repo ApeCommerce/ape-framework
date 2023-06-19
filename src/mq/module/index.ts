@@ -1,23 +1,14 @@
 import { getBundles } from '../../boot';
-import { Job, Queue } from '../queue';
+import { Mq, Sender, Worker } from '../mq';
+import { Queue } from '../queue';
 
-export interface Sender {
-  send: <Data>(job: Job, data: Data) => Promise<void>,
-  close: () => Promise<void>,
-}
-
-export interface Worker {
-  start: () => void,
-  close: () => Promise<void>,
-}
-
-export default abstract class MqModule {
+export default abstract class MqModule implements Mq {
   async getQueues() {
     return (await getBundles()).flatMap((bundle) => bundle.queues || []);
   }
 
   async getQueue(queueId: string) {
-    return (await this.getQueues()).find((q) => q.queueId === queueId);
+    return (await this.getQueues()).find((queue) => queue.queueId === queueId);
   }
 
   abstract createSender(queue: Queue): Sender;

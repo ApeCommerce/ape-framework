@@ -1,7 +1,7 @@
 import { Command } from '../command';
 import { exit, formatList, formatTable, formatText, writeLn } from '../utils';
-import { parseString } from '../../utils';
-import mq from '../../mq';
+import { loadModule, parseString } from '../../utils';
+import { Mq } from '../../mq/mq';
 
 const help = formatText([
   'Usage:',
@@ -12,6 +12,7 @@ const help = formatText([
 ]);
 
 const list = async () => {
+  const mq = await loadModule<Mq>('../../mq');
   const queues = await mq.getQueues();
   if (queues.length) {
     writeLn(formatText([
@@ -26,6 +27,7 @@ const list = async () => {
 const process = async (queueId: string) => {
   if (!queueId) throw new Error('Queue: queue id not provided');
 
+  const mq = await loadModule<Mq>('../../mq');
   const queue = await mq.getQueue(queueId);
   if (!queue) throw new Error(`Queue: invalid queue id "${queueId}"`);
 

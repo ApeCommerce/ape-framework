@@ -19,7 +19,7 @@ const command: Command = {
 
     switch (action) {
       case 'start':
-        const api: Api = await loadModule('../../api');
+        const api = await loadModule<Api>('../../api');
         api.start();
         break;
       default:

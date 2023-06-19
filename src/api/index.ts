@@ -69,9 +69,6 @@ const server = fastify(config.serverOptions)
 
 let url: string;
 
-export const getUrl = () => url;
-export const doc = () => server.swagger();
-
 export const start = async () => {
   url = await server.listen(config.listenOptions);
   log.info(`API: started v${config.version} @${url}`);
@@ -82,11 +79,14 @@ export const close = async () => {
   log.info('API: closed');
 };
 
+export const getUrl = () => url;
+export const doc = () => server.swagger();
+
 const api: Api = {
-  getUrl,
-  doc,
   start,
   close,
+  getUrl,
+  doc,
 };
 
 export default api;

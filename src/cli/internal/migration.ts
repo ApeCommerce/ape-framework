@@ -38,6 +38,7 @@ const list = async (bundleId?: string, pending?: boolean) => {
   } else {
     writeLn('No migration.');
   }
+  (await loadModule<Knex>('../../db')).destroy();
 };
 
 const run = async (bundleId?: string, one?: boolean) => {
@@ -51,6 +52,7 @@ const run = async (bundleId?: string, one?: boolean) => {
   } else {
     writeLn('Nothing to do.');
   }
+  (await loadModule<Knex>('../../db')).destroy();
 };
 
 const rollback = async (bundleId?: string, one?: boolean) => {
@@ -64,11 +66,7 @@ const rollback = async (bundleId?: string, one?: boolean) => {
   } else {
     writeLn('Nothing to do.');
   }
-};
-
-const destroy = async () => {
-  const db = await loadModule<Knex>('../../db');
-  return db.destroy();
+  (await loadModule<Knex>('../../db')).destroy();
 };
 
 const command: Command = {
@@ -85,16 +83,13 @@ const command: Command = {
 
     switch (action) {
       case 'list':
-        await list(bundleId, pending);
-        await destroy();
+        list(bundleId, pending);
         break;
       case 'run':
-        await run(bundleId, one);
-        await destroy();
+        run(bundleId, one);
         break;
       case 'rollback':
-        await rollback(bundleId, one);
-        await destroy();
+        rollback(bundleId, one);
         break;
       default:
         throw new Error(`Migration: invalid action "${action}"`);
