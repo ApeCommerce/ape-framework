@@ -5,7 +5,7 @@ const name = process.argv.slice(2).shift();
 
 if (!['server', 'common'].includes(name)) throw new Error(`Bad package name "${name}"`);
 
-const devPackage = fs.readJsonSync('package.json').toString();
+const devPackage = fs.readJsonSync('package.json');
 
 const pkg = {
   name: `@ape-framework/${name}`,
@@ -37,4 +37,8 @@ fs.copySync('LICENSE', `dist/${name}/LICENSE`);
 if (name === 'server') {
   fs.copySync('bin/ape-cli.js', `dist/${name}/bin/ape-cli.js`);
   fs.copySync('bin/ape-cli-ts.js', `dist/${name}/bin/ape-cli-ts.js`);
+
+  fs.copySync('src', `dist/${name}`, {
+    filter: (src) => !src.startsWith('src/test'),
+  });
 }
