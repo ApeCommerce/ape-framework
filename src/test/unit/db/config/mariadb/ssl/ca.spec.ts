@@ -7,10 +7,10 @@ initConfig({
   dbMariadbPort: 1000,
   dbMariadbDatabase: 'database',
   dbMariadbSsl: true,
-  dbMariadbSslKey: 'test/fixture/ssl/key.pem',
+  dbMariadbSslCa: 'src/test/fixture/ssl/ca.pem',
 });
 
-describe('Loading the config with a mariadb ssl key', () => {
+describe('Loading the config with a mariadb ssl ca', () => {
   test('Returns expected value', async () => {
     const config = await loadModule('db/config');
     expect(config).toStrictEqual({
@@ -20,11 +20,11 @@ describe('Loading the config with a mariadb ssl key', () => {
         port: 1000,
         database: 'database',
         ssl: {
-          key: `-----BEGIN PRIVATE KEY-----
+          ca: `-----BEGIN CERTIFICATE-----
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
------END PRIVATE KEY-----`,
+-----END CERTIFICATE-----`,
           rejectUnauthorized: true,
         },
       },

@@ -1,7 +1,7 @@
 import 'test/fixture/config/env';
 import { getConfig, initConfig } from 'config';
 
-initConfig({}, 'test/fixture/config/ape.config.json');
+initConfig({}, 'src/test/fixture/config/ape.config.json');
 
 describe('Getting the config from file', () => {
   test('Returns expected value', async () => {

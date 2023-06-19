@@ -2,15 +2,15 @@ import { initConfig } from 'config';
 import { loadModule } from 'utils';
 
 initConfig({
-  dbModule: 'mariadb',
-  dbMariadbHost: 'host',
-  dbMariadbPort: 1000,
-  dbMariadbDatabase: 'database',
-  dbMariadbSsl: true,
-  dbMariadbSslCa: 'test/fixture/ssl/ca.pem',
+  dbModule: 'mysql',
+  dbMysqlHost: 'host',
+  dbMysqlPort: 1000,
+  dbMysqlDatabase: 'database',
+  dbMysqlSsl: true,
+  dbMysqlSslKey: 'src/test/fixture/ssl/key.pem',
 });
 
-describe('Loading the config with a mariadb ssl ca', () => {
+describe('Loading the config with a mysql ssl key', () => {
   test('Returns expected value', async () => {
     const config = await loadModule('db/config');
     expect(config).toStrictEqual({
@@ -20,11 +20,11 @@ describe('Loading the config with a mariadb ssl ca', () => {
         port: 1000,
         database: 'database',
         ssl: {
-          ca: `-----BEGIN CERTIFICATE-----
+          key: `-----BEGIN PRIVATE KEY-----
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
------END CERTIFICATE-----`,
+-----END PRIVATE KEY-----`,
           rejectUnauthorized: true,
         },
       },

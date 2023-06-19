@@ -2,15 +2,15 @@ import { initConfig } from 'config';
 import { loadModule } from 'utils';
 
 initConfig({
-  dbModule: 'mysql',
-  dbMysqlHost: 'host',
-  dbMysqlPort: 1000,
-  dbMysqlDatabase: 'database',
-  dbMysqlSsl: true,
-  dbMysqlSslCert: 'test/fixture/ssl/cert.pem',
+  dbModule: 'mariadb',
+  dbMariadbHost: 'host',
+  dbMariadbPort: 1000,
+  dbMariadbDatabase: 'database',
+  dbMariadbSsl: true,
+  dbMariadbSslCert: 'src/test/fixture/ssl/cert.pem',
 });
 
-describe('Loading the config with a mysql ssl cert', () => {
+describe('Loading the config with a mariadb ssl cert', () => {
   test('Returns expected value', async () => {
     const config = await loadModule('db/config');
     expect(config).toStrictEqual({

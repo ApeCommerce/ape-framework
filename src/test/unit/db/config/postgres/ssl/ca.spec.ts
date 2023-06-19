@@ -7,10 +7,10 @@ initConfig({
   dbPostgresPort: 1000,
   dbPostgresDatabase: 'database',
   dbPostgresSsl: true,
-  dbPostgresSslKey: 'test/fixture/ssl/key.pem',
+  dbPostgresSslCa: 'src/test/fixture/ssl/ca.pem',
 });
 
-describe('Loading the config with a postgres ssl key', () => {
+describe('Loading the config with a postgres ssl ca', () => {
   test('Returns expected value', async () => {
     const config = await loadModule('db/config');
     expect(config).toStrictEqual({
@@ -20,11 +20,11 @@ describe('Loading the config with a postgres ssl key', () => {
         port: 1000,
         database: 'database',
         ssl: {
-          key: `-----BEGIN PRIVATE KEY-----
+          ca: `-----BEGIN CERTIFICATE-----
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
------END PRIVATE KEY-----`,
+-----END CERTIFICATE-----`,
           rejectUnauthorized: true,
         },
       },

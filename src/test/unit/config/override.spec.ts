@@ -2,7 +2,7 @@ import 'test/fixture/config/env';
 import { getConfig, initConfig } from 'config';
 import override from 'test/fixture/config/override';
 
-initConfig(override, 'test/fixture/config/file/ape.config.json');
+initConfig(override, 'src/test/fixture/config/file/ape.config.json');
 
 describe('Getting the config from override', () => {
   test('Returns expected value', async () => {
