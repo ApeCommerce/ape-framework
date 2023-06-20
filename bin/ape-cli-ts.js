@@ -1,3 +1,4 @@
 #! /usr/bin/env node
 require('ts-node').register();
-require('../cli')();
+require('tsconfig-paths').register();
+require('../cli').default();

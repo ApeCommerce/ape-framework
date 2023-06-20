@@ -3,6 +3,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default {
+  nodeEnv: process.env.NODE_ENV,
+  nodePath: process.env.NODE_PATH,
+
   bootModule: process.env.APE_BOOT_MODULE,
 
   apiName: process.env.APE_API_NAME,

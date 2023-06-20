@@ -1,3 +1,4 @@
+/.env
 /ape.db
 /ape.log
 /coverage
