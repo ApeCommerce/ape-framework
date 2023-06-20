@@ -5,14 +5,14 @@ import config from './config';
 import node from '../node';
 
 export interface Boot {
-  bundleModules: string[],
+  bundles: () => Promise<Bundle[]>,
 }
 
 let bundles: Bundle[];
 
 export const loadBundles = async () => {
   const boot = await loadModule<Boot>(path.join(process.cwd(), node.path, config.module));
-  bundles = await Promise.all(boot.bundleModules.map(loadModule<Bundle>));
+  bundles = await boot.bundles();
   return bundles;
 };
 
