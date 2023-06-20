@@ -13,7 +13,7 @@
     "test": "jest --verbose",
     "test:coverage": "jest --verbose --coverage",
     "test:ci": "jest",
-    "build": "tsc",
+    "compile": "tsc",
     "build:server": "tsc --project tsconfig.build.server.json",
     "build:common": "tsc --project tsconfig.build.common.json"
   },
