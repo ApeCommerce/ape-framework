@@ -38,7 +38,7 @@ const command: Command = {
   arg: 'queue',
   handler: async (args) => {
     const action = parseString(args[0]);
-    if (!action || action === 'help') writeLn(help); exit();
+    if (!action || action === 'help') { writeLn(help); exit(); }
 
     const queueId = parseString(args[1]);
 

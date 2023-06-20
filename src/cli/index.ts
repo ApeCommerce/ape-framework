@@ -25,7 +25,7 @@ const exec = async () => {
   delete options._;
 
   const arg = parseString(args.shift());
-  if (!arg || arg === 'help') writeLn(help); exit();
+  if (!arg || arg === 'help') { writeLn(help); exit(); }
 
   const command = commands.find((c) => c.arg === arg);
   if (!command) throw new Error(`CLI: invalid command "${arg}"`);
