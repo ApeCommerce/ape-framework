@@ -1,8 +1,6 @@
-import { loadModule } from 'utils';
-
 describe('Loading the schema config', () => {
   test('Returns expected value', async () => {
-    const config = await loadModule('db/schema/config');
+    const config = (await import('db/schema/config')).default;
     expect(config).toStrictEqual({
       tablePrefix: '_schema',
     });

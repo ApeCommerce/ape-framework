@@ -1,5 +1,4 @@
 import { initConfig } from 'config';
-import { loadModule } from 'utils';
 
 initConfig({
   logLevel: 'silent',
@@ -10,7 +9,7 @@ describe('Loading the config with invalid destination', () => {
   test('Throws an error', async () => {
     expect.hasAssertions();
     try {
-      await loadModule('log/config');
+      await import('log/config');
     } catch (error) {
       expect(error).toBeDefined();
     }

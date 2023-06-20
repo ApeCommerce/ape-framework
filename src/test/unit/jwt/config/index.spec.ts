@@ -1,5 +1,4 @@
 import { initConfig } from 'config';
-import { loadModule } from 'utils';
 
 initConfig({
   jwtIssuer: 'issuer',
@@ -8,7 +7,7 @@ initConfig({
 
 describe('Loading the config', () => {
   test('Returns expected value', async () => {
-    const config = await loadModule('jwt/config');
+    const config = (await import('jwt/config')).default;
     expect(config).toStrictEqual({
       issuer: 'issuer',
       secret: 'secret',

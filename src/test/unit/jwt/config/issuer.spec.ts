@@ -1,5 +1,4 @@
 import { initConfig } from 'config';
-import { loadModule } from 'utils';
 
 initConfig({
   jwtIssuer: '',
@@ -10,7 +9,7 @@ describe('Loading the config with missing issuer', () => {
   test('Throws an error', async () => {
     expect.hasAssertions();
     try {
-      await loadModule('jwt/config');
+      await import('jwt/config');
     } catch (error) {
       expect(error).toBeDefined();
     }

@@ -1,6 +1,5 @@
 import path from 'path';
 import { Bundle } from './bundle';
-import { loadModule } from '../utils';
 import config from './config';
 import node from '../node';
 
@@ -11,7 +10,7 @@ export interface Boot {
 let bundles: Bundle[];
 
 export const loadBundles = async () => {
-  const boot = await loadModule<Boot>(path.join(process.cwd(), node.path, config.module));
+  const boot: Boot = (await import(path.join(process.cwd(), node.path, config.module))).default;
   bundles = await boot.bundles();
   return bundles;
 };

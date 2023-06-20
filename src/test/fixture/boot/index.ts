@@ -1,13 +1,11 @@
 import { Boot } from 'boot';
-import { Bundle } from 'boot/bundle';
-import { loadModule } from 'utils';
 
 const boot: Boot = {
-  bundles: () => Promise.all([
-    loadModule<Bundle>('test/fixture/bundle/foo'),
-    loadModule<Bundle>('test/fixture/bundle/bar'),
-    loadModule<Bundle>('test/fixture/bundle/empty'),
-  ]),
+  bundles: async () => [
+    (await import('test/fixture/bundle/foo')).default,
+    (await import('test/fixture/bundle/bar')).default,
+    (await import('test/fixture/bundle/empty')).default,
+  ],
 };
 
 export default boot;

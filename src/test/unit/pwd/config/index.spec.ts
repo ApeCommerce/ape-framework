@@ -1,5 +1,4 @@
 import { initConfig } from 'config';
-import { loadModule } from 'utils';
 
 initConfig({
   pwdHashCost: 3,
@@ -7,7 +6,7 @@ initConfig({
 
 describe('Loading the config', () => {
   test('Returns expected value', async () => {
-    const config = await loadModule('pwd/config');
+    const config = (await import('pwd/config')).default;
     expect(config).toStrictEqual({
       hashCost: 3,
     });

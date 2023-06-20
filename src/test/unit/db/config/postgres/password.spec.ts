@@ -1,5 +1,4 @@
 import { initConfig } from 'config';
-import { loadModule } from 'utils';
 
 initConfig({
   dbModule: 'postgres',
@@ -11,7 +10,7 @@ initConfig({
 
 describe('Loading the config with a postgres password', () => {
   test('Returns expected value', async () => {
-    const config = await loadModule('db/config');
+    const config = (await import('db/config')).default;
     expect(config).toStrictEqual({
       client: 'pg',
       connection: {

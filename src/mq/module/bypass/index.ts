@@ -1,7 +1,7 @@
 import { Job } from '../../queue';
-import MqModule from '..';
+import { MqModule } from '..';
 
-export default class BypassMq extends MqModule {
+export class BypassMq extends MqModule {
   createSender() {
     return {
       send: async <Data>(job: Job, data: Data) => job.process(data, () => { }),
@@ -16,3 +16,5 @@ export default class BypassMq extends MqModule {
     };
   }
 }
+
+export default BypassMq;

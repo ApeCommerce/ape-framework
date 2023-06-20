@@ -1,5 +1,4 @@
 import { initConfig } from 'config';
-import { loadModule } from 'utils';
 
 initConfig({
   dbModule: 'mariadb',
@@ -10,7 +9,7 @@ initConfig({
 
 describe('Loading the config with mariadb module', () => {
   test('Returns expected value', async () => {
-    const config = await loadModule('db/config');
+    const config = (await import('db/config')).default;
     expect(config).toStrictEqual({
       client: 'mysql2',
       connection: {

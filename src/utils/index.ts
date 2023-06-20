@@ -10,7 +10,6 @@ export const parseString = (a: any) => {
 };
 
 export const basePath = (p?: string, s = '/') => parseString(p).split(s).filter((x) => x)[0] || '';
-export const loadModule = async <T>(path: string) => (await import(path)).default as T;
 export const parseBytes = (a: any) => bytes(parseString(a)) || 0;
 export const parseMilliseconds = (a: any) => Math.floor(parseDuration(parseString(a)) || 0);
 export const parseSeconds = (a: any) => Math.floor(parseNumber(a) || parseMilliseconds(a) / 1000);
@@ -20,7 +19,6 @@ export const wait = (ms: number) => new Promise((res) => { setTimeout(() => res(
 
 export default {
   basePath,
-  loadModule,
   parseBoolean,
   parseBytes,
   parseMilliseconds,

@@ -1,5 +1,4 @@
 import { initConfig } from 'config';
-import { loadModule } from 'utils';
 
 initConfig({
   bootModule: 'test/fixture/boot',
@@ -7,7 +6,7 @@ initConfig({
 
 describe('Loading the config', () => {
   test('Returns expected value', async () => {
-    const config = await loadModule('boot/config');
+    const config = (await import('boot/config')).default;
     expect(config).toStrictEqual({
       module: 'test/fixture/boot',
     });

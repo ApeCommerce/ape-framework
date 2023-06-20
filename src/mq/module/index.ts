@@ -2,7 +2,7 @@ import { getBundles } from '../../boot';
 import { Mq, Sender, Worker } from '../mq';
 import { Queue } from '../queue';
 
-export default abstract class MqModule implements Mq {
+export abstract class MqModule implements Mq {
   async getQueues() {
     return (await getBundles()).flatMap((bundle) => bundle.queues || []);
   }
@@ -14,3 +14,5 @@ export default abstract class MqModule implements Mq {
   abstract createSender(queue: Queue): Sender;
   abstract createWorker(queue: Queue): Worker;
 }
+
+export default MqModule;

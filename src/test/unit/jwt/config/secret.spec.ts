@@ -1,5 +1,4 @@
 import { initConfig } from 'config';
-import { loadModule } from 'utils';
 
 initConfig({
   jwtIssuer: 'issuer',
@@ -10,7 +9,7 @@ describe('Loading the config with missing secret', () => {
   test('Throws an error', async () => {
     expect.hasAssertions();
     try {
-      await loadModule('jwt/config');
+      await import('jwt/config');
     } catch (error) {
       expect(error).toBeDefined();
     }

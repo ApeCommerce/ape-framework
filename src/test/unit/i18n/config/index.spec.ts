@@ -1,5 +1,4 @@
 import { initConfig } from 'config';
-import { loadModule } from 'utils';
 
 initConfig({
   i18nFallbackLanguage: 'en',
@@ -7,7 +6,7 @@ initConfig({
 
 describe('Loading the config', () => {
   test('Returns expected value', async () => {
-    const config = await loadModule('i18n/config');
+    const config = (await import('i18n/config')).default;
     expect(config).toStrictEqual({
       fallbackLanguage: 'en',
     });
