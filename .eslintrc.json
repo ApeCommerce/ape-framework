@@ -16,18 +16,11 @@
     "import",
     "jest"
   ],
-  "ignorePatterns": [
-    "**/*.d.ts",
-    "**/*.js"
-  ],
   "rules": {
     "@typescript-eslint/no-empty-function": [
       "off"
     ],
     "class-methods-use-this": [
-      "off"
-    ],
-    "max-classes-per-file": [
       "off"
     ],
     "max-len": [
@@ -38,9 +31,6 @@
       }
     ],
     "no-await-in-loop": [
-      "off"
-    ],
-    "no-case-declarations": [
       "off"
     ],
     "no-param-reassign": [
