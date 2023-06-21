@@ -5,8 +5,8 @@ import { parseString } from '../../utils';
 const help = formatText([
   'Usage:',
   formatTable([
-    ['queue list', 'List queues'],
-    ['queue process <queueId>', 'Process queue'],
+    ['queue list', 'List queues.'],
+    ['queue process <queueId>', 'Process queue.'],
   ]),
 ]);
 

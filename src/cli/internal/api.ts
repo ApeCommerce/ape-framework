@@ -6,8 +6,8 @@ import { parseString } from '../../utils';
 const help = formatText([
   'Usage:',
   formatTable([
-    ['api start', 'Start API server'],
-    ['api help', 'Show help'],
+    ['api start', 'Start API server.'],
+    ['api help', 'Show help.'],
   ]),
 ]);
 

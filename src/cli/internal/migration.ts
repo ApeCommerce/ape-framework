@@ -9,17 +9,17 @@ import Knex from '../../db/knex';
 const help = formatText([
   'Usage:',
   formatTable([
-    ['migration list [-b <bundleId>] [--pending]', 'List migrations'],
-    ['migration run [-b <bundleId>] [--one]', 'Run migrations'],
-    ['migration rollback [-b <bundleId>] [--one]', 'Rollback migrations'],
-    ['migration help', 'Show help'],
+    ['migration list [-b <bundleId>] [--pending]', 'List migrations.'],
+    ['migration run [-b <bundleId>] [--one]', 'Run migrations.'],
+    ['migration rollback [-b <bundleId>] [--one]', 'Rollback migrations.'],
+    ['migration help', 'Show help.'],
   ]),
   '',
   'Options:',
   formatTable([
-    ['-b --bundle <bundleId>', 'Process specified bundle migrations only'],
-    ['--pending', 'Process pending migrations only'],
-    ['--one', 'Process one migration only'],
+    ['-b --bundle <bundleId>', 'Process specified bundle migrations only.'],
+    ['--pending', 'Process pending migrations only.'],
+    ['--one', 'Process one migration only.'],
   ]),
 ]);
 
