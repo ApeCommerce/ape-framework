@@ -18,7 +18,7 @@
     "build:common": "tsc --project tsconfig.build.common.json"
   },
   "engines": {
-    "node": "16"
+    "node": "^16"
   },
   "dependencies": {
     "@fastify/cors": "^8.2",

@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
     "target": "ES5",
-    "rootDir": "src",
+    "rootDir": ".",
     "baseUrl": "src",
     "noEmit": true,
     "strict": true,
     "esModuleInterop": true
   },
   "include": [
-    "src"
-  ],
-  "exclude": [
-    "dist"
+    "src",
+    "test"
   ]
 }

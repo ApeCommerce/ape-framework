@@ -37,8 +37,5 @@ fs.copySync('LICENSE', `dist/${name}/LICENSE`);
 if (name === 'server') {
   fs.copySync('bin/ape-cli.js', `dist/${name}/bin/ape-cli.js`);
   fs.copySync('bin/ape-cli-ts.js', `dist/${name}/bin/ape-cli-ts.js`);
-
-  fs.copySync('src', `dist/${name}`, {
-    filter: (src) => !src.startsWith('src/test'),
-  });
+  fs.copySync('src', `dist/${name}`);
 }
