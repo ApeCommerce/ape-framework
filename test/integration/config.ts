@@ -4,7 +4,6 @@ initConfig({
   bootModule: '../test/fixture/boot',
 
   logLevel: 'silent',
-  logDestination: 'stdout',
 
   dbModule: 'memory',
   dbMariadbHost: '',

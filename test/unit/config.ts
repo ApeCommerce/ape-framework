@@ -5,8 +5,6 @@ initConfig({
 
   apiName: 'TEST Ape Project',
   apiVersion: '0.0.0-test',
-  apiHost: '0.0.0.0',
-  apiPort: 0,
   apiRandomPort: true,
   apiConnectionTimeout: 0,
   apiRequestTimeout: 0,
@@ -22,13 +20,6 @@ initConfig({
   i18nFallbackLanguage: 'en',
 
   logLevel: 'silent',
-  logDestination: 'stdout',
 
   dbModule: 'memory',
-
-  cacheModule: 'bypass',
-
-  mqModule: 'bypass',
-
-  mailModule: 'bypass',
 });
