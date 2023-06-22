@@ -23,22 +23,21 @@ Client side or within a shared library:
 npm install @ape-framework/common
 ```
 
-The `common` package contains interfaces for a client application to interact with the server. It is a subset of the `server` package and has no dependency.
+The `common` package contains useful interfaces for a client application to interact with the server. It is a subset of the `server` package and has no dependency.
 
 ## Hello Ape!
 
 Let's create an API serving a `/hello` endpoint.
 
-Create a `welcome` bundle:
-
 ```ts
-// bundle/welcome.ts
+// boot.ts
+import { Boot } from '@ape-framework/server/boot';
 import { Bundle } from '@ape-framework/server/boot/bundle';
 import { send } from '@ape-framework/server/api/handler';
 
-const bundle: Bundle = {
+const welcomeBundle: Bundle = {
   bundleId: 'welcome',
-  name: 'The welcome bundle',
+  name: 'Welcome',
   routes: [
     {
       endpoint: {
@@ -50,17 +49,8 @@ const bundle: Bundle = {
   ],
 };
 
-export default bundle;
-```
-
-Define the boot module:
-
-```ts
-// boot/index.ts
-import { Boot } from '@ape-framework/server/boot';
-
 const boot: Boot = {
-  bundleModules: ['bundle/welcome'],
+  bundles: async () => [welcomeBundle],
 };
 
 export default boot;
@@ -72,7 +62,7 @@ Start the API server:
 npx ape-cli-ts api start
 ```
 
-Request the `/hello` endpoint:
+Request the API:
 
 ```
 curl http://localhost:3000/hello
