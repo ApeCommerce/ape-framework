@@ -25,6 +25,10 @@ npm install @ape-framework/common
 
 The `common` package contains useful interfaces for a client application to interact with the server. It is a subset of the `server` package and has no dependency.
 
+## Starter project
+
+Use [@ape-framework/starter](https://www.npmjs.com/package/@ape-framework/starter) to quickly create a new Ape Framework project.
+
 ## Hello Ape!
 
 Let's create an API serving a `/hello` endpoint.
