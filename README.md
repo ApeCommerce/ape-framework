@@ -27,7 +27,7 @@ The `common` package contains useful interfaces for a client application to inte
 
 ## Starter project
 
-Use [@ape-framework/starter](https://www.npmjs.com/package/@ape-framework/starter) to quickly create a new Ape Framework project.
+Use [@ape-framework/starter](https://www.npmjs.com/package/@ape-framework/starter) to quickly create a Node.js application using Ape Framework.
 
 ## Hello Ape!
 
