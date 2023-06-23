@@ -9,6 +9,10 @@ NPM packages:
 
 GitHub repository: [ApeCommerce/ape-framework](https://github.com/ApeCommerce/ape-framework)
 
+## Starter project
+
+Use [@ape-framework/starter](https://www.npmjs.com/package/@ape-framework/starter) to quickly create a Node.js application using Ape Framework.
+
 ## Installation
 
 Server side:
@@ -24,10 +28,6 @@ npm install @ape-framework/common
 ```
 
 The `common` package contains useful interfaces for a client application to interact with the server. It is a subset of the `server` package and has no dependency.
-
-## Starter project
-
-Use [@ape-framework/starter](https://www.npmjs.com/package/@ape-framework/starter) to quickly create a Node.js application using Ape Framework.
 
 ## Hello Ape!
 
