@@ -12,11 +12,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      # TODO remove debug
-      - name: Debug
-        run: |
-          pwd
-
       - name: Get tag
         id: tag
         run: |
@@ -46,25 +41,24 @@ jobs:
         env:
           NODE_PATH: src
 
-      # TODO remove debug
-      # - name: Publish server package to NPM
-      #   run: |
-      #     yarn build:server
-      #     ./package.sh server
-      #     sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/server/package.json
-      #     sed -i "s|__description__|${{ github.event.repository.description }}|" dist/server/package.json
-      #     cd $GITHUB_WORKSPACE/dist/server
-      #     npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish server package to NPM
+        run: |
+          yarn build:server
+          ./package.sh server
+          sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/server/package.json
+          sed -i "s|__description__|${{ github.event.repository.description }}|" dist/server/package.json
+          cd $GITHUB_WORKSPACE/dist/server
+          npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # - name: Publish common package to NPM
-      #   run: |
-      #     yarn build:common
-      #     ./package.sh common
-      #     sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/common/package.json
-      #     sed -i "s|__description__|${{ github.event.repository.description }}|" dist/common/package.json
-      #     cd $GITHUB_WORKSPACE/dist/common
-      #     npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish common package to NPM
+        run: |
+          yarn build:common
+          ./package.sh common
+          sed -i "s|__version__|${{ steps.tag.outputs.version }}|" dist/common/package.json
+          sed -i "s|__description__|${{ github.event.repository.description }}|" dist/common/package.json
+          cd $GITHUB_WORKSPACE/dist/common
+          npm publish --tag=${{ steps.tag.outputs.is_dev == 'true' && 'dev' || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
