@@ -11,7 +11,7 @@ let bundles: Bundle[];
 
 export const loadBundles = async () => {
   // TODO remove debug
-  throw new Error(`${process.cwd()}-${node.path}-${config.module}`);
+  throw new Error(path.join(process.cwd(), node.path, config.module));
   const boot: Boot = (await import(path.join(process.cwd(), node.path, config.module))).default;
   bundles = await boot.bundles();
   return bundles;
