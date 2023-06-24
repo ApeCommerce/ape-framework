@@ -2,7 +2,6 @@
 const fs = require('fs-extra');
 
 const name = process.argv.slice(2).shift();
-
 if (!['server', 'common'].includes(name)) throw new Error(`Bad package name "${name}"`);
 
 const devPackage = fs.readJsonSync('package.json');
@@ -13,7 +12,7 @@ const pkg = {
   license: 'MIT',
   author: 'Matthieu Symoens',
   description: '__description__',
-  keywords: ['ape', 'api', 'commerce', 'ecommerce', 'framework', 'node', 'typescript'],
+  keywords: ['ape', 'api', 'framework', 'node', 'typescript'],
   repository: {
     type: 'git',
     url: 'git+https://github.com/ApeCommerce/ape-framework.git',
