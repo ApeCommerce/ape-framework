@@ -11,7 +11,7 @@ GitHub repository: [ApeCommerce/ape-framework](https://github.com/ApeCommerce/ap
 
 ## Starter project
 
-Use [@ape-framework/starter](https://www.npmjs.com/package/@ape-framework/starter) to quickly create a Node.js application using Ape Framework.
+Use [@ape-framework/starter](https://www.npmjs.com/package/@ape-framework/starter) CLI to quickly create a Node.js application using Ape Framework.
 
 ## Installation
 
