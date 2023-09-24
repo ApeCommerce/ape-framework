@@ -37,9 +37,7 @@ jobs:
         run: yarn lint:ci
 
       - name: Run unit tests
-        run: yarn test:ci test/unit
-        env:
-          NODE_PATH: src
+        run: yarn test:ci
 
       - name: Publish server package to NPM
         run: |

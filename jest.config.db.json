@@ -1,0 +1,28 @@
+{
+  "preset": "ts-jest",
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "testMatch": [
+    "<rootDir>/test/integration/db/**/*.spec.ts"
+  ],
+  "collectCoverage": false,
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.ts"
+  ],
+  "coveragePathIgnorePatterns": [],
+  "coverageDirectory": "coverage",
+  "coverageReporters": [
+    "lcov",
+    "text"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "statements": 100,
+      "branches": 100,
+      "functions": 100,
+      "lines": 100
+    }
+  }
+}
