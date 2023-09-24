@@ -8,6 +8,11 @@ describe('Getting the config from file', () => {
     expect(getConfig()).toStrictEqual({
       bootModule: 'fileBoot',
 
+      logLevel: 'error',
+      logDestination: 'stdout',
+      logPretty: false,
+      logFile: 'fileApe.log',
+
       apiName: 'FILE Ape Project',
       apiVersion: '0.0.2',
       apiHost: '0.0.0.2',
@@ -25,11 +30,6 @@ describe('Getting the config from file', () => {
       pwdHashCost: 2,
 
       i18nFallbackLanguage: 'fr-CA',
-
-      logLevel: 'error',
-      logDestination: 'stdout',
-      logPretty: false,
-      logFile: 'fileApe.log',
 
       dbModule: 'mysql',
       dbMariadbHost: 'fileHost',

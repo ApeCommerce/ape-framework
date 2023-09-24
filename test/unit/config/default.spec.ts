@@ -5,6 +5,11 @@ describe('Getting the default config', () => {
     expect(getConfig()).toStrictEqual({
       bootModule: 'boot',
 
+      logLevel: 'info',
+      logDestination: 'stdout',
+      logPretty: false,
+      logFile: 'ape.log',
+
       apiName: 'New Ape Project',
       apiVersion: '0.0.0',
       apiHost: '0.0.0.0',
@@ -22,11 +27,6 @@ describe('Getting the default config', () => {
       pwdHashCost: 10,
 
       i18nFallbackLanguage: 'en',
-
-      logLevel: 'info',
-      logDestination: 'stdout',
-      logPretty: false,
-      logFile: 'ape.log',
 
       dbModule: 'sqlite',
       dbMariadbHost: '',

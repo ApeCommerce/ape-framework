@@ -6,6 +6,11 @@ describe('Getting the config from environment', () => {
     expect(getConfig()).toStrictEqual({
       bootModule: 'envBoot',
 
+      logLevel: 'warn',
+      logDestination: 'file',
+      logPretty: true,
+      logFile: 'envApe.log',
+
       apiName: 'ENV Ape Project',
       apiVersion: '0.0.1',
       apiHost: '0.0.0.1',
@@ -23,11 +28,6 @@ describe('Getting the config from environment', () => {
       pwdHashCost: 1,
 
       i18nFallbackLanguage: 'fr',
-
-      logLevel: 'warn',
-      logDestination: 'file',
-      logPretty: true,
-      logFile: 'envApe.log',
 
       dbModule: 'mariadb',
       dbMariadbHost: 'envHost',

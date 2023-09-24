@@ -1,6 +1,7 @@
 import fs from 'fs-extra';
 import { Configuration } from './configuration';
 import { parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
+import config from './config';
 import defaults from './default';
 import env from './env';
 
@@ -29,6 +30,11 @@ const loadConfig = (override: Partial<Configuration>, file: string): Configurati
   return {
     bootModule: parseString(loadProperty('bootModule', override, json, env, defaults)),
 
+    logLevel: parseString(loadProperty('logLevel', override, json, env, defaults)),
+    logDestination: parseString(loadProperty('logDestination', override, json, env, defaults)),
+    logPretty: parseBoolean(loadProperty('logPretty', override, json, env, defaults)),
+    logFile: parseString(loadProperty('logFile', override, json, env, defaults)),
+
     apiName: parseString(loadProperty('apiName', override, json, env, defaults)),
     apiVersion: parseString(loadProperty('apiVersion', override, json, env, defaults)),
     apiHost: parseString(loadProperty('apiHost', override, json, env, defaults)),
@@ -46,11 +52,6 @@ const loadConfig = (override: Partial<Configuration>, file: string): Configurati
     pwdHashCost: parseNumber(loadProperty('pwdHashCost', override, json, env, defaults)),
 
     i18nFallbackLanguage: parseString(loadProperty('i18nFallbackLanguage', override, json, env, defaults)),
-
-    logLevel: parseString(loadProperty('logLevel', override, json, env, defaults)),
-    logDestination: parseString(loadProperty('logDestination', override, json, env, defaults)),
-    logPretty: parseBoolean(loadProperty('logPretty', override, json, env, defaults)),
-    logFile: parseString(loadProperty('logFile', override, json, env, defaults)),
 
     dbModule: parseString(loadProperty('dbModule', override, json, env, defaults)),
     dbMariadbHost: parseString(loadProperty('dbMariadbHost', override, json, env, defaults)),
@@ -112,7 +113,7 @@ let configuration: Configuration;
 
 export const initConfig = (
   override: Partial<Configuration> = {},
-  file: string = 'ape.config.json',
+  file: string = config.filename,
 ) => {
   configuration = loadConfig(override, file);
   return configuration;

@@ -8,6 +8,11 @@ export default {
 
   bootModule: process.env.APE_BOOT_MODULE,
 
+  logLevel: process.env.APE_LOG_LEVEL,
+  logDestination: process.env.APE_LOG_DESTINATION,
+  logPretty: process.env.APE_LOG_PRETTY,
+  logFile: process.env.APE_LOG_FILE,
+
   apiName: process.env.APE_API_NAME,
   apiVersion: process.env.APE_API_VERSION,
   apiHost: process.env.APE_API_HOST,
@@ -25,11 +30,6 @@ export default {
   pwdHashCost: process.env.APE_PWD_HASH_COST,
 
   i18nFallbackLanguage: process.env.APE_I18N_FALLBACK_LANGUAGE,
-
-  logLevel: process.env.APE_LOG_LEVEL,
-  logDestination: process.env.APE_LOG_DESTINATION,
-  logPretty: process.env.APE_LOG_PRETTY,
-  logFile: process.env.APE_LOG_FILE,
 
   dbModule: process.env.APE_DB_MODULE,
   dbMariadbHost: process.env.APE_DB_MARIADB_HOST,

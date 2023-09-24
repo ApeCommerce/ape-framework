@@ -1,6 +1,10 @@
 export default {
   bootModule: 'boot',
 
+  logLevel: 'info',
+  logDestination: 'stdout',
+  logFile: 'ape.log',
+
   apiName: 'New Ape Project',
   apiVersion: '0.0.0',
   apiHost: '0.0.0.0',
@@ -13,10 +17,6 @@ export default {
   pwdHashCost: 10,
 
   i18nFallbackLanguage: 'en',
-
-  logLevel: 'info',
-  logDestination: 'stdout',
-  logFile: 'ape.log',
 
   dbModule: 'sqlite',
   dbMariadbPort: 3306,

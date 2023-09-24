@@ -1,6 +1,11 @@
 export interface Configuration {
   bootModule: string,
 
+  logLevel: string,
+  logDestination: string,
+  logPretty: boolean,
+  logFile: string,
+
   apiName: string,
   apiVersion: string,
   apiHost: string,
@@ -18,11 +23,6 @@ export interface Configuration {
   pwdHashCost: number,
 
   i18nFallbackLanguage: string,
-
-  logLevel: string,
-  logDestination: string,
-  logPretty: boolean,
-  logFile: string,
 
   dbModule: string,
   dbMariadbHost: string,

@@ -9,6 +9,11 @@ describe('Getting the config from override', () => {
     expect(getConfig()).toStrictEqual({
       bootModule: 'overrideBoot',
 
+      logLevel: 'fatal',
+      logDestination: 'file',
+      logPretty: true,
+      logFile: 'overrideApe.log',
+
       apiName: 'OVERRIDE Ape Project',
       apiVersion: '0.0.3',
       apiHost: '0.0.0.3',
@@ -26,11 +31,6 @@ describe('Getting the config from override', () => {
       pwdHashCost: 3,
 
       i18nFallbackLanguage: 'ja',
-
-      logLevel: 'fatal',
-      logDestination: 'file',
-      logPretty: true,
-      logFile: 'overrideApe.log',
 
       dbModule: 'postgres',
       dbMariadbHost: 'overrideHost',

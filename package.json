@@ -11,8 +11,7 @@
     "lint": "eslint src --fix",
     "lint:ci": "eslint src",
     "test": "jest --verbose",
-    "test:coverage": "jest --verbose --coverage",
-    "test:ci": "jest",
+    "test:ci": "jest --coverage",
     "compile": "tsc",
     "build:server": "tsc --project tsconfig.build.server.json",
     "build:common": "tsc --project tsconfig.build.common.json"
