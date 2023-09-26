@@ -1,17 +1,10 @@
 import Mailgen, { ContentBody } from 'mailgen';
 import { Email } from '../email';
 import { Mail } from '../mail';
-import { timestamp } from '../../utils';
 import config from '../config';
 import log from '../../log';
 
 export default abstract class MailModule {
-  protected lastMail?: Mail;
-
-  protected async sendMail(mail: Mail) {
-    this.lastMail = mail;
-  }
-
   async send(to: string[], email: Email) {
     const mailgen = new Mailgen({
       theme: config.theme,
@@ -46,20 +39,17 @@ export default abstract class MailModule {
 
     await this.sendMail({
       to,
-      fromName: email.fromName,
+      nameFrom: email.nameFrom,
       replyTo: email.replyTo,
       subject: email.subject,
       html: mailgen.generate({ body }),
       text: mailgen.generatePlaintext({ body }),
-      sendTs: timestamp(),
     });
 
     log.debug(`Mail: sent mail to ${to.join(', ')}`);
   }
 
-  getLastMail() {
-    return this.lastMail;
-  }
+  protected abstract sendMail(mail: Mail): Promise<void>;
 
   abstract close(): Promise<void>;
 }

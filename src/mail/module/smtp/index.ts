@@ -12,11 +12,10 @@ export default class SmtpMail extends MailModule {
   }
 
   protected async sendMail(mail: Mail) {
-    await super.sendMail(mail);
     await this.transporter.sendMail({
       to: mail.to,
       from: {
-        name: mail.fromName,
+        name: mail.nameFrom,
         address: config.email,
       },
       replyTo: {

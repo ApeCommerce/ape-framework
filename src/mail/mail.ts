@@ -1,11 +1,10 @@
 export interface Mail {
   to: string[],
-  fromName: string,
+  nameFrom: string,
   replyTo: Address,
   subject: string,
   html: string,
   text: string,
-  sendTs: number,
 }
 
 export interface Address {

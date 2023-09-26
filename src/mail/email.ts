@@ -1,7 +1,7 @@
 import { Address } from './mail';
 
 export interface Email {
-  fromName: string,
+  nameFrom: string,
   replyTo: Address,
   subject: string,
   header: string,
