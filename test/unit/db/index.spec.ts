@@ -1,9 +1,9 @@
 import '../config';
-import Knex from 'db/knex';
+import Database from 'db/database';
 
 describe('Loading the module', () => {
-  test('Returns an instance of Knex', async () => {
-    const db: Knex = (await import('db')).default;
+  test('Returns expected value', async () => {
+    const db: Database = (await import('db')).default;
     expect(typeof db.raw).toBe('function');
     expect(typeof db.insert).toBe('function');
     expect(typeof db.select).toBe('function');

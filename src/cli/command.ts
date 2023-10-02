@@ -1,5 +1,5 @@
 export interface Command {
-  arg: string,
+  name: string,
   handler: (
     args: (any)[],
     options: { [name: string]: any },

@@ -17,18 +17,18 @@ const exec = async () => {
     ]),
     '',
     'Commands:',
-    formatList(commands.map((command) => command.arg).sort()),
+    formatList(commands.map((command) => command.name).sort()),
   ]);
 
   const options: { [name: string]: any } = parseArgs(process.argv.slice(2));
   const args: any[] = options._;
   delete options._;
 
-  const arg = parseString(args.shift());
-  if (!arg || arg === 'help') { writeLn(help); exit(); }
+  const name = parseString(args.shift());
+  if (!name || name === 'help') { writeLn(help); exit(); }
 
-  const command = commands.find((c) => c.arg === arg);
-  if (!command) throw new Error(`CLI: invalid command "${arg}"`);
+  const command = commands.find((c) => c.name === name);
+  if (!command) throw new Error(`CLI: invalid command "${name}"`);
 
   command.handler(args, options);
 };

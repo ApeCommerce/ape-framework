@@ -34,7 +34,7 @@ const process = async (queueId: string) => {
 };
 
 const command: Command = {
-  arg: 'queue',
+  name: 'queue',
   handler: async (args) => {
     const action = parseString(args[0]);
     if (!action || action === 'help') { writeLn(help); exit(); }

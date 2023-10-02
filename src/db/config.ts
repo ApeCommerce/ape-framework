@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import { getConfig } from '../config';
-import Knex from './knex';
+import Database from './database';
 
 const config = getConfig();
 
@@ -29,7 +29,7 @@ if (module === Module.mariadb) {
   if (!config.dbPostgresDatabase) throw new Error('DB: postgres database not provided');
 }
 
-const moduleConfig: { [module in Module]: Knex.Config } = {
+const moduleConfig: { [module in Module]: Database.Config } = {
   mariadb: {
     client: 'mysql2',
     connection: {

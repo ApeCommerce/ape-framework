@@ -17,7 +17,7 @@ const start = async () => {
 };
 
 const command: Command = {
-  arg: 'api',
+  name: 'api',
   handler: async (args) => {
     const action = parseString(args[0]);
     if (!action || action === 'help') { writeLn(help); exit(); }

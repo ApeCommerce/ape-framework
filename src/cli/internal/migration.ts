@@ -4,7 +4,7 @@ import { getBundle } from '../../boot';
 import { MigrationList } from '../../db/schema/migrationList';
 import { parseBoolean, parseString } from '../../utils';
 import { Schema } from '../../db/schema/schema';
-import Knex from '../../db/knex';
+import Database from '../../db/database';
 
 const help = formatText([
   'Usage:',
@@ -38,7 +38,7 @@ const list = async (bundleId?: string, pending?: boolean) => {
   } else {
     writeLn('No migration.');
   }
-  ((await import('../../db')).default as Knex).destroy();
+  ((await import('../../db')).default as Database).destroy();
 };
 
 const run = async (bundleId?: string, one?: boolean) => {
@@ -52,7 +52,7 @@ const run = async (bundleId?: string, one?: boolean) => {
   } else {
     writeLn('Nothing to do.');
   }
-  ((await import('../../db')).default as Knex).destroy();
+  ((await import('../../db')).default as Database).destroy();
 };
 
 const rollback = async (bundleId?: string, one?: boolean) => {
@@ -66,11 +66,11 @@ const rollback = async (bundleId?: string, one?: boolean) => {
   } else {
     writeLn('Nothing to do.');
   }
-  ((await import('../../db')).default as Knex).destroy();
+  ((await import('../../db')).default as Database).destroy();
 };
 
 const command: Command = {
-  arg: 'migration',
+  name: 'migration',
   handler: async (args, options) => {
     const action = parseString(args[0]);
     if (!action || action === 'help') { writeLn(help); exit(); }

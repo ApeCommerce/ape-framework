@@ -1,9 +1,9 @@
-import Knex from '../knex';
+import Database from '../database';
 
 export interface Migration {
   migrationId: string,
-  up: (db: Knex) => Promise<void>,
-  down: (db: Knex) => Promise<void>,
+  up: (db: Database) => Promise<void>,
+  down: (db: Database) => Promise<void>,
 }
 
 export default Migration;
