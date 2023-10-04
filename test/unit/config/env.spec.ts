@@ -29,17 +29,7 @@ describe('Getting the config from environment', () => {
 
       i18nFallbackLanguage: 'fr',
 
-      dbModule: 'mariadb',
-      dbMariadbHost: 'envHost',
-      dbMariadbPort: 1001,
-      dbMariadbUser: 'envUser',
-      dbMariadbPassword: 'envPassword',
-      dbMariadbDatabase: 'envDatabase',
-      dbMariadbSsl: true,
-      dbMariadbSslCa: 'envSslCa',
-      dbMariadbSslCert: 'envSslCert',
-      dbMariadbSslKey: 'envSslKey',
-      dbMariadbSslVerify: false,
+      dbModule: 'memory',
       dbMysqlHost: 'envHost',
       dbMysqlPort: 1001,
       dbMysqlUser: 'envUser',

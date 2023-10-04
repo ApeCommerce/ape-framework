@@ -5,7 +5,6 @@ import Database from './database';
 const config = getConfig();
 
 export enum Module {
-  mariadb = 'mariadb',
   memory = 'memory',
   mysql = 'mysql',
   postgres = 'postgres',
@@ -15,11 +14,7 @@ export enum Module {
 export const module = Object.values(Module).find((m) => m === config.dbModule);
 if (!module) throw new Error(`DB: invalid module "${config.dbModule}"`);
 
-if (module === Module.mariadb) {
-  if (!config.dbMariadbHost) throw new Error('DB: mariadb host not provided');
-  if (!config.dbMariadbPort) throw new Error('DB: mariadb port not provided');
-  if (!config.dbMariadbDatabase) throw new Error('DB: mariadb database not provided');
-} else if (module === Module.mysql) {
+if (module === Module.mysql) {
   if (!config.dbMysqlHost) throw new Error('DB: mysql host not provided');
   if (!config.dbMysqlPort) throw new Error('DB: mysql port not provided');
   if (!config.dbMysqlDatabase) throw new Error('DB: mysql database not provided');
@@ -30,24 +25,6 @@ if (module === Module.mariadb) {
 }
 
 const moduleConfig: { [module in Module]: Database.Config } = {
-  mariadb: {
-    client: 'mysql2',
-    connection: {
-      host: config.dbMariadbHost,
-      port: config.dbMariadbPort,
-      ...(config.dbMariadbUser ? { user: config.dbMariadbUser } : {}),
-      ...(config.dbMariadbPassword ? { password: config.dbMariadbPassword } : {}),
-      database: config.dbMariadbDatabase,
-      ...(config.dbMariadbSsl ? {
-        ssl: {
-          ...(config.dbMariadbSslCa ? { ca: fs.readFileSync(config.dbMariadbSslCa).toString() } : {}),
-          ...(config.dbMariadbSslCert ? { cert: fs.readFileSync(config.dbMariadbSslCert).toString() } : {}),
-          ...(config.dbMariadbSslKey ? { key: fs.readFileSync(config.dbMariadbSslKey).toString() } : {}),
-          rejectUnauthorized: config.dbMariadbSslVerify,
-        },
-      } : {}),
-    },
-  },
   memory: {
     client: 'sqlite3',
     connection: {

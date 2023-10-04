@@ -19,8 +19,6 @@ export default {
   i18nFallbackLanguage: 'en',
 
   dbModule: 'sqlite',
-  dbMariadbPort: 3306,
-  dbMariadbSslVerify: true,
   dbMysqlPort: 3306,
   dbMysqlSslVerify: true,
   dbPostgresPort: 5432,
