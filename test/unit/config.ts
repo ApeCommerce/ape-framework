@@ -3,6 +3,8 @@ import { initConfig } from 'config';
 initConfig({
   bootModule: '../test/fixture/boot',
 
+  logLevel: 'silent',
+
   apiName: 'TEST Ape Project',
   apiVersion: '0.0.0-test',
   apiRandomPort: true,
@@ -16,10 +18,6 @@ initConfig({
   jwtSecret: 'secret',
 
   pwdHashCost: 3,
-
-  i18nFallbackLanguage: 'en',
-
-  logLevel: 'silent',
 
   dbModule: 'memory',
 });

@@ -4,6 +4,11 @@ import { parseBytes, parseMilliseconds } from 'utils';
 const override: Configuration = {
   bootModule: 'overrideBoot',
 
+  logLevel: 'fatal',
+  logDestination: 'file',
+  logPretty: true,
+  logFile: 'overrideApe.log',
+
   apiName: 'OVERRIDE Ape Project',
   apiVersion: '0.0.3',
   apiHost: '0.0.0.3',
@@ -21,11 +26,6 @@ const override: Configuration = {
   pwdHashCost: 3,
 
   i18nFallbackLanguage: 'ja',
-
-  logLevel: 'fatal',
-  logDestination: 'file',
-  logPretty: true,
-  logFile: 'overrideApe.log',
 
   dbModule: 'postgres',
   dbMariadbHost: 'overrideHost',
