@@ -15,7 +15,7 @@ export default class SmtpMail extends MailModule {
     await this.transporter.sendMail({
       to: mail.to,
       from: {
-        name: mail.nameFrom,
+        name: mail.fromName,
         address: config.email,
       },
       replyTo: {

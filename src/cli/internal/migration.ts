@@ -76,7 +76,7 @@ const command: Command = {
     if (!action || action === 'help') { writeLn(help); exit(); }
 
     const bundleId = parseString(options.b || options.bundle) || undefined;
-    if (bundleId && !(await getBundle(bundleId))) throw new Error(`Migration: invalid bundle id "${bundleId}"`);
+    if (bundleId && !(await getBundle(bundleId))) throw new Error(`Migration: invalid bundleId "${bundleId}"`);
 
     const pending = parseBoolean(options.pending);
     const one = parseBoolean(options.one);

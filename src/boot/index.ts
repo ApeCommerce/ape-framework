@@ -1,11 +1,10 @@
 import path from 'path';
+import { Boot } from './boot';
 import { Bundle } from './bundle';
 import config from './config';
 import node from '../node';
 
-export interface Boot {
-  bundles: () => Promise<Bundle[]>,
-}
+export { Boot, Bundle };
 
 let bundles: Bundle[];
 
@@ -20,7 +19,7 @@ export const getBundles = async () => bundles || loadBundles();
 export const getBundle = async (bundleId: string) => (await getBundles()).find((b) => b.bundleId === bundleId);
 
 export default {
-  loadBundles,
-  getBundles,
   getBundle,
+  getBundles,
+  loadBundles,
 };

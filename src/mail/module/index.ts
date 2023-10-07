@@ -39,7 +39,7 @@ export default abstract class MailModule {
 
     await this.sendMail({
       to,
-      nameFrom: email.nameFrom,
+      fromName: email.fromName,
       replyTo: email.replyTo,
       subject: email.subject,
       html: mailgen.generate({ body }),

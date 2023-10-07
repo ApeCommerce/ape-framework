@@ -3,7 +3,7 @@ import { createToken, verifyToken } from 'jwt';
 import { parseMilliseconds, parseSeconds, timestamp, wait } from 'utils';
 import { User } from 'jwt/user';
 
-const user: User = { id: 'foo', roles: ['one', 'two'] };
+const user: User = { userId: 'foo', roles: ['one', 'two'] };
 const type = 'authorization';
 
 describe('Verifying a valid token', () => {

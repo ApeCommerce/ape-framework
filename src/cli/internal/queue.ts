@@ -24,11 +24,11 @@ const list = async () => {
 };
 
 const process = async (queueId: string) => {
-  if (!queueId) throw new Error('Queue: queue id not provided');
+  if (!queueId) throw new Error('Queue: queueId not provided');
 
   const mq = (await import('../../mq')).default;
   const queue = await mq.getQueue(queueId);
-  if (!queue) throw new Error(`Queue: invalid queue id "${queueId}"`);
+  if (!queue) throw new Error(`Queue: invalid queueId "${queueId}"`);
 
   mq.createWorker(queue).start();
 };

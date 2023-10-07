@@ -2,7 +2,7 @@ import '../config';
 import { hasRoles } from 'jwt';
 import { User } from 'jwt/user';
 
-const user: User = { id: 'foo', roles: ['one', 'two'] };
+const user: User = { userId: 'foo', roles: ['one', 'two'] };
 
 describe('Checking roles', () => {
   test('Returns expected value', async () => {
