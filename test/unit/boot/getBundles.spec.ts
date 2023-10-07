@@ -1,7 +1,7 @@
 import '../config';
 import { getBundles } from 'boot';
 
-describe('Getting bundles', () => {
+describe('Getting the bundles', () => {
   test('Returns expected value', async () => {
     const bundles = await getBundles();
     expect(bundles.length).toBe(3);
@@ -11,7 +11,7 @@ describe('Getting bundles', () => {
   });
 });
 
-describe('Getting bundles multiple times', () => {
+describe('Getting the bundles multiple times', () => {
   test('Returns the same instance', async () => {
     const bundles1 = await getBundles();
     const bundles2 = await getBundles();
