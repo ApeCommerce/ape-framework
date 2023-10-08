@@ -7,7 +7,7 @@ const bundle: Bundle = {
   commands: [],
   migrations: async () => (await import('./migration')).default,
   queues: [],
-  routes: [],
+  routes: async () => [],
   translations,
 };
 

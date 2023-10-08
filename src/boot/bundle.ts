@@ -7,9 +7,9 @@ import { Translation } from '../i18n/translation';
 export interface Bundle {
   bundleId: string,
   name: string,
-  routes?: Route[],
+  commands?: Command[],
   migrations?: () => Promise<Migration[]>,
   queues?: Queue[],
-  commands?: Command[],
+  routes?: () => Promise<Route[]>,
   translations?: Translation[],
 }
