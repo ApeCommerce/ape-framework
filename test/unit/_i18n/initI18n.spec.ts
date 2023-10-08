@@ -7,7 +7,6 @@ describe('Initializing i18n multiple times', () => {
     const i18n2 = await initI18n();
     const i18n3 = await initI18n();
     expect(i18n1).toBe(i18n2);
-    expect(i18n2).toBe(i18n3);
-    expect(i18n3).toBe(i18n1);
+    expect(i18n1).toBe(i18n3);
   });
 });

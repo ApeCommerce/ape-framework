@@ -6,7 +6,6 @@ describe('Initializing and getting the config', () => {
     const config2 = getConfig();
     const config3 = getConfig();
     expect(config1).toBe(config2);
-    expect(config2).toBe(config3);
-    expect(config3).toBe(config1);
+    expect(config1).toBe(config3);
   });
 });

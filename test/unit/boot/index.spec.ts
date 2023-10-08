@@ -7,7 +7,6 @@ describe('Loading and getting the bundles', () => {
     const bundles2 = await getBundles();
     const bundles3 = await getBundles();
     expect(bundles1).toBe(bundles2);
-    expect(bundles2).toBe(bundles3);
-    expect(bundles3).toBe(bundles1);
+    expect(bundles1).toBe(bundles3);
   });
 });
