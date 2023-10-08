@@ -12,7 +12,7 @@ describe('Getting an existing bundle', () => {
 });
 
 describe('Getting a missing bundle', () => {
-  test('Fails', async () => {
+  test('Returns expected value', async () => {
     const oopsBundle = await getBundle('oops');
     expect(oopsBundle).toBe(undefined);
   });
