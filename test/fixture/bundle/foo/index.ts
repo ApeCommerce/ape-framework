@@ -1,4 +1,4 @@
-import { Bundle } from 'boot/bundle';
+import { Bundle } from 'boot';
 
 const bundle: Bundle = {
   bundleId: 'foo',

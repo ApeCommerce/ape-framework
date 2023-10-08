@@ -35,8 +35,7 @@ Let's create an API serving a `/hello` endpoint.
 
 ```ts
 // boot.ts
-import { Boot } from '@ape-framework/server/boot';
-import { Bundle } from '@ape-framework/server/boot/bundle';
+import { Boot, Bundle } from '@ape-framework/server/boot';
 import { send } from '@ape-framework/server/api/handler';
 
 const welcomeBundle: Bundle = {
