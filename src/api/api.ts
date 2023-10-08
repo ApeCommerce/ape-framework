@@ -4,5 +4,3 @@ export interface Api {
   getUrl: () => string,
   doc: () => unknown,
 }
-
-export default Api;

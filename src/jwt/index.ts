@@ -3,6 +3,8 @@ import { User } from './user';
 import config from './config';
 import log from '../log';
 
+export { User };
+
 interface Payload extends JWTPayload {
   type: string,
   user: User,
@@ -38,6 +40,6 @@ export const hasRoles = (user: User, roles: string[]) => roles.every((role) => u
 
 export default {
   createToken,
-  verifyToken,
   hasRoles,
+  verifyToken,
 };
