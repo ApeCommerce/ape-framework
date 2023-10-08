@@ -36,18 +36,17 @@ Let's create an API serving a `/hello` endpoint.
 ```ts
 // boot.ts
 import { Boot, Bundle } from '@ape-framework/server/boot';
-import { send } from '@ape-framework/server/api/handler';
 
 const welcomeBundle: Bundle = {
   bundleId: 'welcome',
   name: 'Welcome',
-  routes: [
+  routes: () => [
     {
       endpoint: {
         method: 'GET',
         path: '/hello',
       },
-      handler: async (request, reply) => send(reply, 'Hello Ape!'),
+      handler: async (request, reply) => reply.send('Hello Ape!'),
     },
   ],
 };
