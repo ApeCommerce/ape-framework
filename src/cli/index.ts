@@ -5,7 +5,7 @@ import { parseString } from '../utils';
 import internalCommands from './internal';
 
 const exec = async () => {
-  const commands = internalCommands;
+  const commands = internalCommands.slice();
   for (const bundle of await getBundles()) {
     (bundle.commands ? await bundle.commands() : []).forEach((command) => {
       commands.push(command);

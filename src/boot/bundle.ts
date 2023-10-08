@@ -9,7 +9,7 @@ export interface Bundle {
   name: string,
   commands?: () => Promise<Command[]>,
   migrations?: () => Promise<Migration[]>,
-  queues?: Queue[],
+  queues?: () => Promise<Queue[]>,
   routes?: () => Promise<Route[]>,
   translations?: Translation[],
 }
