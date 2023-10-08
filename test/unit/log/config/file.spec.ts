@@ -6,7 +6,7 @@ initConfig({
   logFile: '',
 });
 
-describe('Loading the config with missing file while destination is file', () => {
+describe('Loading the config with missing file', () => {
   test('Throws an error', async () => {
     expect.hasAssertions();
     try {

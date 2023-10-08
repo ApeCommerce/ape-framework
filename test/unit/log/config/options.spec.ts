@@ -1,14 +1,15 @@
 import { initConfig } from 'config';
-import { Socket } from 'net';
 
 initConfig({
   logLevel: 'silent',
   logDestination: 'stdout',
 });
 
-describe('Loading the config with stdout destination', () => {
+describe('Loading the config with options', () => {
   test('Returns expected value', async () => {
     const config: any = (await import('log/config')).default;
-    expect(config.stream).toBeInstanceOf(Socket);
+    expect(config.options).toStrictEqual({
+      level: 'silent',
+    });
   });
 });
