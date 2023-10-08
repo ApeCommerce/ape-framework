@@ -11,5 +11,5 @@ export interface Bundle {
   migrations?: () => Promise<Migration[]>,
   queues?: () => Promise<Queue[]>,
   routes?: () => Promise<Route[]>,
-  translations?: Translation[],
+  translations?: () => Promise<Translation[]>,
 }
