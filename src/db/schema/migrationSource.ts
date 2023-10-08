@@ -8,8 +8,8 @@ export class MigrationSource {
     this.bundle = bundle;
   }
 
-  getMigrations() {
-    return Promise.resolve(this.bundle.migrations as Migration[]);
+  async getMigrations() {
+    return this.bundle.migrations ? this.bundle.migrations() : Promise.resolve([]);
   }
 
   getMigrationName(migration: Migration) {

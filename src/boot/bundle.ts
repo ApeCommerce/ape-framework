@@ -8,7 +8,7 @@ export interface Bundle {
   bundleId: string,
   name: string,
   routes?: Route[],
-  migrations?: Migration[],
+  migrations?: () => Promise<Migration[]>,
   queues?: Queue[],
   commands?: Command[],
   translations?: Translation[],

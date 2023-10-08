@@ -18,11 +18,14 @@ const filterBundles = async (bundleId?: string, reverse?: boolean, one?: boolean
     const bundle = await getBundle(bundleId);
     if (bundle) bundles.push(bundle);
   } else {
-    bundles.push(...await getBundles());
+    for (const bundle of await getBundles()) {
+      if (bundle.migrations && (await bundle.migrations()).length) {
+        bundles.push(bundle);
+      }
+    }
   }
-  const result = bundles.filter((b) => (b.migrations || []).length);
-  if (reverse) result.reverse();
-  return result.slice(0, one ? 1 : undefined);
+  if (reverse) bundles.reverse();
+  return bundles.slice(0, one ? 1 : undefined);
 };
 
 export const listMigrations = async (bundleId?: string, pendingOnly?: boolean) => {
