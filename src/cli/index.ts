@@ -5,9 +5,12 @@ import { parseString } from '../utils';
 import internalCommands from './internal';
 
 const exec = async () => {
-  const commands = internalCommands.concat(
-    (await getBundles()).flatMap((bundle) => bundle.commands || []),
-  );
+  const commands = internalCommands;
+  for (const bundle of await getBundles()) {
+    (bundle.commands ? await bundle.commands() : []).forEach((command) => {
+      commands.push(command);
+    });
+  }
 
   const help = formatText([
     'Usage:',

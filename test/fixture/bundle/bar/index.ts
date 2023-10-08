@@ -4,7 +4,7 @@ import translations from './translation';
 const bundle: Bundle = {
   bundleId: 'bar',
   name: 'The bar bundle',
-  commands: [],
+  commands: async () => [],
   migrations: async () => (await import('./migration')).default,
   queues: [],
   routes: async () => [],
