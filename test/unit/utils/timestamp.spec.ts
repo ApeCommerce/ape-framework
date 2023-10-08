@@ -8,7 +8,7 @@ describe('Getting a timestamp', () => {
   });
 });
 
-describe('Getting a timestamp at different times', () => {
+describe('Getting a timestamp multiple times', () => {
   test('Returns expected value', async () => {
     const ts1 = timestamp();
     await wait(parseMilliseconds('1s'));

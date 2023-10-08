@@ -13,7 +13,7 @@ describe('Creating a token', () => {
   });
 });
 
-describe('Creating a token at different times', () => {
+describe('Creating a token multiple times', () => {
   test('Returns expected value', async () => {
     const token1 = await createToken(user, type, timestamp(), parseSeconds('1s'));
     await wait(parseMilliseconds('1s'));
