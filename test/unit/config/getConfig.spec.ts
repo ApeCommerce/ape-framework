@@ -1,7 +1,7 @@
 import { getConfig } from 'config';
 
 describe('Getting the config multiple times', () => {
-  test('Returns the same instance', async () => {
+  test('Returns expected value', async () => {
     const config1 = getConfig();
     const config2 = getConfig();
     const config3 = getConfig();

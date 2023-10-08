@@ -7,7 +7,7 @@ afterAll(async () => {
 });
 
 describe('Listing bundle migrations', () => {
-  test('Returns expected result', async () => {
+  test('Returns expected value', async () => {
     const list1 = await listMigrations('foo');
     expect(list1).toStrictEqual([
       {

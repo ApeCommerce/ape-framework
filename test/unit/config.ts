@@ -3,8 +3,7 @@ import { initConfig } from 'config';
 initConfig({
   bootModule: '../test/fixture/boot',
 
-  logLevel: 'debug',
-  logDestination: 'file',
+  logLevel: 'silent',
 
   apiName: 'TEST Ape Project',
   apiVersion: '0.0.0-test',

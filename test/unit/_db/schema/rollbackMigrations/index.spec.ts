@@ -7,7 +7,7 @@ afterAll(async () => {
 });
 
 describe('Rolling back migrations', () => {
-  test('Returns expected result', async () => {
+  test('Returns expected value', async () => {
     await runMigrations();
     const list1 = await rollbackMigrations();
     expect(list1).toStrictEqual([

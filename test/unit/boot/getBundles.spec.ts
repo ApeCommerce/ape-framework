@@ -12,7 +12,7 @@ describe('Getting the bundles', () => {
 });
 
 describe('Getting the bundles multiple times', () => {
-  test('Returns the same instance', async () => {
+  test('Returns expected value', async () => {
     const bundles1 = await getBundles();
     const bundles2 = await getBundles();
     const bundles3 = await getBundles();

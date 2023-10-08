@@ -1,7 +1,7 @@
 import { getConfig, initConfig } from 'config';
 
 describe('Initializing and getting the config', () => {
-  test('Returns the same instance', async () => {
+  test('Returns expected value', async () => {
     const config1 = initConfig();
     const config2 = getConfig();
     const config3 = getConfig();

@@ -6,7 +6,7 @@ initConfig({
 });
 
 describe('Loading the config', () => {
-  test('Returns expected options', async () => {
+  test('Returns expected value', async () => {
     const config: any = (await import('log/config')).default;
     expect(config.options).toStrictEqual({
       level: 'silent',

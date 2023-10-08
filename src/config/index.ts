@@ -1,28 +1,11 @@
-import fs from 'fs-extra';
 import { Configuration } from './configuration';
+import { loadFile, loadProperty } from './utils';
 import { parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
 import config from './config';
 import defaults from './default';
 import env from './env';
 
-export const loadFile = (path: string) => {
-  let json: any = {};
-  if (fs.existsSync(path)) json = fs.readJsonSync(path);
-  return json;
-};
-
-export const loadProperty = (
-  name: string,
-  overrideConfig: any,
-  fileConfig: any,
-  envConfig: any,
-  defaultConfig: any,
-) => [
-  overrideConfig[name],
-  fileConfig[name],
-  envConfig[name],
-  defaultConfig[name],
-].find((property) => property !== undefined);
+export { Configuration };
 
 const loadConfig = (override: Partial<Configuration>, file: string): Configuration => {
   const json = loadFile(file);
@@ -114,6 +97,4 @@ export const getConfig = () => configuration || initConfig();
 export default {
   getConfig,
   initConfig,
-  loadFile,
-  loadProperty,
 };

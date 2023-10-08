@@ -7,7 +7,7 @@ afterAll(async () => {
 });
 
 describe('Listing pending migrations', () => {
-  test('Returns expected result', async () => {
+  test('Returns expected value', async () => {
     const list1 = await listMigrations(undefined, true);
     expect(list1).toStrictEqual([
       {

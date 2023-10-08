@@ -1,4 +1,4 @@
-import { Configuration } from 'config/configuration';
+import { Configuration } from 'config';
 import { parseBytes, parseMilliseconds } from 'utils';
 
 const override: Configuration = {
