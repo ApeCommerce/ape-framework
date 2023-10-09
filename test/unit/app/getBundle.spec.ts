@@ -1,5 +1,5 @@
 import '../config';
-import { getBundle } from 'boot';
+import { getBundle } from 'app';
 
 describe('Getting an existing bundle', () => {
   test('Returns expected value', async () => {

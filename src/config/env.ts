@@ -6,7 +6,7 @@ export default {
   nodeEnv: process.env.NODE_ENV,
   nodePath: process.env.NODE_PATH,
 
-  bootModule: process.env.APE_BOOT_MODULE,
+  appBoot: process.env.APE_APP_BOOT,
 
   logLevel: process.env.APE_LOG_LEVEL,
   logDestination: process.env.APE_LOG_DESTINATION,

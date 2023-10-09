@@ -1,5 +1,5 @@
 export interface Configuration {
-  bootModule: string,
+  appBoot: string,
 
   logLevel: string,
   logDestination: string,

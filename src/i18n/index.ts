@@ -1,5 +1,5 @@
 import i18next, { i18n as I18next, Resource as Resources } from 'i18next';
-import { getBundles } from '../boot';
+import { getBundles } from '../app';
 import config from './config';
 
 const getNamespaces = async () => (await getBundles()).map((bundle) => bundle.bundleId);

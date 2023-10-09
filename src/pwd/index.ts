@@ -1,10 +1,13 @@
 import bcrypt from 'bcrypt';
+import { Pwd } from './pwd';
 import config from './config';
 
 export const hashPassword = (password: string) => bcrypt.hash(password, config.hashCost);
 export const verifyPassword = (password: string, hash: string) => bcrypt.compare(password, hash);
 
-export default {
+const pwd: Pwd = {
   hashPassword,
   verifyPassword,
 };
+
+export default pwd;

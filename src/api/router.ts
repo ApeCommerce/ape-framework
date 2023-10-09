@@ -1,5 +1,5 @@
 import { FastifyPluginCallback as Plugin } from 'fastify';
-import { getBundles } from '../boot';
+import { getBundles } from '../app';
 import schema from './schema';
 
 const protectedRoutes: { path: string, roles: string[] }[] = [];

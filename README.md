@@ -35,12 +35,12 @@ Let's create an API serving a `/hello` endpoint.
 
 ```ts
 // boot.ts
-import { Boot, Bundle } from '@ape-framework/server/boot';
+import { Boot, Bundle } from '@ape-framework/server/app';
 
 const welcomeBundle: Bundle = {
   bundleId: 'welcome',
   name: 'Welcome',
-  routes: () => [
+  routes: async () => [
     {
       endpoint: {
         method: 'GET',

@@ -1,6 +1,6 @@
 import parseArgs from 'yargs-parser';
 import { exit, formatList, formatTable, formatText, writeLn } from './utils';
-import { getBundles } from '../boot';
+import { getBundles } from '../app';
 import { parseString } from '../utils';
 import internalCommands from './internal';
 

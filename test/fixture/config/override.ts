@@ -2,7 +2,7 @@ import { Configuration } from 'config';
 import { parseBytes, parseMilliseconds } from 'utils';
 
 const override: Configuration = {
-  bootModule: 'overrideBoot',
+  appBoot: 'overrideBoot',
 
   logLevel: 'fatal',
   logDestination: 'file',

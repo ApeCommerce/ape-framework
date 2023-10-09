@@ -1,5 +1,5 @@
 import '../config';
-import { loadBundles } from 'boot';
+import { loadBundles } from 'app';
 
 describe('Loading the bundles multiple times', () => {
   test('Returns expected value', async () => {

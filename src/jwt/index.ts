@@ -1,9 +1,10 @@
 import { jwtVerify, JWTPayload, ProtectedHeaderParameters as Header, SignJWT } from 'jose';
+import { Jwt } from './jwt';
 import { User } from './user';
 import config from './config';
 import log from '../log';
 
-export { User };
+export { Jwt, User };
 
 interface Payload extends JWTPayload {
   type: string,
@@ -38,8 +39,10 @@ export const verifyToken = async (token: string, type: string, timestamp: number
 
 export const hasRoles = (user: User, roles: string[]) => roles.every((role) => user.roles.includes(role));
 
-export default {
+const jwt: Jwt = {
   createToken,
   hasRoles,
   verifyToken,
 };
+
+export default jwt;

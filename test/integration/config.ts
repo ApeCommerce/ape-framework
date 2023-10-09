@@ -1,7 +1,7 @@
 import { initConfig } from 'config';
 
 initConfig({
-  bootModule: '../test/fixture/boot',
+  appBoot: '../test/fixture/boot',
 
   logLevel: 'silent',
 });

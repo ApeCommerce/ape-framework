@@ -1,5 +1,4 @@
-import { Bundle } from '../../boot/bundle';
-import { getBundle, getBundles } from '../../boot';
+import { getBundle, getBundles, Bundle } from '../../app';
 import { Migration } from './migration';
 import { MigrationList } from './migrationList';
 import { MigrationSource } from './migrationSource';

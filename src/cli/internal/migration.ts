@@ -1,6 +1,6 @@
 import { Command } from '../command';
 import { exit, formatTable, formatText, writeLn } from '../utils';
-import { getBundle } from '../../boot';
+import { getBundle } from '../../app';
 import { MigrationList } from '../../db/schema/migrationList';
 import { parseBoolean, parseString } from '../../utils';
 import { Schema } from '../../db/schema/schema';

@@ -1,4 +1,4 @@
-import { getBundles } from '../../boot';
+import { getBundles } from '../../app';
 import { Mq, Sender, Worker } from '../mq';
 import { Queue } from '../queue';
 

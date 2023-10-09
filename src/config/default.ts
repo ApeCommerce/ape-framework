@@ -1,5 +1,5 @@
 export default {
-  bootModule: 'boot',
+  appBoot: 'boot',
 
   logLevel: 'info',
   logDestination: 'stdout',

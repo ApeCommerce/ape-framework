@@ -3,7 +3,7 @@ import { loadFile } from 'config/utils';
 describe('Loading a file', () => {
   test('Returns expected value', async () => {
     expect(loadFile('test/fixture/config/ape.config.json')).toStrictEqual({
-      bootModule: 'fileBoot',
+      appBoot: 'fileBoot',
 
       logLevel: 'error',
       logDestination: 'stdout',

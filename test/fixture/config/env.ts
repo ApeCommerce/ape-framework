@@ -1,4 +1,4 @@
-process.env.APE_BOOT_MODULE = 'envBoot';
+process.env.APE_APP_BOOT = 'envBoot';
 
 process.env.APE_API_NAME = 'ENV Ape Project';
 process.env.APE_API_VERSION = '0.0.1';

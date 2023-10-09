@@ -1,10 +1,10 @@
 import '../../fixture/config/env';
 import { getConfig } from 'config';
 
-describe('Getting the config from environment', () => {
+describe('Getting the config using environment', () => {
   test('Returns expected value', async () => {
     expect(getConfig()).toStrictEqual({
-      bootModule: 'envBoot',
+      appBoot: 'envBoot',
 
       logLevel: 'warn',
       logDestination: 'file',

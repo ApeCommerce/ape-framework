@@ -1,14 +1,14 @@
 import { initConfig } from 'config';
 
 initConfig({
-  bootModule: '../test/fixture/boot',
+  appBoot: '../test/fixture/boot',
 });
 
 describe('Loading the config', () => {
   test('Returns expected value', async () => {
-    const config = (await import('boot/config')).default;
+    const config = (await import('app/config')).default;
     expect(config).toStrictEqual({
-      module: '../test/fixture/boot',
+      boot: '../test/fixture/boot',
     });
   });
 });

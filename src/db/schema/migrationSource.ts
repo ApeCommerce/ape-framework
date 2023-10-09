@@ -1,4 +1,4 @@
-import { Bundle } from '../../boot/bundle';
+import { Bundle } from '../../app';
 import { Migration } from './migration';
 
 export class MigrationSource {

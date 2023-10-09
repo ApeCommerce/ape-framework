@@ -1,5 +1,5 @@
 import { parseString } from '../utils';
-import env from '../config/env';
+import env from './env';
 
 export default {
   env: parseString(env.nodeEnv),

@@ -1,17 +1,17 @@
+import { Config } from './config';
 import { Configuration } from './configuration';
 import { loadFile, loadProperty } from './utils';
 import { parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
-import config from './config';
 import defaults from './default';
 import env from './env';
 
-export { Configuration };
+export { Config, Configuration };
 
 const loadConfig = (override: Partial<Configuration>, file: string): Configuration => {
   const json = loadFile(file);
 
   return {
-    bootModule: parseString(loadProperty('bootModule', override, json, env, defaults)),
+    appBoot: parseString(loadProperty('appBoot', override, json, env, defaults)),
 
     logLevel: parseString(loadProperty('logLevel', override, json, env, defaults)),
     logDestination: parseString(loadProperty('logDestination', override, json, env, defaults)),
@@ -86,7 +86,7 @@ let configuration: Configuration;
 
 export const initConfig = (
   override: Partial<Configuration> = {},
-  file: string = config.filename,
+  file: string = 'ape.config.json',
 ) => {
   configuration = loadConfig(override, file);
   return configuration;
@@ -94,7 +94,9 @@ export const initConfig = (
 
 export const getConfig = () => configuration || initConfig();
 
-export default {
+const config: Config = {
   getConfig,
   initConfig,
 };
+
+export default config;

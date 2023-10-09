@@ -1,5 +1,5 @@
 {
-  "bootModule": "fileBoot",
+  "appBoot": "fileBoot",
 
   "logLevel": "error",
   "logDestination": "stdout",

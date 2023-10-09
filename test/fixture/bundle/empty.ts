@@ -1,4 +1,4 @@
-import { Bundle } from 'boot';
+import { Bundle } from 'app';
 
 const bundle: Bundle = {
   bundleId: 'empty',

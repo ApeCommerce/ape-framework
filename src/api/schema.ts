@@ -1,5 +1,5 @@
 import { bodyMethods, querystringMethods, Endpoint } from './endpoint';
-import { Bundle } from '../boot/bundle';
+import { Bundle } from '../app';
 
 interface RouteSchema {
   tags: string[],

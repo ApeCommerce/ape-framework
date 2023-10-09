@@ -3,7 +3,7 @@ import { getConfig } from 'config';
 describe('Getting the default config', () => {
   test('Returns expected value', async () => {
     expect(getConfig()).toStrictEqual({
-      bootModule: 'boot',
+      appBoot: 'boot',
 
       logLevel: 'info',
       logDestination: 'stdout',

@@ -3,10 +3,10 @@ import { getConfig, initConfig } from 'config';
 
 initConfig({}, 'test/fixture/config/ape.config.json');
 
-describe('Getting the config from file', () => {
+describe('Getting the config using file', () => {
   test('Returns expected value', async () => {
     expect(getConfig()).toStrictEqual({
-      bootModule: 'fileBoot',
+      appBoot: 'fileBoot',
 
       logLevel: 'error',
       logDestination: 'stdout',
