@@ -1,6 +1,10 @@
-import i18next, { i18n as I18next, Resource as Resources } from 'i18next';
+import i18next, { Resource as Resources } from 'i18next';
 import { getBundles } from '../app';
+import { I18n } from './i18n';
+import { Internationalization } from './internationalization';
 import config from './config';
+
+export { I18n, Internationalization };
 
 const getNamespaces = async () => (await getBundles()).map((bundle) => bundle.bundleId);
 
@@ -15,7 +19,7 @@ const getResources = async () => {
   return resources;
 };
 
-let i18n: I18next;
+let internalization: Internationalization;
 
 export const initI18n = async () => {
   await i18next.init({
@@ -23,13 +27,15 @@ export const initI18n = async () => {
     resources: await getResources(),
     fallbackLng: config.fallbackLanguage,
   });
-  i18n = i18next;
-  return i18n;
+  internalization = i18next;
+  return internalization;
 };
 
-export const getI18n = async () => i18n || initI18n();
+export const getI18n = async () => internalization || initI18n();
 
-export default {
-  initI18n,
+const i18n: I18n = {
   getI18n,
+  initI18n,
 };
+
+export default i18n;
