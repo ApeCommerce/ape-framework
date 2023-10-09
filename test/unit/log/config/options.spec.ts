@@ -5,7 +5,7 @@ initConfig({
   logDestination: 'stdout',
 });
 
-describe('Loading the config with options', () => {
+describe('Loading the config', () => {
   test('Returns expected value', async () => {
     const config: any = (await import('log/config')).default;
     expect(config.options).toStrictEqual({
