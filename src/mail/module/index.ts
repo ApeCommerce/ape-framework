@@ -4,7 +4,7 @@ import { Mail } from '../mail';
 import config from '../config';
 import log from '../../log';
 
-export default abstract class MailModule {
+export abstract class MailModule {
   async send(to: string[], email: Email) {
     const mailgen = new Mailgen({
       theme: config.theme,
@@ -53,3 +53,5 @@ export default abstract class MailModule {
 
   abstract close(): Promise<void>;
 }
+
+export default MailModule;

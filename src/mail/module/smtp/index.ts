@@ -1,9 +1,9 @@
 import nodemailer, { Transporter } from 'nodemailer';
 import { Mail } from '../../mail';
+import { MailModule } from '..';
 import config from './config';
-import MailModule from '..';
 
-export default class SmtpMail extends MailModule {
+export class SmtpMail extends MailModule {
   private transporter: Transporter;
 
   constructor() {
@@ -32,3 +32,5 @@ export default class SmtpMail extends MailModule {
     this.transporter.close();
   }
 }
+
+export default SmtpMail;

@@ -16,5 +16,3 @@ export interface Worker {
   start: () => void,
   close: () => Promise<void>,
 }
-
-export default Mq;

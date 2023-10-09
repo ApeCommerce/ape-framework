@@ -6,7 +6,7 @@ import log from '../../../log';
 
 const formatJob = (queue: Queue, job?: BullJob) => (queue.queueId + (job ? ` #${job.id} ${job.name}` : ''));
 
-export default class RedisMq extends MqModule {
+export class RedisMq extends MqModule {
   createSender(queue: Queue) {
     const bullQueue = new BullQueue(queue.queueId, config.queueOptions);
     bullQueue.on('waiting', (job) => log.debug(`MQ: job "${formatJob(queue, job)}" waiting`));
@@ -41,3 +41,5 @@ export default class RedisMq extends MqModule {
     };
   }
 }
+
+export default RedisMq;

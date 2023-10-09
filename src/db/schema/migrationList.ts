@@ -3,5 +3,3 @@ export type MigrationList = {
   migrationId: string,
   pending?: boolean,
 }[];
-
-export default MigrationList;

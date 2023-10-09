@@ -1,9 +1,7 @@
-import Database from '../database';
+import { Database } from '../database';
 
 export interface Migration {
   migrationId: string,
   up: (db: Database) => Promise<void>,
   down: (db: Database) => Promise<void>,
 }
-
-export default Migration;

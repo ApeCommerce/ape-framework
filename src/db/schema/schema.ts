@@ -5,5 +5,3 @@ export interface Schema {
   runMigrations: (bundleId?: string, one?: boolean) => Promise<MigrationList>,
   rollbackMigrations: (bundleId?: string, one?: boolean) => Promise<MigrationList>,
 }
-
-export default Schema;
