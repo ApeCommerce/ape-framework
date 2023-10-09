@@ -1,7 +1,4 @@
-import { Configuration } from 'config';
-import { parseBytes, parseMilliseconds } from 'utils';
-
-const override: Configuration = {
+const override = {
   appBoot: 'overrideBoot',
 
   logLevel: 'fatal',
@@ -14,10 +11,10 @@ const override: Configuration = {
   apiHost: '0.0.0.3',
   apiPort: 1003,
   apiRandomPort: true,
-  apiConnectionTimeout: parseMilliseconds('3ms'),
-  apiRequestTimeout: parseMilliseconds('3ms'),
-  apiKeepAliveTimeout: parseMilliseconds('3ms'),
-  apiBodyLimit: parseBytes('3b'),
+  apiConnectionTimeout: '3ms',
+  apiRequestTimeout: '3ms',
+  apiKeepAliveTimeout: '3ms',
+  apiBodyLimit: '3b',
   apiResponseValidation: true,
 
   jwtIssuer: 'overrideIssuer',

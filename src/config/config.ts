@@ -1,6 +1,6 @@
 import { Configuration } from './configuration';
 
 export interface Config {
-  initConfig: (override?: Partial<Configuration>, file?: string) => Configuration,
+  initConfig: (override?: any, file?: string) => Configuration,
   getConfig: () => Configuration,
 }

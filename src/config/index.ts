@@ -7,7 +7,7 @@ import env from './env';
 
 export { Config, Configuration };
 
-const loadConfig = (override: Partial<Configuration>, file: string): Configuration => {
+const loadConfig = (override: any, file: string): Configuration => {
   const json = loadFile(file);
 
   return {
@@ -85,7 +85,7 @@ const loadConfig = (override: Partial<Configuration>, file: string): Configurati
 let configuration: Configuration;
 
 export const initConfig = (
-  override: Partial<Configuration> = {},
+  override: any = {},
   file: string = 'ape.config.json',
 ) => {
   configuration = loadConfig(override, file);

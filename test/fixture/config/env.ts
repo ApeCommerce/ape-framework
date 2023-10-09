@@ -1,5 +1,10 @@
 process.env.APE_APP_BOOT = 'envBoot';
 
+process.env.APE_LOG_LEVEL = 'warn';
+process.env.APE_LOG_DESTINATION = 'file';
+process.env.APE_LOG_PRETTY = '1';
+process.env.APE_LOG_FILE = 'envApe.log';
+
 process.env.APE_API_NAME = 'ENV Ape Project';
 process.env.APE_API_VERSION = '0.0.1';
 process.env.APE_API_HOST = '0.0.0.1';
@@ -17,11 +22,6 @@ process.env.APE_JWT_SECRET = 'envSecret';
 process.env.APE_PWD_HASH_COST = '1';
 
 process.env.APE_I18N_FALLBACK_LANGUAGE = 'fr';
-
-process.env.APE_LOG_LEVEL = 'warn';
-process.env.APE_LOG_DESTINATION = 'file';
-process.env.APE_LOG_PRETTY = '1';
-process.env.APE_LOG_FILE = 'envApe.log';
 
 process.env.APE_DB_MODULE = 'memory';
 process.env.APE_DB_MYSQL_HOST = 'envHost';
@@ -44,7 +44,6 @@ process.env.APE_DB_POSTGRES_SSL_CA = 'envSslCa';
 process.env.APE_DB_POSTGRES_SSL_CERT = 'envSslCert';
 process.env.APE_DB_POSTGRES_SSL_KEY = 'envSslKey';
 process.env.APE_DB_POSTGRES_SSL_VERIFY = '0';
-
 process.env.APE_DB_SQLITE_FILE = 'envApe.db';
 
 process.env.APE_CACHE_MODULE = 'redis';
