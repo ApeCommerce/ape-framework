@@ -1,8 +1,8 @@
-import { loadProperty } from 'config/utils';
+import { getProperty } from 'config/utils';
 
-describe('Loading a property using override', () => {
+describe('Getting a property using override', () => {
   test('Returns expected value', async () => {
-    expect(loadProperty('foo', {
+    expect(getProperty('foo', {
       foo: 'overrideFoo',
       bar: 'overrideBar',
     }, {
@@ -18,9 +18,9 @@ describe('Loading a property using override', () => {
   });
 });
 
-describe('Loading a property using file', () => {
+describe('Getting a property using file', () => {
   test('Returns expected value', async () => {
-    expect(loadProperty('foo', {
+    expect(getProperty('foo', {
       bar: 'overrideBar',
     }, {
       foo: 'fileFoo',
@@ -35,9 +35,9 @@ describe('Loading a property using file', () => {
   });
 });
 
-describe('Loading a property using env', () => {
+describe('Getting a property using env', () => {
   test('Returns expected value', async () => {
-    expect(loadProperty('foo', {
+    expect(getProperty('foo', {
       bar: 'overrideBar',
     }, {
       bar: 'fileBar',
@@ -51,9 +51,9 @@ describe('Loading a property using env', () => {
   });
 });
 
-describe('Loading a property using default', () => {
+describe('Getting a property using default', () => {
   test('Returns expected value', async () => {
-    expect(loadProperty('foo', {
+    expect(getProperty('foo', {
       bar: 'overrideBar',
     }, {
       bar: 'fileBar',
@@ -66,9 +66,9 @@ describe('Loading a property using default', () => {
   });
 });
 
-describe('Loading a missing property', () => {
+describe('Getting a missing property', () => {
   test('Returns expected value', async () => {
-    expect(loadProperty('foo', {
+    expect(getProperty('foo', {
       bar: 'overrideBar',
     }, {
       bar: 'fileBar',

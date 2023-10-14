@@ -9,20 +9,20 @@ export { App, Boot, Bundle };
 
 let bundles: Bundle[];
 
-export const loadBundles = async () => {
+export const initBundles = async () => {
   const boot: Boot = (await import(path.join(process.cwd(), node.path, config.boot))).default;
   bundles = await boot.bundles();
   return bundles;
 };
 
-export const getBundles = async () => bundles || loadBundles();
+export const getBundles = async () => bundles || initBundles();
 
 export const getBundle = async (bundleId: string) => (await getBundles()).find((b) => b.bundleId === bundleId);
 
 const app: App = {
   getBundle,
   getBundles,
-  loadBundles,
+  initBundles,
 };
 
 export default app;

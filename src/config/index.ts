@@ -1,94 +1,88 @@
 import { Config } from './config';
 import { Configuration } from './configuration';
-import { loadFile, loadProperty } from './utils';
+import { getProperty, loadFile } from './utils';
 import { parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
 import defaults from './default';
 import env from './env';
 
 export { Config, Configuration };
 
-const loadConfig = (override: any, file: string): Configuration => {
-  const json = loadFile(file);
-
-  return {
-    appBoot: parseString(loadProperty('appBoot', override, json, env, defaults)),
-
-    logLevel: parseString(loadProperty('logLevel', override, json, env, defaults)),
-    logDestination: parseString(loadProperty('logDestination', override, json, env, defaults)),
-    logPretty: parseBoolean(loadProperty('logPretty', override, json, env, defaults)),
-    logFile: parseString(loadProperty('logFile', override, json, env, defaults)),
-
-    apiName: parseString(loadProperty('apiName', override, json, env, defaults)),
-    apiVersion: parseString(loadProperty('apiVersion', override, json, env, defaults)),
-    apiHost: parseString(loadProperty('apiHost', override, json, env, defaults)),
-    apiPort: parseNumber(loadProperty('apiPort', override, json, env, defaults)),
-    apiRandomPort: parseBoolean(loadProperty('apiRandomPort', override, json, env, defaults)),
-    apiConnectionTimeout: parseMilliseconds(loadProperty('apiConnectionTimeout', override, json, env, defaults)),
-    apiRequestTimeout: parseMilliseconds(loadProperty('apiRequestTimeout', override, json, env, defaults)),
-    apiKeepAliveTimeout: parseMilliseconds(loadProperty('apiKeepAliveTimeout', override, json, env, defaults)),
-    apiBodyLimit: parseBytes(loadProperty('apiBodyLimit', override, json, env, defaults)),
-    apiResponseValidation: parseBoolean(loadProperty('apiResponseValidation', override, json, env, defaults)),
-
-    jwtIssuer: parseString(loadProperty('jwtIssuer', override, json, env, defaults)),
-    jwtSecret: parseString(loadProperty('jwtSecret', override, json, env, defaults)),
-
-    pwdHashCost: parseNumber(loadProperty('pwdHashCost', override, json, env, defaults)),
-
-    i18nFallbackLanguage: parseString(loadProperty('i18nFallbackLanguage', override, json, env, defaults)),
-
-    dbModule: parseString(loadProperty('dbModule', override, json, env, defaults)),
-    dbMysqlHost: parseString(loadProperty('dbMysqlHost', override, json, env, defaults)),
-    dbMysqlPort: parseNumber(loadProperty('dbMysqlPort', override, json, env, defaults)),
-    dbMysqlUser: parseString(loadProperty('dbMysqlUser', override, json, env, defaults)),
-    dbMysqlPassword: parseString(loadProperty('dbMysqlPassword', override, json, env, defaults)),
-    dbMysqlDatabase: parseString(loadProperty('dbMysqlDatabase', override, json, env, defaults)),
-    dbMysqlSsl: parseBoolean(loadProperty('dbMysqlSsl', override, json, env, defaults)),
-    dbMysqlSslCa: parseString(loadProperty('dbMysqlSslCa', override, json, env, defaults)),
-    dbMysqlSslCert: parseString(loadProperty('dbMysqlSslCert', override, json, env, defaults)),
-    dbMysqlSslKey: parseString(loadProperty('dbMysqlSslKey', override, json, env, defaults)),
-    dbMysqlSslVerify: parseBoolean(loadProperty('dbMysqlSslVerify', override, json, env, defaults)),
-    dbPostgresHost: parseString(loadProperty('dbPostgresHost', override, json, env, defaults)),
-    dbPostgresPort: parseNumber(loadProperty('dbPostgresPort', override, json, env, defaults)),
-    dbPostgresUser: parseString(loadProperty('dbPostgresUser', override, json, env, defaults)),
-    dbPostgresPassword: parseString(loadProperty('dbPostgresPassword', override, json, env, defaults)),
-    dbPostgresDatabase: parseString(loadProperty('dbPostgresDatabase', override, json, env, defaults)),
-    dbPostgresSsl: parseBoolean(loadProperty('dbPostgresSsl', override, json, env, defaults)),
-    dbPostgresSslCa: parseString(loadProperty('dbPostgresSslCa', override, json, env, defaults)),
-    dbPostgresSslCert: parseString(loadProperty('dbPostgresSslCert', override, json, env, defaults)),
-    dbPostgresSslKey: parseString(loadProperty('dbPostgresSslKey', override, json, env, defaults)),
-    dbPostgresSslVerify: parseBoolean(loadProperty('dbPostgresSslVerify', override, json, env, defaults)),
-    dbSqliteFile: parseString(loadProperty('dbSqliteFile', override, json, env, defaults)),
-
-    cacheModule: parseString(loadProperty('cacheModule', override, json, env, defaults)),
-    cacheRedisHost: parseString(loadProperty('cacheRedisHost', override, json, env, defaults)),
-    cacheRedisPort: parseNumber(loadProperty('cacheRedisPort', override, json, env, defaults)),
-    cacheRedisUser: parseString(loadProperty('cacheRedisUser', override, json, env, defaults)),
-    cacheRedisPassword: parseString(loadProperty('cacheRedisPassword', override, json, env, defaults)),
-    cacheRedisPrefix: parseString(loadProperty('cacheRedisPrefix', override, json, env, defaults)),
-
-    mqModule: parseString(loadProperty('mqModule', override, json, env, defaults)),
-    mqRedisHost: parseString(loadProperty('mqRedisHost', override, json, env, defaults)),
-    mqRedisPort: parseNumber(loadProperty('mqRedisPort', override, json, env, defaults)),
-    mqRedisUser: parseString(loadProperty('mqRedisUser', override, json, env, defaults)),
-    mqRedisPassword: parseString(loadProperty('mqRedisPassword', override, json, env, defaults)),
-    mqRedisPrefix: parseString(loadProperty('mqRedisPrefix', override, json, env, defaults)),
-
-    mailModule: parseString(loadProperty('mailModule', override, json, env, defaults)),
-    mailSmtpHost: parseString(loadProperty('mailSmtpHost', override, json, env, defaults)),
-    mailSmtpPort: parseNumber(loadProperty('mailSmtpPort', override, json, env, defaults)),
-    mailSmtpUser: parseString(loadProperty('mailSmtpUser', override, json, env, defaults)),
-    mailSmtpPassword: parseString(loadProperty('mailSmtpPassword', override, json, env, defaults)),
-    mailSmtpEmail: parseString(loadProperty('mailSmtpEmail', override, json, env, defaults)),
-  };
-};
-
 let configuration: Configuration;
 
-export const initConfig = (
-  override: any = {},
-  file: string = 'ape.config.json',
-) => {
-  configuration = loadConfig(override, file);
+export const initConfig = (override: any = {}, file: string = 'ape.config.json') => {
+  const json = loadFile(file);
+
+  configuration = {
+    appBoot: parseString(getProperty('appBoot', override, json, env, defaults)),
+
+    logLevel: parseString(getProperty('logLevel', override, json, env, defaults)),
+    logDestination: parseString(getProperty('logDestination', override, json, env, defaults)),
+    logPretty: parseBoolean(getProperty('logPretty', override, json, env, defaults)),
+    logFile: parseString(getProperty('logFile', override, json, env, defaults)),
+
+    apiName: parseString(getProperty('apiName', override, json, env, defaults)),
+    apiVersion: parseString(getProperty('apiVersion', override, json, env, defaults)),
+    apiHost: parseString(getProperty('apiHost', override, json, env, defaults)),
+    apiPort: parseNumber(getProperty('apiPort', override, json, env, defaults)),
+    apiRandomPort: parseBoolean(getProperty('apiRandomPort', override, json, env, defaults)),
+    apiConnectionTimeout: parseMilliseconds(getProperty('apiConnectionTimeout', override, json, env, defaults)),
+    apiRequestTimeout: parseMilliseconds(getProperty('apiRequestTimeout', override, json, env, defaults)),
+    apiKeepAliveTimeout: parseMilliseconds(getProperty('apiKeepAliveTimeout', override, json, env, defaults)),
+    apiBodyLimit: parseBytes(getProperty('apiBodyLimit', override, json, env, defaults)),
+    apiResponseValidation: parseBoolean(getProperty('apiResponseValidation', override, json, env, defaults)),
+
+    jwtIssuer: parseString(getProperty('jwtIssuer', override, json, env, defaults)),
+    jwtSecret: parseString(getProperty('jwtSecret', override, json, env, defaults)),
+
+    pwdHashCost: parseNumber(getProperty('pwdHashCost', override, json, env, defaults)),
+
+    i18nFallbackLanguage: parseString(getProperty('i18nFallbackLanguage', override, json, env, defaults)),
+
+    dbModule: parseString(getProperty('dbModule', override, json, env, defaults)),
+    dbMysqlHost: parseString(getProperty('dbMysqlHost', override, json, env, defaults)),
+    dbMysqlPort: parseNumber(getProperty('dbMysqlPort', override, json, env, defaults)),
+    dbMysqlUser: parseString(getProperty('dbMysqlUser', override, json, env, defaults)),
+    dbMysqlPassword: parseString(getProperty('dbMysqlPassword', override, json, env, defaults)),
+    dbMysqlDatabase: parseString(getProperty('dbMysqlDatabase', override, json, env, defaults)),
+    dbMysqlSsl: parseBoolean(getProperty('dbMysqlSsl', override, json, env, defaults)),
+    dbMysqlSslCa: parseString(getProperty('dbMysqlSslCa', override, json, env, defaults)),
+    dbMysqlSslCert: parseString(getProperty('dbMysqlSslCert', override, json, env, defaults)),
+    dbMysqlSslKey: parseString(getProperty('dbMysqlSslKey', override, json, env, defaults)),
+    dbMysqlSslVerify: parseBoolean(getProperty('dbMysqlSslVerify', override, json, env, defaults)),
+    dbPostgresHost: parseString(getProperty('dbPostgresHost', override, json, env, defaults)),
+    dbPostgresPort: parseNumber(getProperty('dbPostgresPort', override, json, env, defaults)),
+    dbPostgresUser: parseString(getProperty('dbPostgresUser', override, json, env, defaults)),
+    dbPostgresPassword: parseString(getProperty('dbPostgresPassword', override, json, env, defaults)),
+    dbPostgresDatabase: parseString(getProperty('dbPostgresDatabase', override, json, env, defaults)),
+    dbPostgresSsl: parseBoolean(getProperty('dbPostgresSsl', override, json, env, defaults)),
+    dbPostgresSslCa: parseString(getProperty('dbPostgresSslCa', override, json, env, defaults)),
+    dbPostgresSslCert: parseString(getProperty('dbPostgresSslCert', override, json, env, defaults)),
+    dbPostgresSslKey: parseString(getProperty('dbPostgresSslKey', override, json, env, defaults)),
+    dbPostgresSslVerify: parseBoolean(getProperty('dbPostgresSslVerify', override, json, env, defaults)),
+    dbSqliteFile: parseString(getProperty('dbSqliteFile', override, json, env, defaults)),
+
+    cacheModule: parseString(getProperty('cacheModule', override, json, env, defaults)),
+    cacheRedisHost: parseString(getProperty('cacheRedisHost', override, json, env, defaults)),
+    cacheRedisPort: parseNumber(getProperty('cacheRedisPort', override, json, env, defaults)),
+    cacheRedisUser: parseString(getProperty('cacheRedisUser', override, json, env, defaults)),
+    cacheRedisPassword: parseString(getProperty('cacheRedisPassword', override, json, env, defaults)),
+    cacheRedisPrefix: parseString(getProperty('cacheRedisPrefix', override, json, env, defaults)),
+
+    mqModule: parseString(getProperty('mqModule', override, json, env, defaults)),
+    mqRedisHost: parseString(getProperty('mqRedisHost', override, json, env, defaults)),
+    mqRedisPort: parseNumber(getProperty('mqRedisPort', override, json, env, defaults)),
+    mqRedisUser: parseString(getProperty('mqRedisUser', override, json, env, defaults)),
+    mqRedisPassword: parseString(getProperty('mqRedisPassword', override, json, env, defaults)),
+    mqRedisPrefix: parseString(getProperty('mqRedisPrefix', override, json, env, defaults)),
+
+    mailModule: parseString(getProperty('mailModule', override, json, env, defaults)),
+    mailSmtpHost: parseString(getProperty('mailSmtpHost', override, json, env, defaults)),
+    mailSmtpPort: parseNumber(getProperty('mailSmtpPort', override, json, env, defaults)),
+    mailSmtpUser: parseString(getProperty('mailSmtpUser', override, json, env, defaults)),
+    mailSmtpPassword: parseString(getProperty('mailSmtpPassword', override, json, env, defaults)),
+    mailSmtpEmail: parseString(getProperty('mailSmtpEmail', override, json, env, defaults)),
+  };
+
   return configuration;
 };
 

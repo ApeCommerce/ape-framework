@@ -1,8 +1,11 @@
 import knex from 'knex';
+import { Database } from './database';
 import config from './config';
-import postProcessResponse from './postProcess';
+import postProcessResponse from './postProcessResponse';
 
-export default knex({
+const database: Database = knex({
   ...config,
   postProcessResponse,
 });
+
+export default database;

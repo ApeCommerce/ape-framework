@@ -1,4 +1,4 @@
-import postProcessResponse from 'db/postProcess';
+import postProcessResponse from 'db/postProcessResponse';
 
 describe('Post processing a response', () => {
   test('Returns expected value', async () => {

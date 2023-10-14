@@ -6,7 +6,7 @@ export const loadFile = (path: string) => {
   return json;
 };
 
-export const loadProperty = (
+export const getProperty = (
   name: string,
   overrideConfig: any,
   fileConfig: any,
@@ -20,6 +20,6 @@ export const loadProperty = (
 ].find((property) => property !== undefined);
 
 export default {
+  getProperty,
   loadFile,
-  loadProperty,
 };

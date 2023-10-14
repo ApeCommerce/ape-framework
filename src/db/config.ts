@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
+import { Database } from './database';
 import { getConfig } from '../config';
-import Database from './database';
 
 const config = getConfig();
 
@@ -22,6 +22,8 @@ if (module === Module.mysql) {
   if (!config.dbPostgresHost) throw new Error('DB: postgres host not provided');
   if (!config.dbPostgresPort) throw new Error('DB: postgres port not provided');
   if (!config.dbPostgresDatabase) throw new Error('DB: postgres database not provided');
+} else if (module === Module.sqlite) {
+  if (!config.dbSqliteFile) throw new Error('DB: sqlite file not provided');
 }
 
 const moduleConfig: { [module in Module]: Database.Config } = {
