@@ -1,9 +1,9 @@
 import pino from 'pino';
-import { Log } from './log';
+import { Logger } from './logger';
 import config from './config';
 
-export { Log };
+export { Logger };
 
-const log: Log = pino(config.options, config.stream);
+const logger: Logger = pino(config.options, config.stream);
 
-export default log;
+export default logger;
