@@ -27,7 +27,7 @@ const command: Command = {
         await start();
         break;
       default:
-        throw new Error(`API: invalid action "${action}"`);
+        throw new Error(`api: invalid action "${action}"`);
     }
   },
 };

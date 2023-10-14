@@ -31,7 +31,7 @@ const exec = async () => {
   if (!name || name === 'help') { writeLn(help); exit(); }
 
   const command = commands.find((c) => c.name === name);
-  if (!command) throw new Error(`CLI: invalid command "${name}"`);
+  if (!command) throw new Error(`cli: invalid command "${name}"`);
 
   command.handler(args, options);
 };

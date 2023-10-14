@@ -8,6 +8,6 @@ enum Module {
 }
 
 export const module = Object.values(Module).find((m) => m === config.mqModule);
-if (!module) throw new Error(`MQ: invalid module "${config.mqModule}"`);
+if (!module) throw new Error(`mq: invalid module "${config.mqModule}"`);
 
 export default module;

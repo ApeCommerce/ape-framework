@@ -1,10 +1,10 @@
 import { Command } from '../command';
+import { Database } from '../../db/database';
 import { exit, formatTable, formatText, writeLn } from '../utils';
 import { getBundle } from '../../app';
 import { MigrationList } from '../../db/schema/migrationList';
 import { parseBoolean, parseString } from '../../utils';
 import { Schema } from '../../db/schema/schema';
-import Database from '../../db/database';
 
 const help = formatText([
   'Usage:',
@@ -76,7 +76,7 @@ const command: Command = {
     if (!action || action === 'help') { writeLn(help); exit(); }
 
     const bundleId = parseString(options.b || options.bundle) || undefined;
-    if (bundleId && !(await getBundle(bundleId))) throw new Error(`Migration: invalid bundleId "${bundleId}"`);
+    if (bundleId && !(await getBundle(bundleId))) throw new Error(`migration: invalid bundleId "${bundleId}"`);
 
     const pending = parseBoolean(options.pending);
     const one = parseBoolean(options.one);
@@ -92,7 +92,7 @@ const command: Command = {
         await rollback(bundleId, one);
         break;
       default:
-        throw new Error(`Migration: invalid action "${action}"`);
+        throw new Error(`migration: invalid action "${action}"`);
     }
   },
 };

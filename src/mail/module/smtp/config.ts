@@ -3,9 +3,9 @@ import { getConfig } from '../../../config';
 
 const config = getConfig();
 
-if (!config.mailSmtpHost) throw new Error('Mail: smtp host not provided');
-if (!config.mailSmtpPort) throw new Error('Mail: smtp port not provided');
-if (!config.mailSmtpEmail) throw new Error('Mail: smtp email not provided');
+if (!config.mailSmtpHost) throw new Error('mail: smtp host not provided');
+if (!config.mailSmtpPort) throw new Error('mail: smtp port not provided');
+if (!config.mailSmtpEmail) throw new Error('mail: smtp email not provided');
 
 const transportOptions: SMTPPool.Options = {
   host: config.mailSmtpHost,

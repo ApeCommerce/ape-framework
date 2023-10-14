@@ -12,18 +12,18 @@ export enum Module {
 }
 
 export const module = Object.values(Module).find((m) => m === config.dbModule);
-if (!module) throw new Error(`DB: invalid module "${config.dbModule}"`);
+if (!module) throw new Error(`db: invalid module "${config.dbModule}"`);
 
 if (module === Module.mysql) {
-  if (!config.dbMysqlHost) throw new Error('DB: mysql host not provided');
-  if (!config.dbMysqlPort) throw new Error('DB: mysql port not provided');
-  if (!config.dbMysqlDatabase) throw new Error('DB: mysql database not provided');
+  if (!config.dbMysqlHost) throw new Error('db: mysql host not provided');
+  if (!config.dbMysqlPort) throw new Error('db: mysql port not provided');
+  if (!config.dbMysqlDatabase) throw new Error('db: mysql database not provided');
 } else if (module === Module.postgres) {
-  if (!config.dbPostgresHost) throw new Error('DB: postgres host not provided');
-  if (!config.dbPostgresPort) throw new Error('DB: postgres port not provided');
-  if (!config.dbPostgresDatabase) throw new Error('DB: postgres database not provided');
+  if (!config.dbPostgresHost) throw new Error('db: postgres host not provided');
+  if (!config.dbPostgresPort) throw new Error('db: postgres port not provided');
+  if (!config.dbPostgresDatabase) throw new Error('db: postgres database not provided');
 } else if (module === Module.sqlite) {
-  if (!config.dbSqliteFile) throw new Error('DB: sqlite file not provided');
+  if (!config.dbSqliteFile) throw new Error('db: sqlite file not provided');
 }
 
 const moduleConfig: { [module in Module]: Database.Config } = {

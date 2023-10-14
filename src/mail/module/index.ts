@@ -46,7 +46,7 @@ export abstract class MailModule {
       text: mailgen.generatePlaintext({ body }),
     });
 
-    log.debug(`Mail: sent mail to ${to.join(', ')}`);
+    log.debug(`mail: sent mail to ${to.join(', ')}`);
   }
 
   protected abstract sendMail(mail: Mail): Promise<void>;

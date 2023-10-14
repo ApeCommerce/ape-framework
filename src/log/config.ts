@@ -20,16 +20,16 @@ enum Destination {
 const config = getConfig();
 
 const level = Object.values(Level).find((l) => l === config.logLevel);
-if (!level) throw new Error(`Log: invalid level "${config.logLevel}"`);
+if (!level) throw new Error(`log: invalid level "${config.logLevel}"`);
 
 const destination = Object.values(Destination).find((d) => d === config.logDestination);
-if (!destination) throw new Error(`Log: invalid destination "${config.logDestination}"`);
+if (!destination) throw new Error(`log: invalid destination "${config.logDestination}"`);
 
 const options: Options = { level };
 
 let stream;
 if (destination === Destination.file) {
-  if (!config.logFile) throw new Error('Log: file not provided');
+  if (!config.logFile) throw new Error('log: file not provided');
   stream = pino.destination(config.logFile);
 } else {
   stream = config.logPretty ? pretty() : process.stdout;

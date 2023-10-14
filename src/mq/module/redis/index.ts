@@ -9,7 +9,7 @@ const formatJob = (queue: Queue, job?: BullJob) => (queue.queueId + (job ? ` #${
 export class RedisMq extends MqModule {
   createSender(queue: Queue) {
     const bullQueue = new BullQueue(queue.queueId, config.queueOptions);
-    bullQueue.on('waiting', (job) => log.debug(`MQ: job "${formatJob(queue, job)}" waiting`));
+    bullQueue.on('waiting', (job) => log.debug(`mq: job "${formatJob(queue, job)}" waiting`));
 
     return {
       send: async <Data>(job: Job, data: Data) => { await bullQueue.add(job.jobId, data); },
@@ -26,11 +26,11 @@ export class RedisMq extends MqModule {
       await jobs[bullJob.name].process(bullJob.data, progress);
     }, config.workerOptions);
 
-    bullWorker.on('active', (job) => log.debug(`MQ: job "${formatJob(queue, job)}" active`));
-    bullWorker.on('progress', (job, progress) => log.debug(`MQ: job "${formatJob(queue, job)}" progress ${progress}%`));
-    bullWorker.on('completed', (job) => log.debug(`MQ: job "${formatJob(queue, job)}" completed`));
+    bullWorker.on('active', (job) => log.debug(`mq: job "${formatJob(queue, job)}" active`));
+    bullWorker.on('progress', (job, progress) => log.debug(`mq: job "${formatJob(queue, job)}" progress ${progress}%`));
+    bullWorker.on('completed', (job) => log.debug(`mq: job "${formatJob(queue, job)}" completed`));
     bullWorker.on('failed', (job, error) => {
-      log.error(`MQ: job "${formatJob(queue, job)}" failed`);
+      log.error(`mq: job "${formatJob(queue, job)}" failed`);
       log.error(error);
       bullWorker.close();
     });

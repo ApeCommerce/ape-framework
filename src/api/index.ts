@@ -34,12 +34,12 @@ const onRequest: Handler = async (request, reply) => {
 
 const onResponse: Handler = async (request, reply) => {
   log.debug(
-    `API: ${request.method} ${basePath(request.url, '?')} ${reply.statusCode} ${reply.getResponseTime().toFixed(0)}ms`,
+    `api: ${request.method} ${basePath(request.url, '?')} ${reply.statusCode} ${reply.getResponseTime().toFixed(0)}ms`,
   );
 };
 
 const onTimeout: Handler = async (request) => {
-  log.error(`API: ${request.method} ${request.routerPath} TIMEOUT ${config.serverOptions.connectionTimeout}ms`);
+  log.error(`api: ${request.method} ${request.routerPath} timeout ${config.serverOptions.connectionTimeout}ms`);
 };
 
 const notFoundHandler: Handler = async (request, reply) => {
@@ -71,12 +71,12 @@ let url: string;
 
 export const start = async () => {
   url = await server.listen(config.listenOptions);
-  log.info(`API: started v${config.version} @${url}`);
+  log.info(`api: started v${config.version} @${url}`);
 };
 
 export const close = async () => {
   await server.close();
-  log.info('API: closed');
+  log.info('api: closed');
 };
 
 export const getUrl = () => url;

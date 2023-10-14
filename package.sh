@@ -2,7 +2,7 @@
 const fs = require('fs-extra');
 
 const name = process.argv.slice(2).shift();
-if (!['server', 'common'].includes(name)) throw new Error(`Invalid package name "${name}"`);
+if (!['server', 'common'].includes(name)) throw new Error(`invalid package name "${name}"`);
 
 const devPackage = fs.readJsonSync('package.json');
 
