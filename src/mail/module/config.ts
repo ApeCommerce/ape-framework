@@ -1,6 +1,6 @@
+import { BypassMail } from './bypass';
 import { getConfig } from '../../config';
-import BypassMail from './bypass';
-import SmtpMail from './smtp';
+import { SmtpMail } from './smtp';
 
 const config = getConfig();
 

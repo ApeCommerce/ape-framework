@@ -1,7 +1,9 @@
-import MailModule from '..';
+import { MailModule } from '..';
 
-export default class BypassMail extends MailModule {
+export class BypassMail extends MailModule {
   protected async sendMail() { }
 
   async close() { }
 }
+
+export default BypassMail;
