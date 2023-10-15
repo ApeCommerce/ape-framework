@@ -81,8 +81,8 @@ export const rollbackMigrations = async (bundleId?: string, one?: boolean) => {
 
 const schema: Schema = {
   listMigrations,
-  runMigrations,
   rollbackMigrations,
+  runMigrations,
 };
 
 export default schema;

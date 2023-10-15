@@ -1,4 +1,5 @@
 /.env
+/ape.config.json
 /ape.db
 /ape.log
 /coverage

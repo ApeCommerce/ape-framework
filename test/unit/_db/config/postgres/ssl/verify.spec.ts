@@ -22,6 +22,10 @@ describe('Loading the config with postgres ssl verify disabled', () => {
           rejectUnauthorized: false,
         },
       },
+      pool: {
+        min: 0,
+        max: 5,
+      },
     });
   });
 });

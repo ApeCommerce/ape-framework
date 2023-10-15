@@ -42,6 +42,7 @@ export default {
   dbMysqlSslCert: process.env.APE_DB_MYSQL_SSL_CERT,
   dbMysqlSslKey: process.env.APE_DB_MYSQL_SSL_KEY,
   dbMysqlSslVerify: process.env.APE_DB_MYSQL_SSL_VERIFY,
+  dbMysqlMaxConnection: process.env.APE_DB_MYSQL_MAX_CONNECTION,
   dbPostgresHost: process.env.APE_DB_POSTGRES_HOST,
   dbPostgresPort: process.env.APE_DB_POSTGRES_PORT,
   dbPostgresUser: process.env.APE_DB_POSTGRES_USER,
@@ -52,6 +53,7 @@ export default {
   dbPostgresSslCert: process.env.APE_DB_POSTGRES_SSL_CERT,
   dbPostgresSslKey: process.env.APE_DB_POSTGRES_SSL_KEY,
   dbPostgresSslVerify: process.env.APE_DB_POSTGRES_SSL_VERIFY,
+  dbPostgresMaxConnection: process.env.APE_DB_POSTGRES_MAX_CONNECTION,
   dbSqliteFile: process.env.APE_DB_SQLITE_FILE,
 
   cacheModule: process.env.APE_CACHE_MODULE,

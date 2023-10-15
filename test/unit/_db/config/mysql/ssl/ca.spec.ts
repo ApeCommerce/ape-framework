@@ -27,6 +27,10 @@ describe('Loading the config with a mysql ssl ca', () => {
           rejectUnauthorized: true,
         },
       },
+      pool: {
+        min: 0,
+        max: 5,
+      },
     });
   });
 });

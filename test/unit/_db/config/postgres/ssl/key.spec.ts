@@ -27,6 +27,10 @@ describe('Loading the config with a postgres ssl key', () => {
           rejectUnauthorized: true,
         },
       },
+      pool: {
+        min: 0,
+        max: 5,
+      },
     });
   });
 });

@@ -12,6 +12,10 @@ describe('Loading the config', () => {
       connection: {
         filename: ':memory:',
       },
+      pool: {
+        min: 0,
+        max: 1,
+      },
       useNullAsDefault: true,
     });
   });

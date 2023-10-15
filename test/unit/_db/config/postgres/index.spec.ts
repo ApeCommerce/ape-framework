@@ -17,6 +17,10 @@ describe('Loading the config with postgres module', () => {
         port: 1000,
         database: 'database',
       },
+      pool: {
+        min: 0,
+        max: 5,
+      },
     });
   });
 });

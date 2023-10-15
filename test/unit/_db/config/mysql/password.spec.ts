@@ -19,6 +19,10 @@ describe('Loading the config with a mysql password', () => {
         password: 'password',
         database: 'database',
       },
+      pool: {
+        min: 0,
+        max: 5,
+      },
     });
   });
 });

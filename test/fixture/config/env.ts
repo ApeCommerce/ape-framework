@@ -34,6 +34,7 @@ process.env.APE_DB_MYSQL_SSL_CA = 'envSslCa';
 process.env.APE_DB_MYSQL_SSL_CERT = 'envSslCert';
 process.env.APE_DB_MYSQL_SSL_KEY = 'envSslKey';
 process.env.APE_DB_MYSQL_SSL_VERIFY = '0';
+process.env.APE_DB_MYSQL_MAX_CONNECTION = '1';
 process.env.APE_DB_POSTGRES_HOST = 'envHost';
 process.env.APE_DB_POSTGRES_PORT = '1001';
 process.env.APE_DB_POSTGRES_USER = 'envUser';
@@ -44,6 +45,7 @@ process.env.APE_DB_POSTGRES_SSL_CA = 'envSslCa';
 process.env.APE_DB_POSTGRES_SSL_CERT = 'envSslCert';
 process.env.APE_DB_POSTGRES_SSL_KEY = 'envSslKey';
 process.env.APE_DB_POSTGRES_SSL_VERIFY = '0';
+process.env.APE_DB_POSTGRES_MAX_CONNECTION = '1';
 process.env.APE_DB_SQLITE_FILE = 'envApe.db';
 
 process.env.APE_CACHE_MODULE = 'redis';

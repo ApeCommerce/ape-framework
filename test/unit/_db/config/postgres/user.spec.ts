@@ -19,6 +19,10 @@ describe('Loading the config with a postgres user', () => {
         user: 'user',
         database: 'database',
       },
+      pool: {
+        min: 0,
+        max: 5,
+      },
     });
   });
 });

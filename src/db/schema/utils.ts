@@ -1,4 +1,4 @@
-import Database from '../database';
+import { Database } from '../database';
 
 export interface Table {
   db: Database,
@@ -93,9 +93,9 @@ export const column = (
 ): Column => ({ name, dataType, nullConstraint, index, referencedTable, onDelete });
 
 export default {
-  shortName,
+  column,
   createTable,
   dropTable,
+  shortName,
   table,
-  column,
 };

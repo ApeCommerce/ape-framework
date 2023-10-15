@@ -32,6 +32,7 @@ const moduleConfig: { [module in Module]: Database.Config } = {
     connection: {
       filename: ':memory:',
     },
+    pool: { min: 0, max: 1 },
     useNullAsDefault: true,
   },
   mysql: {
@@ -51,6 +52,7 @@ const moduleConfig: { [module in Module]: Database.Config } = {
         },
       } : {}),
     },
+    pool: { min: 0, max: config.dbMysqlMaxConnection },
   },
   postgres: {
     client: 'pg',
@@ -69,12 +71,14 @@ const moduleConfig: { [module in Module]: Database.Config } = {
         },
       } : {}),
     },
+    pool: { min: 0, max: config.dbPostgresMaxConnection },
   },
   sqlite: {
     client: 'sqlite3',
     connection: {
       filename: config.dbSqliteFile,
     },
+    pool: { min: 0, max: 1 },
     useNullAsDefault: true,
   },
 };

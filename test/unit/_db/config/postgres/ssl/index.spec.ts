@@ -21,6 +21,10 @@ describe('Loading the config with postgres ssl enabled', () => {
           rejectUnauthorized: true,
         },
       },
+      pool: {
+        min: 0,
+        max: 5,
+      },
     });
   });
 });

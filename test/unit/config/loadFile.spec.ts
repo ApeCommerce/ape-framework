@@ -1,4 +1,4 @@
-import { loadFile } from 'config/utils';
+import loadFile from 'config/loadFile';
 
 describe('Loading a file', () => {
   test('Returns expected value', async () => {
@@ -39,6 +39,7 @@ describe('Loading a file', () => {
       dbMysqlSslCert: 'fileSslCert',
       dbMysqlSslKey: 'fileSslKey',
       dbMysqlSslVerify: true,
+      dbMysqlMaxConnection: 2,
       dbPostgresHost: 'fileHost',
       dbPostgresPort: 1002,
       dbPostgresUser: 'fileUser',
@@ -49,6 +50,7 @@ describe('Loading a file', () => {
       dbPostgresSslCert: 'fileSslCert',
       dbPostgresSslKey: 'fileSslKey',
       dbPostgresSslVerify: true,
+      dbPostgresMaxConnection: 2,
       dbSqliteFile: 'fileApe.db',
 
       cacheModule: 'bypass',
