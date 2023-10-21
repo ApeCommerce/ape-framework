@@ -1,7 +1,7 @@
 import '../config';
 import { getBundle } from 'app';
 
-describe('Getting an existing bundle', () => {
+describe('Getting a bundle', () => {
   test('Returns expected value', async () => {
     const fooBundle = await getBundle('foo');
     expect(fooBundle?.bundleId).toBe('foo');

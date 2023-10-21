@@ -1,7 +1,7 @@
 import '../../fixture/config/env';
 import { getConfig } from 'config';
 
-describe('Getting the config using env', () => {
+describe('Getting the configuration from environment', () => {
   test('Returns expected value', async () => {
     expect(getConfig()).toStrictEqual({
       appBoot: 'envBoot',

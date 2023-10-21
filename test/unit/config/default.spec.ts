@@ -1,6 +1,6 @@
 import { getConfig } from 'config';
 
-describe('Getting the config using default', () => {
+describe('Getting the configuration from default', () => {
   test('Returns expected value', async () => {
     expect(getConfig()).toStrictEqual({
       appBoot: 'boot',

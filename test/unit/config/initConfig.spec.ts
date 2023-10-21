@@ -1,6 +1,6 @@
 import { initConfig } from 'config';
 
-describe('Initializing the config multiple times', () => {
+describe('Initializing the configuration multiple times', () => {
   test('Returns expected value', async () => {
     const config1 = initConfig();
     const config2 = initConfig();

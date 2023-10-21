@@ -4,7 +4,7 @@ import override from '../../fixture/config/override';
 
 initConfig(override, 'test/fixture/config/file/ape.config.json');
 
-describe('Getting the config using override', () => {
+describe('Getting the configuration from override', () => {
   test('Returns expected value', async () => {
     expect(getConfig()).toStrictEqual({
       appBoot: 'overrideBoot',

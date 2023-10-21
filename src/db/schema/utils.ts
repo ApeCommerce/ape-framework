@@ -21,9 +21,9 @@ export type OnDelete = 'cascade' | 'restrict';
 
 const longNameRegex = /[A-Z][a-z]{4,}|[a-z]{5,}/g;
 
-export const shortName = (...name: string[]) => name.map(
-  (string) => string.replace(longNameRegex, (match) => match.substring(0, 4)),
-).join('_');
+export const shortName = (...name: string[]) => name
+  .map((string) => string.replace(longNameRegex, (match) => match.substring(0, 4)))
+  .join('_');
 
 export const createTable = (table: Table, ...columns: Column[]) => table.db.schema
   .createTable(table.name, (tableBuilder) => {

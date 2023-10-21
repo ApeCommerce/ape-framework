@@ -1,6 +1,6 @@
 import { getConfig } from 'config';
 
-describe('Getting the config multiple times', () => {
+describe('Getting the configuration multiple times', () => {
   test('Returns expected value', async () => {
     const config1 = getConfig();
     const config2 = getConfig();

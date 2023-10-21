@@ -1,7 +1,7 @@
 import '../config';
 import { initI18n } from 'i18n';
 
-describe('Initializing i18n multiple times', () => {
+describe('Initializing internationalization multiple times', () => {
   test('Returns expected value', async () => {
     const i18n1 = await initI18n();
     const i18n2 = await initI18n();
