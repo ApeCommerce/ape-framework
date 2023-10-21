@@ -9,9 +9,13 @@
   ],
   "collectCoverage": false,
   "collectCoverageFrom": [
-    "<rootDir>/src/**/*.ts"
+    "<rootDir>/src/db/index.ts"
   ],
-  "coveragePathIgnorePatterns": [],
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/src/db/index.ts",
+    "<rootDir>/src/db/config.ts",
+    "<rootDir>/src/db/schema/config.ts"
+  ],
   "coverageDirectory": "coverage",
   "coverageReporters": [
     "lcov",
