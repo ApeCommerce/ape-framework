@@ -10,7 +10,7 @@ test () {
 
   status=$?
 
-  docker compose -f $file down --volumes --timeout 0
+  docker compose -f $file down --remove-orphans --volumes --timeout 0
 
   if [ $status != 0 ]; then
     exit 1
