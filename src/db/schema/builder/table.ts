@@ -1,5 +1,5 @@
 import { Column } from './column';
-import { Database } from '../../database';
+import type { Database } from '../../database';
 
 export class Table {
   private tableBuilder: Database.TableBuilder;

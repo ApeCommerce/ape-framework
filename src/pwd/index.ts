@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import { Pwd } from './pwd';
 import config from './config';
+import type { Pwd } from './pwd';
 
 export { Pwd };
 

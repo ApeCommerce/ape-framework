@@ -1,7 +1,7 @@
-import { Api } from '../../api/api';
-import { Command } from '../command';
 import { exit, formatTable, formatText, writeLn } from '../utils';
 import { parseString } from '../../utils';
+import type { Api } from '../../api/api';
+import type { Command } from '../command';
 
 const help = formatText([
   'Usage:',

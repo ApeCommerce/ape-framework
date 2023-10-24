@@ -1,10 +1,12 @@
 import { getBundle, getBundles, Bundle } from '../../app';
-import { Migration } from './migration';
-import { MigrationList } from './migrationList';
 import { MigrationSource } from './migrationSource';
-import { Schema } from './schema';
 import config from './config';
 import db from '..';
+import type { Migration } from './migration';
+import type { MigrationList } from './migrationList';
+import type { Schema } from './schema';
+
+export { Migration, MigrationList, Schema };
 
 const bundleConfig = (bundle: Bundle) => ({
   migrationSource: new MigrationSource(bundle),

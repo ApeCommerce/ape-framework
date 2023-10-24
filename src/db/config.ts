@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
-import { Database } from './database';
 import { getConfig } from '../config';
+import type { Database } from './database';
 
 const config = getConfig();
 

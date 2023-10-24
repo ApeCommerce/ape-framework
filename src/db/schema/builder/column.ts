@@ -1,4 +1,4 @@
-import { Database } from '../../database';
+import type { Database } from '../../database';
 import type { Table } from './table';
 
 export class Column {

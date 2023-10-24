@@ -1,7 +1,7 @@
-import { FastifyCorsOptions as CorsOptions } from '@fastify/cors';
-import { FastifyListenOptions as ListenOptions, FastifyServerOptions as ServerOptions } from 'fastify';
-import { Options as ResponseValidationOptions } from '@fastify/response-validation';
-import { SwaggerOptions } from '@fastify/swagger';
+import type { FastifyCorsOptions as CorsOptions } from '@fastify/cors';
+import type { FastifyListenOptions as ListenOptions, FastifyServerOptions as ServerOptions } from 'fastify';
+import type { Options as ResponseValidationOptions } from '@fastify/response-validation';
+import type { SwaggerOptions } from '@fastify/swagger';
 import { getConfig } from '../config';
 
 const config = getConfig();

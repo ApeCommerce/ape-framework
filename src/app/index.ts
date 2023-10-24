@@ -1,9 +1,9 @@
 import path from 'path';
-import { App } from './app';
-import { Boot } from './boot';
-import { Bundle } from './bundle';
 import config from './config';
 import node from '../config/node';
+import type { App } from './app';
+import type { Boot } from './boot';
+import type { Bundle } from './bundle';
 
 export { App, Boot, Bundle };
 

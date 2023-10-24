@@ -1,4 +1,4 @@
-import { Options } from 'nodemailer/lib/smtp-pool';
+import type { Options } from 'nodemailer/lib/smtp-pool';
 import { getConfig } from '../../../config';
 
 const config = getConfig();

@@ -1,10 +1,10 @@
-import { Config } from './config';
-import { Configuration } from './configuration';
 import { parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
 import { Store } from './store';
 import defaults from './default';
 import env from './env';
 import loadFile from './loadFile';
+import type { Config } from './config';
+import type { Configuration } from './configuration';
 
 export { Config, Configuration, Store };
 

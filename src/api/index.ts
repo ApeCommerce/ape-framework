@@ -2,14 +2,14 @@ import cors from '@fastify/cors';
 import fastify from 'fastify';
 import responseValidation from '@fastify/response-validation';
 import swagger from '@fastify/swagger';
-import { Api } from './api';
 import { authorizationRegex, authorizationTokenType, bearerPrefixLength } from './auth';
 import { basePath, timestamp } from '../utils';
-import { ErrorHandler, Handler } from './handler';
 import config from './config';
 import jwt from '../jwt';
 import log from '../log';
 import router, { getRequiredRoles } from './router';
+import type { Api } from './api';
+import type { ErrorHandler, Handler } from './handler';
 
 const onRequest: Handler = async (request, reply) => {
   const roles = getRequiredRoles(basePath(request.routerPath));
@@ -80,6 +80,7 @@ export const close = async () => {
 };
 
 export const getUrl = () => url;
+
 export const doc = () => server.swagger();
 
 const api: Api = {

@@ -1,4 +1,4 @@
-import { Knex as Database } from 'knex';
+import type { Knex as Database } from 'knex';
 
 export { Database };
 

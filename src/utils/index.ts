@@ -1,7 +1,7 @@
 import bytes from 'bytes';
 import crypto from 'crypto';
 import parseDuration from 'parse-duration';
-import { Utils } from './utils';
+import type { Utils } from './utils';
 
 export { Utils };
 

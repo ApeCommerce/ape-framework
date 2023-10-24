@@ -1,4 +1,4 @@
-import { Internationalization } from './internationalization';
+import type { Internationalization } from './internationalization';
 
 export interface I18n {
   getI18n: () => Promise<Internationalization>,

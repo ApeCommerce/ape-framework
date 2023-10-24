@@ -1,4 +1,4 @@
-import { FastifyPluginCallback as Plugin } from 'fastify';
+import type { FastifyPluginCallback as Plugin } from 'fastify';
 import { getBundles } from '../app';
 import schema from './schema';
 

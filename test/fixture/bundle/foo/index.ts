@@ -1,4 +1,4 @@
-import { Bundle } from 'app';
+import type { Bundle } from 'app';
 
 const bundle: Bundle = {
   bundleId: 'foo',

@@ -1,8 +1,8 @@
 import Mailgen, { ContentBody } from 'mailgen';
-import { Email } from '../email';
-import { Mail } from '../mail';
 import config from '../config';
 import log from '../../log';
+import type { Email } from '../email';
+import type { Mail } from '../mail';
 
 export abstract class MailModule {
   async send(to: string[], email: Email) {

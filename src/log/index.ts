@@ -1,6 +1,6 @@
 import pino from 'pino';
-import { Logger } from './logger';
 import config from './config';
+import type { Logger } from './logger';
 
 export { Logger };
 

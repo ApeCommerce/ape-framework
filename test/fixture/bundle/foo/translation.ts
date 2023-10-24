@@ -1,4 +1,4 @@
-import { Translation } from 'i18n/translation';
+import type { Translation } from 'i18n';
 
 const translations: Translation[] = [
   {

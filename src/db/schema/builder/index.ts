@@ -1,5 +1,5 @@
 import { Builder } from './builder';
-import { Column } from './column';
-import { Table } from './table';
+import type { Column } from './column';
+import type { Table } from './table';
 
 export { Builder, Column, Table };

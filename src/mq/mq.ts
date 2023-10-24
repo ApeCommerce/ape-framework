@@ -1,4 +1,4 @@
-import { Job, Queue } from './queue';
+import type { Job, Queue } from './queue';
 
 export interface Mq {
   getQueues: () => Promise<Queue[]>,

@@ -1,5 +1,5 @@
-import { Job } from '../../queue';
 import { MqModule } from '..';
+import type { Job } from '../../queue';
 
 export class BypassMq extends MqModule {
   createSender() {

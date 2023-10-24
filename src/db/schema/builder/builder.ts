@@ -1,5 +1,5 @@
-import { Database } from '../../database';
 import { Table } from './table';
+import type { Database } from '../../database';
 
 export class Builder {
   private db: Database;

@@ -1,8 +1,8 @@
 import { Job as BullJob, Queue as BullQueue, Worker as BullWorker } from 'bullmq';
-import { Job, Progress, Queue } from '../../queue';
 import { MqModule } from '..';
 import config from './config';
 import log from '../../../log';
+import type { Job, Progress, Queue } from '../../queue';
 
 const formatJob = (queue: Queue, job?: BullJob) => (queue.queueId + (job ? ` #${job.id} ${job.name}` : ''));
 

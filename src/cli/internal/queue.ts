@@ -1,6 +1,6 @@
-import { Command } from '../command';
 import { exit, formatList, formatTable, formatText, writeLn } from '../utils';
 import { parseString } from '../../utils';
+import type { Command } from '../command';
 
 const help = formatText([
   'Usage:',

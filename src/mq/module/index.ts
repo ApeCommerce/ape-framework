@@ -1,6 +1,6 @@
 import { getBundles } from '../../app';
-import { Mq, Sender, Worker } from '../mq';
-import { Queue } from '../queue';
+import type { Mq, Sender, Worker } from '../mq';
+import type { Queue } from '../queue';
 
 export abstract class MqModule implements Mq {
   async getQueues() {

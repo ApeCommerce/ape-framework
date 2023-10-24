@@ -1,4 +1,4 @@
-import { Boot } from 'app';
+import type { Boot } from 'app';
 
 const boot: Boot = {
   bundles: async () => [

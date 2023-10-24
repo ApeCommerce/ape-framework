@@ -1,4 +1,4 @@
-import { Migration } from 'db/schema/migration';
+import type { Migration } from 'db/schema';
 
 const migrations: Migration[] = [
   {

@@ -1,5 +1,5 @@
-import { Bundle } from '../../app';
-import { Migration } from './migration';
+import type { Bundle } from '../../app';
+import type { Migration } from './migration';
 
 export class MigrationSource {
   private bundle: Bundle;

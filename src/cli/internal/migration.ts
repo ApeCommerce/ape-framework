@@ -1,10 +1,10 @@
-import { Command } from '../command';
-import { Database } from '../../db/database';
 import { exit, formatTable, formatText, writeLn } from '../utils';
 import { getBundle } from '../../app';
-import { MigrationList } from '../../db/schema/migrationList';
 import { parseBoolean, parseString } from '../../utils';
-import { Schema } from '../../db/schema/schema';
+import type { Command } from '../command';
+import type { Database } from '../../db/database';
+import type { MigrationList } from '../../db/schema/migrationList';
+import type { Schema } from '../../db/schema/schema';
 
 const help = formatText([
   'Usage:',
