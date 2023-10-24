@@ -2,9 +2,10 @@ import i18next, { Resource as Resources } from 'i18next';
 import { getBundles } from '../app';
 import { I18n } from './i18n';
 import { Internationalization } from './internationalization';
+import { Translation } from './translation';
 import config from './config';
 
-export { I18n, Internationalization };
+export { I18n, Internationalization, Translation };
 
 const getNamespaces = async () => (await getBundles()).map((bundle) => bundle.bundleId);
 

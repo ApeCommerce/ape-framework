@@ -17,9 +17,9 @@ const help = formatText([
   '',
   'Options:',
   formatTable([
-    ['-b --bundle <bundleId>', 'Process specified bundle migrations only.'],
-    ['--pending', 'Process pending migrations only.'],
-    ['--one', 'Process one migration only.'],
+    ['-b --bundle <bundleId>', 'Process specified bundle migrations.'],
+    ['--pending', 'List pending migrations.'],
+    ['--one', 'Process one migration.'],
   ]),
 ]);
 

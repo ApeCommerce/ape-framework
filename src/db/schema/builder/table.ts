@@ -1,14 +1,16 @@
+import { Column } from './column';
 import { Database } from '../../database';
 
 export class Table {
-  private builder: Database.CreateTableBuilder;
+  private tableBuilder: Database.TableBuilder;
 
-  constructor(builder: Database.CreateTableBuilder) {
-    this.builder = builder;
+  constructor(builder: Database.TableBuilder) {
+    this.tableBuilder = builder;
   }
 
-  string(name: string, length: number) {
-    this.builder.string(name, length);
+  string(columnName: string, maxLength: number) {
+    const columnBuilder = this.tableBuilder.string(columnName, maxLength);
+    return new Column(this, columnBuilder);
   }
 }
 

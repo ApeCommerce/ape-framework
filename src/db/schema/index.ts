@@ -27,20 +27,20 @@ const filterBundles = async (bundleId?: string, reverse?: boolean, one?: boolean
   return bundles.slice(0, one ? 1 : undefined);
 };
 
-export const listMigrations = async (bundleId?: string, pendingOnly?: boolean) => {
+export const listMigrations = async (bundleId?: string, pending?: boolean) => {
   const migrationList: MigrationList = [];
   for (const bundle of await filterBundles(bundleId)) {
     const result = await db.migrate.list(bundleConfig(bundle));
     const done: { name: string }[] = result[0];
-    const pending: Migration[] = result[1];
-    if (!pendingOnly) {
+    const pendingMigrations: Migration[] = result[1];
+    if (!pending) {
       done.forEach((migration) => migrationList.push({
         bundleId: bundle.bundleId,
         migrationId: migration.name,
         pending: false,
       }));
     }
-    pending.forEach((migration) => migrationList.push({
+    pendingMigrations.forEach((migration) => migrationList.push({
       bundleId: bundle.bundleId,
       migrationId: migration.migrationId,
       pending: true,
