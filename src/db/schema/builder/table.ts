@@ -4,8 +4,8 @@ import type { Database } from '../../database';
 export class Table {
   private tableBuilder: Database.TableBuilder;
 
-  constructor(builder: Database.TableBuilder) {
-    this.tableBuilder = builder;
+  constructor(tableBuilder: Database.TableBuilder) {
+    this.tableBuilder = tableBuilder;
   }
 
   string(columnName: string, maxLength: number) {
