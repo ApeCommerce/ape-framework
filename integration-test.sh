@@ -7,11 +7,9 @@ test () {
   printf "\n================================================================\n"
 
   docker compose -f $file run --quiet-pull --remove-orphans --rm node
-
   status=$?
 
   docker compose -f $file down --remove-orphans --volumes --timeout 0
-
   if [ $status != 0 ]; then
     exit 1
   fi
@@ -19,6 +17,12 @@ test () {
   sleep 1
 }
 
+if [ ! -z $1 ]; then
+  test $1
+  exit 0
+fi
+
 test db.memory
 test db.mysql
 test db.sqlite
+test db.postgres

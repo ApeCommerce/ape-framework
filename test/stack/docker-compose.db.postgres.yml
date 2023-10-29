@@ -9,13 +9,13 @@ services:
     volumes:
       - ../../:/home/node/ape-framework
     environment:
-      APE_DB_MODULE: mysql
-      APE_DB_MYSQL_HOST: mysql
-      APE_DB_MYSQL_USER: ape
-      APE_DB_MYSQL_PASSWORD: password
-      APE_DB_MYSQL_DATABASE: ape
+      APE_DB_MODULE: postgres
+      APE_DB_POSTGRES_HOST: postgres
+      APE_DB_POSTGRES_USER: ape
+      APE_DB_POSTGRES_PASSWORD: password
+      APE_DB_POSTGRES_DATABASE: ape
     depends_on:
-      mysql:
+      postgres:
         condition: service_started
       wait-for-it:
         condition: service_healthy
@@ -24,15 +24,14 @@ services:
     image: mattsyms/wait-for-it
     entrypoint: tail -f /dev/null
     healthcheck:
-      test: w -t 0 mysql:3306 || (exit 1)
+      test: w -t 0 postgres:5432 || (exit 1)
       timeout: 60s
       interval: 1s
       retries: 1
 
-  mysql:
-    image: mysql
+  postgres:
+    image: postgres
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 1
-      MYSQL_USER: ape
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: ape
+      POSTGRES_USER: ape
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ape

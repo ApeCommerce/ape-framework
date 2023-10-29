@@ -1,5 +1,5 @@
 import '../config';
-import Database from 'db/database';
+import type { Database } from 'db';
 
 describe('Loading the module', () => {
   test('Returns expected value', async () => {

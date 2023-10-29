@@ -5,7 +5,7 @@ services:
     image: node:18
     user: node
     working_dir: /home/node/ape-framework
-    command: yarn test:ci -c jest.config.db.json
+    command: yarn test:ci -i -c jest.config.db.json
     volumes:
       - ../../:/home/node/ape-framework
     environment:
