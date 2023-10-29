@@ -5,7 +5,9 @@ const boolColumnRegex = /^is[A-Z]/;
 const filterBoolColumns = (columns: string[]) => columns.filter((c) => c.match(boolColumnRegex));
 
 const postProcessRow = (row: any, boolColumns: string[]) => {
-  boolColumns.forEach((column) => { row[column] = parseBoolean(row[column]); });
+  boolColumns.forEach((column) => {
+    row[column] = row[column] === null ? null : parseBoolean(row[column]);
+  });
   return row;
 };
 

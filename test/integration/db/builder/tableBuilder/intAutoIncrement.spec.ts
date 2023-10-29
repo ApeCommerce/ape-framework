@@ -11,7 +11,7 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting intAutoincrement data type', () => {
+describe('Inserting / selecting intAutoIncrement data type', () => {
   test('Returns expected value', async () => {
     await builder.createTable('one', (table) => {
       table.intAutoIncrement('foo');

@@ -20,6 +20,7 @@ describe('Inserting / selecting boolean data type', () => {
     await db('one').insert([
       { isFoo: true },
       { isFoo: false },
+      { isFoo: null },
     ]);
 
     const select = await db('one').select();
@@ -27,6 +28,7 @@ describe('Inserting / selecting boolean data type', () => {
     expect(select).toEqual([
       { isFoo: true },
       { isFoo: false },
+      { isFoo: null },
     ]);
   });
 });
