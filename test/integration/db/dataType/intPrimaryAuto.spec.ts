@@ -11,10 +11,10 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting intAutoIncrement data type', () => {
+describe('Inserting / selecting intPrimaryAuto data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.intAutoIncrement('one');
+      table.intPrimaryAuto('one');
       table.int('two');
     });
 

@@ -11,11 +11,11 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting bitIntAutoIncrement data type', () => {
+describe('Inserting / selecting smallIntPrimaryAuto data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.bigIntAutoIncrement('one');
-      table.bigInt('two');
+      table.smallIntPrimaryAuto('one');
+      table.smallInt('two');
     });
 
     await db('foo').insert([

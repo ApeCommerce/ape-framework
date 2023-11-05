@@ -1,5 +1,4 @@
 import '../../config';
-import { randomString } from 'utils';
 import db, { SchemaBuilder } from 'db';
 
 const schema = new SchemaBuilder(db);
@@ -12,22 +11,25 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting char data type', () => {
+describe('Inserting / selecting bitIntPrimaryAuto data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.char('one', 250);
+      table.bigIntPrimaryAuto('one');
+      table.bigInt('two');
     });
 
-    const data = [
-      { one: null },
-      { one: '' },
-      { one: randomString(250) },
-    ];
-
-    await db('foo').insert(data);
+    await db('foo').insert([
+      { two: 1 },
+      { two: 2 },
+      { two: 3 },
+    ]);
 
     const result = await db('foo').select();
 
-    expect(result).toEqual(data);
+    expect(result).toEqual([
+      { one: 1, two: 1 },
+      { one: 2, two: 2 },
+      { one: 3, two: 3 },
+    ]);
   });
 });

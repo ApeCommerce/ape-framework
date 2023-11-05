@@ -14,8 +14,10 @@ export enum Module {
   sqlite = 'sqlite',
 }
 
-export const module = Object.values(Module).find((m) => m === config.dbModule);
-if (!module) throw new Error(`db: invalid module "${config.dbModule}"`);
+const dbModule = Object.values(Module).find((m) => m === config.dbModule);
+if (!dbModule) throw new Error(`db: invalid module "${config.dbModule}"`);
+
+export const module = dbModule;
 
 const dbConfig: { [module in Module]: () => Database.Config } = {
   memory: memoryConfig,
