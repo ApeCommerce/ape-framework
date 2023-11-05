@@ -1,5 +1,6 @@
 import { booleanColumnRegex } from '../../postProcess';
 import { ColumnBuilder } from './column';
+import { module } from '../../config';
 import type { Database } from '../../database';
 
 export class TableBuilder {
@@ -35,17 +36,21 @@ export class TableBuilder {
   }
 
   float(name: string) {
-    return new ColumnBuilder(this.knexTableBuilder.specificType(name, 'float(24)'));
+    return module === 'postgres'
+      ? new ColumnBuilder(this.knexTableBuilder.specificType(name, 'real'))
+      : new ColumnBuilder(this.knexTableBuilder.specificType(name, 'float'));
   }
 
   double(name: string) {
-    return new ColumnBuilder(this.knexTableBuilder.specificType(name, 'float(48)'));
+    return module === 'postgres'
+      ? new ColumnBuilder(this.knexTableBuilder.specificType(name, 'double precision'))
+      : new ColumnBuilder(this.knexTableBuilder.specificType(name, 'double'));
   }
 
-  decimal(name: string, precision: number, scale: number) {
+  numeric(name: string, precision: number, scale: number) {
     if (precision < 1 || precision > 15) throw new Error(`db: invalid column precision "${precision}"`);
     if (scale < 0 || scale >= precision) throw new Error(`db: invalid column scale "${scale}"`);
-    return new ColumnBuilder(this.knexTableBuilder.decimal(name, precision, scale));
+    return new ColumnBuilder(this.knexTableBuilder.specificType(name, `numeric(${precision}, ${scale})`));
   }
 
   char(name: string, length: number) {
