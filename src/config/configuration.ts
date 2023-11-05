@@ -35,7 +35,7 @@ export interface Configuration {
   dbMysqlSslCert: string,
   dbMysqlSslKey: string,
   dbMysqlSslVerify: boolean,
-  dbMysqlMaxConnection: number,
+  dbMysqlPoolMax: number,
   dbPostgresHost: string,
   dbPostgresPort: number,
   dbPostgresUser: string,
@@ -46,7 +46,7 @@ export interface Configuration {
   dbPostgresSslCert: string,
   dbPostgresSslKey: string,
   dbPostgresSslVerify: boolean,
-  dbPostgresMaxConnection: number,
+  dbPostgresPoolMax: number,
   dbSqliteFile: string,
 
   cacheModule: string,

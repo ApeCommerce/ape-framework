@@ -40,7 +40,7 @@ describe('Getting the configuration from environment', () => {
       dbMysqlSslCert: 'envSslCert',
       dbMysqlSslKey: 'envSslKey',
       dbMysqlSslVerify: false,
-      dbMysqlMaxConnection: 1,
+      dbMysqlPoolMax: 1,
       dbPostgresHost: 'envHost',
       dbPostgresPort: 1001,
       dbPostgresUser: 'envUser',
@@ -51,7 +51,7 @@ describe('Getting the configuration from environment', () => {
       dbPostgresSslCert: 'envSslCert',
       dbPostgresSslKey: 'envSslKey',
       dbPostgresSslVerify: false,
-      dbPostgresMaxConnection: 1,
+      dbPostgresPoolMax: 1,
       dbSqliteFile: 'envApe.db',
 
       cacheModule: 'redis',

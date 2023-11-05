@@ -43,7 +43,7 @@ describe('Getting the configuration from override', () => {
       dbMysqlSslCert: 'overrideSslCert',
       dbMysqlSslKey: 'overrideSslKey',
       dbMysqlSslVerify: false,
-      dbMysqlMaxConnection: 3,
+      dbMysqlPoolMax: 3,
       dbPostgresHost: 'overrideHost',
       dbPostgresPort: 1003,
       dbPostgresUser: 'overrideUser',
@@ -54,7 +54,7 @@ describe('Getting the configuration from override', () => {
       dbPostgresSslCert: 'overrideSslCert',
       dbPostgresSslKey: 'overrideSslKey',
       dbPostgresSslVerify: false,
-      dbPostgresMaxConnection: 3,
+      dbPostgresPoolMax: 3,
       dbSqliteFile: 'overrideApe.db',
 
       cacheModule: 'redis',

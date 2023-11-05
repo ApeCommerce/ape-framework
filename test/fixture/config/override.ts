@@ -35,7 +35,7 @@ const override = {
   dbMysqlSslCert: 'overrideSslCert',
   dbMysqlSslKey: 'overrideSslKey',
   dbMysqlSslVerify: false,
-  dbMysqlMaxConnection: 3,
+  dbMysqlPoolMax: 3,
   dbPostgresHost: 'overrideHost',
   dbPostgresPort: 1003,
   dbPostgresUser: 'overrideUser',
@@ -46,7 +46,7 @@ const override = {
   dbPostgresSslCert: 'overrideSslCert',
   dbPostgresSslKey: 'overrideSslKey',
   dbPostgresSslVerify: false,
-  dbPostgresMaxConnection: 3,
+  dbPostgresPoolMax: 3,
   dbSqliteFile: 'overrideApe.db',
 
   cacheModule: 'redis',

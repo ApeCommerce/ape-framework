@@ -52,7 +52,7 @@ export const initConfig = (override: any = {}, file: string = 'ape.config.json')
     dbMysqlSslCert: parseString(store.get('dbMysqlSslCert')),
     dbMysqlSslKey: parseString(store.get('dbMysqlSslKey')),
     dbMysqlSslVerify: parseBoolean(store.get('dbMysqlSslVerify')),
-    dbMysqlMaxConnection: parseNumber(store.get('dbMysqlMaxConnection')),
+    dbMysqlPoolMax: parseNumber(store.get('dbMysqlPoolMax')),
     dbPostgresHost: parseString(store.get('dbPostgresHost')),
     dbPostgresPort: parseNumber(store.get('dbPostgresPort')),
     dbPostgresUser: parseString(store.get('dbPostgresUser')),
@@ -63,7 +63,7 @@ export const initConfig = (override: any = {}, file: string = 'ape.config.json')
     dbPostgresSslCert: parseString(store.get('dbPostgresSslCert')),
     dbPostgresSslKey: parseString(store.get('dbPostgresSslKey')),
     dbPostgresSslVerify: parseBoolean(store.get('dbPostgresSslVerify')),
-    dbPostgresMaxConnection: parseNumber(store.get('dbPostgresMaxConnection')),
+    dbPostgresPoolMax: parseNumber(store.get('dbPostgresPoolMax')),
     dbSqliteFile: parseString(store.get('dbSqliteFile')),
 
     cacheModule: parseString(store.get('cacheModule')),

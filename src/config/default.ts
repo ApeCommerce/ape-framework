@@ -21,10 +21,10 @@ export default {
   dbModule: 'sqlite',
   dbMysqlPort: 3306,
   dbMysqlSslVerify: true,
-  dbMysqlMaxConnection: 5,
+  dbMysqlPoolMax: 5,
   dbPostgresPort: 5432,
   dbPostgresSslVerify: true,
-  dbPostgresMaxConnection: 5,
+  dbPostgresPoolMax: 5,
   dbSqliteFile: 'ape.db',
 
   cacheModule: 'bypass',

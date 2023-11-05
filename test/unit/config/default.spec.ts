@@ -39,7 +39,7 @@ describe('Getting the configuration from default', () => {
       dbMysqlSslCert: '',
       dbMysqlSslKey: '',
       dbMysqlSslVerify: true,
-      dbMysqlMaxConnection: 5,
+      dbMysqlPoolMax: 5,
       dbPostgresHost: '',
       dbPostgresPort: 5432,
       dbPostgresUser: '',
@@ -50,7 +50,7 @@ describe('Getting the configuration from default', () => {
       dbPostgresSslCert: '',
       dbPostgresSslKey: '',
       dbPostgresSslVerify: true,
-      dbPostgresMaxConnection: 5,
+      dbPostgresPoolMax: 5,
       dbSqliteFile: 'ape.db',
 
       cacheModule: 'bypass',

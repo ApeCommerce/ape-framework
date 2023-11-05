@@ -6,9 +6,7 @@ import type { Migration } from './migration';
 import type { MigrationList } from './migrationList';
 import type { Schema } from './schema';
 
-export { Migration, MigrationList, Schema };
-
-const bundleConfig = (bundle: Bundle) => ({
+const migrationConfig = (bundle: Bundle) => ({
   migrationSource: new MigrationSource(bundle),
   tableName: `${config.tablePrefix}_${bundle.bundleId}`,
 });
@@ -32,7 +30,7 @@ const filterBundles = async (bundleId?: string, reverse?: boolean, one?: boolean
 export const listMigrations = async (bundleId?: string, pending?: boolean) => {
   const migrationList: MigrationList = [];
   for (const bundle of await filterBundles(bundleId)) {
-    const result = await db.migrate.list(bundleConfig(bundle));
+    const result = await db.migrate.list(migrationConfig(bundle));
     const done: { name: string }[] = result[0];
     const pendingMigrations: Migration[] = result[1];
     if (!pending) {
@@ -55,8 +53,8 @@ export const runMigrations = async (bundleId?: string, one?: boolean) => {
   const migrationList: MigrationList = [];
   for (const bundle of await filterBundles(bundleId, false, one)) {
     const result = one
-      ? await db.migrate.up(bundleConfig(bundle))
-      : await db.migrate.latest(bundleConfig(bundle));
+      ? await db.migrate.up(migrationConfig(bundle))
+      : await db.migrate.latest(migrationConfig(bundle));
     const done: string[] = result[1];
     done.forEach((migration) => migrationList.push({
       bundleId: bundle.bundleId,
@@ -70,8 +68,8 @@ export const rollbackMigrations = async (bundleId?: string, one?: boolean) => {
   const migrationList: MigrationList = [];
   for (const bundle of await filterBundles(bundleId, true, one)) {
     const result = one
-      ? await db.migrate.down(bundleConfig(bundle))
-      : await db.migrate.rollback(bundleConfig(bundle));
+      ? await db.migrate.down(migrationConfig(bundle))
+      : await db.migrate.rollback(migrationConfig(bundle));
     const done: string[] = result[1];
     done.forEach((migration) => migrationList.push({
       bundleId: bundle.bundleId,

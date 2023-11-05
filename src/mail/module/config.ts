@@ -4,21 +4,21 @@ import { SmtpMail } from './smtp';
 
 const config = getConfig();
 
-enum ModuleId {
+enum Module {
   bypass = 'bypass',
   smtp = 'smtp',
 }
 
-const moduleId = Object.values(ModuleId).find((id) => id === config.mailModule);
-if (!moduleId) throw new Error(`mail: invalid module "${config.mailModule}"`);
+const module = Object.values(Module).find((m) => m === config.mailModule);
+if (!module) throw new Error(`mail: invalid module "${config.mailModule}"`);
 
-const classes: { [moduleId in ModuleId]: typeof BypassMail | typeof SmtpMail } = {
+const classes: { [module in Module]: typeof BypassMail | typeof SmtpMail } = {
   bypass: BypassMail,
   smtp: SmtpMail,
 };
 
-export const MailModuleClass = classes[moduleId];
+export const MailModuleClass = classes[module];
 
 export default {
-  moduleId,
+  module,
 };

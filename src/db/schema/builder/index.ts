@@ -1,5 +1,5 @@
-import { TableBuilder } from './tableBuilder';
-import type { Database } from '../database';
+import { TableBuilder } from './table';
+import type { Database } from '../../database';
 
 export class SchemaBuilder {
   private db: Database;

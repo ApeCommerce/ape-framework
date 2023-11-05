@@ -42,7 +42,7 @@ describe('Getting the configuration from file', () => {
       dbMysqlSslCert: 'fileSslCert',
       dbMysqlSslKey: 'fileSslKey',
       dbMysqlSslVerify: true,
-      dbMysqlMaxConnection: 2,
+      dbMysqlPoolMax: 2,
       dbPostgresHost: 'fileHost',
       dbPostgresPort: 1002,
       dbPostgresUser: 'fileUser',
@@ -53,7 +53,7 @@ describe('Getting the configuration from file', () => {
       dbPostgresSslCert: 'fileSslCert',
       dbPostgresSslKey: 'fileSslKey',
       dbPostgresSslVerify: true,
-      dbPostgresMaxConnection: 2,
+      dbPostgresPoolMax: 2,
       dbSqliteFile: 'fileApe.db',
 
       cacheModule: 'bypass',

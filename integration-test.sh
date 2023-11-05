@@ -24,5 +24,5 @@ fi
 
 test db.memory
 test db.mysql
-test db.sqlite
 test db.postgres
+test db.sqlite
