@@ -1,5 +1,3 @@
-import { parseBoolean } from '../utils';
-
 export const booleanColumnRegex = /^((is|has)(_|[A-Z]))/;
 
 const booleanColumns = (columns: string[]) => columns.filter(
@@ -8,7 +6,7 @@ const booleanColumns = (columns: string[]) => columns.filter(
 
 const postProcessRow = (row: any, boolColumns: string[]) => {
   boolColumns.forEach((column) => {
-    row[column] = row[column] === null ? null : parseBoolean(row[column]);
+    row[column] = row[column] === null ? null : !!row[column];
   });
   return row;
 };

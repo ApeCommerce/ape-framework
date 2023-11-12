@@ -15,18 +15,25 @@ describe('Inserting / selecting boolean data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
       table.boolean('isOne');
+      table.boolean('hasOne');
     });
 
-    const data = [
-      { isOne: null },
-      { isOne: true },
-      { isOne: false },
-    ];
-
-    await db('foo').insert(data);
+    await db('foo').insert([
+      { isOne: null, hasOne: null },
+      { isOne: true, hasOne: true },
+      { isOne: false, hasOne: false },
+      { isOne: 1, hasOne: 1 },
+      { isOne: 0, hasOne: 0 },
+    ]);
 
     const result = await db('foo').select();
 
-    expect(result).toEqual(data);
+    expect(result).toEqual([
+      { isOne: null, hasOne: null },
+      { isOne: true, hasOne: true },
+      { isOne: false, hasOne: false },
+      { isOne: true, hasOne: true },
+      { isOne: false, hasOne: false },
+    ]);
   });
 });

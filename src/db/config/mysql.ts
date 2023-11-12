@@ -1,6 +1,5 @@
 import fs from 'fs-extra';
 import { getConfig } from '../../config';
-import { parseBoolean } from '../../utils';
 import type { Database } from '../database';
 
 const dbConfig: () => Database.Config = () => {
@@ -11,9 +10,9 @@ const dbConfig: () => Database.Config = () => {
   if (!config.dbMysqlDatabase) throw new Error('db: mysql database not provided');
 
   const typeCast = (field: any, next: Function) => {
-    if (field.type === 'TINY') {
-      field.value = field.string();
-      return field.value === null ? null : parseBoolean(field.value);
+    if (field.type === 'BIT') {
+      field.value = field.buffer();
+      return field.value === null ? null : !!field.value[0];
     }
     if (field.type === 'NEWDECIMAL') {
       field.value = field.string();

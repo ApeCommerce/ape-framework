@@ -15,6 +15,10 @@ export class TableBuilder {
     return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.boolean()));
   }
 
+  tinyInt(name: string) {
+    return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.tinyInt()));
+  }
+
   smallInt(name: string) {
     return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.smallInt()));
   }
@@ -63,12 +67,12 @@ export class TableBuilder {
     return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.varChar(maxLength)));
   }
 
-  text(name: string) {
-    return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.text()));
+  tinyText(name: string) {
+    return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.tinyText()));
   }
 
-  mediumText(name: string) {
-    return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.mediumText()));
+  text(name: string) {
+    return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.text()));
   }
 
   longText(name: string) {
@@ -76,19 +80,21 @@ export class TableBuilder {
   }
 
   binary(name: string, length: number) {
+    if (length < 1 || length > 255) throw new Error(`db: invalid column length "${length}"`);
     return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.binary(length)));
   }
 
   varBinary(name: string, maxLength: number) {
+    if (maxLength < 1 || maxLength > 65535) throw new Error(`db: invalid column maxLength "${maxLength}"`);
     return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.varBinary(maxLength)));
+  }
+
+  tinyBlob(name: string) {
+    return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.tinyBlob()));
   }
 
   blob(name: string) {
     return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.blob()));
-  }
-
-  mediumBlob(name: string) {
-    return new ColumnBuilder(this.knexTableBuilder.specificType(name, dataType.mediumBlob()));
   }
 
   longBlob(name: string) {

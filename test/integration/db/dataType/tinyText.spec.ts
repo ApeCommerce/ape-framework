@@ -12,16 +12,16 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting longText data type', () => {
+describe('Inserting / selecting tinyText data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.longText('one');
+      table.tinyText('one');
     });
 
     const data = [
       { one: null },
       { one: '' },
-      { one: randomString(50000000) },
+      { one: randomString(250) },
     ];
 
     await db('foo').insert(data);

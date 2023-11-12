@@ -1,5 +1,4 @@
 import '../../config';
-import { randomString } from 'utils';
 import db, { SchemaBuilder } from 'db';
 
 const schema = new SchemaBuilder(db);
@@ -12,16 +11,17 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting mediumText data type', () => {
+describe('Inserting / selecting tinyInt data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.mediumText('one');
+      table.tinyInt('one');
     });
 
     const data = [
       { one: null },
-      { one: '' },
-      { one: randomString(16000000) },
+      { one: 0 },
+      { one: 120 },
+      { one: -120 },
     ];
 
     await db('foo').insert(data);

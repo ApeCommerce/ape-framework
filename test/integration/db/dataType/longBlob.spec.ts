@@ -1,5 +1,5 @@
 import '../../config';
-import { randomString } from 'utils';
+import { randomBytes } from 'crypto';
 import db, { SchemaBuilder } from 'db';
 
 const schema = new SchemaBuilder(db);
@@ -12,16 +12,15 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting longText data type', () => {
+describe('Inserting / selecting longBlob data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.longText('one');
+      table.longBlob('one');
     });
 
     const data = [
       { one: null },
-      { one: '' },
-      { one: randomString(50000000) },
+      { one: randomBytes(100000) },
     ];
 
     await db('foo').insert(data);
