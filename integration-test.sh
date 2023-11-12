@@ -1,6 +1,8 @@
 #! /bin/bash
+stack=$1
+
 test () {
-  file=test/stack/docker-compose.$1.yml
+  file=$1
 
   printf "\n================================================================\n"
   printf "TEST $file"
@@ -17,12 +19,10 @@ test () {
   sleep 1
 }
 
-if [ ! -z $1 ]; then
-  test $1
-  exit 0
+if [ -z $stack ]; then
+  for file in test/stack/docker-compose.*.yml; do
+    test $file
+  done
+else
+  test test/stack/docker-compose.$stack.yml
 fi
-
-test db.memory
-test db.mysql
-test db.postgres
-test db.sqlite

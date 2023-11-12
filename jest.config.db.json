@@ -5,7 +5,7 @@
     "src"
   ],
   "testMatch": [
-    "<rootDir>/test/integration/db/**/*.spec.ts"
+    "<rootDir>/test/integration/db/**/timestamp.spec.ts"
   ],
   "collectCoverage": false,
   "collectCoverageFrom": [

@@ -135,9 +135,9 @@ const longBlob = () => dataType({
 });
 
 const timestamp = () => dataType({
-  mysql: '',
-  postgres: '',
-  sqlite: '',
+  mysql: 'timestamp(3)',
+  postgres: 'timestamp',
+  sqlite: 'text',
 });
 
 const datetime = () => dataType({

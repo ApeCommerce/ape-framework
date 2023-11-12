@@ -10,15 +10,17 @@ const dbConfig: () => Database.Config = () => {
   if (!config.dbMysqlDatabase) throw new Error('db: mysql database not provided');
 
   const typeCast = (field: any, next: Function) => {
-    if (field.type === 'BIT') {
-      field.value = field.buffer();
-      return field.value === null ? null : !!field.value[0];
+    console.log('typeCast', field);
+    switch (field.type) {
+      case 'BIT':
+        field.value = field.buffer();
+        return field.value === null ? null : !!field.value[0];
+      case 'NEWDECIMAL':
+        field.value = field.string();
+        return field.value === null ? null : parseFloat(field.value);
+      default:
+        return next();
     }
-    if (field.type === 'NEWDECIMAL') {
-      field.value = field.string();
-      return field.value === null ? null : parseFloat(field.value);
-    }
-    return next();
   };
 
   return {
@@ -37,6 +39,7 @@ const dbConfig: () => Database.Config = () => {
           rejectUnauthorized: config.dbMysqlSslVerify,
         },
       } : {}),
+      dateStrings: true,
       typeCast,
     },
     pool: { min: 0, max: config.dbMysqlPoolMax },
