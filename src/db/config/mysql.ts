@@ -10,14 +10,14 @@ const dbConfig: () => Database.Config = () => {
   if (!config.dbMysqlDatabase) throw new Error('db: mysql database not provided');
 
   const typeCast = (field: any, next: Function) => {
-    console.log('typeCast', field);
+    let value: any;
     switch (field.type) {
       case 'BIT':
-        field.value = field.buffer();
-        return field.value === null ? null : !!field.value[0];
+        value = field.buffer();
+        return value === null ? null : !!value[0];
       case 'NEWDECIMAL':
-        field.value = field.string();
-        return field.value === null ? null : parseFloat(field.value);
+        value = field.string();
+        return value === null ? null : parseFloat(value);
       default:
         return next();
     }

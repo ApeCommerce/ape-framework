@@ -11,13 +11,16 @@ const dbConfig: () => Database.Config = () => {
   if (!config.dbPostgresDatabase) throw new Error('db: postgres database not provided');
 
   const timestampRegex = /^(.{19})(\..{1,3})?/;
+  let timestampMatch: any;
 
   types.setTypeParser(types.builtins.BPCHAR, (value: string) => value.trimEnd());
   types.setTypeParser(types.builtins.INT8, (value: string) => parseInt(value, 10));
   types.setTypeParser(types.builtins.NUMERIC, (value: string) => parseFloat(value));
   types.setTypeParser(types.builtins.TIMESTAMP, (value: string) => {
-    console.log('TIMESTAMP', value, value.match(timestampRegex));
-    return value;
+    timestampMatch = value.match(timestampRegex);
+    return timestampMatch
+      ? `${timestampMatch[1]}${timestampMatch[2] ? timestampMatch[2].padEnd(4, '0') : '.000'}`
+      : value;
   });
 
   types.setTypeParser(types.builtins.DATE, (value: string) => { console.log('DATE', value); return value; });

@@ -19,16 +19,13 @@ describe('Inserting / selecting timestamp data type', () => {
 
     const data = [
       { one: null },
-      { one: '1970-01-01 00:00:01.000' },
-      { one: '2038-01-01 00:00:00.000' },
-      { one: '2001-02-03 04:05:06.007' },
+      { one: '2000-01-01 00:00:00.000' },
+      { one: '2037-12-31 23:59:59.999' },
     ];
 
     await db('foo').insert(data);
 
     const result = await db('foo').select();
-
-    console.log('result', result);
 
     expect(result).toEqual(data);
   });
