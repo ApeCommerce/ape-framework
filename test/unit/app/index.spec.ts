@@ -1,7 +1,7 @@
 import '../config';
 import { getBundles, initBundles } from 'app';
 
-describe('Initializing and getting the bundles', () => {
+describe('Initializing / getting the bundles', () => {
   test('Returns expected value', async () => {
     const bundles1 = await initBundles();
     const bundles2 = await getBundles();

@@ -1,6 +1,6 @@
 import { getConfig, initConfig } from 'config';
 
-describe('Initializing and getting the configuration', () => {
+describe('Initializing / getting the configuration', () => {
   test('Returns expected value', async () => {
     const config1 = initConfig();
     const config2 = getConfig();

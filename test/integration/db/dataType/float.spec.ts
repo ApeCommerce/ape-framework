@@ -11,12 +11,11 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting float data type', () => {
+describe('Inserting / selecting float', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
       table.float('one', 'null');
     });
-
     const data = [
       { one: null },
       { one: 0 },
@@ -25,11 +24,22 @@ describe('Inserting / selecting float data type', () => {
       { one: 0.00001 },
       { one: -0.00001 },
     ];
-
     await db('foo').insert(data);
-
     const result = await db('foo').select();
-
     expect(result).toEqual(data);
+  });
+});
+
+describe('Inserting null in float notNull', () => {
+  test('Throws an error', async () => {
+    await schema.createTable('foo', (table) => {
+      table.float('one', 'notNull');
+    });
+    expect.hasAssertions();
+    try {
+      await db('foo').insert({ one: null });
+    } catch (error) {
+      expect(error).toBeDefined();
+    }
   });
 });

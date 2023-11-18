@@ -11,21 +11,18 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting bitIntPrimaryAuto data type', () => {
+describe('Inserting / selecting bitIntPrimaryAuto', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
       table.bigIntPrimaryAuto('one');
       table.bigInt('two', 'null');
     });
-
     await db('foo').insert([
       { two: 1 },
       { two: 2 },
       { two: 3 },
     ]);
-
     const result = await db('foo').select();
-
     expect(result).toEqual([
       { one: 1, two: 1 },
       { one: 2, two: 2 },

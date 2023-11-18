@@ -1,7 +1,7 @@
 import '../config';
 import { getI18n, initI18n } from 'i18n';
 
-describe('Initializing and getting internationalization', () => {
+describe('Initializing / getting internationalization', () => {
   test('Returns expected value', async () => {
     const i18n1 = await initI18n();
     const i18n2 = await getI18n();
