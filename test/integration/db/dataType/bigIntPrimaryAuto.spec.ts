@@ -15,7 +15,7 @@ describe('Inserting / selecting bitIntPrimaryAuto data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
       table.bigIntPrimaryAuto('one');
-      table.bigInt('two');
+      table.bigInt('two', 'null');
     });
 
     await db('foo').insert([

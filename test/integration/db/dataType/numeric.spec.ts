@@ -14,9 +14,9 @@ afterAll(async () => {
 describe('Inserting / selecting numeric data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.numeric('one', 15, 0);
-      table.numeric('two', 15, 1);
-      table.numeric('three', 15, 14);
+      table.numeric('one', 15, 0, 'null');
+      table.numeric('two', 15, 1, 'null');
+      table.numeric('three', 15, 14, 'null');
     });
 
     const data = [

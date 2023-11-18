@@ -1,5 +1,4 @@
 import '../../config';
-import { randomString } from 'utils';
 import db, { SchemaBuilder } from 'db';
 
 const schema = new SchemaBuilder(db);
@@ -12,16 +11,16 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting varChar data type', () => {
+describe('Inserting / selecting time data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.varChar('one', 16000, 'null');
+      table.time('one', 'null');
     });
 
     const data = [
       { one: null },
-      { one: '' },
-      { one: randomString(16000) },
+      { one: '00:00:00.000' },
+      { one: '23:59:59.999' },
     ];
 
     await db('foo').insert(data);

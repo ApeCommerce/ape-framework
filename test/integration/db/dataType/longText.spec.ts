@@ -15,7 +15,7 @@ afterAll(async () => {
 describe('Inserting / selecting longText data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.longText('one');
+      table.longText('one', 'null');
     });
 
     const data = [

@@ -14,13 +14,13 @@ afterAll(async () => {
 describe('Inserting / selecting timestamp data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.timestamp('one');
+      table.timestamp('one', 'null');
     });
 
     const data = [
       { one: null },
-      { one: '2000-01-01 00:00:00.000' },
-      { one: '2037-12-31 23:59:59.999' },
+      { one: '1970-01-01 00:00:01.000' },
+      { one: '2038-01-19 03:14:07.999' },
     ];
 
     await db('foo').insert(data);

@@ -15,7 +15,7 @@ afterAll(async () => {
 describe('Inserting / selecting binary data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.binary('one', 250);
+      table.binary('one', 250, 'null');
     });
 
     const data = [

@@ -10,21 +10,24 @@ const dbConfig: () => Database.Config = () => {
   if (!config.dbPostgresPort) throw new Error('db: postgres port not provided');
   if (!config.dbPostgresDatabase) throw new Error('db: postgres database not provided');
 
-  const timestampRegex = /^(.{19})(\..{1,3})?/;
-  let timestampMatch: any;
+  const timeRegex = /^(.{8})(\..{0,3})?/;
+  const timestampRegex = /^(.{19})(\..{0,3})?/;
+
+  let timeParserMatch: any;
+
+  const timeParser = (regex: RegExp) => (value: string) => {
+    timeParserMatch = value.match(regex);
+    return timeParserMatch
+      ? `${timeParserMatch[1]}${timeParserMatch[2] ? timeParserMatch[2].padEnd(4, '0') : '.000'}`
+      : value;
+  };
 
   types.setTypeParser(types.builtins.BPCHAR, (value: string) => value.trimEnd());
+  types.setTypeParser(types.builtins.DATE, (value: string) => value);
   types.setTypeParser(types.builtins.INT8, (value: string) => parseInt(value, 10));
   types.setTypeParser(types.builtins.NUMERIC, (value: string) => parseFloat(value));
-  types.setTypeParser(types.builtins.TIMESTAMP, (value: string) => {
-    timestampMatch = value.match(timestampRegex);
-    return timestampMatch
-      ? `${timestampMatch[1]}${timestampMatch[2] ? timestampMatch[2].padEnd(4, '0') : '.000'}`
-      : value;
-  });
-
-  types.setTypeParser(types.builtins.DATE, (value: string) => { console.log('DATE', value); return value; });
-  types.setTypeParser(types.builtins.TIME, (value: string) => { console.log('TIME', value); return value; });
+  types.setTypeParser(types.builtins.TIME, timeParser(timeRegex));
+  types.setTypeParser(types.builtins.TIMESTAMP, timeParser(timestampRegex));
 
   return {
     client: 'pg',

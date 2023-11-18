@@ -14,7 +14,7 @@ afterAll(async () => {
 describe('Inserting / selecting bigInt data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.bigInt('one');
+      table.bigInt('one', 'null');
     });
 
     const data = [

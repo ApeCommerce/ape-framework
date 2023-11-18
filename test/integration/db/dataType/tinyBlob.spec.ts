@@ -15,7 +15,7 @@ afterAll(async () => {
 describe('Inserting / selecting tinyBlob data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.tinyBlob('one');
+      table.tinyBlob('one', 'null');
     });
 
     const data = [

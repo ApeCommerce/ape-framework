@@ -9,15 +9,16 @@ const dbConfig: () => Database.Config = () => {
   if (!config.dbMysqlPort) throw new Error('db: mysql port not provided');
   if (!config.dbMysqlDatabase) throw new Error('db: mysql database not provided');
 
+  let typeCastValue: any;
+
   const typeCast = (field: any, next: Function) => {
-    let value: any;
     switch (field.type) {
       case 'BIT':
-        value = field.buffer();
-        return value === null ? null : !!value[0];
+        typeCastValue = field.buffer();
+        return typeCastValue === null ? null : !!typeCastValue[0];
       case 'NEWDECIMAL':
-        value = field.string();
-        return value === null ? null : parseFloat(value);
+        typeCastValue = field.string();
+        return typeCastValue === null ? null : parseFloat(typeCastValue);
       default:
         return next();
     }

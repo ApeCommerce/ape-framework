@@ -14,7 +14,7 @@ afterAll(async () => {
 describe('Inserting / selecting boolean data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.boolean('is_one');
+      table.boolean('is_one', 'null');
     });
 
     const data = [

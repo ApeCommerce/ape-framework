@@ -14,7 +14,7 @@ afterAll(async () => {
 describe('Inserting / selecting int data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.int('one');
+      table.int('one', 'null');
     });
 
     const data = [

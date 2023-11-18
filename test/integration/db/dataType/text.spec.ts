@@ -15,7 +15,7 @@ afterAll(async () => {
 describe('Inserting / selecting text data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.text('one');
+      table.text('one', 'null');
     });
 
     const data = [

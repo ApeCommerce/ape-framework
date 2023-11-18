@@ -14,7 +14,7 @@ afterAll(async () => {
 describe('Inserting / selecting double data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.double('one');
+      table.double('one', 'null');
     });
 
     const data = [

@@ -1,10 +1,7 @@
 import { module, Module } from '../../config';
 
 const dataType = (types: { [module in Exclude<Module, Module.memory>]: string }) => {
-  const dataTypes: { [module in Module]: string } = {
-    ...types,
-    memory: types.sqlite,
-  };
+  const dataTypes: { [module in Module]: string } = { ...types, memory: types.sqlite };
   return dataTypes[module];
 };
 
@@ -136,14 +133,26 @@ const longBlob = () => dataType({
 
 const timestamp = () => dataType({
   mysql: 'timestamp(3)',
-  postgres: 'timestamp',
+  postgres: 'timestamp(3)',
   sqlite: 'text',
 });
 
-const datetime = () => dataType({
-  mysql: '',
-  postgres: '',
-  sqlite: '',
+const dateTime = () => dataType({
+  mysql: ' datetime(3)',
+  postgres: 'timestamp(3)',
+  sqlite: 'text',
+});
+
+const date = () => dataType({
+  mysql: 'date',
+  postgres: 'date',
+  sqlite: 'text',
+});
+
+const time = () => dataType({
+  mysql: 'time(3)',
+  postgres: 'time(3)',
+  sqlite: 'text',
 });
 
 export default {
@@ -153,7 +162,8 @@ export default {
   blob,
   boolean,
   char,
-  datetime,
+  date,
+  dateTime,
   double,
   float,
   int,
@@ -164,6 +174,7 @@ export default {
   smallInt,
   smallIntPrimaryAuto,
   text,
+  time,
   timestamp,
   tinyBlob,
   tinyInt,

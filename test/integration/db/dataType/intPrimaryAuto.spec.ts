@@ -15,7 +15,7 @@ describe('Inserting / selecting intPrimaryAuto data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
       table.intPrimaryAuto('one');
-      table.int('two');
+      table.int('two', 'null');
     });
 
     await db('foo').insert([

@@ -15,7 +15,7 @@ afterAll(async () => {
 describe('Inserting / selecting blob data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.blob('one');
+      table.blob('one', 'null');
     });
 
     const data = [

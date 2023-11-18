@@ -14,7 +14,7 @@ afterAll(async () => {
 describe('Inserting / selecting float data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.float('one');
+      table.float('one', 'null');
     });
 
     const data = [

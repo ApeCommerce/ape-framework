@@ -15,7 +15,7 @@ afterAll(async () => {
 describe('Inserting / selecting char data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.char('one', 250);
+      table.char('one', 250, 'null');
     });
 
     const data = [

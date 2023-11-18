@@ -15,7 +15,7 @@ describe('Inserting / selecting smallIntPrimaryAuto data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
       table.smallIntPrimaryAuto('one');
-      table.smallInt('two');
+      table.smallInt('two', 'null');
     });
 
     await db('foo').insert([

@@ -14,7 +14,7 @@ afterAll(async () => {
 describe('Inserting / selecting smallInt data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.smallInt('one');
+      table.smallInt('one', 'null');
     });
 
     const data = [

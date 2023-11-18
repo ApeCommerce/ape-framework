@@ -15,7 +15,7 @@ afterAll(async () => {
 describe('Inserting / selecting longBlob data type', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.longBlob('one');
+      table.longBlob('one', 'null');
     });
 
     const data = [
