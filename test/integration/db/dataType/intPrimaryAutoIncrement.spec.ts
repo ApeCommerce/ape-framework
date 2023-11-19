@@ -11,11 +11,11 @@ afterAll(async () => {
   await db.destroy();
 });
 
-describe('Inserting / selecting smallIntPrimaryAuto', () => {
+describe('Inserting / selecting intPrimaryAutoIncrement', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.smallIntPrimaryAuto('one');
-      table.smallInt('two', 'null');
+      table.intPrimaryAutoIncrement('one');
+      table.int('two', 'null');
     });
     await db('foo').insert([
       { two: 1 },

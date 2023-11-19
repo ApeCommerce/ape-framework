@@ -23,7 +23,7 @@ const smallInt = () => dataType({
   sqlite: 'integer',
 });
 
-const smallIntPrimaryAuto = () => dataType({
+const smallIntPrimaryAutoIncrement = () => dataType({
   mysql: 'smallint primary key auto_increment',
   postgres: 'smallserial primary key',
   sqlite: 'integer primary key autoincrement',
@@ -35,7 +35,7 @@ const int = () => dataType({
   sqlite: 'integer',
 });
 
-const intPrimaryAuto = () => dataType({
+const intPrimaryAutoIncrement = () => dataType({
   mysql: 'integer primary key auto_increment',
   postgres: 'serial primary key',
   sqlite: 'integer primary key autoincrement',
@@ -47,7 +47,7 @@ const bigInt = () => dataType({
   sqlite: 'integer',
 });
 
-const bigIntPrimaryAuto = () => dataType({
+const bigIntPrimaryAutoIncrement = () => dataType({
   mysql: 'bigint primary key auto_increment',
   postgres: 'bigserial primary key',
   sqlite: 'integer primary key autoincrement',
@@ -157,7 +157,7 @@ const time = () => dataType({
 
 export default {
   bigInt,
-  bigIntPrimaryAuto,
+  bigIntPrimaryAutoIncrement,
   binary,
   blob,
   boolean,
@@ -167,12 +167,12 @@ export default {
   double,
   float,
   int,
-  intPrimaryAuto,
+  intPrimaryAutoIncrement,
   longBlob,
   longText,
   numeric,
   smallInt,
-  smallIntPrimaryAuto,
+  smallIntPrimaryAutoIncrement,
   text,
   time,
   timestamp,

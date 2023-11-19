@@ -33,9 +33,9 @@ export class TableBuilder {
     return new ColumnBuilder(knexColumnBuilder);
   }
 
-  smallIntPrimaryAuto(name: string) {
+  smallIntPrimaryAutoIncrement(name: string) {
     if (name.match(booleanColumnRegex)) throw new Error(`db: invalid column name "${name}"`);
-    const knexColumnBuilder = this.knexTableBuilder.specificType(name, dataType.smallIntPrimaryAuto());
+    const knexColumnBuilder = this.knexTableBuilder.specificType(name, dataType.smallIntPrimaryAutoIncrement());
     return new ColumnBuilder(knexColumnBuilder);
   }
 
@@ -46,9 +46,9 @@ export class TableBuilder {
     return new ColumnBuilder(knexColumnBuilder);
   }
 
-  intPrimaryAuto(name: string) {
+  intPrimaryAutoIncrement(name: string) {
     if (name.match(booleanColumnRegex)) throw new Error(`db: invalid column name "${name}"`);
-    const knexColumnBuilder = this.knexTableBuilder.specificType(name, dataType.intPrimaryAuto());
+    const knexColumnBuilder = this.knexTableBuilder.specificType(name, dataType.intPrimaryAutoIncrement());
     return new ColumnBuilder(knexColumnBuilder);
   }
 
@@ -59,9 +59,9 @@ export class TableBuilder {
     return new ColumnBuilder(knexColumnBuilder);
   }
 
-  bigIntPrimaryAuto(name: string) {
+  bigIntPrimaryAutoIncrement(name: string) {
     if (name.match(booleanColumnRegex)) throw new Error(`db: invalid column name "${name}"`);
-    const knexColumnBuilder = this.knexTableBuilder.specificType(name, dataType.bigIntPrimaryAuto());
+    const knexColumnBuilder = this.knexTableBuilder.specificType(name, dataType.bigIntPrimaryAutoIncrement());
     return new ColumnBuilder(knexColumnBuilder);
   }
 
