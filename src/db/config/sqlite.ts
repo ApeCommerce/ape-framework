@@ -13,7 +13,6 @@ const dbConfig: () => Database.Config = () => {
       filename: config.dbSqliteFile,
     },
     pool: { min: 0, max: 1 },
-    useNullAsDefault: true,
     postProcessResponse,
   };
 };

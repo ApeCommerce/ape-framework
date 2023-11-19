@@ -1,7 +1,7 @@
 import knex from 'knex';
-import { ColumnBuilder } from './schema/builder/column';
+import { ColumnBuilder } from './schema/builder/columnBuilder';
 import { SchemaBuilder } from './schema/builder';
-import { TableBuilder } from './schema/builder/table';
+import { TableBuilder } from './schema/builder/tableBuilder';
 import config from './config';
 import log from '../log';
 import type { Database } from './database';

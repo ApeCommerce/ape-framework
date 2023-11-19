@@ -19,11 +19,16 @@ if (!dbModule) throw new Error(`db: invalid module "${config.dbModule}"`);
 
 export const module = dbModule;
 
-const dbConfig: { [module in Module]: () => Database.Config } = {
+const dbConfigHandler: { [module in Module]: () => Database.Config } = {
   memory: memoryConfig,
   mysql: mysqlConfig,
   postgres: postgresConfig,
   sqlite: sqliteConfig,
 };
 
-export default dbConfig[module]();
+const dbConfig: Database.Config = {
+  ...dbConfigHandler[module](),
+  useNullAsDefault: true,
+};
+
+export default dbConfig;

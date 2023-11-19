@@ -1,4 +1,4 @@
-import { TableBuilder } from './table';
+import { TableBuilder } from './tableBuilder';
 import type { Database } from '../../database';
 
 export class SchemaBuilder {

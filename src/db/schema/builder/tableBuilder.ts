@@ -1,5 +1,5 @@
 import { booleanColumnRegex } from '../../postProcess';
-import { ColumnBuilder } from './column';
+import { ColumnBuilder } from './columnBuilder';
 import dataType from './dataType';
 import type { Database } from '../../database';
 

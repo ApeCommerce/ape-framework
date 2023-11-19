@@ -7,7 +7,6 @@ const dbConfig: () => Database.Config = () => ({
     filename: ':memory:',
   },
   pool: { min: 0, max: 1 },
-  useNullAsDefault: true,
   postProcessResponse,
 });
 
