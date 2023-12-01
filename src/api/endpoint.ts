@@ -17,7 +17,7 @@ export interface Schema {
   properties: any,
 }
 
-export type Method = 'DELETE' | 'GET' | 'PATCH' | 'POST' | 'PUT';
+export type Method = 'DELETE' | 'GET' | 'PATCH' | 'POST' | 'PUT'
 
-export const querystringMethods: Method[] = ['DELETE', 'GET'];
-export const bodyMethods: Method[] = ['PATCH', 'POST', 'PUT'];
+export const querystringMethods: Method[] = ['DELETE', 'GET']
+export const bodyMethods: Method[] = ['PATCH', 'POST', 'PUT']

@@ -1,4 +1,5 @@
 import '../../config';
+import { insertGetKey, insertGetKeys } from 'db/utils';
 import db, { SchemaBuilder } from 'db';
 
 const schema = new SchemaBuilder(db);
@@ -28,5 +29,22 @@ describe('Inserting / selecting smallIntPrimaryAutoIncrement', () => {
       { one: 2, two: 2 },
       { one: 3, two: 3 },
     ]);
+  });
+});
+
+describe('Getting inserted key on smallIntPrimaryAutoIncrement', () => {
+  test('Returns expected value', async () => {
+    await schema.createTable('foo', (table) => {
+      table.smallIntPrimaryAutoIncrement('one');
+      table.smallInt('two', 'null');
+    });
+    const key = await insertGetKey(db('foo'), 'one', { two: 1 });
+    expect(key).toBe(1);
+    const keys = await insertGetKeys(db('foo'), 'one', [
+      { two: 2 },
+      { two: 3 },
+      { two: 4 },
+    ]);
+    expect(keys).toEqual([2, 3, 4]);
   });
 });

@@ -1,24 +1,24 @@
-import type { Bundle } from '../../app';
-import type { Migration } from './migration';
+import type { Bundle } from '../../app'
+import type { Migration } from './migration'
 
 export class MigrationSource {
-  private bundle: Bundle;
+  private bundle: Bundle
 
   constructor(bundle: Bundle) {
-    this.bundle = bundle;
+    this.bundle = bundle
   }
 
   async getMigrations() {
-    return this.bundle.migrations ? this.bundle.migrations() : Promise.resolve([]);
+    return this.bundle.migrations ? this.bundle.migrations() : Promise.resolve([])
   }
 
   getMigrationName(migration: Migration) {
-    return migration.migrationId;
+    return migration.migrationId
   }
 
   getMigration(migration: Migration) {
-    return Promise.resolve(migration);
+    return Promise.resolve(migration)
   }
 }
 
-export default MigrationSource;
+export default MigrationSource

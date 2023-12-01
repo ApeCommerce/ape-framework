@@ -1,9 +1,9 @@
-import { getConfig } from '../../../config';
+import { getConfig } from '../../../config'
 
-const config = getConfig();
+const config = getConfig()
 
-if (!config.mqRedisHost) throw new Error('mq: redis host not provided');
-if (!config.mqRedisPort) throw new Error('mq: redis port not provided');
+if (!config.mqRedisHost) throw new Error('mq: redis host not provided')
+if (!config.mqRedisPort) throw new Error('mq: redis port not provided')
 
 const commonOptions = {
   connection: {
@@ -14,21 +14,21 @@ const commonOptions = {
     enableOfflineQueue: false,
   },
   prefix: config.mqRedisPrefix,
-};
+}
 
 const queueOptions = {
   ...commonOptions,
   defaultJobOptions: {
     removeOnComplete: true,
   },
-};
+}
 
 const workerOptions = {
   ...commonOptions,
   autorun: false,
-};
+}
 
 export default {
   queueOptions,
   workerOptions,
-};
+}

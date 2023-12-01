@@ -1,4 +1,4 @@
-import { MailModule } from '..';
+import { MailModule } from '..'
 
 export class BypassMail extends MailModule {
   protected async sendMail() { }
@@ -6,4 +6,4 @@ export class BypassMail extends MailModule {
   async close() { }
 }
 
-export default BypassMail;
+export default BypassMail

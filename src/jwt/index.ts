@@ -1,48 +1,60 @@
-import { jwtVerify, JWTPayload, ProtectedHeaderParameters as Header, SignJWT } from 'jose';
-import config from './config';
-import log from '../log';
-import type { Jwt } from './jwt';
-import type { User } from './user';
+import { jwtVerify, JWTPayload, ProtectedHeaderParameters as Header, SignJWT, } from 'jose'
+import config from './config'
+import log from '../log'
+import type { Jwt } from './jwt'
+import type { User } from './user'
 
-export { Jwt, User };
+export { Jwt, User }
 
 interface Payload extends JWTPayload {
   type: string,
   user: User,
 }
 
-const secret = new TextEncoder().encode(config.secret);
+const secret = new TextEncoder().encode(config.secret)
 
-export const createToken = async (user: User, type: string, timestamp: number, expiration: number) => {
-  const payload: Payload = { type, user };
+export const createToken = async (
+  user: User,
+  type: string,
+  timestamp: number,
+  expiration: number,
+) => {
+  const payload: Payload = { type, user }
   return new SignJWT(payload)
     .setProtectedHeader({ typ: 'JWT', alg: 'HS256' })
     .setIssuer(config.issuer)
     .setIssuedAt(timestamp)
     .setExpirationTime(timestamp + expiration)
-    .sign(secret);
-};
+    .sign(secret)
+}
 
-export const verifyToken = async (token: string, type: string, timestamp: number) => {
+export const verifyToken = async (
+  token: string,
+  type: string,
+  timestamp: number,
+) => {
   try {
     const { payload } = (await jwtVerify(token, secret, {
       algorithms: ['HS256'],
       issuer: config.issuer,
       currentDate: new Date(timestamp * 1000),
-    })) as { payload: Payload, protectedHeader: Header };
-    return payload.type === type ? payload.user : undefined;
+    })) as { payload: Payload, protectedHeader: Header }
+    return payload.type === type ? payload.user : undefined
   } catch (error) {
-    log.debug(error);
-    return undefined;
+    log.debug(error)
+    return undefined
   }
-};
+}
 
-export const hasRoles = (user: User, roles: string[]) => roles.every((role) => user.roles.includes(role));
+export const hasRoles = (
+  user: User,
+  roles: string[],
+) => roles.every((role) => user.roles.includes(role))
 
 const jwt: Jwt = {
   createToken,
   hasRoles,
   verifyToken,
-};
+}
 
-export default jwt;
+export default jwt

@@ -1,8 +1,8 @@
-import Mailgen, { ContentBody } from 'mailgen';
-import config from '../config';
-import log from '../../log';
-import type { Email } from '../email';
-import type { Mail } from '../mail';
+import Mailgen, { ContentBody } from 'mailgen'
+import config from '../config'
+import log from '../../log'
+import type { Email } from '../email'
+import type { Mail } from '../mail'
 
 export abstract class MailModule {
   async send(to: string[], email: Email) {
@@ -14,7 +14,7 @@ export abstract class MailModule {
         copyright: email.copyright,
       },
       textDirection: email.textDirection,
-    });
+    })
 
     const body: ContentBody = {
       title: email.title,
@@ -35,7 +35,7 @@ export abstract class MailModule {
       } : undefined,
       greeting: false,
       signature: false,
-    };
+    }
 
     await this.sendMail({
       to,
@@ -44,14 +44,14 @@ export abstract class MailModule {
       subject: email.subject,
       html: mailgen.generate({ body }),
       text: mailgen.generatePlaintext({ body }),
-    });
+    })
 
-    log.debug(`mail: sent mail to ${to.join(', ')}`);
+    log.debug(`mail: sent mail to ${to.join(', ')}`)
   }
 
-  protected abstract sendMail(mail: Mail): Promise<void>;
+  protected abstract sendMail(mail: Mail): Promise<void>
 
-  abstract close(): Promise<void>;
+  abstract close(): Promise<void>
 }
 
-export default MailModule;
+export default MailModule

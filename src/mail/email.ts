@@ -1,4 +1,4 @@
-import type { Address } from './mail';
+import type { Address } from './mail'
 
 export interface Email {
   fromName: string,

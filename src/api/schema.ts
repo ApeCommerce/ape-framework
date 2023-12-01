@@ -1,5 +1,5 @@
-import { bodyMethods, querystringMethods, Endpoint } from './endpoint';
-import type { Bundle } from '../app';
+import { bodyMethods, querystringMethods, Endpoint } from './endpoint'
+import type { Bundle } from '../app'
 
 interface RouteSchema {
   tags: string[],
@@ -31,7 +31,7 @@ interface ObjectSchema {
 
 const nullSchema: NullSchema = {
   type: 'null',
-};
+}
 
 const authSchema = (roles: string[]): ObjectSchema => ({
   type: 'object',
@@ -44,7 +44,7 @@ const authSchema = (roles: string[]): ObjectSchema => ({
       description: `Required roles: \`${roles.join('`, `')}\``,
     },
   },
-});
+})
 
 const schema = (bundle: Bundle, endpoint: Endpoint): RouteSchema => {
   const replySchema = endpoint.replySchema
@@ -52,47 +52,47 @@ const schema = (bundle: Bundle, endpoint: Endpoint): RouteSchema => {
       ...endpoint.replySchema,
       examples: endpoint.replyExample ? [endpoint.replyExample] : undefined,
     }
-    : nullSchema;
+    : nullSchema
 
   const routeSchema: RouteSchema = {
     tags: [bundle.name],
     summary: endpoint.path,
     description: endpoint.description,
     response: { 200: { ...replySchema, description: 'OK' } },
-  };
+  }
 
   if (endpoint.requestSchema) {
     if (querystringMethods.includes(endpoint.method)) {
-      const { requestSchema } = endpoint;
+      const { requestSchema } = endpoint
       if (endpoint.requestExample) {
         Object.keys(requestSchema.properties).forEach((property) => {
           requestSchema.properties[property].examples = endpoint.requestExample[property]
             ? [endpoint.requestExample[property]]
-            : undefined;
-        });
+            : undefined
+        })
       }
-      routeSchema.querystring = requestSchema;
+      routeSchema.querystring = requestSchema
     }
     if (bodyMethods.includes(endpoint.method)) {
-      const { requestSchema }: any = endpoint;
+      const { requestSchema }: any = endpoint
       if (endpoint.requestExample) {
-        requestSchema.examples = [endpoint.requestExample];
+        requestSchema.examples = [endpoint.requestExample]
       }
-      routeSchema.body = requestSchema;
+      routeSchema.body = requestSchema
     }
-    routeSchema.response[400] = { ...nullSchema, description: 'Bad Request' };
+    routeSchema.response[400] = { ...nullSchema, description: 'Bad Request' }
   }
 
   if (endpoint.requiredRoles) {
-    routeSchema.headers = authSchema(endpoint.requiredRoles);
-    routeSchema.response[401] = { ...nullSchema, description: 'Unauthorized' };
+    routeSchema.headers = authSchema(endpoint.requiredRoles)
+    routeSchema.response[401] = { ...nullSchema, description: 'Unauthorized' }
   }
 
   if (endpoint.forbidden) {
-    routeSchema.response[403] = { ...nullSchema, description: 'Forbidden' };
+    routeSchema.response[403] = { ...nullSchema, description: 'Forbidden' }
   }
 
-  return routeSchema;
-};
+  return routeSchema
+}
 
-export default schema;
+export default schema

@@ -1,14 +1,14 @@
-import nodemailer, { Transporter } from 'nodemailer';
-import { MailModule } from '..';
-import config from './config';
-import type { Mail } from '../../mail';
+import nodemailer, { Transporter } from 'nodemailer'
+import { MailModule } from '..'
+import config from './config'
+import type { Mail } from '../../mail'
 
 export class SmtpMail extends MailModule {
-  private transporter: Transporter;
+  private transporter: Transporter
 
   constructor() {
-    super();
-    this.transporter = nodemailer.createTransport(config.transportOptions);
+    super()
+    this.transporter = nodemailer.createTransport(config.transportOptions)
   }
 
   protected async sendMail(mail: Mail) {
@@ -25,12 +25,12 @@ export class SmtpMail extends MailModule {
       subject: mail.subject,
       html: mail.html,
       text: mail.text,
-    });
+    })
   }
 
   async close() {
-    this.transporter.close();
+    this.transporter.close()
   }
 }
 
-export default SmtpMail;
+export default SmtpMail

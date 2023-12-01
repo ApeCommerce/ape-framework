@@ -1,11 +1,11 @@
-import { getConfig } from '../../config';
-import postProcessResponse from '../postProcess';
-import type { Database } from '../database';
+import { getConfig } from '../../config'
+import postProcessResponse from '../postProcess'
+import type { Database } from '../database'
 
 const dbConfig: () => Database.Config = () => {
-  const config = getConfig();
+  const config = getConfig()
 
-  if (!config.dbSqliteFile) throw new Error('db: sqlite file not provided');
+  if (!config.dbSqliteFile) throw new Error('db: sqlite file not provided')
 
   return {
     client: 'sqlite3',
@@ -14,7 +14,7 @@ const dbConfig: () => Database.Config = () => {
     },
     pool: { min: 0, max: 1 },
     postProcessResponse,
-  };
-};
+  }
+}
 
-export default dbConfig;
+export default dbConfig

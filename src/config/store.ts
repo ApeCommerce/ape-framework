@@ -1,15 +1,15 @@
 export class Store {
-  configurations: any[];
+  configurations: any[]
 
   constructor(...configurations: any[]) {
-    this.configurations = configurations;
+    this.configurations = configurations
   }
 
   get(property: string) {
     return this.configurations
       .map((config) => config[property])
-      .find((value) => value !== undefined);
+      .find((value) => value !== undefined)
   }
 }
 
-export default Store;
+export default Store

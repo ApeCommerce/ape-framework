@@ -1,42 +1,42 @@
-import i18next, { Resource as Resources } from 'i18next';
-import { getBundles } from '../app';
-import config from './config';
-import type { I18n } from './i18n';
-import type { Internationalization } from './internationalization';
-import type { Translation } from './translation';
+import i18next, { Resource as Resources } from 'i18next'
+import { getBundles } from '../app'
+import config from './config'
+import type { I18n } from './i18n'
+import type { Internationalization } from './internationalization'
+import type { Translation } from './translation'
 
-export { I18n, Internationalization, Translation };
+export { I18n, Internationalization, Translation }
 
-const getNamespaces = async () => (await getBundles()).map((bundle) => bundle.bundleId);
+const getNamespaces = async () => (await getBundles()).map((bundle) => bundle.bundleId)
 
 const getResources = async () => {
-  const resources: Resources = {};
+  const resources: Resources = {}
   for (const bundle of await getBundles()) {
     (bundle.translations ? await bundle.translations() : []).forEach((translation) => {
-      if (!resources[translation.languageId]) resources[translation.languageId] = {};
-      resources[translation.languageId][bundle.bundleId] = translation.dictionary;
-    });
+      if (!(translation.languageId in resources)) resources[translation.languageId] = {}
+      resources[translation.languageId][bundle.bundleId] = translation.dictionary
+    })
   }
-  return resources;
-};
+  return resources
+}
 
-let internalization: Internationalization;
+let internalization: Internationalization | undefined
 
 export const initI18n = async () => {
   await i18next.init({
     ns: await getNamespaces(),
     resources: await getResources(),
     fallbackLng: config.fallbackLanguage,
-  });
-  internalization = i18next;
-  return internalization;
-};
+  })
+  internalization = i18next
+  return internalization
+}
 
-export const getI18n = async () => internalization || initI18n();
+export const getI18n = async () => internalization ?? initI18n()
 
 const i18n: I18n = {
   getI18n,
   initI18n,
-};
+}
 
-export default i18n;
+export default i18n

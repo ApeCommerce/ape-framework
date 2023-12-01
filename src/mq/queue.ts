@@ -8,4 +8,4 @@ export interface Job {
   process: (data: any, progress: Progress) => Promise<void>,
 }
 
-export type Progress = (current: number, total: number) => void;
+export type Progress = (current: number, total: number) => void

@@ -1,5 +1,5 @@
-import type { Logger } from 'pino';
+import type { Logger } from 'pino'
 
-export { Logger };
+export { Logger }
 
-export default Logger;
+export default Logger

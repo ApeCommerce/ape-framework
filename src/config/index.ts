@@ -1,19 +1,19 @@
-import { parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils';
-import { Store } from './store';
-import defaults from './default';
-import env from './env';
-import loadFile from './loadFile';
-import type { Config } from './config';
-import type { Configuration } from './configuration';
+import {parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString,} from '../utils'
+import { Store } from './store'
+import defaults from './default'
+import env from './env'
+import loadFile from './loadFile'
+import type { Config } from './config'
+import type { Configuration } from './configuration'
 
-export { Config, Configuration, Store };
+export { Config, Configuration, Store }
 
-let configuration: Configuration;
+let configuration: Configuration | undefined
 
-export const initConfig = (override: any = {}, file: string = 'ape.config.json') => {
-  const json = loadFile(file);
+export const initConfig = (override: any = {}, file = 'ape.config.json') => {
+  const json = loadFile(file)
 
-  const store = new Store(override, json, env, defaults);
+  const store = new Store(override, json, env, defaults)
 
   configuration = {
     appBoot: parseString(store.get('appBoot')),
@@ -86,16 +86,16 @@ export const initConfig = (override: any = {}, file: string = 'ape.config.json')
     mailSmtpUser: parseString(store.get('mailSmtpUser')),
     mailSmtpPassword: parseString(store.get('mailSmtpPassword')),
     mailSmtpEmail: parseString(store.get('mailSmtpEmail')),
-  };
+  }
 
-  return configuration;
-};
+  return configuration
+}
 
-export const getConfig = () => configuration || initConfig();
+export const getConfig = () => configuration ?? initConfig()
 
 const config: Config = {
   getConfig,
   initConfig,
-};
+}
 
-export default config;
+export default config

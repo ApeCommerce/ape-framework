@@ -1,3 +1,3 @@
-import { MailModuleClass } from './module/config';
+import { MailModuleClass } from './module/config'
 
-export default new MailModuleClass();
+export default new MailModuleClass()

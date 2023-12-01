@@ -1,8 +1,8 @@
-import pino, { LoggerOptions as Options } from 'pino';
-import pretty from 'pino-pretty';
-import { getConfig } from '../config';
+import pino, { LoggerOptions as Options } from 'pino'
+import pretty from 'pino-pretty'
+import { getConfig } from '../config'
 
-enum Level {
+export enum Level {
   debug = 'debug',
   error = 'error',
   fatal = 'fatal',
@@ -12,30 +12,32 @@ enum Level {
   warn = 'warn',
 }
 
-enum Destination {
+export enum Destination {
   file = 'file',
   stdout = 'stdout',
 }
 
-const config = getConfig();
+const config = getConfig()
 
-const level = Object.values(Level).find((l) => l === config.logLevel);
-if (!level) throw new Error(`log: invalid level "${config.logLevel}"`);
+const level = Object.values(Level)
+  .find((level: string) => level === config.logLevel)
+if (!level) throw new Error(`log: invalid level "${config.logLevel}"`)
 
-const destination = Object.values(Destination).find((d) => d === config.logDestination);
-if (!destination) throw new Error(`log: invalid destination "${config.logDestination}"`);
+const destination = Object.values(Destination)
+  .find((destination: string) => destination === config.logDestination)
+if (!destination) throw new Error(`log: invalid destination "${config.logDestination}"`)
 
-const options: Options = { level };
+const options: Options = { level }
 
-let stream;
+let stream
 if (destination === Destination.file) {
-  if (!config.logFile) throw new Error('log: file not provided');
-  stream = pino.destination(config.logFile);
+  if (!config.logFile) throw new Error('log: file not provided')
+  stream = pino.destination(config.logFile)
 } else {
-  stream = config.logPretty ? pretty() : process.stdout;
+  stream = config.logPretty ? pretty() : process.stdout
 }
 
 export default {
   options,
   stream,
-};
+}

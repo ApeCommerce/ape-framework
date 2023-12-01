@@ -37,4 +37,4 @@ export default {
 
   mailModule: 'bypass',
   mailSmtpPort: 587,
-};
+}

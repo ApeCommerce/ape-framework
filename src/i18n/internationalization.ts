@@ -1,5 +1,5 @@
-import type { i18n as Internationalization } from 'i18next';
+import type { i18n as Internationalization } from 'i18next'
 
-export { Internationalization };
+export { Internationalization }
 
-export default Internationalization;
+export default Internationalization

@@ -1,6 +1,6 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 
 export default {
   nodeEnv: process.env.NODE_ENV,
@@ -76,4 +76,4 @@ export default {
   mailSmtpUser: process.env.APE_MAIL_SMTP_USER,
   mailSmtpPassword: process.env.APE_MAIL_SMTP_PASSWORD,
   mailSmtpEmail: process.env.APE_MAIL_SMTP_EMAIL,
-};
+}

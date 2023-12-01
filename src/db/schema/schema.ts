@@ -1,4 +1,4 @@
-import type { MigrationList } from './migrationList';
+import type { MigrationList } from './migrationList'
 
 export interface Schema {
   listMigrations: (bundleId?: string, pending?: boolean) => Promise<MigrationList>,

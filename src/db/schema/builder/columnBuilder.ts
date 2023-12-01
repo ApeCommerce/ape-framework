@@ -1,15 +1,15 @@
-import type { Database } from '../../database';
+import type { Database } from '../../database'
 
 export class ColumnBuilder {
-  private knexColumnBuilder: Database.ColumnBuilder;
+  private knexColumnBuilder: Database.ColumnBuilder
 
   constructor(knexColumnBuilder: Database.ColumnBuilder) {
-    this.knexColumnBuilder = knexColumnBuilder;
+    this.knexColumnBuilder = knexColumnBuilder
   }
 
   index() {
-    this.knexColumnBuilder.index();
+    this.knexColumnBuilder.index()
   }
 }
 
-export default ColumnBuilder;
+export default ColumnBuilder

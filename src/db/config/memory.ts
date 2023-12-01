@@ -1,5 +1,5 @@
-import postProcessResponse from '../postProcess';
-import type { Database } from '../database';
+import postProcessResponse from '../postProcess'
+import type { Database } from '../database'
 
 const dbConfig: () => Database.Config = () => ({
   client: 'sqlite3',
@@ -8,6 +8,6 @@ const dbConfig: () => Database.Config = () => ({
   },
   pool: { min: 0, max: 1 },
   postProcessResponse,
-});
+})
 
-export default dbConfig;
+export default dbConfig
