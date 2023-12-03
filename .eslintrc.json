@@ -25,9 +25,28 @@
       "error",
       "consistent"
     ],
-    "@stylistic/js/comma-dangle": [
+    "@stylistic/js/array-bracket-spacing": [
       "error",
-      "always-multiline"
+      "never"
+    ],
+    "@stylistic/js/array-element-newline": [
+      "error",
+      "consistent"
+    ],
+    "@stylistic/js/arrow-parens": [
+      "error",
+      "always"
+    ],
+    "@stylistic/js/arrow-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "@stylistic/js/comma-style": [
+      "error",
+      "last"
     ],
     "@stylistic/js/max-len": [
       "error",
@@ -36,8 +55,32 @@
         "ignorePattern": "^import"
       }
     ],
-    "@stylistic/js/object-curly-newline": "error",
-    "@stylistic/js/semi": [
+    "@stylistic/js/object-curly-newline": [
+      "error",
+      {
+        "consistent": true
+      }
+    ],
+    "@stylistic/ts/block-spacing": [
+      "error",
+      "always"
+    ],
+    "@stylistic/ts/brace-style": [
+      "error",
+      "1tbs"
+    ],
+    "@stylistic/ts/comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "@stylistic/ts/comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "@stylistic/ts/semi": [
       "error",
       "never"
     ],

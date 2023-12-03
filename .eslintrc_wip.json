@@ -1,0 +1,234 @@
+{
+  "@stylistic/js/computed-property-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/dot-location": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/eol-last": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/function-call-argument-newline": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/function-call-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/function-paren-newline": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/generator-star-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/implicit-arrow-linebreak": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/linebreak-style": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/max-len": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/max-statements-per-line": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/multiline-ternary": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/new-parens": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/newline-per-chained-call": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/no-confusing-arrow": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/no-floating-decimal": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/no-mixed-operators": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/no-mixed-spaces-and-tabs": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/no-multi-spaces": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/no-multiple-empty-lines": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/no-tabs": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/no-trailing-spaces": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/no-whitespace-before-property": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/nonblock-statement-body-position": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/object-curly-newline": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/object-property-newline": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/one-var-declaration-per-line": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/operator-linebreak": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/padded-blocks": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/quote-props": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/rest-spread-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/semi-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/semi-style": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/space-in-parens": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/space-unary-ops": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/spaced-comment": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/switch-colon-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/template-curly-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/template-tag-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/wrap-iife": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/wrap-regex": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/js/yield-star-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/indent": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/key-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/keyword-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/lines-around-comment": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/lines-between-class-members": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/member-delimiter-style": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/no-extra-parens": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/no-extra-semi": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/object-curly-spacing": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/padding-line-between-statements": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/quotes": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/semi": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/space-before-blocks": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/space-before-function-paren": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/space-infix-ops": [
+    "error",
+    "xxx"
+  ],
+  "@stylistic/ts/type-annotation-spacing": [
+    "error",
+    "xxx"
+  ]
+}
