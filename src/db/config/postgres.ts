@@ -37,20 +37,22 @@ const dbConfig: () => Database.Config = () => {
       ...(config.dbPostgresUser ? { user: config.dbPostgresUser } : {}),
       ...(config.dbPostgresPassword ? { password: config.dbPostgresPassword } : {}),
       database: config.dbPostgresDatabase,
-      ...(config.dbPostgresSsl ? {
-        ssl: {
-          ...(config.dbPostgresSslCa
-            ? { ca: fs.readFileSync(config.dbPostgresSslCa).toString() }
-            : {}),
-          ...(config.dbPostgresSslCert
-            ? { cert: fs.readFileSync(config.dbPostgresSslCert).toString() }
-            : {}),
-          ...(config.dbPostgresSslKey
-            ? { key: fs.readFileSync(config.dbPostgresSslKey).toString() }
-            : {}),
-          rejectUnauthorized: config.dbPostgresSslVerify,
-        },
-      } : {}),
+      ...(config.dbPostgresSsl
+        ? {
+          ssl: {
+            ...(config.dbPostgresSslCa
+              ? { ca: fs.readFileSync(config.dbPostgresSslCa).toString() }
+              : {}),
+            ...(config.dbPostgresSslCert
+              ? { cert: fs.readFileSync(config.dbPostgresSslCert).toString() }
+              : {}),
+            ...(config.dbPostgresSslKey
+              ? { key: fs.readFileSync(config.dbPostgresSslKey).toString() }
+              : {}),
+            rejectUnauthorized: config.dbPostgresSslVerify,
+          },
+        }
+        : {}),
     },
     pool: { min: 0, max: config.dbPostgresPoolMax },
   }

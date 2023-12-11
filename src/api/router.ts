@@ -7,8 +7,9 @@ const protectedRoutes: {
   roles: string[]
 }[] = []
 
-export const getRequiredRoles = (path: string) =>
-  protectedRoutes.find((route) => route.path === path)?.roles
+export const getRequiredRoles = (path: string) => {
+  return protectedRoutes.find((route) => route.path === path)?.roles
+}
 
 const router: Plugin = (server, options, done) => {
   (async () => {

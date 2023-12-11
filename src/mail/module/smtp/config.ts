@@ -13,7 +13,7 @@ const transportOptions: TransportOptions = {
   auth: config.mailSmtpUser || config.mailSmtpPassword
     ? {
       user: config.mailSmtpUser || undefined,
-      pass: config.mailSmtpPassword || undefined
+      pass: config.mailSmtpPassword || undefined,
     }
     : undefined,
   pool: true,

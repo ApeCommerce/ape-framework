@@ -20,19 +20,23 @@ export abstract class MailModule {
       title: email.title,
       intro: email.intro,
       outro: email.outro,
-      action: email.action ? {
-        instructions: email.action.instructions,
-        button: {
+      action: email.action
+        ? {
+          instructions: email.action.instructions,
+          button: {
+            text: email.action.text,
+            link: email.action.link,
+            color: email.color,
+          },
+        }
+        : undefined,
+      goToAction: email.action
+        ? {
+          description: email.action.description,
           text: email.action.text,
           link: email.action.link,
-          color: email.color,
-        },
-      } : undefined,
-      goToAction: email.action ? {
-        description: email.action.description,
-        text: email.action.text,
-        link: email.action.link,
-      } : undefined,
+        }
+        : undefined,
       greeting: false,
       signature: false,
     }

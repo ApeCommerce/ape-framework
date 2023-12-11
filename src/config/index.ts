@@ -1,4 +1,4 @@
-import {parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString,} from '../utils'
+import { parseBoolean, parseBytes, parseMilliseconds, parseNumber, parseString } from '../utils'
 import { Store } from './store'
 import defaults from './default'
 import env from './env'

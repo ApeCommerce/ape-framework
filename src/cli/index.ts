@@ -1,5 +1,5 @@
 import parseArgs from 'yargs-parser'
-import { exit, formatList, formatTable, formatText, writeLn, } from './utils'
+import { exit, formatList, formatTable, formatText, writeLn } from './utils'
 import { getBundles } from '../app'
 import { parseString } from '../utils'
 import internalCommands from './internal'
@@ -27,7 +27,10 @@ const exec = async () => {
   delete options._
 
   const name = parseString(args.shift())
-  if (!name || name === 'help') { writeLn(help); exit() }
+  if (!name || name === 'help') {
+    writeLn(help)
+    exit()
+  }
 
   const command = commands.find((command) => command.name === name)
   if (!command) throw new Error(`cli: invalid command "${name}"`)

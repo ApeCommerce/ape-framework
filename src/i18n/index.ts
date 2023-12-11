@@ -1,4 +1,4 @@
-import i18next, { Resource as Resources } from 'i18next'
+import i18next, { init, Resource as Resources } from 'i18next'
 import { getBundles } from '../app'
 import config from './config'
 import type { I18n } from './i18n'
@@ -23,7 +23,7 @@ const getResources = async () => {
 let internalization: Internationalization | undefined
 
 export const initI18n = async () => {
-  await i18next.init({
+  await init({
     ns: await getNamespaces(),
     resources: await getResources(),
     fallbackLng: config.fallbackLanguage,

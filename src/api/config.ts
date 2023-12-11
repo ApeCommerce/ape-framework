@@ -6,14 +6,30 @@ import { getConfig } from '../config'
 
 const config = getConfig()
 
-if (!config.apiName) throw new Error('api: name not provided')
-if (!config.apiVersion) throw new Error('api: version not provided')
-if (!config.apiHost) throw new Error('api: host not provided')
-if (!config.apiPort) throw new Error('api: port not provided')
-if (!config.apiConnectionTimeout) throw new Error('api: connection timeout not provided')
-if (!config.apiRequestTimeout) throw new Error('api: request timeout not provided')
-if (!config.apiKeepAliveTimeout) throw new Error('api: keep alive timeout not provided')
-if (!config.apiBodyLimit) throw new Error('api: body limit not provided')
+if (!config.apiName) {
+  throw new Error('api: name not provided')
+}
+if (!config.apiVersion) {
+  throw new Error('api: version not provided')
+}
+if (!config.apiHost) {
+  throw new Error('api: host not provided')
+}
+if (!config.apiPort) {
+  throw new Error('api: port not provided')
+}
+if (!config.apiConnectionTimeout) {
+  throw new Error('api: connection timeout not provided')
+}
+if (!config.apiRequestTimeout) {
+  throw new Error('api: request timeout not provided')
+}
+if (!config.apiKeepAliveTimeout) {
+  throw new Error('api: keep alive timeout not provided')
+}
+if (!config.apiBodyLimit) {
+  throw new Error('api: body limit not provided')
+}
 
 const listenOptions: ListenOptions = {
   host: config.apiHost,

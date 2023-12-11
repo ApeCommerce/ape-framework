@@ -1,4 +1,4 @@
-import { exit, formatTable, formatText, writeLn, } from '../utils'
+import { exit, formatTable, formatText, writeLn } from '../utils'
 import { parseString } from '../../utils'
 import type { Api } from '../../api/api'
 import type { Command } from '../command'
@@ -20,7 +20,10 @@ const command: Command = {
   name: 'api',
   handler: async (args) => {
     const action = parseString(args[0])
-    if (!action || action === 'help') { writeLn(help); exit() }
+    if (!action || action === 'help') {
+      writeLn(help)
+      exit()
+    }
 
     switch (action) {
       case 'start':

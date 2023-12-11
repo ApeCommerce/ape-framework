@@ -2,13 +2,26 @@ export type Text = string[]
 export type List = string[]
 export type Table = string[][]
 
-export const exit = (code?: number) => process.exit(code)
+export const exit = (code?: number) => {
+  process.exit(code)
+}
 
-export const write = (s: string) => process.stdout.write(s)
-export const writeLn = (s: string) => process.stdout.write(`${s}\n`)
+export const write = (s: string) => {
+  process.stdout.write(s)
+}
 
-export const formatText = (text: Text) => text.join('\n')
-export const formatList = (list: List) => list.map((item) => `  ${item}`).join('\n')
+export const writeLn = (s: string) => {
+  process.stdout.write(`${s}\n`)
+}
+
+export const formatText = (text: Text) => {
+  return text.join('\n')
+}
+
+export const formatList = (list: List) => {
+  return list.map((item) => `  ${item}`).join('\n')
+}
+
 export const formatTable = (table: Table) => {
   const colLen: number[] = []
   table.forEach((row) => {

@@ -15,7 +15,7 @@ export const parseString = (value: any) => {
 }
 
 export const basePath = (path?: string, separator = '/') => {
-  return parseString(path).split(separator).filter(value => value)[0] || ''
+  return parseString(path).split(separator).filter((value) => value)[0] || ''
 }
 export const parseBytes = (value: any) => {
   return bytes(parseString(value)) || 0
@@ -36,7 +36,9 @@ export const uuid = () => {
   return randomUUID()
 }
 export const wait = (milliseconds: number) => {
-  return new Promise<void>((res) => { setTimeout(() => { res(); }, milliseconds) })
+  return new Promise<void>((resolve) => setTimeout(() => {
+    resolve()
+  }, milliseconds))
 }
 
 export default {

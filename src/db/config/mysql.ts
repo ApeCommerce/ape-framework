@@ -32,20 +32,22 @@ const dbConfig: () => Database.Config = () => {
       ...(config.dbMysqlUser ? { user: config.dbMysqlUser } : {}),
       ...(config.dbMysqlPassword ? { password: config.dbMysqlPassword } : {}),
       database: config.dbMysqlDatabase,
-      ...(config.dbMysqlSsl ? {
-        ssl: {
-          ...(config.dbMysqlSslCa
-            ? { ca: fs.readFileSync(config.dbMysqlSslCa).toString() }
-            : {}),
-          ...(config.dbMysqlSslCert
-            ? { cert: fs.readFileSync(config.dbMysqlSslCert).toString() }
-            : {}),
-          ...(config.dbMysqlSslKey
-            ? { key: fs.readFileSync(config.dbMysqlSslKey).toString() }
-            : {}),
-          rejectUnauthorized: config.dbMysqlSslVerify,
-        },
-      } : {}),
+      ...(config.dbMysqlSsl
+        ? {
+          ssl: {
+            ...(config.dbMysqlSslCa
+              ? { ca: fs.readFileSync(config.dbMysqlSslCa).toString() }
+              : {}),
+            ...(config.dbMysqlSslCert
+              ? { cert: fs.readFileSync(config.dbMysqlSslCert).toString() }
+              : {}),
+            ...(config.dbMysqlSslKey
+              ? { key: fs.readFileSync(config.dbMysqlSslKey).toString() }
+              : {}),
+            rejectUnauthorized: config.dbMysqlSslVerify,
+          },
+        }
+        : {}),
       dateStrings: true,
       typeCast,
     },

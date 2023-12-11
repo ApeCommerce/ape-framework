@@ -19,8 +19,9 @@ export const initBundles = async () => {
 
 export const getBundles = async () => bundles ?? initBundles()
 
-export const getBundle = async (bundleId: string) =>
-  (await getBundles()).find((bundle) => bundle.bundleId === bundleId)
+export const getBundle = async (bundleId: string) => {
+  return (await getBundles()).find((bundle) => bundle.bundleId === bundleId)
+}
 
 const app: App = {
   getBundle,

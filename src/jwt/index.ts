@@ -1,4 +1,4 @@
-import { jwtVerify, JWTPayload, ProtectedHeaderParameters as Header, SignJWT, } from 'jose'
+import { jwtVerify, JWTPayload, ProtectedHeaderParameters as Header, SignJWT } from 'jose'
 import config from './config'
 import log from '../log'
 import type { Jwt } from './jwt'

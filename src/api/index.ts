@@ -2,10 +2,10 @@ import cors from '@fastify/cors'
 import fastify from 'fastify'
 import responseValidation from '@fastify/response-validation'
 import swagger from '@fastify/swagger'
-import { authorizationRegex, authorizationTokenType, bearerPrefixLength } from './auth'
 import { basePath, timestamp } from '../utils'
+import { bearerPrefix, headerRegex, tokenType } from './auth'
+import { hasRoles, verifyToken } from '../jwt'
 import config from './config'
-import jwt from '../jwt'
 import log from '../log'
 import router, { getRequiredRoles } from './router'
 import type { Api } from './api'
@@ -15,13 +15,13 @@ const onRequest: Handler = async (request, reply) => {
   const roles = getRequiredRoles(basePath(request.routerPath))
   if (roles) {
     let authorized = false
-    if (request.headers.authorization?.match(authorizationRegex)) {
-      const user = await jwt.verifyToken(
-        request.headers.authorization.substring(bearerPrefixLength),
-        authorizationTokenType,
+    if (request.headers.authorization?.match(headerRegex)) {
+      const user = await verifyToken(
+        request.headers.authorization.substring(bearerPrefix.length),
+        tokenType,
         timestamp(),
       )
-      if (user && jwt.hasRoles(user, roles)) {
+      if (user && hasRoles(user, roles)) {
         authorized = true
         request.user = user
       }

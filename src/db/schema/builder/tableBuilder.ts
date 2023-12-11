@@ -14,10 +14,11 @@ export class TableBuilder {
 
   boolean(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (!name.match(booleanColumnRegex))
+    if (!name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.boolean())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -26,10 +27,11 @@ export class TableBuilder {
 
   tinyInt(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.tinyInt())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -38,10 +40,11 @@ export class TableBuilder {
 
   smallInt(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.smallInt())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -49,10 +52,11 @@ export class TableBuilder {
   }
 
   smallIntPrimaryAutoIncrement(
-    name: string
+    name: string,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.smallIntPrimaryAutoIncrement())
     return new ColumnBuilder(knexColumnBuilder)
@@ -60,10 +64,11 @@ export class TableBuilder {
 
   int(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.int())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -71,10 +76,11 @@ export class TableBuilder {
   }
 
   intPrimaryAutoIncrement(
-    name: string
+    name: string,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.intPrimaryAutoIncrement())
     return new ColumnBuilder(knexColumnBuilder)
@@ -82,10 +88,11 @@ export class TableBuilder {
 
   bigInt(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.bigInt())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -93,10 +100,11 @@ export class TableBuilder {
   }
 
   bigIntPrimaryAutoIncrement(
-    name: string
+    name: string,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.bigIntPrimaryAutoIncrement())
     return new ColumnBuilder(knexColumnBuilder)
@@ -104,21 +112,24 @@ export class TableBuilder {
 
   float(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.float())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
     return new ColumnBuilder(knexColumnBuilder)
   }
 
-  double(name: string,
-    nullConstraint: NullConstraint
+  double(
+    name: string,
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.double())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -129,14 +140,17 @@ export class TableBuilder {
     name: string,
     precision: number,
     scale: number,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
-    if (precision < 1 || precision > 15)
+    }
+    if (precision < 1 || precision > 15) {
       throw new Error(`db: invalid column precision "${precision}"`)
-    if (scale < 0 || scale >= precision)
+    }
+    if (scale < 0 || scale >= precision) {
       throw new Error(`db: invalid column scale "${scale}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.numeric(precision, scale))
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -146,12 +160,14 @@ export class TableBuilder {
   char(
     name: string,
     length: number,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
-    if (length < 1 || length > 255)
+    }
+    if (length < 1 || length > 255) {
       throw new Error(`db: invalid column length "${length}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.char(length))
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -161,12 +177,14 @@ export class TableBuilder {
   varChar(
     name: string,
     maxLength: number,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
-    if (maxLength < 1 || maxLength > 65535)
+    }
+    if (maxLength < 1 || maxLength > 65535) {
       throw new Error(`db: invalid column maxLength "${maxLength}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.varChar(maxLength))
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -175,10 +193,11 @@ export class TableBuilder {
 
   tinyText(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.tinyText())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -187,10 +206,11 @@ export class TableBuilder {
 
   text(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.text())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -199,10 +219,11 @@ export class TableBuilder {
 
   longText(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.longText())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -212,12 +233,14 @@ export class TableBuilder {
   binary(
     name: string,
     length: number,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
-    if (length < 1 || length > 255)
+    }
+    if (length < 1 || length > 255) {
       throw new Error(`db: invalid column length "${length}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.binary(length))
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -227,12 +250,14 @@ export class TableBuilder {
   varBinary(
     name: string,
     maxLength: number,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
-    if (maxLength < 1 || maxLength > 65535)
+    }
+    if (maxLength < 1 || maxLength > 65535) {
       throw new Error(`db: invalid column maxLength "${maxLength}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.varBinary(maxLength))
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -241,10 +266,11 @@ export class TableBuilder {
 
   tinyBlob(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.tinyBlob())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -253,10 +279,11 @@ export class TableBuilder {
 
   blob(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.blob())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -265,10 +292,11 @@ export class TableBuilder {
 
   longBlob(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.longBlob())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -277,10 +305,11 @@ export class TableBuilder {
 
   timestamp(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.timestamp())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -289,10 +318,11 @@ export class TableBuilder {
 
   dateTime(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.dateTime())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -301,10 +331,11 @@ export class TableBuilder {
 
   date(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.date())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()
@@ -313,10 +344,11 @@ export class TableBuilder {
 
   time(
     name: string,
-    nullConstraint: NullConstraint
+    nullConstraint: NullConstraint,
   ) {
-    if (name.match(booleanColumnRegex))
+    if (name.match(booleanColumnRegex)) {
       throw new Error(`db: invalid column name "${name}"`)
+    }
     const knexColumnBuilder = this.knexTableBuilder
       .specificType(name, dataType.time())
     if (nullConstraint === 'notNull') knexColumnBuilder.notNullable()

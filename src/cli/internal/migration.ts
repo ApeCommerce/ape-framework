@@ -1,4 +1,4 @@
-import { exit, formatTable, formatText, writeLn, } from '../utils'
+import { exit, formatTable, formatText, writeLn } from '../utils'
 import { getBundle } from '../../app'
 import { parseBoolean, parseString } from '../../utils'
 import type { Command } from '../command'
@@ -23,7 +23,13 @@ const help = formatText([
 ])
 
 const formatMigrations = (migrations: MigrationList) => formatTable(
-  migrations.map((m) => [m.bundleId, m.migrationId, m.pending ? 'pending' : '']),
+  migrations.map(
+    (migration) => [
+      migration.bundleId,
+      migration.migrationId,
+      migration.pending ? 'pending' : '',
+    ],
+  ),
 )
 
 const list = async (bundleId?: string, pending?: boolean) => {
@@ -72,11 +78,15 @@ const command: Command = {
   name: 'migration',
   handler: async (args, options) => {
     const action = parseString(args[0])
-    if (!action || action === 'help') { writeLn(help); exit() }
+    if (!action || action === 'help') {
+      writeLn(help)
+      exit()
+    }
 
     const bundleId = parseString(options.b || options.bundle) || undefined
-    if (bundleId && !(await getBundle(bundleId)))
+    if (bundleId && !(await getBundle(bundleId))) {
       throw new Error(`migration: invalid bundleId "${bundleId}"`)
+    }
 
     const pending = parseBoolean(options.pending)
     const one = parseBoolean(options.one)
