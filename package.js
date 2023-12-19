@@ -40,7 +40,10 @@ fs.ensureDirSync(`dist/${id}`)
 fs.writeJsonSync(`dist/${id}/package.json`, pkg, { spaces: 2 })
 
 fs.copySync('LICENSE', `dist/${id}/LICENSE`)
-fs.copySync('README.md', `dist/${id}/README.md`)
+fs.copySync(
+  id === 'main' ? 'README.md' : 'README.shared.md',
+  `dist/${id}/README.md`,
+)
 
 tsConfig.include.forEach((path) => {
   fs.copySync(path, `dist/${id}${path.substring('src'.length)}`)
