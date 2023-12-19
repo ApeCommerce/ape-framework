@@ -1,14 +1,14 @@
-import '../../../config';
-import { listMigrations, runMigrations } from 'db/schema';
-import db from 'db';
+import '../../../config'
+import { listMigrations, runMigrations } from 'db/schema'
+import db from 'db'
 
 afterAll(async () => {
-  await db.destroy();
-});
+  await db.destroy()
+})
 
 describe('Listing pending migrations', () => {
   test('Returns expected value', async () => {
-    const list1 = await listMigrations(undefined, true);
+    const list1 = await listMigrations(undefined, true)
     expect(list1).toStrictEqual([
       {
         bundleId: 'foo',
@@ -35,10 +35,10 @@ describe('Listing pending migrations', () => {
         migrationId: 'two',
         pending: true,
       },
-    ]);
+    ])
 
-    await runMigrations('foo');
-    const list2 = await listMigrations(undefined, true);
+    await runMigrations('foo')
+    const list2 = await listMigrations(undefined, true)
     expect(list2).toStrictEqual([
       {
         bundleId: 'bar',
@@ -50,16 +50,16 @@ describe('Listing pending migrations', () => {
         migrationId: 'two',
         pending: true,
       },
-    ]);
+    ])
 
-    await runMigrations('bar', true);
-    const list3 = await listMigrations(undefined, true);
+    await runMigrations('bar', true)
+    const list3 = await listMigrations(undefined, true)
     expect(list3).toStrictEqual([
       {
         bundleId: 'bar',
         migrationId: 'two',
         pending: true,
       },
-    ]);
-  });
-});
+    ])
+  })
+})

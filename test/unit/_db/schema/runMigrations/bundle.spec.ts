@@ -1,14 +1,14 @@
-import '../../../config';
-import { listMigrations, runMigrations } from 'db/schema';
-import db from 'db';
+import '../../../config'
+import { listMigrations, runMigrations } from 'db/schema'
+import db from 'db'
 
 afterAll(async () => {
-  await db.destroy();
-});
+  await db.destroy()
+})
 
 describe('Running bundle migrations', () => {
   test('Returns expected value', async () => {
-    const list1 = await runMigrations('foo');
+    const list1 = await runMigrations('foo')
     expect(list1).toStrictEqual([
       {
         bundleId: 'foo',
@@ -22,9 +22,9 @@ describe('Running bundle migrations', () => {
         bundleId: 'foo',
         migrationId: 'three',
       },
-    ]);
+    ])
 
-    const list2 = await listMigrations();
+    const list2 = await listMigrations()
     expect(list2).toStrictEqual([
       {
         bundleId: 'foo',
@@ -51,6 +51,6 @@ describe('Running bundle migrations', () => {
         migrationId: 'two',
         pending: true,
       },
-    ]);
-  });
-});
+    ])
+  })
+})

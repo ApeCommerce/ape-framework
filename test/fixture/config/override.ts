@@ -69,6 +69,6 @@ const override = {
   mailSmtpUser: 'overrideUser',
   mailSmtpPassword: 'overridePassword',
   mailSmtpEmail: 'overrideUser@example.com',
-};
+}
 
-export default override;
+export default override

@@ -1,14 +1,14 @@
-import '../../../config';
-import { listMigrations, runMigrations } from 'db/schema';
-import db from 'db';
+import '../../../config'
+import { listMigrations, runMigrations } from 'db/schema'
+import db from 'db'
 
 afterAll(async () => {
-  await db.destroy();
-});
+  await db.destroy()
+})
 
 describe('Listing bundle migrations', () => {
   test('Returns expected value', async () => {
-    const list1 = await listMigrations('foo');
+    const list1 = await listMigrations('foo')
     expect(list1).toStrictEqual([
       {
         bundleId: 'foo',
@@ -25,10 +25,10 @@ describe('Listing bundle migrations', () => {
         migrationId: 'three',
         pending: true,
       },
-    ]);
+    ])
 
-    await runMigrations('foo');
-    const list2 = await listMigrations('foo');
+    await runMigrations('foo')
+    const list2 = await listMigrations('foo')
     expect(list2).toStrictEqual([
       {
         bundleId: 'foo',
@@ -45,9 +45,9 @@ describe('Listing bundle migrations', () => {
         migrationId: 'three',
         pending: false,
       },
-    ]);
+    ])
 
-    const list3 = await listMigrations('bar');
+    const list3 = await listMigrations('bar')
     expect(list3).toStrictEqual([
       {
         bundleId: 'bar',
@@ -59,10 +59,10 @@ describe('Listing bundle migrations', () => {
         migrationId: 'two',
         pending: true,
       },
-    ]);
+    ])
 
-    await runMigrations('bar', true);
-    const list4 = await listMigrations('bar');
+    await runMigrations('bar', true)
+    const list4 = await listMigrations('bar')
     expect(list4).toStrictEqual([
       {
         bundleId: 'bar',
@@ -74,6 +74,6 @@ describe('Listing bundle migrations', () => {
         migrationId: 'two',
         pending: true,
       },
-    ]);
-  });
-});
+    ])
+  })
+})

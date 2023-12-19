@@ -1,4 +1,4 @@
-import type { Translation } from 'i18n';
+import type { Translation } from 'i18n'
 
 const translations: Translation[] = [
   {
@@ -23,6 +23,6 @@ const translations: Translation[] = [
       },
     },
   },
-];
+]
 
-export default translations;
+export default translations

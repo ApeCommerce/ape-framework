@@ -1,4 +1,4 @@
-import { initConfig } from 'config';
+import { initConfig } from 'config'
 
 initConfig({
   dbModule: 'postgres',
@@ -7,11 +7,11 @@ initConfig({
   dbPostgresDatabase: 'database',
   dbPostgresSsl: true,
   dbPostgresSslCert: 'test/fixture/ssl/cert.pem',
-});
+})
 
 describe('Loading the config with a postgres ssl cert', () => {
   test('Returns expected value', async () => {
-    const config = (await import('db/config')).default;
+    const config = (await import('db/config')).default
     expect(config).toStrictEqual({
       client: 'pg',
       connection: {
@@ -31,6 +31,6 @@ describe('Loading the config with a postgres ssl cert', () => {
         min: 0,
         max: 5,
       },
-    });
-  });
-});
+    })
+  })
+})

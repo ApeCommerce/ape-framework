@@ -1,12 +1,12 @@
-import { initConfig } from 'config';
+import { initConfig } from 'config'
 
 initConfig({
   dbModule: 'memory',
-});
+})
 
 describe('Loading the config', () => {
   test('Returns expected value', async () => {
-    const config = (await import('db/config')).default;
+    const config = (await import('db/config')).default
     expect(config).toStrictEqual({
       client: 'sqlite3',
       connection: {
@@ -17,6 +17,6 @@ describe('Loading the config', () => {
         max: 1,
       },
       useNullAsDefault: true,
-    });
-  });
-});
+    })
+  })
+})

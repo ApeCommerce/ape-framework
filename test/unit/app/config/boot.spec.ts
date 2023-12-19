@@ -1,16 +1,13 @@
-import { initConfig } from 'config';
+import { initConfig } from 'config'
 
 initConfig({
   appBoot: '',
-});
+})
 
 describe('Loading the config with missing boot', () => {
   test('Throws an error', async () => {
-    expect.hasAssertions();
-    try {
-      await import('app/config');
-    } catch (error) {
-      expect(error).toBeDefined();
-    }
-  });
-});
+    expect(async () => {
+      await import('app/config')
+    }).toThrow()
+  })
+})

@@ -1,4 +1,4 @@
-import { initConfig } from 'config';
+import { initConfig } from 'config'
 
 initConfig({
   dbModule: 'mysql',
@@ -7,11 +7,11 @@ initConfig({
   dbMysqlDatabase: 'database',
   dbMysqlSsl: true,
   dbMysqlSslCert: 'test/fixture/ssl/cert.pem',
-});
+})
 
 describe('Loading the config with a mysql ssl cert', () => {
   test('Returns expected value', async () => {
-    const config = (await import('db/config')).default;
+    const config = (await import('db/config')).default
     expect(config).toStrictEqual({
       client: 'mysql2',
       connection: {
@@ -31,6 +31,6 @@ describe('Loading the config with a mysql ssl cert', () => {
         min: 0,
         max: 5,
       },
-    });
-  });
-});
+    })
+  })
+})

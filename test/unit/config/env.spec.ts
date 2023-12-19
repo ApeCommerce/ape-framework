@@ -1,5 +1,5 @@
-import '../../fixture/config/env';
-import { getConfig } from 'config';
+import '../../fixture/config/env'
+import { getConfig } from 'config'
 
 describe('Getting the configuration from environment', () => {
   test('Returns expected value', async () => {
@@ -74,6 +74,6 @@ describe('Getting the configuration from environment', () => {
       mailSmtpUser: 'envUser',
       mailSmtpPassword: 'envPassword',
       mailSmtpEmail: 'envUser@example.com',
-    });
-  });
-});
+    })
+  })
+})

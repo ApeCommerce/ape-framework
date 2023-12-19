@@ -1,4 +1,4 @@
-import { getConfig } from 'config';
+import { getConfig } from 'config'
 
 describe('Getting the configuration from default', () => {
   test('Returns expected value', async () => {
@@ -73,6 +73,6 @@ describe('Getting the configuration from default', () => {
       mailSmtpUser: '',
       mailSmtpPassword: '',
       mailSmtpEmail: '',
-    });
-  });
-});
+    })
+  })
+})

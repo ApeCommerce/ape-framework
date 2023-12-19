@@ -1,9 +1,9 @@
-import { parseMilliseconds, wait } from 'utils';
+import { parseMilliseconds, wait } from 'utils'
 
 describe('Waiting a duration', () => {
   test('Delays code execution', async () => {
-    const ms = Date.now();
-    await wait(parseMilliseconds('1s'));
-    expect(Date.now() - ms).toBeGreaterThanOrEqual(parseMilliseconds('1s'));
-  });
-});
+    const ms = Date.now()
+    await wait(parseMilliseconds('1s'))
+    expect(Date.now() - ms).toBeGreaterThanOrEqual(parseMilliseconds('1s'))
+  })
+})

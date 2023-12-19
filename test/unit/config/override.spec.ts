@@ -1,8 +1,8 @@
-import '../../fixture/config/env';
-import { getConfig, initConfig } from 'config';
-import override from '../../fixture/config/override';
+import '../../fixture/config/env'
+import { getConfig, initConfig } from 'config'
+import override from '../../fixture/config/override'
 
-initConfig(override, 'test/fixture/config/file/ape.config.json');
+initConfig(override, 'test/fixture/config/file/ape.config.json')
 
 describe('Getting the configuration from override', () => {
   test('Returns expected value', async () => {
@@ -77,6 +77,6 @@ describe('Getting the configuration from override', () => {
       mailSmtpUser: 'overrideUser',
       mailSmtpPassword: 'overridePassword',
       mailSmtpEmail: 'overrideUser@example.com',
-    });
-  });
-});
+    })
+  })
+})

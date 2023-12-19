@@ -1,4 +1,4 @@
-import loadFile from 'config/loadFile';
+import loadFile from 'config/loadFile'
 
 describe('Loading a file', () => {
   test('Returns expected value', async () => {
@@ -73,12 +73,12 @@ describe('Loading a file', () => {
       mailSmtpUser: 'fileUser',
       mailSmtpPassword: 'filePassword',
       mailSmtpEmail: 'fileUser@example.com',
-    });
-  });
-});
+    })
+  })
+})
 
 describe('Loading a missing file', () => {
   test('Returns expected value', async () => {
-    expect(loadFile('oops')).toStrictEqual({});
-  });
-});
+    expect(loadFile('oops')).toStrictEqual({})
+  })
+})

@@ -1,7 +1,7 @@
-import '../../fixture/config/env';
-import { getConfig, initConfig } from 'config';
+import '../../fixture/config/env'
+import { getConfig, initConfig } from 'config'
 
-initConfig({}, 'test/fixture/config/ape.config.json');
+initConfig({}, 'test/fixture/config/ape.config.json')
 
 describe('Getting the configuration from file', () => {
   test('Returns expected value', async () => {
@@ -76,6 +76,6 @@ describe('Getting the configuration from file', () => {
       mailSmtpUser: 'fileUser',
       mailSmtpPassword: 'filePassword',
       mailSmtpEmail: 'fileUser@example.com',
-    });
-  });
-});
+    })
+  })
+})

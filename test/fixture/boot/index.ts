@@ -1,4 +1,4 @@
-import type { Boot } from 'app';
+import type { Boot } from 'app'
 
 const boot: Boot = {
   bundles: async () => [
@@ -6,6 +6,6 @@ const boot: Boot = {
     (await import('../bundle/bar')).default,
     (await import('../bundle/empty')).default,
   ],
-};
+}
 
-export default boot;
+export default boot

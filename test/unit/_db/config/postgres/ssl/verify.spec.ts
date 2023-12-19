@@ -1,4 +1,4 @@
-import { initConfig } from 'config';
+import { initConfig } from 'config'
 
 initConfig({
   dbModule: 'postgres',
@@ -7,11 +7,11 @@ initConfig({
   dbPostgresDatabase: 'database',
   dbPostgresSsl: true,
   dbPostgresSslVerify: false,
-});
+})
 
 describe('Loading the config with postgres ssl verify disabled', () => {
   test('Returns expected value', async () => {
-    const config = (await import('db/config')).default;
+    const config = (await import('db/config')).default
     expect(config).toStrictEqual({
       client: 'pg',
       connection: {
@@ -26,6 +26,6 @@ describe('Loading the config with postgres ssl verify disabled', () => {
         min: 0,
         max: 5,
       },
-    });
-  });
-});
+    })
+  })
+})

@@ -1,4 +1,4 @@
-import { initConfig } from 'config';
+import { initConfig } from 'config'
 
 initConfig({
   appBoot: '../test/fixture/boot',
@@ -20,4 +20,4 @@ initConfig({
   pwdHashCost: 3,
 
   dbModule: 'memory',
-});
+})

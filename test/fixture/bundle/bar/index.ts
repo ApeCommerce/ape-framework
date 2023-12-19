@@ -1,4 +1,4 @@
-import type { Bundle } from 'app';
+import type { Bundle } from 'app'
 
 const bundle: Bundle = {
   bundleId: 'bar',
@@ -8,6 +8,6 @@ const bundle: Bundle = {
   queues: async () => [],
   routes: async () => [],
   translations: async () => (await import('./translation')).default,
-};
+}
 
-export default bundle;
+export default bundle

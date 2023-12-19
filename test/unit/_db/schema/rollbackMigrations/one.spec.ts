@@ -1,23 +1,23 @@
-import '../../../config';
-import { listMigrations, rollbackMigrations, runMigrations } from 'db/schema';
-import db from 'db';
+import '../../../config'
+import { listMigrations, rollbackMigrations, runMigrations } from 'db/schema'
+import db from 'db'
 
 afterAll(async () => {
-  await db.destroy();
-});
+  await db.destroy()
+})
 
 describe('Rolling back one migration', () => {
   test('Returns expected value', async () => {
-    await runMigrations();
-    const list1 = await rollbackMigrations(undefined, true);
+    await runMigrations()
+    const list1 = await rollbackMigrations(undefined, true)
     expect(list1).toStrictEqual([
       {
         bundleId: 'bar',
         migrationId: 'two',
       },
-    ]);
+    ])
 
-    const list2 = await listMigrations();
+    const list2 = await listMigrations()
     expect(list2).toStrictEqual([
       {
         bundleId: 'foo',
@@ -44,6 +44,6 @@ describe('Rolling back one migration', () => {
         migrationId: 'two',
         pending: true,
       },
-    ]);
-  });
-});
+    ])
+  })
+})

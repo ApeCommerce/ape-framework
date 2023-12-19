@@ -1,4 +1,4 @@
-import type { Translation } from 'i18n';
+import type { Translation } from 'i18n'
 
 const translations: Translation[] = [
   {
@@ -14,6 +14,6 @@ const translations: Translation[] = [
       greeting: 'Salut {{name}} !',
     },
   },
-];
+]
 
-export default translations;
+export default translations

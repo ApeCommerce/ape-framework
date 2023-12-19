@@ -1,21 +1,21 @@
-import '../../config';
-import db, { SchemaBuilder } from 'db';
+import '../../config'
+import db, { SchemaBuilder } from 'db'
 
-const schema = new SchemaBuilder(db);
+const schema = new SchemaBuilder(db)
 
 afterEach(async () => {
-  await schema.dropTableIfExists('foo');
-});
+  await schema.dropTableIfExists('foo')
+})
 
 afterAll(async () => {
-  await db.destroy();
-});
+  await db.destroy()
+})
 
 describe('Inserting / selecting float', () => {
   test('Returns expected value', async () => {
     await schema.createTable('foo', (table) => {
-      table.float('one', 'null');
-    });
+      table.float('one', 'null')
+    })
     const data = [
       { one: null },
       { one: 0 },
@@ -23,23 +23,20 @@ describe('Inserting / selecting float', () => {
       { one: -99999.9 },
       { one: 0.00001 },
       { one: -0.00001 },
-    ];
-    await db('foo').insert(data);
-    const result = await db('foo').select();
-    expect(result).toEqual(data);
-  });
-});
+    ]
+    await db('foo').insert(data)
+    const result = await db('foo').select()
+    expect(result).toEqual(data)
+  })
+})
 
 describe('Inserting null in float notNull', () => {
   test('Throws an error', async () => {
     await schema.createTable('foo', (table) => {
-      table.float('one', 'notNull');
-    });
-    expect.hasAssertions();
-    try {
-      await db('foo').insert({ one: null });
-    } catch (error) {
-      expect(error).toBeDefined();
-    }
-  });
-});
+      table.float('one', 'notNull')
+    })
+    expect(async () => {
+      await db('foo').insert({ one: null })
+    }).toThrow()
+  })
+})
