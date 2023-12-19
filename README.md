@@ -14,13 +14,14 @@ npm install apeframework
 
 ## Hello Ape!
 
-Let's create an API serving a `/hello` endpoint.
+Let's make an API serving a `/hello` endpoint, in TypeScript.
+
+Create a `boot.ts` file at the root of the project:
 
 ```ts
-// boot.ts
 import type { Boot, Bundle } from 'apeframework/app';
 
-const welcomeBundle: Bundle = {
+const welcome: Bundle = {
   bundleId: 'welcome',
   name: 'Welcome',
   routes: async () => [
@@ -35,13 +36,13 @@ const welcomeBundle: Bundle = {
 };
 
 const boot: Boot = {
-  bundles: async () => [welcomeBundle],
+  bundles: async () => [welcome],
 };
 
 export default boot;
 ```
 
-Start the API server:
+Start the API using Ape Framework's CLI:
 
 ```
 npx ape-cli-ts api start

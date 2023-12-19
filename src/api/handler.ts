@@ -13,7 +13,7 @@ export type ErrorHandler = (
 ) => Promise<void>
 
 export interface Request extends FastifyRequest {
-  user?: User
+  user?: User,
 }
 
 export const send = (reply: Reply, value: unknown = true) => {

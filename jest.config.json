@@ -7,11 +7,7 @@
   "testMatch": [
     "<rootDir>/test/unit/**/*.spec.ts"
   ],
-  "collectCoverage": false,
-  "collectCoverageFrom": [
-    "<rootDir>/src/**/*.ts"
-  ],
-  "coveragePathIgnorePatterns": [],
+  "collectCoverage": true,
   "coverageDirectory": "coverage",
   "coverageReporters": [
     "lcov",
@@ -24,5 +20,8 @@
       "functions": 100,
       "lines": 100
     }
-  }
+  },
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.ts"
+  ]
 }

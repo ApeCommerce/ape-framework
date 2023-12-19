@@ -7,7 +7,7 @@ import type { Job, Progress, Queue } from '../../queue'
 export const formatJob = (
   queue: Queue,
   job?: BullJob,
-) => (queue.queueId + (job ? ` #${job.id} ${job.name}` : ''))
+) => queue.queueId + (job ? ` #${job.id} ${job.name}` : '')
 
 export class RedisMq extends MqModule {
   createSender(queue: Queue) {
@@ -30,7 +30,7 @@ export class RedisMq extends MqModule {
 
     const bullWorker = new BullWorker(queue.queueId, async (bullJob) => {
       const progress: Progress = (c, t) => {
-        bullJob.updateProgress(Math.floor((c / t) * 100))
+        bullJob.updateProgress(Math.floor(c / t * 100))
       }
       await jobs[bullJob.name].process(bullJob.data, progress)
     }, config.workerOptions)

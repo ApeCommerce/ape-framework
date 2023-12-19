@@ -4,7 +4,7 @@ import schema from './schema'
 
 const protectedRoutes: {
   path: string,
-  roles: string[]
+  roles: string[],
 }[] = []
 
 export const getRequiredRoles = (path: string) => {

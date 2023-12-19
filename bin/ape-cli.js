@@ -1,2 +1,2 @@
 #! /usr/bin/env node
-require('../cli').default();
+require('../cli').default;

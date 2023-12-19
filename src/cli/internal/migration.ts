@@ -43,7 +43,7 @@ const list = async (bundleId?: string, pending?: boolean) => {
   } else {
     writeLn('No migration.')
   }
-  ((await import('../../db')).default).destroy()
+  (await import('../../db')).default.destroy()
 }
 
 const run = async (bundleId?: string, one?: boolean) => {
@@ -57,7 +57,7 @@ const run = async (bundleId?: string, one?: boolean) => {
   } else {
     writeLn('Nothing to do.')
   }
-  ((await import('../../db')).default).destroy()
+  (await import('../../db')).default.destroy()
 }
 
 const rollback = async (bundleId?: string, one?: boolean) => {
@@ -71,7 +71,7 @@ const rollback = async (bundleId?: string, one?: boolean) => {
   } else {
     writeLn('Nothing to do.')
   }
-  ((await import('../../db')).default).destroy()
+  (await import('../../db')).default.destroy()
 }
 
 const command: Command = {
@@ -84,7 +84,7 @@ const command: Command = {
     }
 
     const bundleId = parseString(options.b || options.bundle) || undefined
-    if (bundleId && !(await getBundle(bundleId))) {
+    if (bundleId && !await getBundle(bundleId)) {
       throw new Error(`migration: invalid bundleId "${bundleId}"`)
     }
 

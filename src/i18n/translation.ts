@@ -1,4 +1,4 @@
 export interface Translation {
   languageId: string,
-  dictionary: any
+  dictionary: any,
 }

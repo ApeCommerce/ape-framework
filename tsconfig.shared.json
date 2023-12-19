@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": false,
     "rootDir": "src",
-    "outDir": "dist/common",
+    "outDir": "dist/shared",
     "declaration": true
   },
   "include": [

@@ -6,11 +6,11 @@
     "ape-cli-ts": "bin/ape-cli-ts.js"
   },
   "scripts": {
-    "lint": "eslint",
+    "lint": "eslint .",
     "test": "jest",
     "compile": "tsc",
-    "build:server": "tsc --project tsconfig.build.server.json",
-    "build:common": "tsc --project tsconfig.build.common.json"
+    "build:main": "tsc --project tsconfig.main.json",
+    "build:shared": "tsc --project tsconfig.shared.json"
   },
   "engines": {
     "node": "^18"
@@ -42,6 +42,7 @@
     "yargs-parser": "^21.1"
   },
   "devDependencies": {
+    "@apeframework/eslint-config": "0.0.0-dev.2",
     "@stylistic/eslint-plugin": "^1.4",
     "@types/bcrypt": "^5.0",
     "@types/bytes": "^3.1",

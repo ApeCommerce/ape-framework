@@ -28,7 +28,7 @@ export const formatTable = (table: Table) => {
     ['', ...row].forEach((col, i) => {
       colLen[i] = col.length > (colLen[i] || 0)
         ? col.length
-        : (colLen[i] || 0)
+        : colLen[i] || 0
     })
   })
   return table.map(

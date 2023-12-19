@@ -7,15 +7,7 @@
   "testMatch": [
     "<rootDir>/test/integration/db/**/*.spec.ts"
   ],
-  "collectCoverage": false,
-  "collectCoverageFrom": [
-    "<rootDir>/src/db/index.ts"
-  ],
-  "coveragePathIgnorePatterns": [
-    "<rootDir>/src/db/index.ts",
-    "<rootDir>/src/db/config.ts",
-    "<rootDir>/src/db/schema/config.ts"
-  ],
+  "collectCoverage": true,
   "coverageDirectory": "coverage",
   "coverageReporters": [
     "lcov",
@@ -28,5 +20,11 @@
       "functions": 100,
       "lines": 100
     }
-  }
+  },
+  "collectCoverageFrom": [
+    "<rootDir>/src/db/index.ts"
+  ],
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/src/db/index.ts"
+  ]
 }
