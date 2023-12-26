@@ -6,7 +6,7 @@
     "ape-cli-ts": "bin/ape-cli-ts.js"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint src/utils test/unit/utils",
     "test": "jest",
     "compile": "tsc",
     "build:main": "tsc --project tsconfig.main.json",

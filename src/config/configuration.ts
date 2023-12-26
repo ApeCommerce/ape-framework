@@ -1,5 +1,6 @@
 export interface Configuration {
   appBoot: string,
+  appMigrationTable: string,
 
   logLevel: string,
   logDestination: string,

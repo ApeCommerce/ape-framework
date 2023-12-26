@@ -2,7 +2,7 @@ import cors from '@fastify/cors'
 import fastify from 'fastify'
 import responseValidation from '@fastify/response-validation'
 import swagger from '@fastify/swagger'
-import { basePath, timestamp } from '../utils'
+import { timestamp } from '../utils'
 import { bearerPrefix, headerRegex, tokenType } from './auth'
 import { hasRoles, verifyToken } from '../jwt'
 import config from './config'
@@ -10,6 +10,10 @@ import log from '../log'
 import router, { getRequiredRoles } from './router'
 import type { Api } from './api'
 import type { ErrorHandler, Handler } from './handler'
+
+export const basePath = (path?: string, separator = '/') => {
+  return (path || '').split(separator).filter((value) => value)[0] || ''
+}
 
 const onRequest: Handler = async (request, reply) => {
   const roles = getRequiredRoles(basePath(request.routerPath))

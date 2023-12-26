@@ -1,4 +1,4 @@
-import type { Bundle } from '../../app'
+import type { Bundle } from './bundle'
 import type { Migration } from './migration'
 
 export class MigrationSource {

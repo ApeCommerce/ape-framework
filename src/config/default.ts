@@ -1,5 +1,6 @@
 export default {
   appBoot: 'boot',
+  appMigrationTable: 'migration',
 
   logLevel: 'info',
   logDestination: 'stdout',

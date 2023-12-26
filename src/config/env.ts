@@ -3,10 +3,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 export default {
-  nodeEnv: process.env.NODE_ENV,
-  nodePath: process.env.NODE_PATH,
-
   appBoot: process.env.APE_APP_BOOT,
+  appMigrationTable: process.env.APE_APP_MIGRATION_TABLE,
 
   logLevel: process.env.APE_LOG_LEVEL,
   logDestination: process.env.APE_LOG_DESTINATION,
