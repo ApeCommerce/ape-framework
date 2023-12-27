@@ -5,6 +5,7 @@
     "src"
   ],
   "testMatch": [
+    "<rootDir>/test/unit/node/**/*.spec.ts",
     "<rootDir>/test/unit/utils/**/*.spec.ts"
   ],
   "collectCoverage": true,
@@ -22,6 +23,7 @@
     }
   },
   "collectCoverageFrom": [
+    "<rootDir>/src/node/**/*.ts",
     "<rootDir>/src/utils/**/*.ts"
   ]
 }

@@ -34,8 +34,14 @@
     "plugin:jest/recommended"
   ],
   "rules": {
+    "sort-imports": [
+      "error"
+    ],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
-    "@typescript-eslint/require-await": "off"
+    "@typescript-eslint/require-await": "off",
+    "import/order": [
+      "error"
+    ]
   }
 }

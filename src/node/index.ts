@@ -1,22 +1,9 @@
+import dotenv from 'dotenv'
 import { parseString } from '../utils'
 
-export class Node {
-  private env: string
+dotenv.config()
 
-  private path: string
-
-  constructor() {
-    this.env = parseString(process.env.NODE_ENV)
-    this.path = parseString(process.env.NODE_PATH)
-  }
-
-  getEnv() {
-    return this.env
-  }
-
-  getPath() {
-    return this.path
-  }
+export default {
+  env: parseString(process.env.NODE_ENV),
+  path: parseString(process.env.NODE_PATH),
 }
-
-export default new Node()

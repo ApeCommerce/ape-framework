@@ -8,7 +8,9 @@
     "esModuleInterop": true
   },
   "include": [
+    "src/node",
     "src/utils",
+    "test/unit/node",
     "test/unit/utils"
   ]
 }
