@@ -19,7 +19,7 @@ const pkg = {
   author: 'Matthieu Symoens',
   description: id === 'main'
     ? '__description__'
-    : 'Ape Framework\'s shared package.',
+    : 'Ape Framework shared package',
   keywords: ['ape', 'framework'],
   repository: {
     type: 'git',
