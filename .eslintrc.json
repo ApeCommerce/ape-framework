@@ -1,54 +1,30 @@
 {
-  "root": true,
+  "extends": [
+    "@apeframework"
+  ],
   "overrides": [
     {
       "files": [
         "**/*.ts",
         "**/*.spec.ts"
       ],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "project": "tsconfig.json"
-      },
       "plugins": [
         "@typescript-eslint",
         "@stylistic",
         "import",
         "jest"
       ],
-      "env": {
-        "node": true,
-        "jest/globals": true
-      },
-      "settings": {
-        "import/resolver": {
-          "node": true,
-          "typescript": true,
-          "jest": {
-            "jestConfigFile": "jest.config.json"
-          }
-        }
-      }
+      "rules": {}
     },
     {
       "files": [
         "**/*.js"
       ],
-      "parserOptions": {
-        "ecmaVersion": "latest"
-      },
       "plugins": [
         "@stylistic",
         "import"
       ],
-      "env": {
-        "node": true
-      },
-      "settings": {
-        "import/resolver": {
-          "node": true
-        }
-      }
+      "rules": {}
     }
   ]
 }
