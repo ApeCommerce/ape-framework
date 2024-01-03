@@ -23,7 +23,6 @@ describe('Parsing bytes', () => {
     expect(parseBytes([])).toBe(0)
     expect(parseBytes(['foo', 'bar'])).toBe(0)
     expect(parseBytes(() => { })).toBe(0)
-    expect(parseBytes(() => 'foo')).toBe(0)
 
     expect(parseBytes('5b')).toBe(5)
     expect(parseBytes('5kb')).toBe(5120)

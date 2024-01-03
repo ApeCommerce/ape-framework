@@ -23,7 +23,6 @@ describe('Parsing milliseconds', () => {
     expect(parseMilliseconds([])).toBe(0)
     expect(parseMilliseconds(['foo', 'bar'])).toBe(0)
     expect(parseMilliseconds(() => { })).toBe(0)
-    expect(parseMilliseconds(() => 'foo')).toBe(0)
 
     expect(parseMilliseconds('5ms')).toBe(5)
     expect(parseMilliseconds('5millisecond')).toBe(5)

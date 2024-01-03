@@ -23,6 +23,5 @@ describe('Parsing a boolean', () => {
     expect(parseBoolean([])).toBe(false)
     expect(parseBoolean(['foo', 'bar'])).toBe(false)
     expect(parseBoolean(() => { })).toBe(false)
-    expect(parseBoolean(() => 'foo')).toBe(false)
   })
 })

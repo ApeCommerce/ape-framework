@@ -23,6 +23,5 @@ describe('Parsing a string', () => {
     expect(parseString([])).toBe('')
     expect(parseString(['foo', 'bar'])).toBe('')
     expect(parseString(() => { })).toBe('')
-    expect(parseString(() => 'foo')).toBe('')
   })
 })

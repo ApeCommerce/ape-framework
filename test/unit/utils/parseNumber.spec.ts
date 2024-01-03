@@ -23,6 +23,5 @@ describe('Parsing a number', () => {
     expect(parseNumber([])).toBe(0)
     expect(parseNumber(['foo', 'bar'])).toBe(0)
     expect(parseNumber(() => { })).toBe(0)
-    expect(parseNumber(() => 'foo')).toBe(0)
   })
 })

@@ -1,4 +1,6 @@
 #! /usr/bin/env node
+'use strict'
+
 const fs = require('fs-extra')
 
 const id = process.argv.slice(2).shift()
