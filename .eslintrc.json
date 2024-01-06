@@ -11,6 +11,10 @@
       "extends": [
         "@apeframework"
       ],
+      "plugins": [
+        "@stylistic",
+        "import"
+      ],
       "rules": {},
       "overrides": [
         {

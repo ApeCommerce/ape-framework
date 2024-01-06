@@ -41,6 +41,12 @@
     "sqlite3": "^5.1",
     "yargs-parser": "^21.1"
   },
+  "peerDependencies": {
+    "@types/node": "^20.6",
+    "ts-node": "^10.9",
+    "tsconfig-paths": "^4.2",
+    "typescript": "^5.2"
+  },
   "devDependencies": {
     "@apeframework/eslint-config": "0.0.0-dev.23",
     "@stylistic/eslint-plugin": "^1.5",

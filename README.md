@@ -2,21 +2,33 @@
 
 [Node.js](https://nodejs.org) API framework.
 
-NPM package: [apeframework](https://www.npmjs.com/package/apeframework)
+NPM package: [apeframework](https://www.npmjs.com/package/apeframework).
 
-GitHub repository: [ApeCommerce/ape-framework](https://github.com/ApeCommerce/ape-framework)
+GitHub repository: [ApeCommerce/ape-framework](https://github.com/ApeCommerce/ape-framework).
 
 ## Installation
+
+Install package:
 
 ```
 npm install apeframework
 ```
 
+Install peer dependencies:
+
+```
+npm install --save-dev \
+  typescript \
+  @types/node \
+  tsconfig-paths \
+  ts-node
+```
+
 ## Hello Ape!
 
-Let's make an API serving a `/hello` endpoint, in TypeScript.
+Let's make an API serving a `/hello` endpoint.
 
-Create a `boot.ts` file at the root of the project:
+Create a `boot.ts` file at the root of your project:
 
 ```ts
 import type { Boot, Bundle } from 'apeframework/app';
@@ -42,7 +54,7 @@ const boot: Boot = {
 export default boot;
 ```
 
-Start the API using Ape Framework's CLI:
+Start the API using CLI:
 
 ```
 npx ape-cli-ts api start

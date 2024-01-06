@@ -35,6 +35,7 @@ const pkg = {
   bin: id === 'main' ? devPkg.bin : undefined,
   engines: devPkg.engines,
   dependencies: id === 'main' ? devPkg.dependencies : undefined,
+  peerDependencies: id === 'main' ? devPkg.peerDependencies : undefined,
 }
 
 fs.ensureDirSync(`dist/${id}`)
