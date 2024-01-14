@@ -48,7 +48,7 @@
     "typescript": "^5.2"
   },
   "devDependencies": {
-    "@apeframework/eslint-config": "0.0.0-dev.23",
+    "@apeframework/eslint-config": "0.0.0-dev.30",
     "@stylistic/eslint-plugin": "^1.5",
     "@types/bcrypt": "^5.0",
     "@types/bytes": "^3.1",
