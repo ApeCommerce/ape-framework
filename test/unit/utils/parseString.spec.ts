@@ -6,11 +6,13 @@ describe('Parsing a string', () => {
     expect(parseString(null)).toBe('')
     expect(parseString(false)).toBe('')
     expect(parseString(true)).toBe('')
+
     expect(parseString(-3.5)).toBe('-3.5')
     expect(parseString(-1)).toBe('-1')
     expect(parseString(0)).toBe('0')
     expect(parseString(1)).toBe('1')
     expect(parseString(3.5)).toBe('3.5')
+
     expect(parseString('')).toBe('')
     expect(parseString('foo')).toBe('foo')
     expect(parseString('-3.5')).toBe('-3.5')
@@ -18,6 +20,7 @@ describe('Parsing a string', () => {
     expect(parseString('0')).toBe('0')
     expect(parseString('1')).toBe('1')
     expect(parseString('3.5')).toBe('3.5')
+
     expect(parseString({})).toBe('')
     expect(parseString({ foo: 'bar' })).toBe('')
     expect(parseString([])).toBe('')

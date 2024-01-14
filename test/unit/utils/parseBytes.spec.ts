@@ -6,11 +6,13 @@ describe('Parsing bytes', () => {
     expect(parseBytes(null)).toBe(0)
     expect(parseBytes(false)).toBe(0)
     expect(parseBytes(true)).toBe(0)
+
     expect(parseBytes(-3.5)).toBe(-3)
     expect(parseBytes(-1)).toBe(-1)
     expect(parseBytes(0)).toBe(0)
     expect(parseBytes(1)).toBe(1)
     expect(parseBytes(3.5)).toBe(3)
+
     expect(parseBytes('')).toBe(0)
     expect(parseBytes('foo')).toBe(0)
     expect(parseBytes('-3.5')).toBe(-3)
@@ -18,6 +20,7 @@ describe('Parsing bytes', () => {
     expect(parseBytes('0')).toBe(0)
     expect(parseBytes('1')).toBe(1)
     expect(parseBytes('3.5')).toBe(3)
+
     expect(parseBytes({})).toBe(0)
     expect(parseBytes({ foo: 'bar' })).toBe(0)
     expect(parseBytes([])).toBe(0)

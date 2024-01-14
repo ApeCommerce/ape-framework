@@ -1,9 +1,10 @@
-import { parseMilliseconds, wait } from 'utils'
+import { wait } from 'utils'
 
 describe('Waiting a duration', () => {
-  test('Delays code execution', async () => {
-    const ms = Date.now()
-    await wait(parseMilliseconds('1s'))
-    expect(Date.now() - ms).toBeGreaterThanOrEqual(parseMilliseconds('1s'))
+  test('Produces expected result', async () => {
+    const duration = 1000
+    const timestamp = Date.now()
+    await wait(duration)
+    expect(Date.now() - timestamp).toBeGreaterThanOrEqual(duration)
   })
 })

@@ -6,11 +6,13 @@ describe('Parsing seconds', () => {
     expect(parseSeconds(null)).toBe(0)
     expect(parseSeconds(false)).toBe(0)
     expect(parseSeconds(true)).toBe(0)
+
     expect(parseSeconds(-3.5)).toBe(-3)
     expect(parseSeconds(-1)).toBe(-1)
     expect(parseSeconds(0)).toBe(0)
     expect(parseSeconds(1)).toBe(1)
     expect(parseSeconds(3.5)).toBe(3)
+
     expect(parseSeconds('')).toBe(0)
     expect(parseSeconds('foo')).toBe(0)
     expect(parseSeconds('-3.5')).toBe(-3)
@@ -18,6 +20,7 @@ describe('Parsing seconds', () => {
     expect(parseSeconds('0')).toBe(0)
     expect(parseSeconds('1')).toBe(1)
     expect(parseSeconds('3.5')).toBe(3)
+
     expect(parseSeconds({})).toBe(0)
     expect(parseSeconds({ foo: 'bar' })).toBe(0)
     expect(parseSeconds([])).toBe(0)
