@@ -8,9 +8,11 @@
     "esModuleInterop": true
   },
   "include": [
+    "src/config",
     "src/env",
     "src/node",
     "src/utils",
+    "test/unit/config",
     "test/unit/env",
     "test/unit/node",
     "test/unit/utils"

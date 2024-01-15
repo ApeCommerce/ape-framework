@@ -3,9 +3,11 @@
     {
       "files": [
         "**/*.js",
+        "src/config/**/*.ts",
         "src/env/**/*.ts",
         "src/node/**/*.ts",
         "src/utils/**/*.ts",
+        "test/unit/config/**/*.ts",
         "test/unit/env/**/*.ts",
         "test/unit/node/**/*.ts",
         "test/unit/utils/**/*.ts"
