@@ -1,19 +1,21 @@
-import { parseMilliseconds, timestamp, wait } from 'utils'
+import { timestamp, wait } from 'utils'
 
-describe('Getting a timestamp', () => {
-  test('Returns expected value', async () => {
+describe('getting a timestamp', () => {
+  test('returns expected value', async () => {
     const ts = timestamp()
+    const now = Date.now() / 1000
     expect(ts).toBeGreaterThan(0)
-    expect(ts).toBeLessThanOrEqual(Date.now() / 1000)
+    expect(ts).toBeLessThanOrEqual(now)
   })
 })
 
-describe('Getting a timestamp multiple times', () => {
-  test('Returns expected value', async () => {
+describe('getting a timestamp multiple times', () => {
+  test('returns expected value', async () => {
+    const duration = 1000
     const ts1 = timestamp()
-    await wait(parseMilliseconds('1s'))
+    await wait(duration)
     const ts2 = timestamp()
-    await wait(parseMilliseconds('1s'))
+    await wait(duration)
     const ts3 = timestamp()
     expect(ts1).toBeLessThan(ts2)
     expect(ts2).toBeLessThan(ts3)

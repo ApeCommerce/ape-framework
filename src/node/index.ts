@@ -1,11 +1,17 @@
 import '../env'
-import { parseString } from '../utils'
 
-const node = {
-  env: parseString(process.env.NODE_ENV),
-  path: parseString(process.env.NODE_PATH),
+const env = process.env.NODE_ENV
+const path = process.env.NODE_PATH
+
+const getEnv = (): string | undefined => {
+  return env
+}
+
+const getPath = (): string | undefined => {
+  return path
 }
 
 export {
-  node,
+  getEnv,
+  getPath,
 }

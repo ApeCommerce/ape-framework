@@ -5,11 +5,15 @@
         "**/*.js",
         "src/config/**/*.ts",
         "src/env/**/*.ts",
+        "src/error/**/*.ts",
         "src/node/**/*.ts",
+        "src/parser/**/*.ts",
         "src/utils/**/*.ts",
         "test/unit/config/**/*.ts",
         "test/unit/env/**/*.ts",
+        "test/unit/error/**/*.ts",
         "test/unit/node/**/*.ts",
+        "test/unit/parser/**/*.ts",
         "test/unit/utils/**/*.ts"
       ],
       "extends": [
@@ -37,7 +41,11 @@
               "plugins": [
                 "jest"
               ],
-              "rules": {}
+              "rules": {
+                "jest/prefer-lowercase-title": [
+                  "error"
+                ]
+              }
             }
           ]
         }

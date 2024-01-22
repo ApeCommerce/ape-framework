@@ -10,11 +10,15 @@
   "include": [
     "src/config",
     "src/env",
+    "src/error",
     "src/node",
+    "src/parser",
     "src/utils",
     "test/unit/config",
     "test/unit/env",
+    "test/unit/error",
     "test/unit/node",
+    "test/unit/parser",
     "test/unit/utils"
   ]
 }

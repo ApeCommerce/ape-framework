@@ -1,10 +1,10 @@
 import { wait } from 'utils'
 
-describe('Waiting a duration', () => {
-  test('Produces expected result', async () => {
-    const duration = 1000
+describe('waiting a duration', () => {
+  test('delays code execution', async () => {
     const timestamp = Date.now()
+    const duration = 1000
     await wait(duration)
-    expect(Date.now() - timestamp).toBeGreaterThanOrEqual(duration)
+    expect(Date.now()).toBeGreaterThanOrEqual(timestamp + duration)
   })
 })

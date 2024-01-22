@@ -1,5 +1,5 @@
-describe('Importing the module', () => {
-  test('Succeeds', async () => {
+describe('importing the module', () => {
+  test('succeeds', async () => {
     await import('env')
   })
 })

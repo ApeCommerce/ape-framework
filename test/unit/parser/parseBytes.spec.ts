@@ -1,7 +1,7 @@
-import { parseBytes } from 'utils'
+import { parseBytes } from 'parser'
 
-describe('Parsing bytes', () => {
-  test('Returns expected value', async () => {
+describe('parsing bytes', () => {
+  test('returns expected value', async () => {
     expect(parseBytes(undefined)).toBe(0)
     expect(parseBytes(null)).toBe(0)
     expect(parseBytes(false)).toBe(0)

@@ -1,7 +1,7 @@
-import { parseSeconds } from 'utils'
+import { parseSeconds } from 'parser'
 
-describe('Parsing seconds', () => {
-  test('Returns expected value', async () => {
+describe('parsing seconds', () => {
+  test('returns expected value', async () => {
     expect(parseSeconds(undefined)).toBe(0)
     expect(parseSeconds(null)).toBe(0)
     expect(parseSeconds(false)).toBe(0)

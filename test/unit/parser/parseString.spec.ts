@@ -1,7 +1,7 @@
-import { parseString } from 'utils'
+import { parseString } from 'parser'
 
-describe('Parsing a string', () => {
-  test('Returns expected value', async () => {
+describe('parsing a string', () => {
+  test('returns expected value', async () => {
     expect(parseString(undefined)).toBe('')
     expect(parseString(null)).toBe('')
     expect(parseString(false)).toBe('')

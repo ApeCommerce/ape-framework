@@ -1,7 +1,7 @@
-import { parseNumber } from 'utils'
+import { parseNumber } from 'parser'
 
-describe('Parsing a number', () => {
-  test('Returns expected value', async () => {
+describe('parsing a number', () => {
+  test('returns expected value', async () => {
     expect(parseNumber(undefined)).toBe(0)
     expect(parseNumber(null)).toBe(0)
     expect(parseNumber(false)).toBe(0)
