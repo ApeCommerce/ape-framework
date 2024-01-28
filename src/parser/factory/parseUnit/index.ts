@@ -1,12 +1,8 @@
-import { ParserInputError } from '../error/ParserInputError'
-import { parseNumber } from '../parseNumber'
-import { parseString } from '../parseString'
-import type { Parser } from '../Parser'
-
-interface Unit {
-  symbol: string,
-  value: number,
-}
+import { ParserInputError } from '../../error/ParserInputError'
+import { parseNumber } from '../../parseNumber'
+import { parseString } from '../../parseString'
+import type { Unit } from './Unit'
+import type { Parser } from '../../Parser'
 
 const parseUnit = (type: string, units: Unit[]): Parser<number> => {
   return (input) => {
