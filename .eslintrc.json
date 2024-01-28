@@ -6,13 +6,11 @@
         "src/config/**/*.ts",
         "src/env/**/*.ts",
         "src/error/**/*.ts",
-        "src/node/**/*.ts",
         "src/parser/**/*.ts",
         "src/utils/**/*.ts",
         "test/unit/config/**/*.ts",
         "test/unit/env/**/*.ts",
         "test/unit/error/**/*.ts",
-        "test/unit/node/**/*.ts",
         "test/unit/parser/**/*.ts",
         "test/unit/utils/**/*.ts"
       ],
@@ -23,7 +21,18 @@
         "@stylistic",
         "import"
       ],
-      "rules": {},
+      "rules": {
+        "capitalized-comments": [
+          "error",
+          "never"
+        ],
+        "id-length": [
+          "off"
+        ],
+        "no-undef-init": [
+          "off"
+        ]
+      },
       "overrides": [
         {
           "files": [
@@ -32,7 +41,18 @@
           "plugins": [
             "@typescript-eslint"
           ],
-          "rules": {},
+          "rules": {
+            "@typescript-eslint/init-declarations": [
+              "error",
+              "never"
+            ],
+            "@typescript-eslint/prefer-nullish-coalescing": [
+              "off"
+            ],
+            "@typescript-eslint/prefer-readonly-parameter-types": [
+              "off"
+            ]
+          },
           "overrides": [
             {
               "files": [

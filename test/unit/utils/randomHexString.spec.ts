@@ -1,4 +1,4 @@
-import { randomHexString } from 'utils'
+import { randomHexString } from 'utils/randomHexString'
 
 describe('getting a random hex string', () => {
   test('returns expected value', async () => {

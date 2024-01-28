@@ -8,5 +8,3 @@ services:
     command: yarn test -i -c jest.config.db.json
     volumes:
       - ../../:/home/node/ape-framework
-    environment:
-      APE_DB_MODULE: sqlite

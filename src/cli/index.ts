@@ -14,8 +14,8 @@ const exec = async () => {
   const help = formatText([
     'Usage:',
     formatTable([
-      ['ape-cli <command>', 'Execute command.'],
-      ['ape-cli help', 'Show help.'],
+      ['cli <command>', 'Execute command.'],
+      ['cli help', 'Show help.'],
     ]),
     '',
     'Commands:',

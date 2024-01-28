@@ -1,6 +1,6 @@
-import { BaseError } from 'error'
+import { BaseError } from 'error/BaseError'
 
-describe('instantiating a new error', () => {
+describe('creating an instance of base error', () => {
   test('returns expected value', async () => {
     const error = new BaseError('foo')
     expect(error instanceof BaseError).toBe(true)

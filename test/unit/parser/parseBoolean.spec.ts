@@ -1,4 +1,5 @@
-import { ParserInputError, parseBoolean } from 'parser'
+import { ParserInputError } from 'parser/error/ParserInputError'
+import { parseBoolean } from 'parser/parseBoolean'
 
 describe('parsing a boolean', () => {
   test('returns expected value', async () => {
@@ -24,6 +25,22 @@ describe('parsing a boolean', () => {
 
     expect(() => {
       parseBoolean(3.5)
+    }).toThrow(ParserInputError)
+
+    expect(() => {
+      parseBoolean(BigInt(-3))
+    }).toThrow(ParserInputError)
+
+    expect(() => {
+      parseBoolean(BigInt(-1))
+    }).toThrow(ParserInputError)
+
+    expect(parseBoolean(BigInt(0))).toBe(false)
+
+    expect(parseBoolean(BigInt(1))).toBe(true)
+
+    expect(() => {
+      parseBoolean(BigInt(3))
     }).toThrow(ParserInputError)
 
     expect(parseBoolean('')).toBe(false)
@@ -58,6 +75,10 @@ describe('parsing a boolean', () => {
 
     expect(() => {
       parseBoolean(() => { })
+    }).toThrow(ParserInputError)
+
+    expect(() => {
+      parseBoolean(Symbol('foo'))
     }).toThrow(ParserInputError)
   })
 })

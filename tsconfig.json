@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "rootDir": ".",
-    "baseUrl": "src",
     "noEmit": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "baseUrl": "src",
     "strict": true,
     "esModuleInterop": true
   },
@@ -11,13 +11,11 @@
     "src/config",
     "src/env",
     "src/error",
-    "src/node",
     "src/parser",
     "src/utils",
     "test/unit/config",
     "test/unit/env",
     "test/unit/error",
-    "test/unit/node",
     "test/unit/parser",
     "test/unit/utils"
   ]

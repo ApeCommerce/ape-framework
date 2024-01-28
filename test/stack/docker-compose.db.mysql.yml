@@ -8,12 +8,6 @@ services:
     command: yarn test -i -c jest.config.db.json
     volumes:
       - ../../:/home/node/ape-framework
-    environment:
-      APE_DB_MODULE: mysql
-      APE_DB_MYSQL_HOST: mysql
-      APE_DB_MYSQL_USER: ape
-      APE_DB_MYSQL_PASSWORD: password
-      APE_DB_MYSQL_DATABASE: ape
     depends_on:
       mysql:
         condition: service_started

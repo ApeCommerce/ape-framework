@@ -1,4 +1,5 @@
-import { timestamp, wait } from 'utils'
+import { timestamp } from 'utils/timestamp'
+import { wait } from 'utils/wait'
 
 describe('getting a timestamp', () => {
   test('returns expected value', async () => {

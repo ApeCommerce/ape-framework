@@ -8,7 +8,6 @@
     "<rootDir>/test/unit/config/**/*.spec.ts",
     "<rootDir>/test/unit/env/**/*.spec.ts",
     "<rootDir>/test/unit/error/**/*.spec.ts",
-    "<rootDir>/test/unit/node/**/*.spec.ts",
     "<rootDir>/test/unit/parser/**/*.spec.ts",
     "<rootDir>/test/unit/utils/**/*.spec.ts"
   ],
@@ -30,7 +29,6 @@
     "<rootDir>/src/config/**/*.ts",
     "<rootDir>/src/env/**/*.ts",
     "<rootDir>/src/error/**/*.ts",
-    "<rootDir>/src/node/**/*.ts",
     "<rootDir>/src/parser/**/*.ts",
     "<rootDir>/src/utils/**/*.ts"
   ]

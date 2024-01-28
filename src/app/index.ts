@@ -1,6 +1,5 @@
 import { MigrationSource } from './migrationSource'
 import config from './config'
-import node from '../node'
 import path from 'path'
 import type { Boot } from './boot'
 import type { Bundle } from './bundle'
@@ -13,7 +12,7 @@ export class App {
 
   async initBundles() {
     const boot: Boot = (await import(
-      path.join(process.cwd(), node.getPath(), config.boot)
+      path.join(process.cwd(), config.boot)
     )).default
     return boot.bundles()
   }

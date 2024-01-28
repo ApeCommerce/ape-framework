@@ -8,10 +8,6 @@
     "build:main": "tsc --project tsconfig.main.json",
     "build:shared": "tsc --project tsconfig.shared.json"
   },
-  "bin": {
-    "ape-cli": "bin/ape-cli.js",
-    "ape-cli-ts": "bin/ape-cli-ts.js"
-  },
   "engines": {
     "node": "^18"
   },
@@ -21,7 +17,6 @@
     "@fastify/swagger": "^8.10",
     "bcrypt": "^5.1",
     "bullmq": "^4.11",
-    "bytes": "^3.1",
     "dotenv": "^16.3",
     "fastify": "^4.23",
     "fs-extra": "^11.1",
@@ -33,7 +28,6 @@
     "mysql2": "^3.6",
     "nodemailer": "^6.9",
     "openapi-types": "^12.1",
-    "parse-duration": "^1.1",
     "pg": "^8.11",
     "pino": "^8.15",
     "pino-pretty": "^10.2",
@@ -44,14 +38,12 @@
   "peerDependencies": {
     "@types/node": "^20.6",
     "ts-node": "^10.9",
-    "tsconfig-paths": "^4.2",
     "typescript": "^5.2"
   },
   "devDependencies": {
     "@apeframework/eslint-config": "0.0.0-dev.30",
     "@stylistic/eslint-plugin": "^1.5",
     "@types/bcrypt": "^5.0",
-    "@types/bytes": "^3.1",
     "@types/fs-extra": "^11.0",
     "@types/jest": "^29.5",
     "@types/node": "^20.6",
@@ -66,7 +58,6 @@
     "jest": "^29.7",
     "ts-jest": "^29.1",
     "ts-node": "^10.9",
-    "tsconfig-paths": "^4.2",
     "typescript": "^5.2"
   }
 }

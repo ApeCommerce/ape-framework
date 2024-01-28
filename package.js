@@ -32,7 +32,6 @@ const pkg = {
   },
   main: 'index.js',
   types: 'index.d.ts',
-  bin: id === 'main' ? devPkg.bin : undefined,
   engines: devPkg.engines,
   dependencies: id === 'main' ? devPkg.dependencies : undefined,
   peerDependencies: id === 'main' ? devPkg.peerDependencies : undefined,
@@ -51,8 +50,3 @@ fs.copySync(
 tsConfig.include.forEach((path) => {
   fs.copySync(path, `dist/${id}${path.substring('src'.length)}`)
 })
-
-if (id === 'main') {
-  fs.copySync('bin/ape-cli.js', `dist/${id}/bin/ape-cli.js`)
-  fs.copySync('bin/ape-cli-ts.js', `dist/${id}/bin/ape-cli-ts.js`)
-}

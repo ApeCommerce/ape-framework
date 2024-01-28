@@ -2,9 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
+    "declaration": true,
+    "target": "es5",
     "rootDir": "src",
-    "outDir": "dist/main",
-    "declaration": true
+    "outDir": "dist/main"
   },
   "include": [
     "src"

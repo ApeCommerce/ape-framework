@@ -2,11 +2,13 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
+    "declaration": true,
+    "target": "es5",
+    "baseUrl": "src/shared",
     "rootDir": "src",
-    "outDir": "dist/shared",
-    "declaration": true
+    "outDir": "dist/shared"
   },
   "include": [
-    "src/api/endpoint.ts"
+    "src/shared"
   ]
 }

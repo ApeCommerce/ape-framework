@@ -1,7 +1,7 @@
-import { wait } from 'utils'
+import { wait } from 'utils/wait'
 
 describe('waiting a duration', () => {
-  test('delays code execution', async () => {
+  test('produces expected result', async () => {
     const timestamp = Date.now()
     const duration = 1000
     await wait(duration)
