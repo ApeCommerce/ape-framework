@@ -11,13 +11,7 @@ const parseString: Parser<string> = (input) => {
   } else if (['object', 'function', 'symbol'].includes(typeof input)) {
     throw new ParserInputError('string')
   }
-  let string: string
-  try {
-    string = String(input)
-  } catch (error) {
-    throw new ParserInputError('string')
-  }
-  return string
+  return String(input)
 }
 
 export {
