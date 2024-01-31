@@ -26,6 +26,9 @@
           "error",
           "never"
         ],
+        "guard-for-in": [
+          "off"
+        ],
         "id-length": [
           "off"
         ],
