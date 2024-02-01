@@ -5,6 +5,7 @@
     "src"
   ],
   "testMatch": [
+    "<rootDir>/test/unit/args/**/*.spec.ts",
     "<rootDir>/test/unit/config/**/*.spec.ts",
     "<rootDir>/test/unit/env/**/*.spec.ts",
     "<rootDir>/test/unit/error/**/*.spec.ts",
@@ -26,6 +27,7 @@
     }
   },
   "collectCoverageFrom": [
+    "<rootDir>/src/args/**/*.ts",
     "<rootDir>/src/config/**/*.ts",
     "<rootDir>/src/env/**/*.ts",
     "<rootDir>/src/error/**/*.ts",

@@ -10,19 +10,22 @@ interface MyConfig extends Config {
   three: string,
 }
 
-const foo = loadConfig<MyConfig>({
-  one: {
-    parser: parseBoolean,
-    default: true,
-  },
-  two: {
-    parser: parseNumber,
-    default: 1,
-  },
-  three: {
-    parser: parseString,
-    default: 'foo',
-  },
+describe('doing some testing', () => {
+  test('is cool', async () => {
+    const config = loadConfig<MyConfig>({
+      one: {
+        parser: parseBoolean,
+        default: true,
+      },
+      two: {
+        parser: parseNumber,
+        default: 1,
+      },
+      three: {
+        parser: parseString,
+        default: 'foo',
+      },
+    })
+    expect(config).toBeDefined()
+  })
 })
-
-console.log(foo)

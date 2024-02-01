@@ -3,11 +3,13 @@
     {
       "files": [
         "**/*.js",
+        "src/args/**/*.ts",
         "src/config/**/*.ts",
         "src/env/**/*.ts",
         "src/error/**/*.ts",
         "src/parser/**/*.ts",
         "src/utils/**/*.ts",
+        "test/unit/args/**/*.ts",
         "test/unit/config/**/*.ts",
         "test/unit/env/**/*.ts",
         "test/unit/error/**/*.ts",
