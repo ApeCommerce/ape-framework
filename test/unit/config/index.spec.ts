@@ -4,7 +4,7 @@ import { parseNumber } from 'parser/parseNumber'
 import { parseString } from 'parser/parseString'
 import type { Config } from 'config/Config'
 
-interface MyConfig extends Config {
+interface Configuration extends Config {
   one: boolean,
   two: number,
   three: string,
@@ -12,20 +12,27 @@ interface MyConfig extends Config {
 
 describe('doing some testing', () => {
   test('is cool', async () => {
-    const config = loadConfig<MyConfig>({
-      one: {
-        parser: parseBoolean,
-        default: true,
+    const config = loadConfig<Configuration>(
+      {
+        one: {
+          parser: parseBoolean,
+          default: true,
+        },
+        two: {
+          parser: parseNumber,
+          default: 1,
+        },
+        three: {
+          parser: parseString,
+          default: 'foo',
+        },
       },
-      two: {
-        parser: parseNumber,
-        default: 1,
+      {
+        file: 'foo.json',
+        env: true,
+        args: true,
       },
-      three: {
-        parser: parseString,
-        default: 'foo',
-      },
-    })
+    )
     expect(config).toBeDefined()
   })
 })

@@ -1,4 +1,4 @@
-type Parser<T> = (input: any) => T
+type Parser<Type> = (input: any) => Type
 
 export {
   type Parser,

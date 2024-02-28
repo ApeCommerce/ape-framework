@@ -3,7 +3,7 @@ import type { Env } from './Env'
 
 dotenv.config()
 
-const env: Readonly<Env> = process.env
+const env: Env = process.env
 
 export {
   env,
