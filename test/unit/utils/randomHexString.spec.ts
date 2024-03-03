@@ -8,7 +8,7 @@ describe('getting a random hex string', () => {
   })
 })
 
-describe('getting a random hex string multiple times', () => {
+describe('getting a random hex string several times', () => {
   test('returns expected value', async () => {
     const hex1 = randomHexString(5)
     const hex2 = randomHexString(5)

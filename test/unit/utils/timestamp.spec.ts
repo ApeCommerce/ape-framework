@@ -10,7 +10,7 @@ describe('getting a timestamp', () => {
   })
 })
 
-describe('getting a timestamp multiple times', () => {
+describe('getting a timestamp several times', () => {
   test('returns expected value', async () => {
     const duration = 1000
     const ts1 = timestamp()
