@@ -3,7 +3,12 @@ import { parseNumber } from './parseNumber'
 import type { Parser } from './Parser'
 
 const parseInteger: Parser<number> = (input) => {
-  const number = parseNumber(input)
+  let number: number
+  try {
+    number = parseNumber(input)
+  } catch (error) {
+    throw new ParserInputError('integer')
+  }
   if (!Number.isSafeInteger(number)) {
     throw new ParserInputError('integer')
   }

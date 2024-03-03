@@ -1,7 +1,7 @@
 import { ParserInputError } from 'parser/error/ParserInputError'
 import { parseBytes } from 'parser/parseBytes'
 
-describe('parsing milliseconds', () => {
+describe('parsing bytes', () => {
   test('returns expected value', async () => {
     expect(parseBytes(undefined)).toBe(0)
 
@@ -35,7 +35,7 @@ describe('parsing milliseconds', () => {
 
     expect(() => {
       parseBytes('foo')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('bytes'))
 
     expect(parseBytes('-3.5')).toBe(-3.5)
 
@@ -49,19 +49,19 @@ describe('parsing milliseconds', () => {
 
     expect(() => {
       parseBytes({})
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('bytes'))
 
     expect(() => {
       parseBytes([])
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('bytes'))
 
     expect(() => {
       parseBytes(() => { })
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('bytes'))
 
     expect(() => {
       parseBytes(Symbol('foo'))
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('bytes'))
 
     expect(parseBytes('1b')).toBe(1)
 

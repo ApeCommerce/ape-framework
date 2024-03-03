@@ -13,11 +13,11 @@ describe('parsing a boolean', () => {
 
     expect(() => {
       parseBoolean(-3.5)
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(() => {
       parseBoolean(-1)
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(parseBoolean(0)).toBe(false)
 
@@ -25,15 +25,15 @@ describe('parsing a boolean', () => {
 
     expect(() => {
       parseBoolean(3.5)
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(() => {
       parseBoolean(BigInt(-3))
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(() => {
       parseBoolean(BigInt(-1))
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(parseBoolean(BigInt(0))).toBe(false)
 
@@ -41,21 +41,21 @@ describe('parsing a boolean', () => {
 
     expect(() => {
       parseBoolean(BigInt(3))
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(parseBoolean('')).toBe(false)
 
     expect(() => {
       parseBoolean('foo')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(() => {
       parseBoolean('-3.5')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(() => {
       parseBoolean('-1')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(parseBoolean('0')).toBe(false)
 
@@ -63,22 +63,22 @@ describe('parsing a boolean', () => {
 
     expect(() => {
       parseBoolean('3.5')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(() => {
       parseBoolean({})
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(() => {
       parseBoolean([])
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(() => {
       parseBoolean(() => { })
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
 
     expect(() => {
       parseBoolean(Symbol('foo'))
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('boolean'))
   })
 })

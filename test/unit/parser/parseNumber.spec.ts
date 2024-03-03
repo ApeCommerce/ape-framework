@@ -35,7 +35,7 @@ describe('parsing a number', () => {
 
     expect(() => {
       parseNumber('foo')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('number'))
 
     expect(parseNumber('-3.5')).toBe(-3.5)
 
@@ -49,18 +49,18 @@ describe('parsing a number', () => {
 
     expect(() => {
       parseNumber({})
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('number'))
 
     expect(() => {
       parseNumber([])
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('number'))
 
     expect(() => {
       parseNumber(() => { })
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('number'))
 
     expect(() => {
       parseNumber(Symbol('foo'))
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('number'))
   })
 })

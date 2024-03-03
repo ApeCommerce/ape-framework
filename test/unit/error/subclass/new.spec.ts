@@ -9,7 +9,7 @@ class FooError extends BaseError {
 describe('creating a new instance of a subclass of base error', () => {
   test('returns expected value', async () => {
     const error = new FooError('foo')
-    expect(error instanceof FooError).toBe(true)
+    expect(error).toBeInstanceOf(FooError)
     expect(error.name).toBe('FooError')
     expect(error.message).toBe('foo')
     expect(error.stack).toBeDefined()

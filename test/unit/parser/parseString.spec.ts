@@ -47,18 +47,18 @@ describe('parsing a string', () => {
 
     expect(() => {
       parseString({})
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('string'))
 
     expect(() => {
       parseString([])
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('string'))
 
     expect(() => {
       parseString(() => { })
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('string'))
 
     expect(() => {
       parseString(Symbol('foo'))
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('string'))
   })
 })

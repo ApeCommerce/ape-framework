@@ -13,7 +13,7 @@ describe('parsing an integer', () => {
 
     expect(() => {
       parseInteger(-3.5)
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('integer'))
 
     expect(parseInteger(-1)).toBe(-1)
 
@@ -23,7 +23,7 @@ describe('parsing an integer', () => {
 
     expect(() => {
       parseInteger(3.5)
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('integer'))
 
     expect(parseInteger(BigInt(-3))).toBe(-3)
 
@@ -39,11 +39,11 @@ describe('parsing an integer', () => {
 
     expect(() => {
       parseInteger('foo')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('integer'))
 
     expect(() => {
       parseInteger('-3.5')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('integer'))
 
     expect(parseInteger('-1')).toBe(-1)
 
@@ -53,22 +53,22 @@ describe('parsing an integer', () => {
 
     expect(() => {
       parseInteger('3.5')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('integer'))
 
     expect(() => {
       parseInteger({})
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('integer'))
 
     expect(() => {
       parseInteger([])
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('integer'))
 
     expect(() => {
       parseInteger(() => { })
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('integer'))
 
     expect(() => {
       parseInteger(Symbol('foo'))
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('integer'))
   })
 })

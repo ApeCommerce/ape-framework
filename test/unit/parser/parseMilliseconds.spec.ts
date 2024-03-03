@@ -35,7 +35,7 @@ describe('parsing milliseconds', () => {
 
     expect(() => {
       parseMilliseconds('foo')
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('milliseconds'))
 
     expect(parseMilliseconds('-3.5')).toBe(-3.5)
 
@@ -49,19 +49,19 @@ describe('parsing milliseconds', () => {
 
     expect(() => {
       parseMilliseconds({})
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('milliseconds'))
 
     expect(() => {
       parseMilliseconds([])
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('milliseconds'))
 
     expect(() => {
       parseMilliseconds(() => { })
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('milliseconds'))
 
     expect(() => {
       parseMilliseconds(Symbol('foo'))
-    }).toThrow(ParserInputError)
+    }).toThrow(new ParserInputError('milliseconds'))
 
     expect(parseMilliseconds('1ms')).toBe(1)
 
