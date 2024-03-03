@@ -1,9 +1,9 @@
-import dotenv from 'dotenv'
+import { loadFile } from './loadFile'
 import type { Env } from './Env'
 
-dotenv.config()
+const env = process.env as Env
 
-const env: Env = process.env
+loadFile('.env', env)
 
 export {
   env,

@@ -1,4 +1,4 @@
-type Env = Readonly<Record<string, string | undefined>>
+type Env = Record<string, string>
 
 export {
   type Env,
