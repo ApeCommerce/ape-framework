@@ -1,5 +1,5 @@
 import fs from 'fs-extra'
-import { args } from '../args'
+import { args } from '../cli/args'
 import { env } from '../env'
 import type { Config } from './Config'
 import type { Options } from './Options'
@@ -16,7 +16,7 @@ const loadConfig = <Type extends Config>(
 
   console.log('file', file)
   console.log('env', env)
-  console.log('args', args.optional)
+  console.log('args', args.options)
 
   const config: Config = {}
   for (const property in params) {

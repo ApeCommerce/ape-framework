@@ -1,4 +1,4 @@
-describe('getting an environment variable', () => {
+describe('getting the environment variables', () => {
   test('returns expected value', async () => {
     process.env.FOO = 'foo'
     const { env } = await import('env')

@@ -8,13 +8,13 @@
     "esModuleInterop": true
   },
   "include": [
-    "src/args",
+    "src/cli",
     "src/config",
     "src/env",
     "src/error",
     "src/parser",
     "src/utils",
-    "test/unit/args",
+    "test/unit/cli",
     "test/unit/config",
     "test/unit/env",
     "test/unit/error",

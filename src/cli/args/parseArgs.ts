@@ -1,9 +1,8 @@
-import parse from 'yargs-parser'
+import yargsParser from 'yargs-parser'
 import type { Args } from './Args'
 
-const parsed = parse(
-  process.argv.slice(2),
-  {
+const parseArgs = (args: string[]): Args => {
+  const parsed = yargsParser(args, {
     configuration: {
       'boolean-negation': false,
       'dot-notation': false,
@@ -14,20 +13,16 @@ const parsed = parse(
       'parse-positional-numbers': false,
       'strip-dashed': true,
     },
-  },
-)
-
-const positional: Record<string, any> = parsed._
-
-const optional: Record<string, any> = parsed
-
-delete optional._
-
-const args: Args = {
-  positional,
-  optional,
+  })
+  const positional: Record<string, any> = parsed._
+  const options: Record<string, any> = parsed
+  delete options._
+  return {
+    positional,
+    options,
+  }
 }
 
 export {
-  args,
+  parseArgs,
 }
