@@ -1,7 +1,7 @@
 import { timestamp } from 'utils/timestamp'
 import { wait } from 'utils/wait'
 
-describe('getting a timestamp', () => {
+describe('generating a timestamp', () => {
   test('returns expected value', async () => {
     const ts = timestamp()
     const now = Date.now() / 1000
@@ -10,7 +10,7 @@ describe('getting a timestamp', () => {
   })
 })
 
-describe('getting a timestamp several times', () => {
+describe('generating a timestamp several times', () => {
   test('returns expected value', async () => {
     const duration = 1000
     const ts1 = timestamp()

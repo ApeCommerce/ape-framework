@@ -1,6 +1,6 @@
-import { parseUnit } from './factory/parseUnit'
+import { createUnitParser } from './factory/unitParser/createUnitParser'
 
-const parseMilliseconds = parseUnit('milliseconds', [
+const parseMilliseconds = createUnitParser('milliseconds', [
   {
     symbol: 'ms',
     value: 1,

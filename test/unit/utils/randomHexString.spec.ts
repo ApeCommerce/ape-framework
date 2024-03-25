@@ -1,6 +1,6 @@
 import { randomHexString } from 'utils/randomHexString'
 
-describe('getting a random hex string', () => {
+describe('generating a random hexadecimal string', () => {
   test('returns expected value', async () => {
     expect(randomHexString(0)).toBe('')
     expect(randomHexString(5)).toMatch(/^[0-9a-f]{5}$/u)
@@ -8,7 +8,7 @@ describe('getting a random hex string', () => {
   })
 })
 
-describe('getting a random hex string several times', () => {
+describe('generating a random hexadecimal string several times', () => {
   test('returns expected value', async () => {
     const hex1 = randomHexString(5)
     const hex2 = randomHexString(5)

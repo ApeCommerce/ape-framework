@@ -1,6 +1,6 @@
-import { parseUnit } from './factory/parseUnit'
+import { createUnitParser } from './factory/unitParser/createUnitParser'
 
-const parseBytes = parseUnit('bytes', [
+const parseBytes = createUnitParser('bytes', [
   {
     symbol: 'B',
     value: 1,

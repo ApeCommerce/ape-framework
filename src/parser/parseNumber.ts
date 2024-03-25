@@ -7,6 +7,7 @@ const parseNumber: Parser<number> = (input) => {
   } else if (['object', 'function', 'symbol'].includes(typeof input)) {
     throw new ParserInputError('number')
   }
+
   const number = Number(input)
   if (!Number.isFinite(number)) {
     throw new ParserInputError('number')

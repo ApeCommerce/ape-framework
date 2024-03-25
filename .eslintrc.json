@@ -37,6 +37,12 @@
         "init-declarations": [
           "off"
         ],
+        "max-params": [
+          "off"
+        ],
+        "no-multi-str": [
+          "off"
+        ],
         "no-undef-init": [
           "off"
         ]
@@ -53,10 +59,16 @@
             "@typescript-eslint/init-declarations": [
               "off"
             ],
+            "@typescript-eslint/max-params": [
+              "off"
+            ],
             "@typescript-eslint/naming-convention": [
               "off"
             ],
             "@typescript-eslint/no-unsafe-assignment": [
+              "off"
+            ],
+            "@typescript-eslint/no-unsafe-call": [
               "off"
             ],
             "@typescript-eslint/prefer-nullish-coalescing": [
